@@ -1,6 +1,15 @@
-# GenAI Engineering Interview Preparation
+# GenAI and AI Engineering Interview Questions and Answers
 
-A growing collection of questions and answers to prepare for Generative AI (GenAI) engineering interviews. The goal is to build a practical study resource covering core concepts, implementation decisions, and the tradeoffs involved in building production AI systems.
+A growing collection of questions and answers for conducting and preparing for Generative AI (GenAI) and AI engineering interviews. This repository covers core concepts, implementation decisions, and the tradeoffs involved in building production AI systems.
+
+## Target Audiences
+
+- **Interviewers interviewing GenAI and AI engineers:** Use the question bank to plan interviews, assess technical understanding, and explore candidates' reasoning through practical examples and follow-up questions.
+- **Engineers preparing for GenAI and AI interviews:** Use the answers and explanations to strengthen your knowledge, practice discussing engineering tradeoffs, and identify areas for further study.
+
+## Question Bank
+
+- [Foundational GenAI and LLM questions](questions/foundations.md): 20 questions covering core concepts, transformer architecture, training, inference, and limitations, with short answers, explanations, examples, follow-ups, and references.
 
 ## Topics to Cover
 
@@ -43,6 +52,15 @@ Use this template when adding a question:
 
 ## How to Use This Repository
 
+### For Interviewers
+
+1. Select topics and difficulty levels relevant to the role.
+2. Use the questions to assess understanding and practical experience.
+3. Ask follow-up questions to explore assumptions, design choices, and tradeoffs.
+4. Treat the answers as reference points, allowing for alternative approaches supported by sound reasoning.
+
+### For Engineers Preparing for Interviews
+
 1. Study one topic at a time, starting with the foundations.
 2. Try answering each question aloud before reading the answer.
 3. Practice explaining both the concept and its engineering tradeoffs.
@@ -51,11 +69,11 @@ Use this template when adding a question:
 
 ## Initial Roadmap
 
-- [ ] Add foundational GenAI and LLM questions and answers.
+- [x] Add foundational GenAI and LLM questions and answers.
 - [ ] Expand into RAG, prompt engineering, and evaluation.
 - [ ] Add agents, fine-tuning, and production engineering topics.
 - [ ] Include system design scenarios and hands-on exercises.
-- [ ] Organize the question bank into topic-specific Markdown files as it grows.
+- [x] Organize the question bank into topic-specific Markdown files as it grows.
 
 ## Contributing
 
