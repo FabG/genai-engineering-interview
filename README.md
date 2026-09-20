@@ -1,5 +1,7 @@
 # GenAI and AI Engineering Interview Questions and Answers
 
+![AI and GenAI: data points, a decision tree, and a neural network connected to generated text, code, and imagery.](assets/ai-genai-banner.png)
+
 A growing collection of questions and answers for conducting and preparing for Generative AI (GenAI) and AI engineering interviews. This repository covers core concepts, implementation decisions, and the tradeoffs involved in building production AI systems.
 
 ## Target Audiences
@@ -9,11 +11,13 @@ A growing collection of questions and answers for conducting and preparing for G
 
 ## Question Bank
 
-- [Foundational GenAI and LLM questions](questions/foundations.md): 20 questions covering core concepts, transformer architecture, training, inference, and limitations, with short answers, explanations, examples, follow-ups, and references.
+- [Foundational AI and machine learning questions](questions/ai-foundations.md): 22 questions covering traditional ML concepts, data preparation, training, common algorithms, evaluation, and production monitoring, with short answers, explanations, examples, follow-ups, and references.
+- [Foundational GenAI and LLM questions](questions/genai-foundations.md): 20 questions covering core concepts, transformer architecture, training, inference, and limitations, with short answers, explanations, examples, follow-ups, and references.
 
 ## Topics to Cover
 
-- **Foundations:** Machine learning basics, deep learning, transformers, tokenization, and attention.
+- **AI and machine learning foundations:** Learning paradigms, data preparation, generalization, traditional algorithms, evaluation metrics, and production monitoring.
+- **GenAI foundations:** Generative models, neural networks, transformers, tokenization, and attention.
 - **Large language models:** Pretraining, inference, context windows, sampling, and model selection.
 - **Prompt engineering:** Instruction design, few-shot examples, structured outputs, and prompt testing.
 - **Retrieval-augmented generation (RAG):** Embeddings, chunking, vector search, reranking, and grounding.
@@ -61,7 +65,7 @@ Use this template when adding a question:
 
 ### For Engineers Preparing for Interviews
 
-1. Study one topic at a time, starting with the foundations.
+1. Study one topic at a time, starting with [AI and machine learning foundations](questions/ai-foundations.md), then [GenAI and LLM foundations](questions/genai-foundations.md).
 2. Try answering each question aloud before reading the answer.
 3. Practice explaining both the concept and its engineering tradeoffs.
 4. Revisit weak areas and add questions from mock or real interviews.
@@ -69,6 +73,7 @@ Use this template when adding a question:
 
 ## Initial Roadmap
 
+- [x] Add foundational AI and traditional machine learning questions and answers.
 - [x] Add foundational GenAI and LLM questions and answers.
 - [ ] Expand into RAG, prompt engineering, and evaluation.
 - [ ] Add agents, fine-tuning, and production engineering topics.
@@ -78,3 +83,7 @@ Use this template when adding a question:
 ## Contributing
 
 Add new questions, improve existing explanations, or suggest missing topics. Keep answers clear, technically accurate, and supported by reliable references. Call out assumptions and distinguish general principles from behavior specific to a model or tool.
+
+## License
+
+This repository is licensed under the [MIT License](LICENSE). You may use, copy, modify, and redistribute its content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.
