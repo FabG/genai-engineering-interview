@@ -1,6 +1,6 @@
 # Foundational GenAI and LLM Questions and Answers
 
-[Back to the README](../README.md) · [Previous: AI and machine learning foundations](ai-foundations.md)
+[Back to the README](../README.md) · [Previous: AI and machine learning foundations](ai-foundations.md) · [Next: RAG](rag.md)
 
 Start with the short answers, then use the explanations and follow-ups to practice deeper interview discussions. Examples are illustrative unless explicitly attributed to a source. Generation details below assume an autoregressive, decoder-only language model unless stated otherwise.
 
