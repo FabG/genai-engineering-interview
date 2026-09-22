@@ -15,6 +15,8 @@ A growing collection of questions and answers for conducting and preparing for G
 - [Foundational GenAI and LLM questions](questions/genai-foundations.md): 20 questions covering core concepts, transformer architecture, training, inference, and limitations, with short answers, explanations, examples, follow-ups, and references.
 - [Retrieval-augmented generation questions](questions/rag.md): 12 questions covering ingestion, chunking, search, reranking, grounding, access control, and troubleshooting.
 - [Prompt engineering questions](questions/prompt-engineering.md): 12 questions covering instructions, examples, structured outputs, tool use, context, prompt injection, and iteration.
+- [Agents and tool use questions](questions/agents.md): 12 questions covering execution loops, tool design, memory, retries, persistence, permissions, coordination, and evaluation.
+- [Fine-tuning questions](questions/fine-tuning.md): 12 questions covering training objectives, data preparation, PEFT, LoRA, QLoRA, preference optimization, evaluation, and deployment.
 - [GenAI evaluation questions](questions/evaluation.md): 12 questions covering datasets, retrieval and answer metrics, model judges, human review, experiments, robustness, and production monitoring.
 
 All question banks include short answers, explanations, practical examples, follow-up questions, and references.
@@ -71,18 +73,20 @@ Use this template when adding a question:
 ### For Engineers Preparing for Interviews
 
 1. Study one topic at a time, starting with [AI and machine learning foundations](questions/ai-foundations.md), then [GenAI and LLM foundations](questions/genai-foundations.md).
-2. Continue with [RAG](questions/rag.md), [prompt engineering](questions/prompt-engineering.md), and [evaluation](questions/evaluation.md) to practice application design and validation.
-3. Try answering each question aloud before reading the answer.
-4. Practice explaining both the concept and its engineering tradeoffs.
-5. Revisit weak areas and add questions from mock or real interviews.
-6. Update answers and references as tools and practices evolve.
+2. Continue with [RAG](questions/rag.md) and [prompt engineering](questions/prompt-engineering.md) to practice application design.
+3. Explore [agents](questions/agents.md) and [fine-tuning](questions/fine-tuning.md), using [evaluation](questions/evaluation.md) to assess the resulting systems.
+4. Try answering each question aloud before reading the answer.
+5. Practice explaining both the concept and its engineering tradeoffs.
+6. Revisit weak areas and add questions from mock or real interviews.
+7. Update answers and references as tools and practices evolve.
 
 ## Initial Roadmap
 
 - [x] Add foundational AI and traditional machine learning questions and answers.
 - [x] Add foundational GenAI and LLM questions and answers.
 - [x] Expand into RAG, prompt engineering, and evaluation.
-- [ ] Add agents, fine-tuning, and production engineering topics.
+- [x] Add agents and fine-tuning topics.
+- [ ] Add production engineering topics.
 - [ ] Include system design scenarios and hands-on exercises.
 - [x] Organize the question bank into topic-specific Markdown files as it grows.
 

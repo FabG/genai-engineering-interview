@@ -295,4 +295,4 @@ For routing, request a category and short justification instead of a lengthy ess
 
 - [Anthropic: Reducing latency](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-latency)
 
-Continue with [evaluation questions](evaluation.md) to test these design choices.
+Continue with [agents and tool use](agents.md) to explore execution workflows, or [evaluation questions](evaluation.md) to test these design choices.
