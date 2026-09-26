@@ -294,4 +294,4 @@ An adapter loads successfully but uses a different chat template at serving time
 - [Hugging Face: PEFT checkpoint format](https://huggingface.co/docs/peft/developer_guides/checkpoint)
 - [Hugging Face: Trainer checkpoints](https://huggingface.co/docs/transformers/main_classes/trainer)
 
-Use the [evaluation question bank](evaluation.md) to design comparisons for these methods.
+Use the [evaluation question bank](evaluation.md) to design comparisons for these methods, then explore [production engineering](production-engineering.md) for serving and operating the resulting application.

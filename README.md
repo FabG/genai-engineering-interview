@@ -18,6 +18,7 @@ A growing collection of questions and answers for conducting and preparing for G
 - [Agents and tool use questions](questions/agents.md): 12 questions covering execution loops, tool design, memory, retries, persistence, permissions, coordination, and evaluation.
 - [Fine-tuning questions](questions/fine-tuning.md): 12 questions covering training objectives, data preparation, PEFT, LoRA, QLoRA, preference optimization, evaluation, and deployment.
 - [GenAI evaluation questions](questions/evaluation.md): 12 questions covering datasets, retrieval and answer metrics, model judges, human review, experiments, robustness, and production monitoring.
+- [Production engineering questions](questions/production-engineering.md): 12 questions covering deployment, service objectives, inference performance, caching, overload, retries, releases, observability, security, and cost.
 
 All question banks include short answers, explanations, practical examples, follow-up questions, and references.
 
@@ -31,7 +32,7 @@ All question banks include short answers, explanations, practical examples, foll
 - **Fine-tuning:** Supervised fine-tuning, parameter-efficient methods, and preference optimization.
 - **Agents and tool use:** Function calling, workflow orchestration, memory, and failure handling.
 - **Evaluation and safety:** Quality metrics, hallucinations, prompt injection, privacy, and guardrails.
-- **Production engineering:** Deployment, latency, cost, caching, observability, and reliability.
+- **Production engineering:** Deployment, service objectives, batching, quantization, caching, overload handling, releases, observability, security, and cost.
 - **Multimodal AI:** Working with text, images, audio, and video.
 - **System design and practical interviews:** Architecture exercises, coding problems, debugging, and project discussions.
 
@@ -75,10 +76,11 @@ Use this template when adding a question:
 1. Study one topic at a time, starting with [AI and machine learning foundations](questions/ai-foundations.md), then [GenAI and LLM foundations](questions/genai-foundations.md).
 2. Continue with [RAG](questions/rag.md) and [prompt engineering](questions/prompt-engineering.md) to practice application design.
 3. Explore [agents](questions/agents.md) and [fine-tuning](questions/fine-tuning.md), using [evaluation](questions/evaluation.md) to assess the resulting systems.
-4. Try answering each question aloud before reading the answer.
-5. Practice explaining both the concept and its engineering tradeoffs.
-6. Revisit weak areas and add questions from mock or real interviews.
-7. Update answers and references as tools and practices evolve.
+4. Study [production engineering](questions/production-engineering.md) to connect model behavior with deployment, reliability, and operational constraints.
+5. Try answering each question aloud before reading the answer.
+6. Practice explaining both the concept and its engineering tradeoffs.
+7. Revisit weak areas and add questions from mock or real interviews.
+8. Update answers and references as tools and practices evolve.
 
 ## Initial Roadmap
 
@@ -86,7 +88,7 @@ Use this template when adding a question:
 - [x] Add foundational GenAI and LLM questions and answers.
 - [x] Expand into RAG, prompt engineering, and evaluation.
 - [x] Add agents and fine-tuning topics.
-- [ ] Add production engineering topics.
+- [x] Add production engineering topics.
 - [ ] Include system design scenarios and hands-on exercises.
 - [x] Organize the question bank into topic-specific Markdown files as it grows.
 
