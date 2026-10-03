@@ -22,6 +22,25 @@ A growing collection of questions and answers for conducting and preparing for G
 
 All question banks include short answers, explanations, practical examples, follow-up questions, and references.
 
+## System Design Scenarios
+
+[Practice five system design scenarios](system-design/README.md), each with a problem brief, workload assumptions, design tasks, an expandable reference design, and interviewer follow-ups:
+
+1. Permission-aware knowledge assistant.
+2. Support agent with controlled actions.
+3. Document extraction and review pipeline.
+4. Multi-tenant inference gateway.
+5. Evaluation and release platform.
+
+## Hands-on Python Exercises
+
+[Start the hands-on section](hands-on/README.md) for eight notebook exercises across four areas: ML data and metrics, retrieval and RAG, evaluation and validation, and production utilities.
+
+- [Questions notebook](hands-on/questions.ipynb): exercise contracts, implementation stubs, sample data, and checks.
+- [Answers notebook](hands-on/answers.ipynb): matching reference implementations, checks, and explanations.
+
+The exercises use Python 3.10+ and the standard library, with embedded data and no API keys or model downloads. The hands-on guide explains notebook setup and how to work through the exercises.
+
 ## Topics to Cover
 
 - **AI and machine learning foundations:** Learning paradigms, data preparation, generalization, traditional algorithms, evaluation metrics, and production monitoring.
@@ -34,7 +53,8 @@ All question banks include short answers, explanations, practical examples, foll
 - **Evaluation and safety:** Quality metrics, hallucinations, prompt injection, privacy, and guardrails.
 - **Production engineering:** Deployment, service objectives, batching, quantization, caching, overload handling, releases, observability, security, and cost.
 - **Multimodal AI:** Working with text, images, audio, and video.
-- **System design and practical interviews:** Architecture exercises, coding problems, debugging, and project discussions.
+- **System design:** Architecture scenarios, capacity estimates, failure handling, and design tradeoffs.
+- **Hands-on Python:** Notebook exercises for data preparation, retrieval, evaluation, validation, retries, and caching.
 
 ## Question and Answer Format
 
@@ -70,6 +90,7 @@ Use this template when adding a question:
 2. Use the questions to assess understanding and practical experience.
 3. Ask follow-up questions to explore assumptions, design choices, and tradeoffs.
 4. Treat the answers as reference points, allowing for alternative approaches supported by sound reasoning.
+5. Use the [system design scenarios](system-design/README.md) for architecture discussions and the [questions notebook](hands-on/questions.ipynb) for coding exercises; the [answers notebook](hands-on/answers.ipynb) provides reference solutions.
 
 ### For Engineers Preparing for Interviews
 
@@ -77,10 +98,11 @@ Use this template when adding a question:
 2. Continue with [RAG](questions/rag.md) and [prompt engineering](questions/prompt-engineering.md) to practice application design.
 3. Explore [agents](questions/agents.md) and [fine-tuning](questions/fine-tuning.md), using [evaluation](questions/evaluation.md) to assess the resulting systems.
 4. Study [production engineering](questions/production-engineering.md) to connect model behavior with deployment, reliability, and operational constraints.
-5. Try answering each question aloud before reading the answer.
-6. Practice explaining both the concept and its engineering tradeoffs.
-7. Revisit weak areas and add questions from mock or real interviews.
-8. Update answers and references as tools and practices evolve.
+5. Attempt the [system design scenarios](system-design/README.md) before expanding their reference designs, and implement exercises in the [questions notebook](hands-on/questions.ipynb) before opening the answers.
+6. Try answering each question aloud before reading the answer.
+7. Practice explaining both the concept and its engineering tradeoffs.
+8. Revisit weak areas and add questions from mock or real interviews.
+9. Update answers and references as tools and practices evolve.
 
 ## Initial Roadmap
 
@@ -89,7 +111,8 @@ Use this template when adding a question:
 - [x] Expand into RAG, prompt engineering, and evaluation.
 - [x] Add agents and fine-tuning topics.
 - [x] Add production engineering topics.
-- [ ] Include system design scenarios and hands-on exercises.
+- **− In progress:** Expand system design scenarios (5 available; more planned).
+- **− In progress:** Expand hands-on Python coding exercises with question and answer notebooks (8 available; more planned).
 - [x] Organize the question bank into topic-specific Markdown files as it grows.
 
 ## Contributing
