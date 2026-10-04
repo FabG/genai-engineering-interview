@@ -2,7 +2,7 @@
 
 [Back to the main README](../README.md) · [Hands-on Python exercises](../hands-on/README.md)
 
-Use these five scenarios for a 45–60 minute interview or a self-guided design session. All workloads, budgets, and targets below are hypothetical interview constraints, not product guarantees. Clarify requirements, estimate capacity, sketch the data flow, and discuss failures before selecting specific products.
+Use these six scenarios for a 45–60 minute interview or a self-guided design session. All workloads, budgets, and targets below are hypothetical interview constraints, not product guarantees. Clarify requirements, estimate capacity, sketch the data flow, and discuss failures before selecting specific products.
 
 Reference designs are expandable so candidates can attempt each problem first. They illustrate defensible approaches rather than a single correct architecture. Interviewers should assess assumptions, tradeoffs, and verification, and adjust depth to the role.
 
@@ -13,6 +13,7 @@ Reference designs are expandable so candidates can attempt each problem first. T
 3. [Document extraction and review pipeline](#3-document-extraction-and-review-pipeline)
 4. [Multi-tenant inference gateway](#4-multi-tenant-inference-gateway)
 5. [Evaluation and release platform](#5-evaluation-and-release-platform)
+6. [Autonomous software factory](#6-autonomous-software-factory)
 
 ## Interview structure
 
@@ -228,3 +229,85 @@ A release gate combines hard constraints with quality and operational targets. A
 </details>
 
 **Related study:** [Evaluation](../questions/evaluation.md), [agents](../questions/agents.md). [Google SRE's canary-release guidance](https://sre.google/workbook/canarying-releases/) describes staged comparison and release risk.
+
+## 6. Autonomous software factory
+
+**Difficulty:** Advanced
+
+**Prompt:** Design an end-to-end software development system where fleets of autonomous AI agents handle planning, coding, testing, and monitoring, while human engineers focus on defining business intent and reviewing results. Follow a request from its initial specification to a deployed, observed outcome, including rejected changes and production incidents.
+
+**Starting constraints:**
+
+- 200 engineers across 100 repositories submit 300 change requests per working day over an 8-hour arrival window. Peak arrivals are 3 times the window average.
+- Each request averages 6 agent tasks, each occupying a sandbox for 12 minutes, excluding queue time and human review. Initial capacity is 200 concurrent sandboxes.
+- Each task averages 15 model calls with 4,000 input tokens and 800 output tokens per call. Treat these as sizing assumptions; retries and independent evaluation add load.
+- Target p95 time from accepted specification to a review-ready candidate below 90 minutes for a defined class of small changes. Human review and production observation have separate clocks.
+- Multiple agents may modify the same service. Workers may crash, model providers may be rate-limited, and external actions may succeed before their acknowledgments arrive.
+- Humans own intent and review results. For this scenario, production deployment requires an authorized engineer's approval bound to a verified candidate. Coding agents cannot modify protected release checks or access production credentials.
+- Every release must be traceable to its intent, source revision, verification evidence, and deployed artifact. Production regressions must support bounded mitigation and escalation.
+
+**Clarify first:** Which changes qualify for autonomous execution? Who resolves conflicting requirements? What counts as an accepted result? Which actions are preauthorized? What repositories, data, and environments may each worker access? How are migrations, cross-repository changes, review delays, and emergency fixes handled?
+
+**Design tasks:** Define intent intake, planning, fleet scheduling, sandbox execution, independent testing, integration, human review, release, and monitoring. Include a task and artifact model, one capacity estimate, permission boundaries, budget enforcement, and recovery after a crash between an external action and its local checkpoint. Explain how production feedback creates new work without allowing an uncontrolled repair loop.
+
+<details>
+<summary>Reference design and interviewer notes</summary>
+
+Use a durable orchestration service as the authoritative owner of runs and tasks. Models propose plans and actions; application services validate permissions, dispatch work, record evidence, and enforce state transitions. Keep worker execution separate from trusted verification and release services.
+
+```mermaid
+flowchart TD
+    Human[Engineers define business intent] --> Spec[Versioned specification and acceptance criteria]
+    Spec --> Planner[Planning agents propose task graph]
+    Planner --> Control[Durable orchestration and policy service]
+    Control <--> State[(Task state and artifact records)]
+    Control --> Queue[Bounded queues and worker leases]
+    Queue --> Workers[Coding and test agents in isolated sandboxes]
+    Workers --> Verify[Independent verification and integration queue]
+    Verify --> Review[Engineer reviews candidate and evidence]
+    Review --> Release[Authorized release service and canary]
+    Release --> Prod[Production]
+    Prod --> Monitor[Telemetry and monitoring agents]
+    Monitor --> Outcome[Outcome evidence for engineers]
+    Outcome --> Human
+    Monitor --> Incident[Incident record and bounded remediation proposal]
+    Incident --> Control
+```
+
+**Request flow:** An engineer supplies the desired outcome and constraints. Planning agents inspect a pinned repository revision and propose a specification and task graph; unresolved material product choices return to the owner. Coding agents receive ready tasks with explicit scope and acceptance criteria. Test agents can propose additional checks, while an independent service executes protected checks against the integrated candidate. The review packet includes a demonstration where appropriate, requirement coverage, diff, test reports, limitations, cost, and a rollout plan. An authorized review permits deployment of the verified artifact. Monitoring collects reliability and business-outcome evidence for engineers and links any remediation to the original release.
+
+**State and contracts:** One possible run progression is `intake → specified → planned → executing → verifying → awaiting_review → approved → deploying → observing → accepted`. Include explicit `blocked`, `failed`, `cancelled`, and `rolled_back` outcomes. Keep bounded repair attempts under the run rather than silently restarting its budget. Define acceptance over an agreed observation window, distinguishing software conformance from longer-term business impact.
+
+| Record | Essential fields |
+| --- | --- |
+| Intent | ID, owner, version, outcome, acceptance criteria, constraints, authorization scope |
+| Run | ID, intent version, plan version, repository revisions, configuration versions, state, deadline, reserved and actual cost |
+| Task | ID, run ID, dependency IDs, input artifact hashes, output contract, status, lease generation, attempt count |
+| Artifact | Digest, source revision, build inputs, producer attempt, protected verification reports, retention policy |
+| Review | Reviewer, decision, candidate digest, relevant intent and policy versions, target environment, permitted action |
+| Release | Operation ID, artifact digest, environment, rollout state, observation window, rollback or recovery reference |
+| Incident | Affected release, telemetry evidence, owner, mitigation status, linked remediation run |
+
+The scheduler accepts a task result only when its attempt and input versions remain current. Changing intent or shared interfaces invalidates dependent work. An approval applies to its recorded candidate; rebase, rebuild, or behavior changes require revalidation and renewed approval when the approved artifact changes.
+
+**Capacity:** Average arrival rate during the working window is `300 / 8 = 37.5 requests/hour`. Task demand is `37.5 × 6 = 225 tasks/hour`. At `12 / 60 = 0.2 sandbox-hours/task`, average offered load is `225 × 0.2 = 45 occupied sandboxes`, rising to `135` at the assumed peak. This is a workload estimate, not a latency guarantee: dependency chains, retries, uneven task duration, and verification queues affect completion time. The initial 200 slots provide nominal headroom; validate the 90-minute target with measured task distributions and queue simulations.
+
+The baseline workload is `300 × 6 × 15 = 27,000 model calls/day`, or `108 million input tokens/day` and `21.6 million output tokens/day`. Over the 8-hour window, those average `3,750 input tokens/second` and `750 output tokens/second`; the assumed peak is three times those rates. Provider quotas, model response times, and build infrastructure impose separate limits. Human review is another capacity constraint: at an illustrative 10 minutes per request, 300 requests require 50 reviewer-hours/day. Bound work in progress when review cannot keep pace.
+
+**Isolation and integration:** Run workers in disposable environments with task-scoped credentials, network controls, and no production secrets. Separate workspaces avoid edit collisions, while a merge queue validates behavioral compatibility against the current target branch. Keep protected acceptance checks and release policy outside coding-worker write scope. Tests generated by the same agents are useful additions but cannot replace independent criteria. Verify the exact artifact to be deployed and bind source, build, and test evidence to its digest.
+
+**Recovery and budgets:** Persist accepted outputs and operation IDs before issuing external writes. When a lease expires, reassign work with a new generation and reject stale results. After an ambiguous deployment response, query the release service using the operation ID instead of assuming failure. Checkpoints do not make external effects exactly once. Cancel descendants and reconcile in-flight actions when a run stops. Enforce per-run time, token, sandbox, and repair limits with atomic reservations; preserve an incomplete result when a limit is reached.
+
+**Release and monitoring:** Roll out gradually using predeclared health criteria and a compatible rollback or forward-recovery plan. Application rollback alone may not reverse a database migration. Monitoring agents correlate telemetry with release versions and propose fixes; a trusted controller may execute an explicitly preauthorized mitigation. Novel patches go through verification and review. Deduplicate incident-triggered work, cap repair loops, and provide an emergency stop. Missing or stale monitoring data blocks further rollout rather than being interpreted as healthy behavior.
+
+**Evaluation and rollout:** Start with a held-out set of representative repository tasks and a single-agent or existing delivery-process baseline. Measure requirement satisfaction, accepted changes, escaped defects, reviewer effort, end-to-end latency, total cost, and unauthorized actions. Include abandoned requests and failed attempts. Pilot on bounded changes, then expand scope only after measured outcomes justify it. Version factory configurations separately from produced software, and define how active runs finish when the factory itself is upgraded.
+
+**Strong signals:** Connects human intent to independently verified outcomes, models integration and review as bottlenecks, limits authority outside the model, and distinguishes deployment success from business success.
+
+**Failure injection:** Two agents produce incompatible API changes; a worker weakens tests to make its patch pass; a crash occurs after deployment but before checkpointing; approval refers to an older candidate; monitoring repeatedly proposes fixes that cause new incidents.
+
+**Follow-ups:** How would you support a coordinated release across ten repositories? What changes if only 20% of requests have clear acceptance tests? How would you drain active runs after discovering a compromised worker image?
+
+</details>
+
+**Related study:** [Software Factory](../questions/software-factory.md), [Agent Orchestration](../questions/agent-orchestration.md), [evaluation](../questions/evaluation.md), and [production engineering](../questions/production-engineering.md). [GitHub's merge queue documentation](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue) explains integration checks; [SLSA provenance](https://slsa.dev/spec/v1.2/provenance) describes build evidence. The factory architecture above is an illustrative synthesis, not a guarantee supplied by either mechanism.

@@ -16,6 +16,8 @@ A growing collection of questions and answers for conducting and preparing for G
 - [Retrieval-augmented generation questions](questions/rag.md): 12 questions covering ingestion, chunking, search, reranking, grounding, access control, and troubleshooting.
 - [Prompt engineering questions](questions/prompt-engineering.md): 12 questions covering instructions, examples, structured outputs, tool use, context, prompt injection, and iteration.
 - [Agents and tool use questions](questions/agents.md): 12 questions covering execution loops, tool design, memory, retries, persistence, permissions, coordination, and evaluation.
+- [Agent Orchestration questions](questions/agent-orchestration.md): 12 questions covering task decomposition, coordination patterns, scheduling, handoffs, shared state, recovery, budgets, and fleet evaluation.
+- [Software Factory questions](questions/software-factory.md): 12 questions covering business intent, agent planning and coding, independent testing, integration, human review, deployment, monitoring, and delivery outcomes.
 - [Fine-tuning questions](questions/fine-tuning.md): 12 questions covering training objectives, data preparation, PEFT, LoRA, QLoRA, preference optimization, evaluation, and deployment.
 - [GenAI evaluation questions](questions/evaluation.md): 12 questions covering datasets, retrieval and answer metrics, model judges, human review, experiments, robustness, and production monitoring.
 - [Production engineering questions](questions/production-engineering.md): 12 questions covering deployment, service objectives, inference performance, caching, overload, retries, releases, observability, security, and cost.
@@ -24,13 +26,14 @@ All question banks include short answers, explanations, practical examples, foll
 
 ## System Design Scenarios
 
-[Practice five system design scenarios](system-design/README.md), each with a problem brief, workload assumptions, design tasks, an expandable reference design, and interviewer follow-ups:
+[Practice six system design scenarios](system-design/README.md), each with a problem brief, workload assumptions, design tasks, an expandable reference design, and interviewer follow-ups:
 
 1. Permission-aware knowledge assistant.
 2. Support agent with controlled actions.
 3. Document extraction and review pipeline.
 4. Multi-tenant inference gateway.
 5. Evaluation and release platform.
+6. Autonomous software factory.
 
 ## Hands-on Python Exercises
 
@@ -50,6 +53,8 @@ The exercises use Python 3.10+ and the standard library, with embedded data and 
 - **Retrieval-augmented generation (RAG):** Embeddings, chunking, vector search, reranking, and grounding.
 - **Fine-tuning:** Supervised fine-tuning, parameter-efficient methods, and preference optimization.
 - **Agents and tool use:** Function calling, workflow orchestration, memory, and failure handling.
+- **Agent Orchestration:** Task graphs, worker fleets, coordination, durable execution, resource budgets, and evaluation.
+- **Software Factory:** End-to-end software development by autonomous agents, with engineers defining business intent and reviewing results across planning, coding, testing, release, and monitoring.
 - **Evaluation and safety:** Quality metrics, hallucinations, prompt injection, privacy, and guardrails.
 - **Production engineering:** Deployment, service objectives, batching, quantization, caching, overload handling, releases, observability, security, and cost.
 - **Multimodal AI:** Working with text, images, audio, and video.
@@ -96,9 +101,9 @@ Use this template when adding a question:
 
 1. Study one topic at a time, starting with [AI and machine learning foundations](questions/ai-foundations.md), then [GenAI and LLM foundations](questions/genai-foundations.md).
 2. Continue with [RAG](questions/rag.md) and [prompt engineering](questions/prompt-engineering.md) to practice application design.
-3. Explore [agents](questions/agents.md) and [fine-tuning](questions/fine-tuning.md), using [evaluation](questions/evaluation.md) to assess the resulting systems.
+3. Explore [agents](questions/agents.md), [Agent Orchestration](questions/agent-orchestration.md), and [fine-tuning](questions/fine-tuning.md), using [evaluation](questions/evaluation.md) to assess the resulting systems.
 4. Study [production engineering](questions/production-engineering.md) to connect model behavior with deployment, reliability, and operational constraints.
-5. Attempt the [system design scenarios](system-design/README.md) before expanding their reference designs, and implement exercises in the [questions notebook](hands-on/questions.ipynb) before opening the answers.
+5. Study the [Software Factory questions](questions/software-factory.md), then attempt the [system design scenarios](system-design/README.md) before expanding their reference designs. Implement exercises in the [questions notebook](hands-on/questions.ipynb) before opening the answers.
 6. Try answering each question aloud before reading the answer.
 7. Practice explaining both the concept and its engineering tradeoffs.
 8. Revisit weak areas and add questions from mock or real interviews.
@@ -111,7 +116,8 @@ Use this template when adding a question:
 - [x] Expand into RAG, prompt engineering, and evaluation.
 - [x] Add agents and fine-tuning topics.
 - [x] Add production engineering topics.
-- **− In progress:** Expand system design scenarios (5 available; more planned).
+- [x] Add Agent Orchestration and Software Factory questions and answers.
+- **− In progress:** Expand system design scenarios (6 available; more planned).
 - **− In progress:** Expand hands-on Python coding exercises with question and answer notebooks (8 available; more planned).
 - [x] Organize the question bank into topic-specific Markdown files as it grows.
 
