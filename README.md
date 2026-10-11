@@ -81,6 +81,7 @@ Use the [Courses section](courses/README.md) to collect useful courses for **int
 
 - [Prompt Engineering](courses/ll-engineering/prompt-engineering.md) — Prompt patterns, Python examples, and exercises.
 - [Structured Outputs](courses/ll-engineering/structured-outputs.md) — JSON Schema, validation, constrained decoding, and extraction pipelines.
+- [Embeddings](courses/ll-engineering/embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
 
 To add a course, copy the [course template](courses/COURSE_TEMPLATE.md), record its origin, author, level, and what it is best for, then go straight into explanations and code examples. Add the course to the index.
 
@@ -205,4 +206,4 @@ For course contributions, use the [course template](courses/COURSE_TEMPLATE.md) 
 
 Original repository content is licensed under the [MIT License](LICENSE). The [identified third-party media](assets/third-party/README.md) are excluded from that license. You may use, copy, modify, and redistribute the original content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.
 
-The imported [Prompt Engineering](courses/ll-engineering/prompt-engineering.md) and [Structured Outputs](courses/ll-engineering/structured-outputs.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
+The imported [Prompt Engineering](courses/ll-engineering/prompt-engineering.md) [Structured Outputs](courses/ll-engineering/structured-outputs.md), and [Embeddings](courses/ll-engineering/embeddings.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).

@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course identifies its origin, author, level, and best use, then goes straight into explanations and practical examples.
 
-**2 courses available.** Start with [Prompt Engineering](ll-engineering/prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**3 courses available.** Start with [Prompt Engineering](ll-engineering/prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -34,8 +34,9 @@ Courses on tokens, embeddings, Transformers, attention, language-model training,
 
 - [Prompt Engineering — AI Engineering from Scratch](ll-engineering/prompt-engineering.md) — Intermediate (our assessment) · Interview preparation and refresher · Explanations, ten prompt patterns, and a Python testing-harness walkthrough.
 - [Structured Outputs — AI Engineering from Scratch](ll-engineering/structured-outputs.md) — Intermediate · JSON Schema, Pydantic, constrained decoding, validation, retries, and extraction evaluation.
+- [Embeddings](ll-engineering/embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
 
-Courses on prompt design, structured outputs, validation, and building reliable LLM applications.
+Courses on prompt design, structured outputs, embeddings, retrieval, and building reliable LLM applications.
 
 **Practice alongside:** [RAG](../questions/rag.md), [prompt engineering](../questions/prompt-engineering.md), and [retrieval exercises](../hands-on/README.md).
 
