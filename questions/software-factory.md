@@ -4,7 +4,7 @@
 
 Here, a software factory means an end-to-end software development system in which fleets of autonomous AI agents handle planning, coding, testing, and monitoring, while human engineers define business intent and review results. Autonomy operates within explicit permissions and delivery policies. These questions describe illustrative architectures, not a claim that a particular product can reliably automate every development task. References support individual engineering techniques; the proposed factory combines them into a design for discussion.
 
-Each question includes a long answer, metrics or checks, at least two examples, and a quick cheat sheet. Numerical examples are illustrative, not benchmark results or universal targets. Use the [cross-topic cheat sheet](../CHEAT_SHEET.md) for quick revision.
+Each question includes a short answer, a plain-language explanation with an analogy, an advanced answer with technical detail, metrics or checks, at least two examples, and a quick cheat sheet. Numerical examples are illustrative, not benchmark results or universal targets. Use the [cross-topic cheat sheet](../CHEAT_SHEET.md) for quick revision.
 
 ## Contents
 
@@ -25,7 +25,13 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 **Short answer:**
 A software factory coordinates agents across the development lifecycle, turning business intent into verified changes and monitored releases. Coding assistance and CI/CD are components of that larger system.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** A software factory coordinates the whole path from a requested improvement to tested, released, and monitored software. Writing code is only one step.
+
+**Analogy:** A furniture factory does more than cut wood: it works from a design, checks parts, assembles them, inspects the result, and handles defects. A fast saw alone is not a reliable furniture business, just as fast code generation alone is not reliable delivery.
+
+**Advanced answer and AI/maths:**
 The factory needs persistent work ownership and evidence connecting requirements to deployed behavior. Agents can investigate, propose plans, implement changes, and interpret failures; deterministic services execute builds and enforce policy. Humans remain responsible for business priorities and judging whether results satisfy intent. The architecture should also handle rejected, blocked, and partially completed requests.
 
 A software factory coordinates the full delivery process from intent through implementation, validation, release, and operational feedback. Coding assistants and CI are components within that process, not substitutes for product decisions or independent verification. Define ownership and gates for each transition. Autonomy should be bounded by available evidence and permissions, with humans retaining responsibility for ambiguous requirements and consequential decisions.
@@ -66,7 +72,13 @@ A system that generates a patch but cannot validate compatibility or safely rele
 **Short answer:**
 Turn the requested outcome into versioned user scenarios, measurable acceptance criteria, constraints, and explicit non-goals, while recording ambiguities for human resolution.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Turn a broad request into clear behavior and checks before assigning implementation. Record what is required, what is out of scope, and what still needs a decision.
+
+**Analogy:** “Build a comfortable chair” leaves room for disagreement. Specifying dimensions, weight capacity, materials, and an agreed comfort test makes the job reviewable. Software requirements need similarly observable outcomes rather than vague adjectives.
+
+**Advanced answer and AI/maths:**
 Distinguish desired business impact from software behavior and operational targets. A specification should identify users, permissions, compatibility needs, and observable failure behavior. Agents may propose missing details, but material product decisions need an accountable owner. Tests cover parts of a specification; passing them does not prove business value.
 
 Translate intent into observable behavior, inputs, exclusions, constraints, and acceptance criteria before delegating implementation. Separate business outcomes from technical proxies and state the operating conditions for each requirement. Ambiguity should be resolved explicitly instead of allowing a coding agent to invent policy. A specification should also identify nonfunctional requirements such as access control, latency, accessibility, and failure behavior.
@@ -107,7 +119,13 @@ Translate intent into observable behavior, inputs, exclusions, constraints, and 
 **Short answer:**
 Inspect the repository and architecture, define interfaces and bounded tasks, then schedule independent work around explicit dependencies and integration milestones.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Divide a feature into parts with clear boundaries and agree on the shared interfaces before work begins. Plan how the pieces will be checked together.
+
+**Analogy:** Two carpenters can build a table top and legs separately if they agree on dimensions and joints. Without that agreement, finishing both parts quickly may still leave a table that cannot be assembled.
+
+**Advanced answer and AI/maths:**
 Each task should reference the intent version, repository revision, allowed scope, expected artifact, and acceptance criteria. Assign ownership for shared contracts and migrations. Replan when discoveries change the assumptions; mark affected downstream results stale. A larger fleet helps only when useful independent work exists and integration capacity can keep up.
 
 Decompose a feature around interfaces and independently verifiable outcomes, not arbitrary file counts. Identify schema migrations, shared abstractions, and compatibility decisions before parallel implementation. Assign artifact ownership and integration order so workers do not make incompatible assumptions. Plans should be revised when tests or repository evidence contradict initial estimates, while preserving the accepted product intent.
@@ -150,7 +168,13 @@ Frontend and backend work can proceed in parallel after agreeing on an API contr
 **Short answer:**
 Provide an isolated, disposable environment with pinned inputs, scoped credentials, bounded compute, and only the network and tools needed for the task.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Give a coding agent a controlled, reproducible workspace with only the access and tools it needs. This makes its work easier to repeat and limits the consequences of mistakes.
+
+**Analogy:** A trainee mechanic should get the correct vehicle manual, suitable tools, and an appropriate work bay—not unrestricted keys to every customer's car. Another mechanic should be able to repeat the same checks in an equivalent workspace.
+
+**Advanced answer and AI/maths:**
 Treat repository scripts, dependencies, and generated code as untrusted execution inputs. A branch or worktree separates edits but does not isolate processes, secrets, or network access. Use an appropriate container or VM boundary for the threat model, and keep production credentials out of coding environments. Trusted services should mediate privileged actions and collect artifacts before cleanup.
 
 Coding agents need reproducible environments with the required repository version, dependencies, build tools, and test commands. Isolate workspaces and scope credentials to the operations actually needed. Repository content and build scripts can be untrusted, so execution boundaries matter independently of prompt instructions. Capture dependency and environment versions so failures can be reproduced outside the agent session.
@@ -191,7 +215,13 @@ A patch passes locally because an undeclared package is already installed. A cle
 **Short answer:**
 Combine agent-generated tests with protected acceptance checks, existing regression coverage, and independent review tied to the approved specification.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Check generated code against independently defined requirements, not only tests written by the same agent. Code and tests can share the same misunderstanding.
+
+**Analogy:** A student who writes both a question and its answer key may consistently use the wrong rule. An independent examiner can catch that mistake. Likewise, passing self-written tests is useful evidence, but not the whole assessment.
+
+**Advanced answer and AI/maths:**
 An implementation and its tests can share the same misunderstanding. Preserve trusted checks outside the coding worker's write scope, and scrutinize deleted or weakened assertions. Use contract, integration, property, security, or performance checks according to the change. Run them against the actual candidate artifact. Coverage and model approval are supporting signals, not proof of correctness.
 
 Tests written by the implementing agent can repeat its misunderstanding of the requirement. Use independent acceptance checks derived from the specification, existing regression suites, static analysis, and human review where judgment is needed. Mutation testing or targeted negative cases can reveal weak assertions. Passing tests provides bounded evidence for tested behavior, not proof that all security or correctness properties hold.
@@ -232,7 +262,13 @@ An agent implements and tests a discount using the same wrong rounding rule. An 
 **Short answer:**
 Keep changes isolated, coordinate shared interfaces, and validate the combined candidate against the current target branch before merging.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Separate work while it is being developed, then test the actual combined result. Changes can clash in meaning even when they edit different lines.
+
+**Analogy:** Two electricians may each install working switches, but the completed wiring still needs a shared safety check. Testing each part against an old diagram does not establish that the final installation works together.
+
+**Advanced answer and AI/maths:**
 A clean text merge does not establish behavioral compatibility. Use a merge queue or equivalent serialization point that tests the proposed integration result. If the target branch or candidate changes, invalidate affected checks and approvals according to policy. Bound conflict-repair attempts and return unresolved architectural conflicts to an owner.
 
 Concurrent changes need isolated branches or workspaces, explicit ownership, and integration checks on the combined result. A patch that passes against an old base may fail after another change lands. Use a merge queue or equivalent serialization where appropriate, and rerun relevant checks after conflict resolution. Semantic conflicts can occur without textual conflicts, such as two changes making incompatible assumptions about an API.
@@ -292,7 +328,13 @@ One patch changes a field from nullable to required while another introduces a c
 **Short answer:**
 Engineers define outcomes and constraints, resolve material ambiguities, and review concrete results at checkpoints determined by impact and organizational policy.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** People set the intended outcome, resolve important ambiguity, and review evidence where judgment is needed. Automation should make that review concrete and efficient.
+
+**Analogy:** An architect does not personally lay every brick, but must settle design questions and inspect important results. A signature on an old plan should not silently approve a later change to a load-bearing wall.
+
+**Advanced answer and AI/maths:**
 Prepare a review packet containing requirement coverage, the diff, a demonstration where useful, test evidence, limitations, and rollout options. Avoid requiring engineers to approve every internal tool call. Bind any required authorization to the candidate, environment, and permitted action; changed behavior may require renewed review. Agents cannot grant themselves authority by declaring a task low risk.
 
 Human engineers contribute problem framing, architecture judgment, review of ambiguous evidence, and responsibility for production outcomes. Review should focus on concrete artifacts and unresolved risks rather than rereading every generated token. Define escalation triggers and provide sufficient context to make decisions efficiently. Keep approval tied to the reviewed revision; later changes can invalidate earlier evidence.
@@ -333,7 +375,13 @@ An engineer may approve a schema migration after reviewing compatibility and rol
 **Short answer:**
 Maintain a versioned chain from intent and task records through source commits, build inputs, test reports, approvals, and the deployed artifact digest.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Keep a traceable chain from the original requirement to the exact code, tests, approval, and released package. The records must refer to the same version.
+
+**Analogy:** A food producer tracks ingredients, batches, inspections, and shipments. If a defect appears, the batch record identifies what was used and where it went. Software provenance serves a similar purpose for releases.
+
+**Advanced answer and AI/maths:**
 Record model and tool configurations for diagnosis, but do not promise identical model outputs on replay. Protect evidence from the workers whose work it verifies. Build provenance describes artifact origin and build execution; it does not prove functional correctness. The factory's requirements and review records extend beyond build provenance and need their own integrity and access controls.
 
 Provenance connects business intent, requirements, task assignments, code changes, dependencies, test results, approvals, and deployed artifacts. Stable identifiers and immutable records make it possible to reconstruct why a behavior shipped. Record the actual model/prompt configuration when it materially affects generated artifacts, but avoid storing secrets or unnecessary private data in logs. Provenance supports investigation; it does not itself guarantee correctness.
@@ -393,7 +441,13 @@ A release report showing green tests is misleading if those tests ran before the
 **Short answer:**
 Agents can propose rollout plans and analyze results, while a trusted release service enforces permissions, artifact identity, staged exposure, and stop conditions.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Agents can help prepare and assess a release, while trusted systems control what actually reaches users. Plan how to stop or recover before starting.
+
+**Analogy:** Before opening a new bridge, inspectors check it and traffic may be introduced gradually. If trouble appears, closing the bridge limits exposure—but it does not undo damage already caused. Software rollback also has limits when data or external state changed.
+
+**Advanced answer and AI/maths:**
 Deploy a verified immutable artifact and compare canary behavior with a suitable baseline. Persist release operation IDs and reconcile ambiguous outcomes before retrying. Rollback requires compatible data and dependencies; reversing an application image does not undo a destructive migration. Use staged schema evolution, feature flags, or a tested forward-recovery plan when needed.
 
 Deployment should promote a verified artifact through controlled environments with health checks, rollout limits, and a clear rollback decision. Feature flags can separate deployment from exposure, while canaries limit initial impact. Rollback may require more than restoring application code: schema changes, data writes, caches, and external side effects can make reversal incomplete. Design compatibility and recovery before executing the release.
@@ -437,7 +491,13 @@ Reverting code after a destructive database migration does not restore deleted d
 **Short answer:**
 Connect telemetry and user outcomes to release versions, detect meaningful regressions, and turn verified incidents into bounded remediation work.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Use real operating results to identify problems, investigate causes, and verify fixes. Do not turn every alert automatically into a code change.
+
+**Analogy:** A car's warning light tells you to investigate; it does not prove that replacing the bulb or resetting the dashboard fixes the engine. Monitoring should lead to diagnosis and a checked repair, not just removal of the warning.
+
+**Advanced answer and AI/maths:**
 Separate detection from authority to act. Preauthorized mitigation can follow a tested runbook; a novel code fix should pass the development and verification process. Deduplicate incidents, limit repair attempts, and provide an emergency stop to prevent repeated fix-and-redeploy loops. Monitoring agents should report uncertainty and preserve evidence for an accountable incident owner.
 
 Operational feedback should become structured evidence for new work, with clear severity, reproducibility, and expected behavior. Monitoring can reveal regressions or unmet needs, but automatically turning every alert into a code change creates noise and risk. Deduplicate incidents, distinguish symptoms from causes, and validate proposed fixes against both the incident and broader regressions. Close the loop only after checking the deployed outcome.
@@ -479,7 +539,13 @@ A timeout alert may be caused by a downstream outage rather than inefficient app
 **Short answer:**
 Measure accepted business outcomes, delivery time, escaped defects, operational reliability, human effort, and total cost per accepted change.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Measure useful changes accepted by users, their quality, delivery time, and total effort. More generated code or more submitted patches is not necessarily more value.
+
+**Analogy:** A bakery is not more productive simply because it makes more dough if half the loaves are rejected. Count saleable bread and the cost of ingredients, inspection, waste, and rework. Software delivery needs the same whole-process view.
+
+**Advanced answer and AI/maths:**
 Lines of code, agent activity, and PR counts can increase without improving results. Compare similar task classes and include failed attempts, review, rework, infrastructure, and model costs. Define acceptance independently of the generating agents and track results after release. Report completion and abandonment rates alongside cost so difficult tasks cannot disappear from the denominator.
 
 Factory productivity should be measured through accepted useful changes and their lifecycle costs. Include model usage, infrastructure, human review, rework, and incident response. Compare similar task mixes over meaningful periods because easy generated changes can inflate throughput. Quality and reliability constraints belong beside speed metrics; otherwise the system can optimize for rapid delivery of work that creates downstream burden.
@@ -520,7 +586,13 @@ A factory produces twice as many patches but half require extensive repair. Coun
 **Short answer:**
 Version factory configurations, evaluate candidates on held-out representative tasks, and expand deployment only after quality and operational evidence support the change.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Treat changes to the automation itself like changes to a product: test them independently, release gradually, and retain a way back. Do not let the system lower its own pass mark.
+
+**Analogy:** A school cannot prove teaching improved by making the final exam easier. A software factory that saves time by skipping important tests may look faster while delivering worse results. Keep evaluation standards independent of the proposed change.
+
+**Advanced answer and AI/maths:**
 Separate changes to customer software from changes to the machinery that builds it. An agent may propose a better planner or test policy, but cannot silently weaken its own release criteria. Evaluate task outcomes, permission violations, cost, and review effort. Shadow experiments need isolated environments to avoid duplicate external effects. Preserve a compatible way to finish or migrate runs started under an older configuration.
 
 Changes to the factory's own prompts, tools, or coordination policies should pass a separate evaluation and release process. Use versioned configurations, protected test tasks, and independent checks so the system cannot weaken its own acceptance criteria to appear better. Shadow or limited rollout can expose regressions. Preserve rollback and compare against a fixed baseline before allowing a self-proposed improvement into general use.

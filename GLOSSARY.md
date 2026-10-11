@@ -4,7 +4,7 @@
 
 This glossary contains **275 entries** defining the AI, ML, GenAI, mathematical, and supporting engineering vocabulary used in this repository. Each entry starts with a concise **Definition**, followed by an **Explanation** that adds context, a distinction, or a practical caveat. Related terms are sometimes grouped to make their differences clear. Use your browser’s Find command for an acronym or full term.
 
-Question banks, design scenarios, and notebook exercises link to relevant entries through **Key terms**. The long answers remain the place for worked examples, diagrams, detailed metrics, and implementation references. Product and organization names in source credits are not treated as technical definitions.
+Question banks, design scenarios, and notebook exercises link to relevant entries through **Key terms**. The advanced answers remain the place for worked examples, diagrams, detailed metrics, and implementation references. Product and organization names in source credits are not treated as technical definitions.
 
 ## Contents
 

@@ -2,7 +2,7 @@
 
 [Back to the README](README.md) · [Definitions and terminology](GLOSSARY.md)
 
-Use this page for recall, then open the linked question banks for assumptions, worked examples, diagrams, and references. Every question also has its own **Quick Cheat Sheet**. Numerical examples below are illustrative; targets depend on the application.
+Use this page for recall, then open the linked question banks for assumptions, worked examples, diagrams, and references. Every question also has its own **Quick Cheat Sheet**. Read **Simple answer and analogy** for intuition, then **Advanced answer and AI/maths** for technical depth. Numerical examples below are illustrative; targets depend on the application.
 
 ## AI and machine learning
 

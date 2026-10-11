@@ -11,8 +11,8 @@ A growing collection of questions and answers for conducting and preparing for G
 
 ## Question Bank
 
-- [Foundational AI and machine learning questions](questions/ai-foundations.md): 33 questions covering traditional ML concepts, data preparation, training, common algorithms, evaluation, and production monitoring, with short answers, detailed long answers, multiple examples, cheat sheets, follow-ups, and references.
-- [Foundational GenAI and LLM questions](questions/genai-foundations.md): 23 questions covering core concepts, transformer architecture, training, inference, and limitations, with short answers, detailed long answers, multiple examples, cheat sheets, follow-ups, and references.
+- [Foundational AI and machine learning questions](questions/ai-foundations.md): 33 questions covering traditional ML concepts, data preparation, training, common algorithms, evaluation, and production monitoring, with short answers, simple explanations and analogies, advanced technical answers, multiple examples, cheat sheets, follow-ups, and references.
+- [Foundational GenAI and LLM questions](questions/genai-foundations.md): 23 questions covering core concepts, transformer architecture, training, inference, and limitations, with short answers, simple explanations and analogies, advanced technical answers, multiple examples, cheat sheets, follow-ups, and references.
 - [Retrieval-augmented generation questions](questions/rag.md): 18 questions covering ingestion, chunking, search, reranking, grounding, access control, troubleshooting, and RAG architecture types.
 - [Prompt engineering questions](questions/prompt-engineering.md): 12 questions covering instructions, examples, structured outputs, tool use, context, prompt injection, and iteration.
 - [Agents and tool use questions](questions/agents.md): 13 questions covering execution loops, tool design, memory, retries, persistence, permissions, coordination, and evaluation.
@@ -22,7 +22,7 @@ A growing collection of questions and answers for conducting and preparing for G
 - [GenAI evaluation questions](questions/evaluation.md): 13 questions covering datasets, retrieval and answer metrics, model judges, human review, experiments, robustness, and production monitoring.
 - [Production engineering questions](questions/production-engineering.md): 14 questions covering deployment, service objectives, inference performance, caching, overload, retries, releases, observability, security, and cost.
 
-All question banks include short answers, detailed **Long answers**, relevant **metrics and checks**, at least **two examples per question**, **Quick Cheat Sheets**, follow-up questions, and references. Numerical examples are illustrative, not benchmark results or universal targets. There are **163 questions** across ten banks. Selected answers also include original diagrams, plotted examples, two attributed video snapshots, and a user-supplied RAG types infographic, with supporting sources linked beside them.
+All question banks include **Short answers**, **Simple answer and analogy** sections, detailed **Advanced answer and AI/maths** sections, relevant **metrics and checks**, at least **two examples per question**, **Quick Cheat Sheets**, follow-up questions, and references. Numerical examples are illustrative, not benchmark results or universal targets. There are **163 questions** across ten banks. Selected answers also include original diagrams, plotted examples, two attributed video snapshots, and a user-supplied RAG types infographic, with supporting sources linked beside them.
 
 ## Definitions and Terminology
 
@@ -32,7 +32,7 @@ The glossary uses the supplied [Google ML Glossary](https://developers.google.co
 
 ## Cheat Sheet
 
-Use the [AI and GenAI Interview Cheat Sheet](CHEAT_SHEET.md) for cross-topic revision, key formulas, common pitfalls, and memory aids such as **“V” for o“V”erfitting**. Every question also includes a compact **Quick Cheat Sheet** beside its detailed answer. Start with recall, then use the long answer to explain assumptions, tradeoffs, and how to measure success.
+Use the [AI and GenAI Interview Cheat Sheet](CHEAT_SHEET.md) for cross-topic revision, key formulas, common pitfalls, and memory aids such as **“V” for o“V”erfitting**. Every question also includes a compact **Quick Cheat Sheet** beside its detailed answer. Start with recall, then use the advanced answer to explain assumptions, tradeoffs, and how to measure success.
 
 ## Visual Study Guide
 
@@ -106,8 +106,16 @@ Use this template when adding a question:
 **Short answer:**
 [Start with a crisp definition, then state the main distinction or use.]
 
-**Long answer:**
-[Explain the mechanism, assumptions, practical decisions, failure modes, and tradeoffs in depth.]
+**Simple answer and analogy:**
+
+**In plain language:**
+[Explain the answer for someone with no AI/ML background. Use familiar words and explain any essential technical term.]
+
+**Analogy:**
+[Use a concrete everyday situation, explicitly connect it to the concept, and note a limitation if the comparison could mislead.]
+
+**Advanced answer and AI/maths:**
+[Explain the mechanism, assumptions, practical decisions, and failure modes. Include relevant AI detail and mathematics with symbols defined; do not add formulas where they do not help.]
 
 **Metrics and checks:**
 [Define relevant metrics, formulas, units, denominators, and validation methods. Label numerical examples as illustrative; avoid universal targets.]
@@ -159,7 +167,7 @@ Use this template when adding a question:
 4. Study [production engineering](questions/production-engineering.md) to connect model behavior with deployment, reliability, and operational constraints.
 5. Study the [Software Factory questions](questions/software-factory.md), then attempt the [system design scenarios](system-design/README.md) before expanding their reference designs. Implement exercises in the [questions notebook](hands-on/questions.ipynb) before opening the answers.
 6. Try answering each question aloud before reading the answer.
-7. Read the long answer, work through both examples, and explain the metrics and engineering tradeoffs. Then use the [cheat sheet](CHEAT_SHEET.md) for recall practice.
+7. Read the simple explanation and analogy for intuition, then the advanced answer for technical detail. Work through the examples and explain the metrics and engineering tradeoffs. Then use the [cheat sheet](CHEAT_SHEET.md) for recall practice.
 8. Revisit weak areas and add questions from mock or real interviews.
 9. Update answers and references as tools and practices evolve.
 
@@ -177,7 +185,7 @@ Use this template when adding a question:
 
 ## Contributing
 
-Add new questions, improve existing long answers, or suggest missing topics. Include meaningful metrics or checks, at least two distinct examples where possible, and a quick cheat sheet. Define units and denominators, explain metric limitations, and distinguish illustrative numbers from measured results. Keep answers clear, technically accurate, and supported by reliable references. Define new technical terms in the [glossary](GLOSSARY.md), expand unfamiliar acronyms on first use, and add relevant Key terms links. Distinguish overloaded meanings rather than relying on context alone. Call out assumptions and distinguish general principles from behavior specific to a model or tool. For diagrams, include descriptive labels, a short explanation, and a primary source for the concept; label illustrative architectures as examples. Add alt text to images and `accTitle` / `accDescr` to Mermaid diagrams.
+Add new questions, improve existing answers, or suggest missing topics. Follow the three layers: a crisp short answer, an accessible simple explanation with a concrete analogy, and an advanced answer with relevant technical detail or mathematics. Keep analogies accurate and do not assume prior AI/ML knowledge in the simple section. Include meaningful metrics or checks, at least two distinct examples where possible, and a quick cheat sheet. Define units and denominators, explain metric limitations, and distinguish illustrative numbers from measured results. Keep answers clear, technically accurate, and supported by reliable references. Define new technical terms in the [glossary](GLOSSARY.md), expand unfamiliar acronyms on first use, and add relevant Key terms links. Distinguish overloaded meanings rather than relying on context alone. Call out assumptions and distinguish general principles from behavior specific to a model or tool. For diagrams, include descriptive labels, a short explanation, and a primary source for the concept; label illustrative architectures as examples. Add alt text to images and `accTitle` / `accDescr` to Mermaid diagrams.
 
 ## License
 

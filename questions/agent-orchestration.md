@@ -4,7 +4,7 @@
 
 These questions extend the single-agent foundations into coordinating fleets of agents. They cover how work is divided, scheduled, verified, and recovered. The architectures and examples are illustrative design proposals; cited systems demonstrate particular techniques rather than universal guarantees.
 
-Each question includes a long answer, metrics or checks, at least two examples, and a quick cheat sheet. Numerical examples are illustrative, not benchmark results or universal targets. Use the [cross-topic cheat sheet](../CHEAT_SHEET.md) for quick revision.
+Each question includes a short answer, a plain-language explanation with an analogy, an advanced answer with technical detail, metrics or checks, at least two examples, and a quick cheat sheet. Numerical examples are illustrative, not benchmark results or universal targets. Use the [cross-topic cheat sheet](../CHEAT_SHEET.md) for quick revision.
 
 ## Contents
 
@@ -25,7 +25,13 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 **Short answer:**
 Orchestration coordinates tasks, dependencies, workers, and resources across a larger objective, while an individual agent chooses actions within its assigned task.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Orchestration organizes the work around agents: who does what, what must finish first, how progress is saved, and what happens when something fails.
+
+**Analogy:** An orchestra's musicians play their parts, while coordination keeps the performance together. Individual skill cannot prevent a poor result if everyone starts at a different time or follows a different score. The coordinating system need not itself perform every task.
+
+**Advanced answer and AI/maths:**
 A planner can propose work, but trusted application logic should own scheduling, permissions, and completion records. Separate the model's proposed plan from the system's authoritative execution state. A fleet needs a shared definition of completion; collecting successful worker messages does not establish that the overall objective succeeded.
 
 Orchestration manages how multiple tasks and workers are scheduled, connected, recovered, and governed. The model's reasoning loop is only one component. Define durable task identities, dependency states, ownership, budgets, and completion contracts. A worker's textual assertion should not move the whole system to “done” without required artifacts and checks. Start from workflow requirements before choosing a coordination framework.
@@ -66,7 +72,13 @@ A research fleet may finish all worker responses yet fail to produce a consisten
 **Short answer:**
 Use a fixed workflow for known dependencies, a supervisor for dynamic decomposition, and peer coordination when local decisions justify the added reconciliation complexity.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Choose a fixed sequence when the route is known, a supervisor when assignments need adapting, and peer coordination only when its flexibility is worth the extra complexity.
+
+**Analogy:** A car wash follows fixed stations; an emergency dispatcher assigns changing jobs; a group of neighbors may coordinate a cleanup themselves. Each arrangement suits different uncertainty and coordination needs.
+
+**Advanced answer and AI/maths:**
 Central coordination gives a clear owner but can become a bottleneck. Peer communication allows flexible collaboration but needs explicit ownership, termination, and conflict rules. A useful hybrid lets a model suggest subtasks inside a workflow whose release and validation steps remain fixed.
 
 Fixed workflows suit known dependencies; supervisors centralize dynamic assignment and integration; peer coordination allows local negotiation but increases consistency and termination challenges. Choose based on how predictable the task graph is and where decisions require shared knowledge. Central coordination can bottleneck, while decentralized systems require stronger protocols for ownership and conflict resolution. Hybrid designs often keep critical release decisions centralized.
@@ -107,7 +119,13 @@ A document pipeline can follow fixed extraction and validation stages, while inc
 **Short answer:**
 Define bounded deliverables, interfaces, dependencies, and acceptance criteria; parallelize tasks whose inputs and ownership are sufficiently independent.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Parallel work helps when tasks can proceed independently and their results can be combined. Some steps still have to wait for others.
+
+**Analogy:** Several people can paint different rooms at once, but they cannot all install cabinets before the walls are ready. A shared measurement mistake can also make the finished pieces fail to fit. Include preparation and assembly when estimating time saved.
+
+**Advanced answer and AI/maths:**
 Represent a plan as a versioned dependency graph. Each task needs an owner, input revisions, output contract, and verification step. Reject dependency cycles and revise the graph when discoveries invalidate assumptions. Tiny tasks increase coordination overhead; broad tasks create overlap and make failures difficult to isolate.
 
 Split work where inputs and outputs can be specified independently, then represent true dependencies explicitly. Parallel tasks should avoid writing the same mutable artifact unless a merge strategy exists. Excessively small tasks spend more time coordinating than working. Identify the critical path and integration cost before estimating speedup; independent execution does not imply independently mergeable results.
@@ -165,7 +183,13 @@ Four agents can inspect four independent services, but a shared API decision may
 **Short answer:**
 Schedule ready tasks according to capabilities, authorization, priority, and available resources, with limits that prevent one run from exhausting the fleet.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** A scheduler chooses which ready tasks get workers and resources. It should respect urgency, fairness, and capacity rather than starting everything immediately.
+
+**Analogy:** A restaurant seats parties according to available tables and kitchen capacity. Filling every possible seat while ignoring the kitchen can create a long wait for everyone. Some capacity may need reserving for urgent or short jobs.
+
+**Advanced answer and AI/maths:**
 Track model quotas, sandbox capacity, tool limits, and per-run concurrency separately. Use bounded queues, fairness across projects, and aging to avoid starving older work. Worker leases need expiry and renewal. A reassigned task must reject stale workers' results using an attempt or lease generation checked by the state store.
 
 A fleet scheduler maps ready work to available capacity while respecting dependencies, priorities, quotas, and resource needs. Bound concurrency to avoid overwhelming model endpoints or downstream tools. Fairness matters when a large tenant can monopolize workers, and aging can prevent starvation of low-priority tasks. Backpressure should propagate upstream rather than allowing an unbounded queue to hide overload.
@@ -206,7 +230,13 @@ A burst of long research jobs should not prevent short urgent incident tasks fro
 **Short answer:**
 A handoff should include the objective, input versions, constraints, expected output, evidence, and unresolved issues in a structured record.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** A handoff should tell the next worker what to achieve, what is already known, which version to use, and what counts as finished. Separate facts from guesses.
+
+**Analogy:** Leaving a mechanic the note “fix it” is much less useful than describing the fault, work already tried, relevant readings, and approved scope. A good handoff avoids making the next person repeat the investigation or assume the wrong goal.
+
+**Advanced answer and AI/maths:**
 Pass durable artifact references rather than relying on an expanding conversation transcript. Record task and attempt IDs so late or duplicate responses can be recognized. Distinguish facts, assumptions, and proposed next steps. A receiving worker should validate that the artifact exists and matches the expected revision before using it.
 
 A handoff should specify the objective, relevant evidence, current state, constraints, expected artifact, and definition of done. Prefer references to authoritative versioned artifacts over large unstructured transcripts. Clearly mark hypotheses and unresolved questions so another worker does not mistake speculation for established fact. Include ownership and deadline information to prevent duplicated or abandoned work.
@@ -247,7 +277,13 @@ A code-review task should include the exact commit, intended behavior, test evid
 **Short answer:**
 Give each task an isolated workspace, publish immutable outputs, and use explicit version checks when updating shared records or integrating changes.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Workers need rules for who can change shared information and how conflicting changes are detected. Otherwise, one can silently overwrite another's work.
+
+**Analogy:** Two people editing separate copies of a shopping list may each replace the shared list with their own version, losing the other's additions. Version checks or agreed ownership make the conflict visible before changes are accepted.
+
+**Advanced answer and AI/maths:**
 A shared chat history is not a transaction mechanism. An illustrative design stores accepted task results with compare-and-set updates and records conflicting proposals separately. For code, separate branches or worktrees reduce filesystem collisions, but they do not resolve semantic conflicts. Git worktrees also share repository metadata and are not a security boundary.
 
 Shared state requires a consistency strategy: single-writer ownership, optimistic concurrency, transactional updates, or mergeable data structures depending on the workload. Workers should submit changes against known versions and handle conflicts explicitly. A shared conversation is not a reliable database. Separate immutable evidence from mutable decisions, and record who changed what so incorrect coordination can be reconstructed.
@@ -290,7 +326,13 @@ Two workers increment a progress counter from the same old value and overwrite e
 **Short answer:**
 Persist the plan, task states, accepted outputs, and pending operations so the system can resume and reconcile incomplete work.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Save progress and ownership information so work can resume safely. A worker returning after a long pause must not overwrite a replacement worker's newer result.
+
+**Analogy:** A substitute librarian takes over a desk after a shift ends. If the original librarian returns with an old checkout list, the system should not let it replace the current record. Temporary ownership needs a clear expiration and handover rule.
+
+**Advanced answer and AI/maths:**
 Checkpoint at meaningful boundaries and retain the configuration needed to interpret state. Resumption may replay part of a task, so separate repeatable computations from external effects. Revalidate permissions, deadlines, and input revisions after a pause. If a required artifact is missing, explicitly recompute or block its dependents instead of pretending the step is complete.
 
 Persist task state, dependencies, artifact references, and external operation identifiers so a coordinator can recover without guessing. Leases need expiration and fencing to prevent an old worker from writing after replacement. A checkpoint does not make external side effects exactly once. Recovery should reconcile ambiguous operations and resume from verified state, with explicit handling for long human-review pauses.
@@ -348,7 +390,13 @@ A worker pauses long enough for its lease to expire, then resumes after another 
 **Short answer:**
 Bound retries at the run level, deduplicate repeated operations, propagate cancellation, and reconcile effects that may already have happened.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Retries and cancellation must be coordinated across the whole task, not decided independently by every worker. Stopping a task does not undo an action already completed elsewhere.
+
+**Analogy:** Canceling a party stops future food orders, but does not unbake a cake already made. Similarly, three teams each retrying the same supplier can multiply orders unless they share one record and one limit.
+
+**Advanced answer and AI/maths:**
 Assign a stable operation ID before a state-changing request. A lost acknowledgment leaves the outcome unknown; retry only under a suitable idempotency contract or after checking status. Cancellation prevents new authorized work but does not undo a completed external action. Record compensation or manual intervention as separate outcomes.
 
 Cancellation and retry policies must span the task tree rather than operating independently at each layer. Propagate deadlines and a shared attempt budget; otherwise nested retries multiply load. Cancellation can stop future work but may not undo an in-flight side effect. Record terminal states and reconcile writes whose outcome is unknown before declaring the whole task safely canceled.
@@ -389,7 +437,13 @@ A parent task is canceled while a worker submits a purchase request. The system 
 **Short answer:**
 Enforce shared limits on spending, elapsed time, active workers, delegation depth, and repair attempts, then stop or escalate when progress stalls.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Set a total budget and divide it sensibly, leaving room to combine and check the results. Stop repair attempts when they no longer produce useful new evidence.
+
+**Analogy:** A renovation budget must cover inspection and finishing, not just buying materials. Spending everything on repeated draft plans leaves nothing to verify or complete the work. Each extra attempt should have a clear purpose.
+
+**Advanced answer and AI/maths:**
 Reserve resources before dispatch so concurrent workers cannot each spend the same remaining budget. Include failed attempts and evaluation in accounting. Reconcile reservations when usage becomes known. Progress should mean new evidence or verified outputs, not additional messages. Budget exhaustion produces an incomplete outcome with preserved artifacts.
 
 Allocate budgets for tokens, tool calls, elapsed time, and expensive external operations at the parent task and reserve portions for workers. Leave capacity for integration and verification rather than spending everything on generation. Repair loops should require a concrete failure and a testable change. Stop when repeated attempts produce no new evidence or when the expected benefit no longer justifies the remaining cost.
@@ -432,7 +486,13 @@ A coding fleet that spends its entire budget drafting patches has no capacity to
 **Short answer:**
 Compare outputs against explicit requirements and executable evidence; seek more evidence or human judgment when the disagreement cannot be resolved mechanically.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Resolve disagreements by checking requirements and evidence, not by choosing the most confident answer or taking a vote automatically.
+
+**Analogy:** Three people repeating directions from the same incorrect map are not three independent confirmations. A street sign or verified map update can outweigh their agreement. Agents likewise need stronger evidence than shared confidence.
+
+**Advanced answer and AI/maths:**
 Majority agreement is weak evidence when agents share models, context, or faulty assumptions. Preserve competing artifacts and reasons for rejection. A verifier can identify problems without having authority to redefine acceptance criteria. Useful escalation explains the decision, evidence, and unresolved tradeoff.
 
 Conflicting outputs need a resolution policy tied to evidence and task ownership. Majority vote can help with independent errors but fails when workers share the same misleading source or model bias. Compare assumptions, cite authoritative artifacts, and use executable checks where possible. Escalate unresolved high-impact disagreements rather than silently choosing the most confident prose.
@@ -473,7 +533,13 @@ Two agents propose incompatible API schemas. A compatibility test against real c
 **Short answer:**
 Correlate the overall run with tasks, attempts, model calls, tools, artifacts, and external operations so failures can be traced across delegation boundaries.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Track the parent task, its smaller jobs, their results, and their combined time and cost. This reveals stuck dependencies and wasted repeated work.
+
+**Analogy:** At an airport, knowing each worker is busy does not explain why a flight cannot depart. You need to know whether baggage, fueling, crew, and safety checks are all complete. A fleet needs a similarly connected view.
+
+**Advanced answer and AI/maths:**
 Record queue time, execution time, retries, resource use, accepted outputs, and terminal reasons. Use parent-child relationships or trace links for asynchronous work. Keep permissions and retention controls on sensitive trace content. Operational events and artifact evidence are sufficient for audit; private model reasoning is not required.
 
 Fleet observability needs parent-child task IDs, dependency edges, worker identities, versions, and cost attribution. A trace should show why work was spawned and what artifact it produced, not just model-call timings. Watch for fan-out storms, stalled joins, orphan workers, and repeated repairs. Protect sensitive artifacts and use stable bounded dimensions for metrics rather than raw prompts or unlimited task IDs.
@@ -514,7 +580,13 @@ A user request appears slow because one child task never reaches a terminal stat
 **Short answer:**
 Compare the fleet with a simpler baseline on matched tasks using verified outcomes, latency, cost, and human effort under comparable resource limits.
 
-**Long answer:**
+**Simple answer and analogy:**
+
+**In plain language:** Compare the whole finished task with a simpler approach. Count checking, integration, failures, and human repair, not just how quickly individual agents stop working.
+
+**Analogy:** Hiring four builders may speed up constructing separate walls but slow the project if the walls do not fit together. Judge when a usable house is delivered, its quality, and its total cost—not the number of busy builders.
+
+**Advanced answer and AI/maths:**
 Use held-out tasks and repeat variable runs. Inspect failures by task complexity, dependency structure, and shared-state contention. Measure the cost of coordination and verification, including unsuccessful attempts. More parallel work may shorten independent tasks while leaving the critical path unchanged. An improvement on one workload does not establish general superiority.
 
 Evaluate orchestration changes as system changes using paired workloads, realistic failures, and the same quality requirements. Compare against a strong simpler configuration and control model versions and budgets where possible. Faster execution is not a gain if outputs need more human repair. Include integration, recovery, and review time, especially when parallel workers produce correlated mistakes.
