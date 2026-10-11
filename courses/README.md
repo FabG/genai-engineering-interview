@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course identifies its origin, author, level, and best use, then goes straight into explanations and practical examples.
 
-**7 courses available.** Start with [Prompt Engineering](llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**8 courses available.** Start with [Prompt Engineering](llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -39,6 +39,7 @@ Courses on tokens, embeddings, Transformers, attention, language-model training,
 5. [RAG: Retrieval-Augmented Generation](llm-engineering/5-rag-retrieval-augmented-generation.md) — Document retrieval, grounded prompts, an offline pipeline, and retrieval/answer evaluation.
 6. [Function Calling and Tool Use](llm-engineering/6-function-calling.md) — Tool schemas, validation, bounded execution loops, error handling, and MCP concepts.
 7. [Evaluation and Testing](llm-engineering/7-evaluation.md) — Datasets, rubrics, judge calibration, confidence intervals, regression comparisons, and eval costs.
+8. [Caching, Rate Limiting, and Cost Optimization](llm-engineering/8-caching-cost.md) — Prompt and response caches, model routing, token buckets, cost tracking, batching, and budget controls.
 
 Courses on prompt design, structured outputs, embeddings, retrieval, and building reliable LLM applications.
 
