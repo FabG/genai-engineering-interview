@@ -30,6 +30,6 @@ The broader model-family, MoE, distillation, and calibration questions are origi
 ## Visual provenance
 
 - [Original illustrations and editable sources](../assets/diagrams/README.md): synthetic data and schematic designs are explicitly labeled.
-- [Third-party video frames](../assets/third-party/README.md): source, approximate timestamp, extraction details, and separate rights notice.
+- [Third-party media](../assets/third-party/README.md): video sources and timestamps, plus attribution and rights notes for the user-supplied RAG types infographic.
 
 Use the external articles and video as additional practice. Compare their explanations with primary sources, especially for framework behavior, implementation-specific performance, and claims of guaranteed reliability.

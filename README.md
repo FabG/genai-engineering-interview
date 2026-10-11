@@ -11,9 +11,9 @@ A growing collection of questions and answers for conducting and preparing for G
 
 ## Question Bank
 
-- [Foundational AI and machine learning questions](questions/ai-foundations.md): 33 questions covering traditional ML concepts, data preparation, training, common algorithms, evaluation, and production monitoring, with short answers, explanations, examples, follow-ups, and references.
-- [Foundational GenAI and LLM questions](questions/genai-foundations.md): 23 questions covering core concepts, transformer architecture, training, inference, and limitations, with short answers, explanations, examples, follow-ups, and references.
-- [Retrieval-augmented generation questions](questions/rag.md): 17 questions covering ingestion, chunking, search, reranking, grounding, access control, and troubleshooting.
+- [Foundational AI and machine learning questions](questions/ai-foundations.md): 33 questions covering traditional ML concepts, data preparation, training, common algorithms, evaluation, and production monitoring, with short answers, detailed long answers, multiple examples, cheat sheets, follow-ups, and references.
+- [Foundational GenAI and LLM questions](questions/genai-foundations.md): 23 questions covering core concepts, transformer architecture, training, inference, and limitations, with short answers, detailed long answers, multiple examples, cheat sheets, follow-ups, and references.
+- [Retrieval-augmented generation questions](questions/rag.md): 18 questions covering ingestion, chunking, search, reranking, grounding, access control, troubleshooting, and RAG architecture types.
 - [Prompt engineering questions](questions/prompt-engineering.md): 12 questions covering instructions, examples, structured outputs, tool use, context, prompt injection, and iteration.
 - [Agents and tool use questions](questions/agents.md): 13 questions covering execution loops, tool design, memory, retries, persistence, permissions, coordination, and evaluation.
 - [Agent Orchestration questions](questions/agent-orchestration.md): 12 questions covering task decomposition, coordination patterns, scheduling, handoffs, shared state, recovery, budgets, and fleet evaluation.
@@ -22,7 +22,11 @@ A growing collection of questions and answers for conducting and preparing for G
 - [GenAI evaluation questions](questions/evaluation.md): 13 questions covering datasets, retrieval and answer metrics, model judges, human review, experiments, robustness, and production monitoring.
 - [Production engineering questions](questions/production-engineering.md): 14 questions covering deployment, service objectives, inference performance, caching, overload, retries, releases, observability, security, and cost.
 
-All question banks include short answers, explanations, practical examples, follow-up questions, and references. There are **162 questions** across ten banks. Selected answers also include original diagrams, plotted examples, and two attributed video snapshots, with supporting sources linked beside them.
+All question banks include short answers, detailed **Long answers**, relevant **metrics and checks**, at least **two examples per question**, **Quick Cheat Sheets**, follow-up questions, and references. Numerical examples are illustrative, not benchmark results or universal targets. There are **163 questions** across ten banks. Selected answers also include original diagrams, plotted examples, two attributed video snapshots, and a user-supplied RAG types infographic, with supporting sources linked beside them.
+
+## Cheat Sheet
+
+Use the [AI and GenAI Interview Cheat Sheet](CHEAT_SHEET.md) for cross-topic revision, key formulas, common pitfalls, and memory aids such as **“V” for o“V”erfitting**. Every question also includes a compact **Quick Cheat Sheet** beside its detailed answer. Start with recall, then use the long answer to explain assumptions, tradeoffs, and how to measure success.
 
 ## Visual Study Guide
 
@@ -32,7 +36,7 @@ Use these visuals to practice explaining a system or concept before reading the 
 | --- | --- |
 | [AI foundations](questions/ai-foundations.md#data-and-validation) | Preprocessing (Q6); generalization (Q8); ensembles (Q14); PCA (Q18); confusion matrix (Q19); visual examples for Q23–33 |
 | [LLM foundations](questions/genai-foundations.md#transformer-architecture) | Attention and causal mask (Q6); shifted targets (Q9); sampling (Q16); caching (Q17); model families and checkpoints (Q21–23) |
-| [RAG](questions/rag.md#architecture-and-data) | Architecture and video snapshot (Q2); chunking (Q3); hybrid retrieval (Q5); hierarchical, graph, SQL, and migration examples (Q13–17) |
+| [RAG](questions/rag.md#architecture-and-data) | Architecture and video snapshot (Q2); chunking (Q3); hybrid retrieval (Q5); hierarchical, graph, SQL, and migration examples (Q13–17); types infographic (Q18) |
 | [Prompt engineering](questions/prompt-engineering.md#outputs-and-workflows) | Output validation (Q4); data and authority boundaries (Q10) |
 | [Agents](questions/agents.md#architecture-and-tools) | Tool-use loop (Q2); recovery after an ambiguous write (Q7) |
 | [Agent orchestration](questions/agent-orchestration.md#architecture-and-decomposition) | Parallel task graph (Q3); durable state (Q7) |
@@ -85,7 +89,7 @@ The exercises use Python 3.10+ and the standard library, with embedded data and 
 Use this template when adding a question:
 
 ```markdown
-### Question: [Interview question]
+## Question: [Interview question]
 
 **Topic:** [Topic]
 **Difficulty:** [Beginner / Intermediate / Advanced]
@@ -93,19 +97,38 @@ Use this template when adding a question:
 **Short answer:**
 [A concise answer suitable for an interview.]
 
-**Explanation:**
-[How it works, when to use it, and key tradeoffs or limitations.]
+**Long answer:**
+[Explain the mechanism, assumptions, practical decisions, failure modes, and tradeoffs in depth.]
 
-**Example:**
-[A practical scenario, code snippet, or design sketch, where helpful.]
+**Metrics and checks:**
+[Define relevant metrics, formulas, units, denominators, and validation methods. Label numerical examples as illustrative; avoid universal targets.]
+
+**Examples:**
+
+**Example 1:**
+[A practical scenario, calculation, code snippet, or design sketch.]
+
+**Example 2:**
+[A distinct scenario or failure case that reveals another tradeoff.]
 
 **Visual (optional):**
 [An original Mermaid diagram or accessible local image, with a caption and concept reference.]
 
+**Quick Cheat Sheet:**
+
+[Optional mnemonic that helps recall without replacing the technical definition.]
+
+| Cue | Remember |
+| --- | --- |
+| [Key concept] | [Short definition, distinction, or useful check] |
+| [Common pitfall] | [What to verify or avoid] |
+
 **Follow-up questions:**
+
 - [A question that explores the topic more deeply.]
 
 **References:**
+
 - [Link to relevant documentation, a paper, or another reliable source.]
 ```
 
@@ -127,7 +150,7 @@ Use this template when adding a question:
 4. Study [production engineering](questions/production-engineering.md) to connect model behavior with deployment, reliability, and operational constraints.
 5. Study the [Software Factory questions](questions/software-factory.md), then attempt the [system design scenarios](system-design/README.md) before expanding their reference designs. Implement exercises in the [questions notebook](hands-on/questions.ipynb) before opening the answers.
 6. Try answering each question aloud before reading the answer.
-7. Practice explaining both the concept and its engineering tradeoffs.
+7. Read the long answer, work through both examples, and explain the metrics and engineering tradeoffs. Then use the [cheat sheet](CHEAT_SHEET.md) for recall practice.
 8. Revisit weak areas and add questions from mock or real interviews.
 9. Update answers and references as tools and practices evolve.
 
@@ -145,8 +168,8 @@ Use this template when adding a question:
 
 ## Contributing
 
-Add new questions, improve existing explanations, or suggest missing topics. Keep answers clear, technically accurate, and supported by reliable references. Call out assumptions and distinguish general principles from behavior specific to a model or tool. For diagrams, include descriptive labels, a short explanation, and a primary source for the concept; label illustrative architectures as examples. Add alt text to images and `accTitle` / `accDescr` to Mermaid diagrams.
+Add new questions, improve existing long answers, or suggest missing topics. Include meaningful metrics or checks, at least two distinct examples where possible, and a quick cheat sheet. Define units and denominators, explain metric limitations, and distinguish illustrative numbers from measured results. Keep answers clear, technically accurate, and supported by reliable references. Call out assumptions and distinguish general principles from behavior specific to a model or tool. For diagrams, include descriptive labels, a short explanation, and a primary source for the concept; label illustrative architectures as examples. Add alt text to images and `accTitle` / `accDescr` to Mermaid diagrams.
 
 ## License
 
-Original repository content is licensed under the [MIT License](LICENSE). The [identified third-party video frames](assets/third-party/README.md) are excluded from that license. You may use, copy, modify, and redistribute the original content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.
+Original repository content is licensed under the [MIT License](LICENSE). The [identified third-party media](assets/third-party/README.md) are excluded from that license. You may use, copy, modify, and redistribute the original content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.

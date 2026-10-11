@@ -4,6 +4,8 @@
 
 These questions extend the single-agent foundations into coordinating fleets of agents. They cover how work is divided, scheduled, verified, and recovered. The architectures and examples are illustrative design proposals; cited systems demonstrate particular techniques rather than universal guarantees.
 
+Each question includes a long answer, metrics or checks, at least two examples, and a quick cheat sheet. Numerical examples are illustrative, not benchmark results or universal targets. Use the [cross-topic cheat sheet](../CHEAT_SHEET.md) for quick revision.
+
 ## Contents
 
 - [Architecture and decomposition](#architecture-and-decomposition): orchestration, coordination patterns, and task graphs.
@@ -13,7 +15,7 @@ These questions extend the single-agent foundations into coordinating fleets of 
 
 ## Architecture and decomposition
 
-### Question: 1. What does agent orchestration add beyond an individual agent's execution loop?
+## Question: 1. What does agent orchestration add beyond an individual agent's execution loop?
 
 **Topic:** Orchestration responsibilities
 **Difficulty:** Beginner
@@ -21,11 +23,28 @@ These questions extend the single-agent foundations into coordinating fleets of 
 **Short answer:**
 Orchestration coordinates tasks, dependencies, workers, and resources across a larger objective, while an individual agent chooses actions within its assigned task.
 
-**Explanation:**
+**Long answer:**
 A planner can propose work, but trusted application logic should own scheduling, permissions, and completion records. Separate the model's proposed plan from the system's authoritative execution state. A fleet needs a shared definition of completion; collecting successful worker messages does not establish that the overall objective succeeded.
 
-**Example:**
+Orchestration manages how multiple tasks and workers are scheduled, connected, recovered, and governed. The model's reasoning loop is only one component. Define durable task identities, dependency states, ownership, budgets, and completion contracts. A worker's textual assertion should not move the whole system to “done” without required artifacts and checks. Start from workflow requirements before choosing a coordination framework.
+
+**Metrics and checks:** Measure throughput, queue delay, completion latency, recovery time, and verified end-to-end success. Worker utilization is useful for capacity analysis but not a substitute for completed useful work.
+
+**Examples:**
+
+**Example 1:**
 For a feature request, an orchestrator waits for a versioned API contract before assigning compatible backend and frontend work, then schedules integration checks.
+
+**Example 2:**
+A research fleet may finish all worker responses yet fail to produce a consistent report. The orchestrator must also manage evidence consolidation and final verification.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Agent** | chooses local actions |
+| **Orchestrator** | coordinates system progress |
+| **Completion** | required artifacts and checks |
 
 **Follow-up questions:**
 
@@ -35,7 +54,7 @@ For a feature request, an orchestrator waits for a versioned API contract before
 
 - [Anthropic: Orchestrator-worker patterns](https://www.anthropic.com/engineering/building-effective-agents)
 
-### Question: 2. When should you use a fixed workflow, a supervisor, or peer-to-peer coordination?
+## Question: 2. When should you use a fixed workflow, a supervisor, or peer-to-peer coordination?
 
 **Topic:** Coordination patterns
 **Difficulty:** Intermediate
@@ -43,11 +62,28 @@ For a feature request, an orchestrator waits for a versioned API contract before
 **Short answer:**
 Use a fixed workflow for known dependencies, a supervisor for dynamic decomposition, and peer coordination when local decisions justify the added reconciliation complexity.
 
-**Explanation:**
+**Long answer:**
 Central coordination gives a clear owner but can become a bottleneck. Peer communication allows flexible collaboration but needs explicit ownership, termination, and conflict rules. A useful hybrid lets a model suggest subtasks inside a workflow whose release and validation steps remain fixed.
 
-**Example:**
+Fixed workflows suit known dependencies; supervisors centralize dynamic assignment and integration; peer coordination allows local negotiation but increases consistency and termination challenges. Choose based on how predictable the task graph is and where decisions require shared knowledge. Central coordination can bottleneck, while decentralized systems require stronger protocols for ownership and conflict resolution. Hybrid designs often keep critical release decisions centralized.
+
+**Metrics and checks:** Compare coordination calls, critical-path latency, unresolved conflicts, and task success. Include supervisor failures and communication overhead in evaluation.
+
+**Examples:**
+
+**Example 1:**
 A supervisor discovers which modules need changes, while the application always requires integration checks before presenting the result for review.
+
+**Example 2:**
+A document pipeline can follow fixed extraction and validation stages, while incident investigation may need a supervisor to assign new subtasks as evidence emerges.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Fixed** | predictable graph |
+| **Supervisor** | central adaptive control |
+| **Peers** | flexible coordination with protocol costs |
 
 **Follow-up questions:**
 
@@ -57,7 +93,7 @@ A supervisor discovers which modules need changes, while the application always 
 
 - [Anthropic: Workflow and agent architecture patterns](https://www.anthropic.com/engineering/building-effective-agents)
 
-### Question: 3. How should an orchestrator decompose work into tasks that can run in parallel?
+## Question: 3. How should an orchestrator decompose work into tasks that can run in parallel?
 
 **Topic:** Task graphs and dependencies
 **Difficulty:** Intermediate
@@ -65,10 +101,16 @@ A supervisor discovers which modules need changes, while the application always 
 **Short answer:**
 Define bounded deliverables, interfaces, dependencies, and acceptance criteria; parallelize tasks whose inputs and ownership are sufficiently independent.
 
-**Explanation:**
+**Long answer:**
 Represent a plan as a versioned dependency graph. Each task needs an owner, input revisions, output contract, and verification step. Reject dependency cycles and revise the graph when discoveries invalidate assumptions. Tiny tasks increase coordination overhead; broad tasks create overlap and make failures difficult to isolate.
 
-**Example:**
+Split work where inputs and outputs can be specified independently, then represent true dependencies explicitly. Parallel tasks should avoid writing the same mutable artifact unless a merge strategy exists. Excessively small tasks spend more time coordinating than working. Identify the critical path and integration cost before estimating speedup; independent execution does not imply independently mergeable results.
+
+**Metrics and checks:** Amdahl's bound is speedup ≤ 1/(s + (1−s)/p) for serial fraction s and p workers, before overhead. Measure actual wall time and total compute.
+
+**Examples:**
+
+**Example 1:**
 After agreeing on a response schema, assign implementation and client updates separately. A schema revision invalidates dependent work until compatibility is checked.
 
 **Visual: Parallelize independent tasks**
@@ -86,6 +128,17 @@ flowchart TD
 
 This is an illustrative task graph: parallel work is appropriate only when dependencies and output contracts permit it. Concept reference: [Anthropic: agent and workflow patterns](https://www.anthropic.com/engineering/building-effective-agents).
 
+**Example 2:**
+Four agents can inspect four independent services, but a shared API decision may block all implementations. Resolve that contract first rather than discovering incompatible assumptions during integration.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Independence** | separate inputs and outputs |
+| **Critical path** | limits speedup |
+| **Integration** | include it in estimates |
+
 **Follow-up questions:**
 
 - How would you identify the critical path before adding workers?
@@ -96,7 +149,7 @@ This is an illustrative task graph: parallel work is appropriate only when depen
 
 ## Scheduling and collaboration
 
-### Question: 4. How should a scheduler assign work across an agent fleet?
+## Question: 4. How should a scheduler assign work across an agent fleet?
 
 **Topic:** Admission control and scheduling
 **Difficulty:** Advanced
@@ -104,11 +157,28 @@ This is an illustrative task graph: parallel work is appropriate only when depen
 **Short answer:**
 Schedule ready tasks according to capabilities, authorization, priority, and available resources, with limits that prevent one run from exhausting the fleet.
 
-**Explanation:**
+**Long answer:**
 Track model quotas, sandbox capacity, tool limits, and per-run concurrency separately. Use bounded queues, fairness across projects, and aging to avoid starving older work. Worker leases need expiry and renewal. A reassigned task must reject stale workers' results using an attempt or lease generation checked by the state store.
 
-**Example:**
+A fleet scheduler maps ready work to available capacity while respecting dependencies, priorities, quotas, and resource needs. Bound concurrency to avoid overwhelming model endpoints or downstream tools. Fairness matters when a large tenant can monopolize workers, and aging can prevent starvation of low-priority tasks. Backpressure should propagate upstream rather than allowing an unbounded queue to hide overload.
+
+**Metrics and checks:** Track queue age, service time, utilization, deadline misses, and per-tenant throughput. Under stable conditions, Little's Law relates average in-flight work L to arrival rate lambda times average time W.
+
+**Examples:**
+
+**Example 1:**
 A run may occupy four coding sandboxes, while integration checks use a reserved pool so a coding surge cannot block completed changes from verification.
+
+**Example 2:**
+A burst of long research jobs should not prevent short urgent incident tasks from running. Separate queues or weighted scheduling can reserve capacity for latency-sensitive work.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Ready** | dependencies satisfied |
+| **Schedule** | resource and priority fit |
+| **Backpressure** | bound incoming work |
 
 **Follow-up questions:**
 
@@ -118,7 +188,7 @@ A run may occupy four coding sandboxes, while integration checks use a reserved 
 
 - [Google SRE: Handling overload](https://sre.google/sre-book/handling-overload/)
 
-### Question: 5. What should an agent handoff contain?
+## Question: 5. What should an agent handoff contain?
 
 **Topic:** Task and result contracts
 **Difficulty:** Intermediate
@@ -126,11 +196,28 @@ A run may occupy four coding sandboxes, while integration checks use a reserved 
 **Short answer:**
 A handoff should include the objective, input versions, constraints, expected output, evidence, and unresolved issues in a structured record.
 
-**Explanation:**
+**Long answer:**
 Pass durable artifact references rather than relying on an expanding conversation transcript. Record task and attempt IDs so late or duplicate responses can be recognized. Distinguish facts, assumptions, and proposed next steps. A receiving worker should validate that the artifact exists and matches the expected revision before using it.
 
-**Example:**
+A handoff should specify the objective, relevant evidence, current state, constraints, expected artifact, and definition of done. Prefer references to authoritative versioned artifacts over large unstructured transcripts. Clearly mark hypotheses and unresolved questions so another worker does not mistake speculation for established fact. Include ownership and deadline information to prevent duplicated or abandoned work.
+
+**Metrics and checks:** Measure handoff rejection, clarification rounds, missing-artifact failures, and integration rework. Increasing handoff text length is not automatically better information transfer.
+
+**Examples:**
+
+**Example 1:**
 A coding agent returns a commit identifier, test report references, and a known limitation. The next stage retrieves those artifacts rather than interpreting “all done” as a sufficient result.
+
+**Example 2:**
+A code-review task should include the exact commit, intended behavior, test evidence, and known risks. “Review the latest changes” can refer to different code by the time the worker starts.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Contract** | objective and done criteria |
+| **Evidence** | versioned references |
+| **Uncertainty** | explicit unresolved questions |
 
 **Follow-up questions:**
 
@@ -140,7 +227,7 @@ A coding agent returns a commit identifier, test report references, and a known 
 
 - [Anthropic: Agent communication and artifact handling](https://www.anthropic.com/engineering/multi-agent-research-system)
 
-### Question: 6. How should agents share state without overwriting one another's work?
+## Question: 6. How should agents share state without overwriting one another's work?
 
 **Topic:** State ownership and concurrency
 **Difficulty:** Advanced
@@ -148,11 +235,28 @@ A coding agent returns a commit identifier, test report references, and a known 
 **Short answer:**
 Give each task an isolated workspace, publish immutable outputs, and use explicit version checks when updating shared records or integrating changes.
 
-**Explanation:**
+**Long answer:**
 A shared chat history is not a transaction mechanism. An illustrative design stores accepted task results with compare-and-set updates and records conflicting proposals separately. For code, separate branches or worktrees reduce filesystem collisions, but they do not resolve semantic conflicts. Git worktrees also share repository metadata and are not a security boundary.
 
-**Example:**
+Shared state requires a consistency strategy: single-writer ownership, optimistic concurrency, transactional updates, or mergeable data structures depending on the workload. Workers should submit changes against known versions and handle conflicts explicitly. A shared conversation is not a reliable database. Separate immutable evidence from mutable decisions, and record who changed what so incorrect coordination can be reconstructed.
+
+**Metrics and checks:** Track conflicting writes, rejected stale updates, lost-update incidents, and reconciliation time. Test concurrent updates to the same task rather than only isolated worker success.
+
+**Examples:**
+
+**Example 1:**
 Two workers change different callers of a common API in separate workspaces. Integration checks expose incompatible assumptions even though the patches merge cleanly.
+
+**Example 2:**
+Two workers increment a progress counter from the same old value and overwrite each other. Atomic updates or version checks prevent the system from silently losing one completed contribution.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Ownership** | who may write? |
+| **Version** | detect stale updates |
+| **History** | preserve auditable changes |
 
 **Follow-up questions:**
 
@@ -164,7 +268,7 @@ Two workers change different callers of a common API in separate workspaces. Int
 
 ## Recovery and control
 
-### Question: 7. How can an orchestration run survive process crashes or long pauses?
+## Question: 7. How can an orchestration run survive process crashes or long pauses?
 
 **Topic:** Durable execution
 **Difficulty:** Advanced
@@ -172,10 +276,16 @@ Two workers change different callers of a common API in separate workspaces. Int
 **Short answer:**
 Persist the plan, task states, accepted outputs, and pending operations so the system can resume and reconcile incomplete work.
 
-**Explanation:**
+**Long answer:**
 Checkpoint at meaningful boundaries and retain the configuration needed to interpret state. Resumption may replay part of a task, so separate repeatable computations from external effects. Revalidate permissions, deadlines, and input revisions after a pause. If a required artifact is missing, explicitly recompute or block its dependents instead of pretending the step is complete.
 
-**Example:**
+Persist task state, dependencies, artifact references, and external operation identifiers so a coordinator can recover without guessing. Leases need expiration and fencing to prevent an old worker from writing after replacement. A checkpoint does not make external side effects exactly once. Recovery should reconcile ambiguous operations and resume from verified state, with explicit handling for long human-review pauses.
+
+**Metrics and checks:** Measure recovery-point loss, recovery time, duplicate work/effects, and orphaned tasks. Inject crashes at handoff, external-write, and checkpoint boundaries.
+
+**Examples:**
+
+**Example 1:**
 After a scheduler restart, completed build artifacts remain accepted, an expired coding lease is reassigned, and a pending deployment is reconciled with the deployment service.
 
 **Visual: Durable orchestration state**
@@ -195,6 +305,17 @@ flowchart LR
 
 This is a design sketch, not a framework guarantee. Reject stale attempts and reconcile external side effects; recovered state alone does not prevent duplicate actions. Concept reference: [LangGraph: persistence](https://docs.langchain.com/oss/python/langgraph/persistence); [AWS: idempotent APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 
+**Example 2:**
+A worker pauses long enough for its lease to expire, then resumes after another worker takes over. A fencing token lets the state store reject the stale worker's later writes.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Persist** | verified progress |
+| **Lease** | temporary ownership |
+| **Fence** | reject stale owners |
+
 **Follow-up questions:**
 
 - How would you migrate persisted runs when the workflow definition changes?
@@ -203,7 +324,7 @@ This is a design sketch, not a framework guarantee. Reject stale attempts and re
 
 - [LangGraph: Persistence and checkpoints](https://docs.langchain.com/oss/python/langgraph/persistence)
 
-### Question: 8. How should retries and cancellation work across delegated tasks?
+## Question: 8. How should retries and cancellation work across delegated tasks?
 
 **Topic:** Failure and side-effect semantics
 **Difficulty:** Advanced
@@ -211,11 +332,28 @@ This is a design sketch, not a framework guarantee. Reject stale attempts and re
 **Short answer:**
 Bound retries at the run level, deduplicate repeated operations, propagate cancellation, and reconcile effects that may already have happened.
 
-**Explanation:**
+**Long answer:**
 Assign a stable operation ID before a state-changing request. A lost acknowledgment leaves the outcome unknown; retry only under a suitable idempotency contract or after checking status. Cancellation prevents new authorized work but does not undo a completed external action. Record compensation or manual intervention as separate outcomes.
 
-**Example:**
+Cancellation and retry policies must span the task tree rather than operating independently at each layer. Propagate deadlines and a shared attempt budget; otherwise nested retries multiply load. Cancellation can stop future work but may not undo an in-flight side effect. Record terminal states and reconcile writes whose outcome is unknown before declaring the whole task safely canceled.
+
+**Metrics and checks:** Measure total attempts per logical operation, cancellation latency, orphaned work, and ambiguous effects. Three retrying layers with three total attempts each can produce up to 27 downstream attempts.
+
+**Examples:**
+
+**Example 1:**
 A cancelled parent stops scheduling children, revokes tool access where possible, rejects late results, and checks whether an already-requested release was deployed.
+
+**Example 2:**
+A parent task is canceled while a worker submits a purchase request. The system must inspect whether the purchase completed rather than assuming cancellation of the worker reversed the transaction.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Deadline** | shared across descendants |
+| **Retry** | bounded across layers |
+| **Cancel** | does not imply rollback |
 
 **Follow-up questions:**
 
@@ -225,7 +363,7 @@ A cancelled parent stops scheduling children, revokes tool access where possible
 
 - [AWS Builders' Library: Idempotent APIs and ambiguous outcomes](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/)
 
-### Question: 9. How do you keep delegation and repair loops within a budget?
+## Question: 9. How do you keep delegation and repair loops within a budget?
 
 **Topic:** Resource limits and stopping conditions
 **Difficulty:** Intermediate
@@ -233,11 +371,28 @@ A cancelled parent stops scheduling children, revokes tool access where possible
 **Short answer:**
 Enforce shared limits on spending, elapsed time, active workers, delegation depth, and repair attempts, then stop or escalate when progress stalls.
 
-**Explanation:**
+**Long answer:**
 Reserve resources before dispatch so concurrent workers cannot each spend the same remaining budget. Include failed attempts and evaluation in accounting. Reconcile reservations when usage becomes known. Progress should mean new evidence or verified outputs, not additional messages. Budget exhaustion produces an incomplete outcome with preserved artifacts.
 
-**Example:**
+Allocate budgets for tokens, tool calls, elapsed time, and expensive external operations at the parent task and reserve portions for workers. Leave capacity for integration and verification rather than spending everything on generation. Repair loops should require a concrete failure and a testable change. Stop when repeated attempts produce no new evidence or when the expected benefit no longer justifies the remaining cost.
+
+**Metrics and checks:** Track budget consumption by stage, successful repairs per attempt, and completion within budget. Include abandoned worker output in cost per successful task.
+
+**Examples:**
+
+**Example 1:**
 A run reserves part of its budget for final integration checks and stops generating new candidate patches when the remaining allowance cannot cover verification.
+
+**Example 2:**
+A coding fleet that spends its entire budget drafting patches has no capacity to run integration tests. Reserving verification budget prevents “finished” from meaning merely “generated code.”
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Allocate** | parent and worker limits |
+| **Reserve** | integration and verification |
+| **Stop** | diminishing evidence or exhausted budget |
 
 **Follow-up questions:**
 
@@ -249,7 +404,7 @@ A run reserves part of its budget for final integration checks and stops generat
 
 ## Verification and evaluation
 
-### Question: 10. How should an orchestrator resolve conflicting agent outputs?
+## Question: 10. How should an orchestrator resolve conflicting agent outputs?
 
 **Topic:** Evidence and disagreement
 **Difficulty:** Intermediate
@@ -257,11 +412,28 @@ A run reserves part of its budget for final integration checks and stops generat
 **Short answer:**
 Compare outputs against explicit requirements and executable evidence; seek more evidence or human judgment when the disagreement cannot be resolved mechanically.
 
-**Explanation:**
+**Long answer:**
 Majority agreement is weak evidence when agents share models, context, or faulty assumptions. Preserve competing artifacts and reasons for rejection. A verifier can identify problems without having authority to redefine acceptance criteria. Useful escalation explains the decision, evidence, and unresolved tradeoff.
 
-**Example:**
+Conflicting outputs need a resolution policy tied to evidence and task ownership. Majority vote can help with independent errors but fails when workers share the same misleading source or model bias. Compare assumptions, cite authoritative artifacts, and use executable checks where possible. Escalate unresolved high-impact disagreements rather than silently choosing the most confident prose.
+
+**Metrics and checks:** Measure disagreement frequency, resolution accuracy on labeled cases, added latency, and residual defects. Track whether reviewers are using independent evidence or merely repeating one another.
+
+**Examples:**
+
+**Example 1:**
 Two agents propose different timeout behavior. Contract tests settle protocol compliance, while a product owner decides the acceptable user experience under slow responses.
+
+**Example 2:**
+Two agents propose incompatible API schemas. A compatibility test against real consumers and the agreed contract is stronger arbitration than asking a third agent which explanation sounds better.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Conflict** | compare assumptions |
+| **Evidence** | tests or authoritative sources |
+| **Consensus** | not independent verification |
 
 **Follow-up questions:**
 
@@ -271,7 +443,7 @@ Two agents propose different timeout behavior. Contract tests settle protocol co
 
 - [Anthropic: Evaluator-optimizer workflows](https://www.anthropic.com/engineering/building-effective-agents)
 
-### Question: 11. What observability is needed for a fleet of agents?
+## Question: 11. What observability is needed for a fleet of agents?
 
 **Topic:** Distributed tracing and auditability
 **Difficulty:** Intermediate
@@ -279,11 +451,28 @@ Two agents propose different timeout behavior. Contract tests settle protocol co
 **Short answer:**
 Correlate the overall run with tasks, attempts, model calls, tools, artifacts, and external operations so failures can be traced across delegation boundaries.
 
-**Explanation:**
+**Long answer:**
 Record queue time, execution time, retries, resource use, accepted outputs, and terminal reasons. Use parent-child relationships or trace links for asynchronous work. Keep permissions and retention controls on sensitive trace content. Operational events and artifact evidence are sufficient for audit; private model reasoning is not required.
 
-**Example:**
+Fleet observability needs parent-child task IDs, dependency edges, worker identities, versions, and cost attribution. A trace should show why work was spawned and what artifact it produced, not just model-call timings. Watch for fan-out storms, stalled joins, orphan workers, and repeated repairs. Protect sensitive artifacts and use stable bounded dimensions for metrics rather than raw prompts or unlimited task IDs.
+
+**Metrics and checks:** Track critical-path latency, queue wait, active workers, retry amplification, tokens, and verified completion. Break down cost by parent task so parallelism does not hide total spending.
+
+**Examples:**
+
+**Example 1:**
 A delayed feature is traced to repeated integration failures after a contract revision, rather than misclassified as slow model inference.
+
+**Example 2:**
+A user request appears slow because one child task never reaches a terminal state, leaving a join waiting forever. Dependency-aware traces reveal this more clearly than average worker latency.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Trace tree** | parent and children |
+| **Join** | inspect missing terminal states |
+| **Cost** | aggregate all descendants |
 
 **Follow-up questions:**
 
@@ -293,7 +482,7 @@ A delayed feature is traced to repeated integration failures after a contract re
 
 - [OpenTelemetry: Traces, spans, and links](https://opentelemetry.io/docs/concepts/signals/traces/)
 
-### Question: 12. How do you determine whether multiple agents improve the system?
+## Question: 12. How do you determine whether multiple agents improve the system?
 
 **Topic:** Fleet evaluation
 **Difficulty:** Advanced
@@ -301,11 +490,28 @@ A delayed feature is traced to repeated integration failures after a contract re
 **Short answer:**
 Compare the fleet with a simpler baseline on matched tasks using verified outcomes, latency, cost, and human effort under comparable resource limits.
 
-**Explanation:**
+**Long answer:**
 Use held-out tasks and repeat variable runs. Inspect failures by task complexity, dependency structure, and shared-state contention. Measure the cost of coordination and verification, including unsuccessful attempts. More parallel work may shorten independent tasks while leaving the critical path unchanged. An improvement on one workload does not establish general superiority.
 
-**Example:**
+Evaluate orchestration changes as system changes using paired workloads, realistic failures, and the same quality requirements. Compare against a strong simpler configuration and control model versions and budgets where possible. Faster execution is not a gain if outputs need more human repair. Include integration, recovery, and review time, especially when parallel workers produce correlated mistakes.
+
+**Metrics and checks:** Report verified success, wall-clock time, total cost, human rework, and reliability under faults. Use uncertainty estimates across representative tasks, with the task as the comparison unit.
+
+**Examples:**
+
+**Example 1:**
 Compare a single coding agent with a planner and three workers on the same repository snapshots, scoring accepted changes and reviewer minutes as well as test results.
+
+**Example 2:**
+Doubling workers may shorten drafting but increase merge conflicts enough to slow accepted delivery. Measuring only worker finish times would report an improvement that users never receive.
+
+**Quick Cheat Sheet:**
+
+| Cue | Remember |
+| --- | --- |
+| **Baseline** | simpler strong system |
+| **Unit** | complete task |
+| **Value** | accepted quality, time, and total cost |
 
 **Follow-up questions:**
 
