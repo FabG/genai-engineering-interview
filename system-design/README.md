@@ -4,6 +4,8 @@
 
 Use these six scenarios for a 45–60 minute interview or a self-guided design session. All workloads, budgets, and targets below are hypothetical interview constraints, not product guarantees. Clarify requirements, estimate capacity, sketch the data flow, and discuss failures before selecting specific products.
 
+All six scenarios include architecture diagrams inside their reference designs. These are original teaching sketches; linked sources explain the underlying patterns rather than endorse a complete architecture.
+
 Reference designs are expandable so candidates can attempt each problem first. They illustrate defensible approaches rather than a single correct architecture. Interviewers should assess assumptions, tradeoffs, and verification, and adjust depth to the role.
 
 ## Scenarios
@@ -50,7 +52,9 @@ For each scenario, produce a component diagram, a data model or API sketch, one 
 Use two paths: ingestion produces versioned chunks with source identifiers and access metadata; online requests authenticate the user, retrieve eligible evidence, and generate a supported answer. Apply current authorization before restricted content reaches generation; stale indexed permissions alone cannot satisfy immediate revocation. Keep document-to-chunk mappings for updates and deletions.
 
 ```mermaid
-flowchart LR
+flowchart TD
+    accTitle: Permission-aware knowledge assistant
+    accDescr: Documents populate search indexes; authenticated requests retrieve authorized evidence and produce checked answers.
     Sources[Versioned documents] --> Ingest[Parse and chunk]
     Ingest --> Index[Lexical and vector indexes]
     User[Employee request] --> Auth[Authenticate and resolve permissions]
@@ -96,6 +100,25 @@ Compare lexical, dense, and hybrid retrieval on labeled questions. Track evidenc
 <details>
 <summary>Reference design and interviewer notes</summary>
 
+**Visual: Replacement action and recovery**
+
+```mermaid
+flowchart TD
+    accTitle: Replacement action and recovery
+    accDescr: A concrete approval precedes execution; uncertain writes require reconciliation.
+    Proposal["Proposed replacement and exact arguments"] --> Approve{"Authorized approval?"}
+    Approve -->|No| Stop["Decline or await approval"]
+    Approve -->|Yes| Validate["Revalidate policy and order state"]
+    Validate --> Intent["Persist intent and operation ID"]
+    Intent --> Write["Execute idempotent write"]
+    Write --> Outcome{"Outcome known?"}
+    Outcome -->|Yes| Record["Record confirmed result"]
+    Outcome -->|No| Reconcile["Reconcile with service within deadline"]
+    Reconcile --> Result["Record confirmed result or pending escalation"]
+```
+
+Illustrative architecture for this scenario. Material changes invalidate approval; an unknown write outcome remains pending until reconciled. Concept reference: [AWS: idempotent APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+
 Use a model for interpretation and action selection within an application-controlled state machine. Enforce user authorization and replacement policy outside the model. Read tools return typed outcomes; write tools accept stable operation identifiers and concrete approved arguments.
 
 Store task ID, actor, observed order version, proposed action, approval binding, operation ID, and status. One possible progression is `proposed → awaiting_approval → approved → executing → confirmed`, with explicit failed, cancelled, and unresolved states. Revalidate stale order state and material action changes before execution. Do not turn a model's claim of completion into a confirmed state.
@@ -136,6 +159,24 @@ Evaluate final external state, unauthorized actions, duplicate replacements, suc
 <details>
 <summary>Reference design and interviewer notes</summary>
 
+**Visual: Extract, validate, and review**
+
+```mermaid
+flowchart TD
+    accTitle: Extract, validate, and review
+    accDescr: Documents are parsed and extracted, then validated before export or human review.
+    Upload["Tenant-scoped upload and job ID"] --> Store[("Source storage")]
+    Store --> Queue["Durable bounded queue"]
+    Queue --> Parse["Parse or OCR"]
+    Parse --> Extract["Extract fields with page evidence"]
+    Extract --> Checks{"Schema and domain checks pass?"}
+    Checks -->|Yes| Export["Idempotent export"]
+    Checks -->|No| Review["Review queue or explicit failure"]
+    Review -->|Corrected record| Checks
+```
+
+Illustrative architecture: cap review cycles and expose pending/failed states. Schema checks cover structure; evidence checks and reviewers address correctness. Concept reference: [JSON Schema reference](https://json-schema.org/understanding-json-schema/reference); [AWS: idempotent APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+
 Accept uploads into tenant-scoped object storage and assign a durable job ID. Validate file limits, record a content hash, and queue work. Workers parse or OCR pages, extract a typed record, and run deterministic checks before any export. Preserve page references or evidence spans so reviewers can inspect the source.
 
 Average throughput is `100,000 × 5 / 86,400 ≈ 5.79 pages per second`, or roughly `57.9 pages per second` at the assumed peak. If a worker processes 2 pages per second in a benchmark, 29 workers is only a peak-throughput lower bound; headroom, retries, queue drain, and other stages require additional capacity. Measure the slowest stage and oldest-job age.
@@ -174,6 +215,25 @@ Deduplicate per tenant using appropriate business keys and content identity; a r
 <details>
 <summary>Reference design and interviewer notes</summary>
 
+**Visual: Isolate tenants and traffic classes**
+
+```mermaid
+flowchart TD
+    accTitle: Isolate tenants and traffic classes
+    accDescr: Admission control routes interactive and batch traffic through bounded queues and policy-compatible backends.
+    Request["Request and tenant identity"] --> Gate{"Authorize and reserve budget"}
+    Gate -->|Rejected| Reject["Return explicit rejection"]
+    Gate -->|Accepted| Class{"Traffic class"}
+    Class -->|Interactive| Chat["Bounded interactive queue"]
+    Class -->|Batch| Batch["Bounded batch queue"]
+    Chat --> Router["Policy-compatible model routing"]
+    Batch --> Router
+    Router --> Backend["Backend with deadline and concurrency limit"]
+    Backend --> Meter["Reconcile usage and release reservation"]
+```
+
+Illustrative architecture: queue separation helps protect chat latency. Admission, routing, and metering also need explicit timeout and cancellation paths. Concept reference: [Google SRE: handling overload](https://sre.google/sre-book/handling-overload/).
+
 Authenticate tenants, validate request size, reserve an estimated budget, and route according to evaluated task policies. Use separate interactive and batch queues so long jobs do not dominate latency. Limit concurrency and queue length; scale capacity using observed token workload and queue age rather than request count alone.
 
 The assumed peak represents `80,000 input tokens/second` and `12,000 output tokens/second`. These are distinct serving demands, not interchangeable accelerator-capacity units. Benchmark the actual prompt/output distribution, cache behavior, concurrency, and batching policy to estimate replicas. Include startup and warmup time in scaling plans.
@@ -211,6 +271,23 @@ Distinguish prefix caching from answer caching. Scope reused answers to trusted 
 
 <details>
 <summary>Reference design and interviewer notes</summary>
+
+**Visual: Evaluate, gate, and observe**
+
+```mermaid
+flowchart TD
+    accTitle: Evaluate, gate, and observe
+    accDescr: Versioned configurations and datasets drive isolated trials whose evidence informs release gates and a canary.
+    Versions["Dataset, candidate and grader versions"] --> Runs["Bounded isolated trial workers"]
+    Runs --> Evidence[("Outputs, traces, scores and costs")]
+    Evidence --> Compare["Matched-case and slice comparisons"]
+    Compare --> Gate{"Hard constraints and quality targets pass?"}
+    Gate -->|No| Block["Block release"]
+    Gate -->|Yes| Canary["Canary and production monitoring"]
+    Canary --> Decision["Expand or roll back using stop conditions"]
+```
+
+Illustrative architecture: the release gate is an application policy. Canarying supplies additional evidence under real traffic. Concept reference: [Google SRE: canary releases](https://sre.google/workbook/canarying-releases/).
 
 Register immutable dataset versions, candidate configurations, grader versions, and corpus snapshots. Schedule tasks through a bounded queue; persist case-level inputs, outputs, trace references, scores, errors, and resource usage. Keep sensitive content access-controlled. Isolate agent test environments and reset them between trials so one run cannot change another's starting state.
 
@@ -257,6 +334,8 @@ Use a durable orchestration service as the authoritative owner of runs and tasks
 
 ```mermaid
 flowchart TD
+    accTitle: Autonomous software factory
+    accDescr: Business intent drives durable agent tasks, independent verification, engineer review, authorized release, and production monitoring.
     Human[Engineers define business intent] --> Spec[Versioned specification and acceptance criteria]
     Spec --> Planner[Planning agents propose task graph]
     Planner --> Control[Durable orchestration and policy service]

@@ -48,6 +48,23 @@ A typical ingestion path parses documents, splits them into chunks, attaches met
 **Example:**
 A support assistant indexes product manuals and returns answers with links to the sections used.
 
+**Visual: Ingestion and answering paths**
+
+```mermaid
+flowchart TD
+    accTitle: Ingestion and answering paths
+    accDescr: Documents populate an index; an authorized query retrieves evidence for generation.
+    Docs["Versioned documents"] --> Chunks["Parse, chunk, attach source IDs and ACLs"]
+    Chunks --> Index[("Search index")]
+    Query["Question and trusted user identity"] --> Search["Search authorized content"]
+    Index --> Search
+    Search --> Context["Rerank and select evidence"]
+    Context --> Model["Generate with source IDs"]
+    Model --> Answer["Check support; answer or abstain"]
+```
+
+The index is built ahead of queries. Enforce current access policy before evidence enters model context. Concept reference: [Microsoft: RAG architecture](https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview).
+
 **Follow-up questions:**
 
 - Which stages would you inspect if the answer cites the right document but the wrong product version?
@@ -115,6 +132,22 @@ BM25 is useful for exact identifiers and terminology; dense search can find rele
 
 **Example:**
 A query about “ERR-1042 connection failure” benefits from matching the exact code and related explanations such as “handshake timeout.”
+
+**Visual: Hybrid retrieval**
+
+```mermaid
+flowchart LR
+    accTitle: Hybrid retrieval
+    accDescr: Lexical and vector search contribute candidates that are fused before optional reranking.
+    Query["Query"] --> Lexical["Lexical ranking"]
+    Query --> Dense["Vector ranking"]
+    Lexical --> Fuse["Fuse ranks and deduplicate"]
+    Dense --> Fuse
+    Fuse --> Rerank["Optional reranker"]
+    Rerank --> Context["Select context"]
+```
+
+Both branches search eligible content. Rank fusion can combine lists whose raw relevance scores are not directly comparable. Concept reference: [Microsoft: hybrid search](https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview).
 
 **Follow-up questions:**
 

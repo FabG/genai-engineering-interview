@@ -104,6 +104,15 @@ Define document versus passage relevance, cutoffs, and conventions for queries w
 **Example:**
 With four relevant passages overall and relevant hits at ranks 2 and 5, precision@5 is 0.4, recall@5 is 0.5, and reciprocal rank is 0.5.
 
+**Visual: Inspect the ranked list**
+
+| Retrieved rank | 1 | 2 | 3 | 4 | 5 |
+| --- | --- | --- | --- | --- | --- |
+| Relevant? | No | **Yes** | No | No | **Yes** |
+| First relevant hit | — | **Here** | — | — | — |
+
+With four relevant passages in the corpus, two are still missing from the top five. This separates top-five precision (`2/5`), recall (`2/4`), and reciprocal rank (`1/2`); MRR averages reciprocal rank across queries. Concept reference: [Manning, Raghavan, and Schütze: retrieval evaluation](https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-ranked-retrieval-results-1.html).
+
 **Follow-up questions:**
 
 - Why might recall matter more than the first relevant rank for a question requiring multiple sources?
@@ -173,6 +182,22 @@ Use an explicit rubric, relevant evidence, and a fixed judge configuration. Vali
 
 **Example:**
 Grade the same answer pair in both orders and investigate inconsistent preferences.
+
+**Visual: Calibrate a model judge**
+
+```mermaid
+flowchart TD
+    accTitle: Calibrate a model judge
+    accDescr: A rubric and blinded answers produce judge scores that are checked against independent human labels.
+    Rubric["Explicit rubric"] --> Judge["Versioned model judge"]
+    Answers["Blinded answers; vary presentation order"] --> Judge
+    Answers --> Human["Independent human labels"]
+    Judge --> Compare["Inspect agreement and bias by slice"]
+    Human --> Compare
+    Compare --> Decision["Revise or accept judge for this task"]
+```
+
+Agreement on representative cases is evidence about this judge and task, not proof that model grading is universally reliable. Concept reference: [Zheng et al.: LLM-as-a-judge](https://arxiv.org/abs/2306.05685).
 
 **Follow-up questions:**
 
@@ -287,6 +312,23 @@ Track task outcomes, sampled quality judgments, errors, latency, and relevant in
 
 **Example:**
 A corpus update introduces documents in a new format; monitoring detects missing citations even though the previous offline suite still passes.
+
+**Visual: Offline checks and online evidence**
+
+```mermaid
+flowchart TD
+    accTitle: Offline checks and online evidence
+    accDescr: Offline gates precede a canary; verified production failures inform development without consuming the final holdout.
+    Candidate["Versioned candidate"] --> Offline["Offline quality and policy gates"]
+    Offline -->|Pass| Canary["Canary versus control"]
+    Canary --> Monitor["Monitor quality, latency and cost"]
+    Monitor --> Decision{"Acceptable?"}
+    Decision -->|Yes| Expand["Expand rollout"]
+    Decision -->|No| Rollback["Stop or roll back"]
+    Monitor --> Review["Review incidents for regression cases"]
+```
+
+Canarying tests production behavior. Route reviewed incidents into development regression coverage while preserving an independent final evaluation set. Concept reference: [Google SRE: canary releases](https://sre.google/workbook/canarying-releases/).
 
 **Follow-up questions:**
 

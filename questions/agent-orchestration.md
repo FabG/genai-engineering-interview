@@ -71,6 +71,21 @@ Represent a plan as a versioned dependency graph. Each task needs an owner, inpu
 **Example:**
 After agreeing on a response schema, assign implementation and client updates separately. A schema revision invalidates dependent work until compatibility is checked.
 
+**Visual: Parallelize independent tasks**
+
+```mermaid
+flowchart TD
+    accTitle: Parallelize independent tasks
+    accDescr: Independent implementation tasks join at a verification step once their shared contract is fixed.
+    Contract["Agree shared contract"] --> API["Implement API"]
+    Contract --> Client["Implement client"]
+    API --> Join["Verify integrated result"]
+    Client --> Join
+    Join --> Review["Review evidence"]
+```
+
+This is an illustrative task graph: parallel work is appropriate only when dependencies and output contracts permit it. Concept reference: [Anthropic: agent and workflow patterns](https://www.anthropic.com/engineering/building-effective-agents).
+
 **Follow-up questions:**
 
 - How would you identify the critical path before adding workers?
@@ -162,6 +177,23 @@ Checkpoint at meaningful boundaries and retain the configuration needed to inter
 
 **Example:**
 After a scheduler restart, completed build artifacts remain accepted, an expired coding lease is reassigned, and a pending deployment is reconciled with the deployment service.
+
+**Visual: Durable orchestration state**
+
+```mermaid
+flowchart LR
+    accTitle: Durable orchestration state
+    accDescr: A coordinator records tasks and checkpoints; replacement workers resume from committed state.
+    Coordinator["Coordinator"] --> Store[("Tasks and checkpoints")]
+    Coordinator --> Worker["Worker attempt"]
+    Worker --> Commit["Commit result with attempt identity"]
+    Commit --> Store
+    Store --> Resume["Recover unfinished task"]
+    Resume --> Replacement["Replacement worker"]
+    Replacement --> Commit
+```
+
+This is a design sketch, not a framework guarantee. Reject stale attempts and reconcile external side effects; recovered state alone does not prevent duplicate actions. Concept reference: [LangGraph: persistence](https://docs.langchain.com/oss/python/langgraph/persistence); [AWS: idempotent APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 
 **Follow-up questions:**
 

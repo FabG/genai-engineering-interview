@@ -164,6 +164,23 @@ Requests have different costs, so consider token limits and per-tenant budgets a
 **Example:**
 During a traffic spike, enforce bounded queues and explicit overload responses rather than accepting every request into an indefinitely growing queue.
 
+**Visual: Bound load before expensive work**
+
+```mermaid
+flowchart TD
+    accTitle: Bound load before expensive work
+    accDescr: Admission and concurrency limits keep queues bounded; overload is explicitly rejected or deferred.
+    Request["Authenticated request"] --> Admit{"Quota and capacity available?"}
+    Admit -->|No| Reject["Reject or defer per contract"]
+    Admit -->|Yes| Queue["Bounded queue with deadline"]
+    Queue --> Slot{"Slot before deadline?"}
+    Slot -->|No| Reject
+    Slot -->|Yes| Infer["Run inference"]
+    Infer --> Meter["Release capacity and record usage"]
+```
+
+Queue length, deadline, and concurrency limits constrain different resources. Unbounded retries can turn rejected load into more overload. Concept reference: [Google SRE: handling overload](https://sre.google/sre-book/handling-overload/).
+
 **Follow-up questions:**
 
 - How would you keep one tenant's long-running requests from starving everyone else?
@@ -208,6 +225,22 @@ The release includes model revision, tokenizer, prompt, tool schemas, retrieval 
 
 **Example:**
 A new embedding model uses a separately built index; switching back restores the previous compatible model-index pair.
+
+**Visual: Release a versioned configuration**
+
+```mermaid
+flowchart TD
+    accTitle: Release a versioned configuration
+    accDescr: An offline-approved configuration goes to a canary, then expands or rolls back according to measured outcomes.
+    Bundle["Model, prompt, retrieval and policy versions"] --> Gate["Offline release gate"]
+    Gate -->|Pass| Canary["Limited canary traffic"]
+    Canary --> Compare{"Quality and SLOs acceptable?"}
+    Compare -->|Yes| Expand["Expand in stages"]
+    Compare -->|No| Rollback["Restore compatible known-good bundle"]
+    Expand --> Monitor["Continue monitoring"]
+```
+
+Define stop conditions and verify rollback compatibility before rollout. A model-only rollback may leave an incompatible prompt or index in place. Concept reference: [Google SRE: canary releases](https://sre.google/workbook/canarying-releases/).
 
 **Follow-up questions:**
 

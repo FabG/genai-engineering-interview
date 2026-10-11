@@ -140,6 +140,28 @@ Scaled dot-product attention is `softmax(QKᵀ / √d_k + M)V`, where `d_k` is t
 **Example:**
 When predicting a continuation after “The cat slept because it,” attention can incorporate earlier words such as “cat.”
 
+**Visual: One attention head**
+
+```mermaid
+flowchart LR
+    accTitle: One attention head
+    accDescr: Queries and keys produce masked weights that mix values.
+    X["Token representations"] --> Q["Q projection"]
+    X --> K["K projection"]
+    X --> V["V projection"]
+    Q --> Scores["QKᵀ / √d_k + mask"]
+    K --> Scores
+    Scores --> Weights["Row-wise softmax"]
+    Weights --> Mix["Weighted sum of V"]
+    V --> Mix
+```
+
+This shows one head; a full attention layer combines multiple heads and applies an output projection. Concept reference: [Vaswani et al.: Attention Is All You Need](https://arxiv.org/abs/1706.03762).
+
+![Causal attention mask for four token positions: each query can attend to itself and earlier positions; future positions are blocked.](../assets/diagrams/causal-attention.svg)
+
+The cells show **allowed connections, not learned attention weights**. Masked future positions receive zero attention probability after softmax. Concept reference: [Vaswani et al.: Attention Is All You Need](https://arxiv.org/abs/1706.03762).
+
 **Follow-up questions:**
 
 - Why divide attention scores by the square root of the key dimension?
@@ -393,6 +415,23 @@ For a causal transformer, later tokens do not change earlier tokens' representat
 
 **Example:**
 After processing a long prompt, the model reuses its cached keys and values when generating each answer token.
+
+**Visual: Prefill and cached decoding**
+
+```mermaid
+flowchart TD
+    accTitle: Prefill and cached decoding
+    accDescr: Prefill processes the prompt; decoding adds one token at a time and reuses cached keys and values.
+    Prompt["Prompt tokens"] --> Prefill["Prefill: process prompt and store K/V"]
+    Prefill --> Select["Select next token"]
+    Select --> Stop{"Stop token or limit?"}
+    Stop -->|Yes| Done["Return completion"]
+    Stop -->|No| Decode["Process selected token using past K/V"]
+    Decode --> Append["Append its K/V to cache"]
+    Append --> Select
+```
+
+The cache stores attention keys and values at each layer. It saves recomputation; it does not extend the model’s supported context window. Concept reference: [Hugging Face: KV caching](https://huggingface.co/docs/transformers/cache_explanation).
 
 **Follow-up questions:**
 

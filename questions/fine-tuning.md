@@ -56,6 +56,19 @@ These stages can be combined, but each requires evaluation. Domain exposure alon
 **Example:**
 Adapt to a technical corpus, train on support answers, then refine responses using quality comparisons.
 
+**Visual: Different data for different objectives**
+
+```mermaid
+flowchart LR
+    accTitle: Different data for different objectives
+    accDescr: Continued pretraining, supervised fine-tuning, and preference optimization consume different training signals.
+    Corpus["Domain text"] --> CPT["Continued pretraining: token prediction"]
+    Examples["Instructions and desired responses"] --> SFT["SFT: imitate target responses"]
+    Pairs["Preferred and rejected responses"] --> Preference["Preference optimization: favor preferred outputs"]
+```
+
+These are alternative or composable adaptation stages, not a mandatory sequence. The desired behavior determines the data and objective. The preference branch illustrates pair-based methods such as DPO. Concept references: [Gururangan et al.: domain-adaptive pretraining](https://arxiv.org/abs/2004.10964); [Hugging Face: supervised fine-tuning](https://huggingface.co/docs/trl/sft_trainer); [Rafailov et al.: DPO](https://arxiv.org/abs/2305.18290).
+
 **Follow-up questions:**
 
 - Why might training on raw manuals fail to teach the desired support-answer format?
@@ -147,6 +160,23 @@ For a weight `W` of shape `d_out × d_in`, standard LoRA uses `W + (alpha / r)BA
 
 **Example:**
 For a `4096 × 4096` weight and rank 8, the two adapter matrices contain 65,536 parameters rather than 16,777,216 in the original weight.
+
+**Visual: LoRA adds a low-rank update**
+
+```mermaid
+flowchart LR
+    accTitle: LoRA adds a low-rank update
+    accDescr: A frozen weight matrix and a trainable low-rank branch produce outputs that are added together.
+    X["Input x: d_in"] --> W["Frozen W: d_out × d_in"]
+    X --> A["Trainable A: r × d_in"]
+    A --> B["Trainable B: d_out × r"]
+    B --> Scale["Scale by alpha / r"]
+    Scale --> Sum["Add branch outputs"]
+    W --> Sum
+    Sum --> Y["Output: d_out"]
+```
+
+For the original LoRA scaling, `y = Wx + (alpha / r)BAx`. This layer trains `r × (d_in + d_out)` adapter parameters; biases and other trainable modules are omitted. Concept reference: [Hu et al.: LoRA](https://arxiv.org/abs/2106.09685).
 
 **Follow-up questions:**
 

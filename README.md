@@ -22,7 +22,26 @@ A growing collection of questions and answers for conducting and preparing for G
 - [GenAI evaluation questions](questions/evaluation.md): 12 questions covering datasets, retrieval and answer metrics, model judges, human review, experiments, robustness, and production monitoring.
 - [Production engineering questions](questions/production-engineering.md): 12 questions covering deployment, service objectives, inference performance, caching, overload, retries, releases, observability, security, and cost.
 
-All question banks include short answers, explanations, practical examples, follow-up questions, and references.
+All question banks include short answers, explanations, practical examples, follow-up questions, and references. Selected answers also include original diagrams and worked visual examples, with supporting sources linked beside them.
+
+## Visual Study Guide
+
+Use these visuals to practice explaining a system or concept before reading the full answer:
+
+| Topic | Visuals to study |
+| --- | --- |
+| [AI foundations](questions/ai-foundations.md#data-and-validation) | Training-only preprocessing (Q6); confusion matrix (Q19) |
+| [LLM foundations](questions/genai-foundations.md#transformer-architecture) | Attention head and causal mask (Q6); prefill and decoding (Q17) |
+| [RAG](questions/rag.md#architecture-and-data) | Ingestion and answering paths (Q2); hybrid retrieval (Q5) |
+| [Prompt engineering](questions/prompt-engineering.md#outputs-and-workflows) | Output validation (Q4); data and authority boundaries (Q10) |
+| [Agents](questions/agents.md#architecture-and-tools) | Tool-use loop (Q2); recovery after an ambiguous write (Q7) |
+| [Agent orchestration](questions/agent-orchestration.md#architecture-and-decomposition) | Parallel task graph (Q3); durable state (Q7) |
+| [Software factory](questions/software-factory.md#implementation-and-verification) | Integration queue (Q6); release provenance (Q8) |
+| [Fine-tuning](questions/fine-tuning.md#goals-and-training-data) | Training objectives (Q2); LoRA branches and dimensions (Q6) |
+| [Evaluation](questions/evaluation.md#component-and-answer-quality) | Ranked retrieval example (Q4); judge calibration (Q7); offline and online checks (Q12) |
+| [Production engineering](questions/production-engineering.md#reliability-and-releases) | Overload control (Q7); staged release (Q9) |
+
+Diagrams use [Mermaid, which GitHub renders directly](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams). In other Markdown viewers, enable Mermaid support to see the diagrams. The [SVG illustrations](assets/diagrams/README.md) also open independently. Visuals simplify the concepts; the surrounding answers describe assumptions and limitations. Web references support the concepts, and third-party figures have not been copied into the repository.
 
 ## System Design Scenarios
 
@@ -80,6 +99,9 @@ Use this template when adding a question:
 **Example:**
 [A practical scenario, code snippet, or design sketch, where helpful.]
 
+**Visual (optional):**
+[An original Mermaid diagram or accessible local image, with a caption and concept reference.]
+
 **Follow-up questions:**
 - [A question that explores the topic more deeply.]
 
@@ -123,7 +145,7 @@ Use this template when adding a question:
 
 ## Contributing
 
-Add new questions, improve existing explanations, or suggest missing topics. Keep answers clear, technically accurate, and supported by reliable references. Call out assumptions and distinguish general principles from behavior specific to a model or tool.
+Add new questions, improve existing explanations, or suggest missing topics. Keep answers clear, technically accurate, and supported by reliable references. Call out assumptions and distinguish general principles from behavior specific to a model or tool. For diagrams, include descriptive labels, a short explanation, and a primary source for the concept; label illustrative architectures as examples. Add alt text to images and `accTitle` / `accDescr` to Mermaid diagrams.
 
 ## License
 

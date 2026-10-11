@@ -139,6 +139,23 @@ A clean text merge does not establish behavioral compatibility. Use a merge queu
 **Example:**
 Two individually passing patches change a job-state enum and a UI switch statement. Their combined integration test fails, so the queue blocks the release until the contract is reconciled.
 
+**Visual: Verify the integrated candidate**
+
+```mermaid
+flowchart TD
+    accTitle: Verify the integrated candidate
+    accDescr: A merge queue checks changes against the current target branch and earlier queued changes.
+    A["Change A"] --> Queue["Integration queue"]
+    B["Change B"] --> Queue
+    Main["Latest target branch"] --> Candidate["Temporary integrated candidate"]
+    Queue --> Candidate
+    Candidate --> Checks{"Required checks pass?"}
+    Checks -->|Yes| Merge["Merge verified candidate"]
+    Checks -->|No| Repair["Remove or repair failing change"]
+```
+
+Isolated branch checks can miss interactions. Rebuild the candidate when relevant queued changes or the target branch change. Concept reference: [GitHub: merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue).
+
 **Follow-up questions:**
 
 - How would you coordinate a feature spanning multiple repositories that cannot merge atomically?
@@ -184,6 +201,25 @@ Record model and tool configurations for diagnosis, but do not promise identical
 
 **Example:**
 An incident responder starts with a container digest and finds the exact source revision, checks, reviewer decision, and business request that produced it.
+
+**Visual: Trace a release to its evidence**
+
+```mermaid
+flowchart TD
+    accTitle: Trace a release to its evidence
+    accDescr: Intent, revisions, build provenance, verification, and approval connect to the same released artifact.
+    Intent["Versioned intent"] --> Commit["Source revision"]
+    Commit --> Build["Build with recorded inputs"]
+    Build --> Artifact["Artifact digest"]
+    Build --> Provenance["Build provenance"]
+    Artifact --> Verify["Verification evidence"]
+    Verify --> Approval["Approval bound to digest"]
+    Provenance --> Release["Release record"]
+    Approval --> Release
+    Artifact --> Release
+```
+
+This repository’s example extends build provenance with intent, verification, and approval records. SLSA provenance describes the build; it does not establish that the product meets business requirements. Concept reference: [SLSA: build provenance](https://slsa.dev/spec/v1.2/build-provenance).
 
 **Follow-up questions:**
 

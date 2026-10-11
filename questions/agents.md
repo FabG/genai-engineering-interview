@@ -49,6 +49,23 @@ ReAct is a research pattern that interleaves reasoning and actions with observat
 **Example:**
 An assistant requests an order lookup, receives the record from the application, and then reports the observed shipment status.
 
+**Visual: A bounded tool-use loop**
+
+```mermaid
+flowchart TD
+    accTitle: A bounded tool-use loop
+    accDescr: The model proposes a tool call; the application checks and executes it, then supplies the observation.
+    State["Task and current observations"] --> Model["Model chooses next step"]
+    Model -->|Final answer| Verify["Verify outcome and finish"]
+    Model -->|Tool proposal| Gate{"Allowed and within budget?"}
+    Gate -->|Yes| Tool["Execute validated tool call"]
+    Tool --> Observe["Record observation"]
+    Observe --> State
+    Gate -->|No| Stop["Stop or escalate"]
+```
+
+Application code owns limits and authorization. A fluent final response alone is not proof that the task succeeded. Concept reference: [Anthropic: agent and workflow patterns](https://www.anthropic.com/engineering/building-effective-agents).
+
 **Follow-up questions:**
 
 - How would you prevent the agent from claiming success after a failed tool call?
@@ -160,6 +177,26 @@ Checkpoint task state, tool outcomes, and pending decisions. Resumption semantic
 
 **Example:**
 After a worker restarts, resume from a saved document-analysis result while verifying whether a previously requested external update completed.
+
+**Visual: Recovery after an ambiguous write**
+
+```mermaid
+sequenceDiagram
+    accTitle: Recovery after an ambiguous write
+    accDescr: A persisted operation ID lets recovery reconcile a write whose response was lost.
+    participant W as Worker
+    participant S as Durable state
+    participant T as External service
+    W->>S: Persist intent and operation ID
+    W->>T: Write using operation ID
+    Note over W,T: Response lost and worker restarts
+    W->>S: Read pending operation
+    W->>T: Reconcile status or retry same ID
+    T-->>W: Authoritative outcome
+    W->>S: Persist confirmed result
+```
+
+This example requires the external service to support status reconciliation or suitable idempotency semantics. Saving a checkpoint does not make arbitrary side effects exactly once. Concept reference: [LangGraph: persistence](https://docs.langchain.com/oss/python/langgraph/persistence); [AWS: idempotent APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 
 **Follow-up questions:**
 

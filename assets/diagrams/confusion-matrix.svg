@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="510" viewBox="0 0 880 510" role="img" aria-labelledby="title desc">
+<title id="title">Confusion matrix: precision versus recall</title>
+<desc id="desc">Rows are actual classes and columns are predicted classes. TP is 8, FN is 4, FP is 2, TN is 86. Precision uses TP and FP; recall uses TP and FN.</desc>
+<rect width="880" height="510" rx="16" fill="#f8fafc"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="32" y="43" font-size="26" fill="#24364b" text-anchor="start" font-weight="700">Precision and recall count different groups</text>
+<text x="32" y="73" font-size="17" fill="#52647a" text-anchor="start" font-weight="400">A hypothetical classifier on 100 cases</text>
+<text x="406" y="122" font-size="19" fill="#24364b" text-anchor="middle" font-weight="700">Predicted positive</text>
+<text x="670" y="122" font-size="19" fill="#24364b" text-anchor="middle" font-weight="700">Predicted negative</text>
+<text x="218" y="214" font-size="18" fill="#24364b" text-anchor="end" font-weight="700">Actual positive</text>
+<text x="218" y="329" font-size="18" fill="#24364b" text-anchor="end" font-weight="700">Actual negative</text>
+<rect x="250" y="144" width="248" height="103" rx="12" fill="#d4f0e9"/>
+<text x="374" y="189" font-size="34" fill="#24364b" text-anchor="middle" font-weight="700">8</text>
+<text x="374" y="222" font-size="17" fill="#24364b" text-anchor="middle" font-weight="400">True positives</text>
+<rect x="514" y="144" width="248" height="103" rx="12" fill="#ffebd0"/>
+<text x="638" y="189" font-size="34" fill="#24364b" text-anchor="middle" font-weight="700">4</text>
+<text x="638" y="222" font-size="17" fill="#24364b" text-anchor="middle" font-weight="400">False negatives</text>
+<rect x="250" y="259" width="248" height="103" rx="12" fill="#ffebd0"/>
+<text x="374" y="304" font-size="34" fill="#24364b" text-anchor="middle" font-weight="700">2</text>
+<text x="374" y="337" font-size="17" fill="#24364b" text-anchor="middle" font-weight="400">False positives</text>
+<rect x="514" y="259" width="248" height="103" rx="12" fill="#d4f0e9"/>
+<text x="638" y="304" font-size="34" fill="#24364b" text-anchor="middle" font-weight="700">86</text>
+<text x="638" y="337" font-size="17" fill="#24364b" text-anchor="middle" font-weight="400">True negatives</text>
+<rect x="32" y="388" width="392" height="82" rx="12" fill="#e3edfc"/>
+<rect x="440" y="388" width="408" height="82" rx="12" fill="#e3edfc"/>
+<text x="48" y="418" font-size="20" fill="#24364b" text-anchor="start" font-weight="700">Precision = 8 / (8 + 2) = 80%</text>
+<text x="48" y="446" font-size="17" fill="#24364b" text-anchor="start" font-weight="400">Among predicted positives</text>
+<text x="456" y="418" font-size="20" fill="#24364b" text-anchor="start" font-weight="700">Recall = 8 / (8 + 4) ≈ 67%</text>
+<text x="456" y="446" font-size="17" fill="#24364b" text-anchor="start" font-weight="400">Among actual positives</text>
+</g>
+</svg>

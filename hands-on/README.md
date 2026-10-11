@@ -20,6 +20,15 @@ Use Python 3.10 or newer. Exercise code uses only the standard library and runs 
 
 Exercises 1–3 are suitable for an initial coding screen; 4–8 add intermediate design and debugging discussion. Allow approximately 15–30 minutes per exercise, including tests and explanation. They can be attempted independently after running the shared setup cell.
 
+## Visual preparation
+
+The diagrams in the question banks provide context for the notebook exercises:
+
+- **Exercises 1–2:** [Data leakage prevention](../questions/ai-foundations.md#data-and-validation) and the [confusion matrix](../questions/ai-foundations.md#evaluation-and-production).
+- **Exercises 3–4:** [RAG ingestion and retrieval](../questions/rag.md#architecture-and-data).
+- **Exercises 5–6:** [Ranked retrieval metrics](../questions/evaluation.md#component-and-answer-quality) and [structured-response validation](../questions/prompt-engineering.md#outputs-and-workflows).
+- **Exercises 7–8:** [Retry and cache concepts](../questions/production-engineering.md), including the overload-control diagram that explains why retries need a budget.
+
 ## Run locally
 
 If you already have a notebook environment, select a compatible Python kernel and open the questions notebook. For a new JupyterLab environment, run these commands from the repository root:

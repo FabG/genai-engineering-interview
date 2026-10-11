@@ -140,6 +140,23 @@ Examples include future-derived features, overlapping entities across inappropri
 **Example:**
 Using a cancellation date to predict whether an active customer will cancel leaks information from the outcome.
 
+**Visual: Fit only on training data**
+
+```mermaid
+flowchart TD
+    accTitle: Fit only on training data
+    accDescr: Training fits preprocessing; validation and test data only use the fitted transform.
+    Split["Split by group or time when needed"] --> Train["Training partition"]
+    Split --> Held["Validation / test partition"]
+    Train --> Fit["Fit preprocessing and model"]
+    Fit --> Frozen["Fitted pipeline"]
+    Held --> Predict["Transform and predict only"]
+    Frozen --> Predict
+    Predict --> Score["Score on held-out labels"]
+```
+
+Within cross-validation, repeat fitting inside each training fold. Use validation results for selection; reserve the test set for the final assessment. Concept reference: [scikit-learn: preventing data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage).
+
 **Follow-up questions:**
 
 - Can a transformation leak information even if it never uses target labels?
@@ -440,6 +457,12 @@ Choose metrics according to error costs. F1 ignores true negatives; zero denomin
 
 **Example:**
 For 8 true alerts, 2 false alerts, and 4 missed positives, precision is 80%, recall is about 67%, and F1 is about 73%.
+
+**Visual: Read the confusion matrix**
+
+![Confusion matrix: actual positives have 8 true positives and 4 false negatives; actual negatives have 2 false positives and 86 true negatives.](../assets/diagrams/confusion-matrix.svg)
+
+This extends the example with 86 true negatives: 100 cases total, 10 predicted positives, and 12 actual positives. Precision is `8/10`, recall is `8/12`, F1 is `16/22`, and accuracy is `94/100`. Concept reference: [Google: classification metrics](https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall).
 
 **Follow-up questions:**
 
