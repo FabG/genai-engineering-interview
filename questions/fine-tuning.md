@@ -1,6 +1,6 @@
 # Fine-Tuning Questions and Answers
 
-[Back to the README](../README.md) · [GenAI foundations](genai-foundations.md) · [RAG](rag.md) · [Agents](agents.md) · [Evaluation](evaluation.md)
+[Back to the README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [GenAI foundations](genai-foundations.md) · [RAG](rag.md) · [Agents](agents.md) · [Evaluation](evaluation.md)
 
 These questions cover adapting pretrained language models, from choosing an objective to evaluating and deploying the result. Examples are illustrative. Training formats, supported methods, and deployment behavior depend on the model and framework; avoid treating example settings as universal defaults.
 
@@ -20,6 +20,8 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 
 **Topic:** Adaptation choices
 **Difficulty:** Beginner
+
+**Key terms:** [Fine-tuning](../GLOSSARY.md#fine-tuning) · [Prompt and prompt engineering](../GLOSSARY.md#prompt-and-prompt-engineering) · [Retrieval-augmented generation (RAG)](../GLOSSARY.md#retrieval-augmented-generation-rag) · [Baseline](../GLOSSARY.md#baseline)
 
 **Short answer:**
 Consider fine-tuning when a pretrained model has a repeatable task or behavior gap and representative training examples are available. First establish prompt and retrieval baselines.
@@ -59,6 +61,8 @@ A support model may need tuning to emit a stable taxonomy, while current product
 
 **Topic:** Training objectives
 **Difficulty:** Intermediate
+
+**Key terms:** [Continued pretraining (CPT)](../GLOSSARY.md#continued-pretraining-cpt) · [Supervised fine-tuning (SFT)](../GLOSSARY.md#supervised-fine-tuning-sft) · [Direct preference optimization (DPO)](../GLOSSARY.md#direct-preference-optimization-dpo) · [RLHF and reward model](../GLOSSARY.md#rlhf-and-reward-model)
 
 **Short answer:**
 Continued pretraining learns from additional domain text, supervised fine-tuning (SFT) learns desired responses, and preference optimization learns from comparisons or reward signals.
@@ -121,6 +125,8 @@ A legal model can first adapt to contract language, then learn extraction respon
 **Topic:** Data quality
 **Difficulty:** Beginner
 
+**Key terms:** [Dataset and corpus](../GLOSSARY.md#dataset-and-corpus) · [Label and target](../GLOSSARY.md#label-and-target) · [Synthetic data](../GLOSSARY.md#synthetic-data) · [Data leakage](../GLOSSARY.md#data-leakage)
+
 **Short answer:**
 It should contain correct, consistent examples of the intended behavior across representative tasks and important edge cases.
 
@@ -159,6 +165,8 @@ Ten thousand near-identical generated emails may teach a narrow template better 
 
 **Topic:** Training examples
 **Difficulty:** Intermediate
+
+**Key terms:** [Chat template and message role](../GLOSSARY.md#chat-template-and-message-role) · [Loss masking and padding](../GLOSSARY.md#loss-masking-and-padding) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer)
 
 **Short answer:**
 Formatting defines the conversation structure, loss masking selects which tokens are training targets, and truncation determines which content survives preprocessing.
@@ -201,6 +209,8 @@ A long conversation may be truncated just before the assistant answer, yielding 
 **Topic:** PEFT
 **Difficulty:** Beginner
 
+**Key terms:** [Fine-tuning](../GLOSSARY.md#fine-tuning) · [Parameter-efficient fine-tuning (PEFT)](../GLOSSARY.md#parameter-efficient-fine-tuning-peft) · [Adapter](../GLOSSARY.md#adapter)
+
 **Short answer:**
 Full fine-tuning updates all model parameters. Parameter-efficient fine-tuning (PEFT) updates a smaller subset or added parameters while freezing most of the pretrained model.
 
@@ -240,8 +250,10 @@ A team can train several task adapters sharing one base checkpoint instead of st
 **Topic:** Low-rank adaptation
 **Difficulty:** Intermediate
 
+**Key terms:** [Low-rank adaptation (LoRA)](../GLOSSARY.md#low-rank-adaptation-lora) · [Matrix rank](../GLOSSARY.md#matrix-rank) · [Parameter and weight](../GLOSSARY.md#parameter-and-weight)
+
 **Short answer:**
-LoRA freezes an original weight matrix and learns an additive update represented by two smaller matrices. The rank limits the update's capacity.
+Low-rank adaptation (LoRA) freezes a base weight matrix and learns an additive update factored into two smaller matrices. Its rank limits the update’s representational capacity and determines its trainable parameter count.
 
 **Long answer:**
 For a weight `W` of shape `d_out × d_in`, standard LoRA uses `W + (alpha / r)BA`, with `A` shaped `r × d_in` and `B` shaped `d_out × r`. The update has `r(d_in + d_out)` parameters. Rank, scaling, and target layers affect quality and cost; higher rank is not a guaranteed improvement.
@@ -302,6 +314,8 @@ An adapter targeting only attention projections can behave differently from one 
 **Topic:** Memory-efficient adaptation
 **Difficulty:** Intermediate
 
+**Key terms:** [QLoRA and NF4](../GLOSSARY.md#qlora-and-nf4) · [Low-rank adaptation (LoRA)](../GLOSSARY.md#low-rank-adaptation-lora) · [Numerical precision and quantization](../GLOSSARY.md#numerical-precision-and-quantization) · [QLoRA and NF4](../GLOSSARY.md#qlora-and-nf4)
+
 **Short answer:**
 QLoRA trains low-rank adapters through a frozen quantized base model. Quantization alone changes numerical representation; it does not teach new task behavior.
 
@@ -343,8 +357,10 @@ A four-bit base may make adapter training fit on available hardware, yet merging
 **Topic:** Training configuration
 **Difficulty:** Intermediate
 
+**Key terms:** [Batch size and epoch](../GLOSSARY.md#batch-size-and-epoch) · [Gradient accumulation](../GLOSSARY.md#gradient-accumulation) · [Activation checkpointing](../GLOSSARY.md#activation-checkpointing) · [Optimizer and momentum](../GLOSSARY.md#optimizer-and-momentum)
+
 **Short answer:**
-Understand learning rate, training duration, effective batch size, sequence length, precision, and checkpointing, then tune them against validation results and hardware limits.
+Track learning rate, training duration, effective batch size, sequence length, and numerical precision. Activation checkpointing saves memory by recomputing intermediate activations; it differs from saving a model checkpoint for recovery.
 
 **Long answer:**
 In ordinary data-parallel training, effective batch size is per-device batch size times device count times gradient-accumulation steps. Accumulation enables more examples per optimizer update without a larger microbatch. Activation checkpointing reduces stored activations by recomputing them during backward passes. These techniques trade memory against runtime; they do not replace data quality or validation.
@@ -381,6 +397,8 @@ Reducing microbatch size may resolve an out-of-memory error, while an exceptiona
 
 **Topic:** Generalization and regression
 **Difficulty:** Intermediate
+
+**Key terms:** [Variance and overfitting](../GLOSSARY.md#variance-and-overfitting) · [Catastrophic forgetting](../GLOSSARY.md#catastrophic-forgetting) · [Early stopping](../GLOSSARY.md#early-stopping)
 
 **Short answer:**
 Overfitting means adapting too closely to training examples and generalizing poorly. Catastrophic forgetting means losing previously useful capabilities while learning new behavior.
@@ -421,8 +439,10 @@ A medical-format adapter can improve structured notes while degrading general in
 **Topic:** Preference optimization
 **Difficulty:** Advanced
 
+**Key terms:** [Direct preference optimization (DPO)](../GLOSSARY.md#direct-preference-optimization-dpo) · [RLHF and reward model](../GLOSSARY.md#rlhf-and-reward-model) · [RLHF and reward model](../GLOSSARY.md#rlhf-and-reward-model) · [Policy and return](../GLOSSARY.md#policy-and-return)
+
 **Short answer:**
-Direct Preference Optimization (DPO) trains on preferred and dispreferred responses directly. A classic RLHF pipeline trains a reward model and then optimizes a policy with reinforcement learning.
+Direct preference optimization (DPO) trains on preferred/rejected response pairs using a reference policy. A classic reinforcement learning from human feedback (RLHF) pipeline instead fits a reward model and uses reinforcement learning to optimize a policy against it.
 
 **Long answer:**
 Standard DPO uses response likelihood ratios relative to a reference policy to learn from comparisons, without a separate reward model or an online rollout loop during that optimization. Preference labels can encode verbosity or other shortcuts instead of correctness. Check pair quality and evaluate whether the resulting behavior matches the intended criteria.
@@ -463,6 +483,8 @@ Preference pairs favoring elaborate explanations can improve perceived helpfulne
 **Topic:** Model comparison
 **Difficulty:** Intermediate
 
+**Key terms:** [Paired comparison](../GLOSSARY.md#paired-comparison) · [Test set](../GLOSSARY.md#test-set) · [Baseline](../GLOSSARY.md#baseline) · [Catastrophic forgetting](../GLOSSARY.md#catastrophic-forgetting)
+
 **Short answer:**
 Compare the adapted model against meaningful baselines on held-out tasks, including target behavior, retained capabilities, reliability, and operational cost.
 
@@ -501,6 +523,8 @@ A tuned model improves average extraction accuracy but begins inventing values f
 
 **Topic:** Artifacts and deployment
 **Difficulty:** Advanced
+
+**Key terms:** [Checkpoint](../GLOSSARY.md#checkpoint) · [Adapter](../GLOSSARY.md#adapter) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer) · [Numerical precision and quantization](../GLOSSARY.md#numerical-precision-and-quantization)
 
 **Short answer:**
 Preserve the exact base-model revision, adapted weights, tokenizer, chat template, configuration, and evaluation results needed to reproduce the deployed behavior.
@@ -545,6 +569,8 @@ Use the [evaluation question bank](evaluation.md) to design comparisons for thes
 
 **Topic:** Model compression
 **Difficulty:** Intermediate
+
+**Key terms:** [Knowledge distillation](../GLOSSARY.md#knowledge-distillation) · [Numerical precision and quantization](../GLOSSARY.md#numerical-precision-and-quantization) · [Fine-tuning](../GLOSSARY.md#fine-tuning)
 
 **Short answer:**
 Distillation trains a student using teacher-provided targets; quantization reduces numerical precision, while fine-tuning adapts parameters to a training objective.

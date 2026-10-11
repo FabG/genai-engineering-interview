@@ -1,6 +1,6 @@
 # Foundational AI and Machine Learning Questions and Answers
 
-[Back to the README](../README.md) · [Next: GenAI and LLM foundations](genai-foundations.md)
+[Back to the README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [Next: GenAI and LLM foundations](genai-foundations.md)
 
 This section covers traditional machine learning before moving into GenAI. Engineers can practice the short answers aloud; interviewers can use the explanations and follow-ups to explore reasoning and practical judgment. Examples are illustrative. These answers are reference points, not a rigid scoring rubric.
 
@@ -22,8 +22,10 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 **Topic:** AI basics
 **Difficulty:** Beginner
 
+**Key terms:** [Artificial intelligence (AI)](../GLOSSARY.md#artificial-intelligence-ai) · [Machine learning (ML)](../GLOSSARY.md#machine-learning-ml) · [Deep learning (DL)](../GLOSSARY.md#deep-learning-dl) · [Generative AI (GenAI)](../GLOSSARY.md#generative-ai-genai)
+
 **Short answer:**
-Artificial intelligence is the broad field of building systems that perform tasks associated with intelligence. Machine learning is an approach within AI that learns from data. Deep learning uses neural networks with multiple layers.
+Artificial intelligence (AI) is the field of building systems that perform tasks associated with intelligence. Machine learning (ML) learns patterns from data. Deep learning (DL) is ML using neural networks with multiple processing layers.
 
 **Long answer:**
 AI also includes approaches such as rule-based reasoning and search. Traditional ML includes linear models, decision trees, and other methods that do not require deep networks. Deep learning can support classification, regression, and generation; it is not synonymous with GenAI.
@@ -60,6 +62,8 @@ For invoice processing, use a deterministic rule to check totals, an ML classifi
 
 **Topic:** Learning paradigms
 **Difficulty:** Beginner
+
+**Key terms:** [Supervised learning](../GLOSSARY.md#supervised-learning) · [Unsupervised learning](../GLOSSARY.md#unsupervised-learning) · [Reinforcement learning (RL)](../GLOSSARY.md#reinforcement-learning-rl) · [Self-supervised learning](../GLOSSARY.md#self-supervised-learning)
 
 **Short answer:**
 Supervised learning uses input-target examples. Unsupervised learning discovers structure without target labels. Reinforcement learning trains an agent to choose actions using rewards from interaction with an environment.
@@ -99,6 +103,8 @@ A thermostat can predict tomorrow's demand with supervised learning, cluster hou
 
 **Topic:** Supervised learning
 **Difficulty:** Beginner
+
+**Key terms:** [Classification](../GLOSSARY.md#classification) · [Regression](../GLOSSARY.md#regression) · [Label and target](../GLOSSARY.md#label-and-target)
 
 **Short answer:**
 Classification predicts a category; regression predicts a numerical quantity.
@@ -141,6 +147,8 @@ A hospital occupancy forecast predicts bed counts, while an alert predicts wheth
 **Topic:** Dataset splits
 **Difficulty:** Beginner
 
+**Key terms:** [Training set](../GLOSSARY.md#training-set) · [Validation set](../GLOSSARY.md#validation-set) · [Test set](../GLOSSARY.md#test-set) · [Group split](../GLOSSARY.md#group-split)
+
 **Short answer:**
 Training data fits the model, validation data guides model selection, and test data estimates performance after those choices are finalized.
 
@@ -180,6 +188,8 @@ For medical images, hold out patients rather than individual scans. Otherwise an
 **Topic:** Model selection
 **Difficulty:** Intermediate
 
+**Key terms:** [Cross-validation (CV)](../GLOSSARY.md#cross-validation-cv) · [Nested cross-validation](../GLOSSARY.md#nested-cross-validation) · [Hyperparameter](../GLOSSARY.md#hyperparameter) · [Preprocessing pipeline](../GLOSSARY.md#preprocessing-pipeline)
+
 **Short answer:**
 Cross-validation repeatedly fits and evaluates a model on different training-validation partitions. It helps compare hyperparameter settings without relying on one split.
 
@@ -218,6 +228,8 @@ When comparing two fraud models, use the same time-aware folds for both. This ma
 
 **Topic:** Evaluation integrity
 **Difficulty:** Intermediate
+
+**Key terms:** [Data leakage](../GLOSSARY.md#data-leakage) · [Temporal split](../GLOSSARY.md#temporal-split) · [Group split](../GLOSSARY.md#group-split)
 
 **Short answer:**
 Leakage occurs when model development uses information that would not legitimately be available for the prediction being evaluated, producing misleading performance estimates.
@@ -275,8 +287,10 @@ A churn model uses account-closure reason, a field populated after cancellation.
 **Topic:** Feature preparation
 **Difficulty:** Beginner
 
+**Key terms:** [Preprocessing pipeline](../GLOSSARY.md#preprocessing-pipeline) · [Feature scaling](../GLOSSARY.md#feature-scaling) · [Categorical encoding](../GLOSSARY.md#categorical-encoding) · [Imputation](../GLOSSARY.md#imputation)
+
 **Short answer:**
-Handle missing values, encode categories appropriately, and scale numerical features when the model is sensitive to magnitude or distance.
+Preprocessing converts raw inputs into model-ready features: imputation handles missing values, encoding represents categories, and scaling adjusts numeric magnitudes. Fit learned transformations on training data only.
 
 **Long answer:**
 Standardization subtracts a training-set mean and divides by its standard deviation; it does not make a distribution Gaussian. One-hot encoding avoids inventing an order among nominal categories. Scaling matters for methods such as k-nearest neighbors and SVMs, while conventional decision trees generally do not require it. Plan for unseen categories and missing inputs at inference.
@@ -315,6 +329,8 @@ A kNN model using income and age may mostly measure income distance unless featu
 
 **Topic:** Generalization
 **Difficulty:** Beginner
+
+**Key terms:** [Statistical bias](../GLOSSARY.md#statistical-bias) · [Variance and overfitting](../GLOSSARY.md#variance-and-overfitting) · [Irreducible noise](../GLOSSARY.md#irreducible-noise) · [Generalization](../GLOSSARY.md#generalization)
 
 **Short answer:**
 Underfitting misses useful patterns; overfitting captures training-specific patterns that generalize poorly. Bias describes systematic modeling error, while variance describes sensitivity to the sampled training data.
@@ -369,13 +385,15 @@ For squared-error regression: **expected error = bias² + variance + irreducible
 **Topic:** Complexity control
 **Difficulty:** Intermediate
 
+**Key terms:** [Regularization](../GLOSSARY.md#regularization) · [L1 and L2 penalties](../GLOSSARY.md#l1-and-l2-penalties) · [Feature scaling](../GLOSSARY.md#feature-scaling)
+
 **Short answer:**
 Regularization constrains model fitting to improve generalization. L1 penalizes absolute coefficient values; L2 penalizes squared coefficient values.
 
 **Long answer:**
 L1 can produce zero coefficients, yielding sparse models. L2 shrinks coefficients and can stabilize fits with correlated features. Penalty strength controls the tradeoff with data fit. Excessive regularization can underfit, and feature scaling affects coefficient penalties.
 
-Regularization adds a preference for simpler or smaller parameter configurations to the training objective. L1 penalizes absolute coefficients and can set some to zero; L2 penalizes squared coefficients and tends to distribute weight across correlated features. Feature scale matters because the same coefficient magnitude has different meanings in different units. Select penalty strength on validation data and distinguish regularization from early stopping, data augmentation, or adding more representative training examples.
+Regularization adds a preference for simpler or smaller parameter configurations to the training objective. L1 penalizes absolute coefficients and can set some to zero; L2 penalizes squared coefficients and tends to distribute weight across correlated features. Feature scale matters because the same coefficient magnitude has different meanings in different units. Select penalty strength on validation data. Penalty terms are one form of regularization; early stopping and data augmentation can also help generalization through different mechanisms, while additional representative data can reduce sampling uncertainty.
 
 **Metrics and checks:** A common objective is mean data loss plus lambda times the penalty. Larger lambda increases regularization in this convention; some libraries expose its inverse, so inspect the definition before comparing settings.
 
@@ -407,6 +425,8 @@ With hundreds of correlated sensor readings, ridge regression can stabilize coef
 
 **Topic:** Optimization
 **Difficulty:** Beginner
+
+**Key terms:** [Gradient descent](../GLOSSARY.md#gradient-descent) · [Gradient](../GLOSSARY.md#gradient) · [Learning rate (LR)](../GLOSSARY.md#learning-rate-lr) · [Optimizer and momentum](../GLOSSARY.md#optimizer-and-momentum)
 
 **Short answer:**
 Gradient descent updates parameters in the direction opposite the loss gradient: `parameters ← parameters − learning_rate × gradient`.
@@ -446,6 +466,8 @@ A model whose loss becomes nonfinite may need input checks, a lower learning rat
 
 **Topic:** Neural network basics
 **Difficulty:** Beginner
+
+**Key terms:** [Activation function](../GLOSSARY.md#activation-function) · [Neural network](../GLOSSARY.md#neural-network) · [Backpropagation](../GLOSSARY.md#backpropagation)
 
 **Short answer:**
 Nonlinear activations allow networks to represent nonlinear relationships. Stacking only affine layers is equivalent to a single affine transformation.
@@ -488,6 +510,8 @@ An XOR classifier cannot be represented by a single linear separator. A hidden l
 **Topic:** Linear models
 **Difficulty:** Beginner
 
+**Key terms:** [Linear regression](../GLOSSARY.md#linear-regression) · [Logistic regression](../GLOSSARY.md#logistic-regression) · [Decision threshold](../GLOSSARY.md#decision-threshold)
+
 **Short answer:**
 Linear regression predicts a numerical value. Binary logistic regression applies a sigmoid to a linear score to estimate a class probability.
 
@@ -527,6 +551,8 @@ Predicting a home's sale price is a regression task. Predicting whether it will 
 **Topic:** Decision trees
 **Difficulty:** Beginner
 
+**Key terms:** [Decision tree](../GLOSSARY.md#decision-tree) · [Impurity and Gini](../GLOSSARY.md#impurity-and-gini) · [Variance and overfitting](../GLOSSARY.md#variance-and-overfitting)
+
 **Short answer:**
 A decision tree recursively splits data using feature tests that improve a criterion such as class purity or regression error.
 
@@ -565,6 +591,8 @@ A loan tree may first split by debt ratio and then income, capturing an interact
 
 **Topic:** Ensemble learning
 **Difficulty:** Intermediate
+
+**Key terms:** [Random forest](../GLOSSARY.md#random-forest) · [Gradient boosting](../GLOSSARY.md#gradient-boosting) · [Ensemble and bagging](../GLOSSARY.md#ensemble-and-bagging) · [Ensemble and bagging](../GLOSSARY.md#ensemble-and-bagging)
 
 **Short answer:**
 Random forests combine randomized trees trained largely independently. Gradient boosting builds an additive model sequentially, with each new learner addressing the current loss.
@@ -611,6 +639,8 @@ The sketch shows the training dependency; random forests also randomize feature 
 **Topic:** Instance-based learning
 **Difficulty:** Beginner
 
+**Key terms:** [k-nearest neighbors (kNN)](../GLOSSARY.md#k-nearest-neighbors-knn) · [Feature scaling](../GLOSSARY.md#feature-scaling) · [Vector norm](../GLOSSARY.md#vector-norm)
+
 **Short answer:**
 k-nearest neighbors predicts from the labels or values of the k closest training examples, using voting for classification or averaging for regression.
 
@@ -649,6 +679,8 @@ A property-price estimator can average prices of nearby comparable homes. Geogra
 
 **Topic:** Margin-based learning
 **Difficulty:** Intermediate
+
+**Key terms:** [Support vector machine (SVM)](../GLOSSARY.md#support-vector-machine-svm) · [Kernel and RBF](../GLOSSARY.md#kernel-and-rbf) · [Kernel and RBF](../GLOSSARY.md#kernel-and-rbf) · [Feature scaling](../GLOSSARY.md#feature-scaling)
 
 **Short answer:**
 A support vector classifier seeks a decision boundary with a large margin while allowing penalized violations. A kernel computes similarities corresponding to an implicit feature space.
@@ -689,6 +721,8 @@ For a modest dataset of engineered medical measurements, an RBF SVM may capture 
 **Topic:** Unsupervised learning
 **Difficulty:** Beginner
 
+**Key terms:** [k-means](../GLOSSARY.md#k-means) · [Clustering](../GLOSSARY.md#clustering) · [Silhouette score](../GLOSSARY.md#silhouette-score)
+
 **Short answer:**
 k-means partitions data into k groups by minimizing the sum of squared distances from points to their assigned centroids.
 
@@ -727,6 +761,8 @@ Two concentric rings are poorly represented by centroid partitions. A customer-s
 
 **Topic:** Dimensionality reduction
 **Difficulty:** Intermediate
+
+**Key terms:** [Principal component analysis (PCA)](../GLOSSARY.md#principal-component-analysis-pca) · [Dimensionality reduction](../GLOSSARY.md#dimensionality-reduction) · [Covariance and correlation](../GLOSSARY.md#covariance-and-correlation) · [Eigenvalue and singular value](../GLOSSARY.md#eigenvalue-and-singular-value)
 
 **Short answer:**
 Principal component analysis (PCA) projects centered data onto orthogonal directions that capture the greatest variance, allowing a lower-dimensional representation.
@@ -774,6 +810,8 @@ Input variance is not necessarily useful signal for predicting a target. Concept
 
 **Topic:** Classification metrics
 **Difficulty:** Beginner
+
+**Key terms:** [Confusion matrix](../GLOSSARY.md#confusion-matrix) · [Accuracy](../GLOSSARY.md#accuracy) · [Precision and recall](../GLOSSARY.md#precision-and-recall) · [F1 score](../GLOSSARY.md#f1-score) · [Macro and micro averaging](../GLOSSARY.md#macro-and-micro-averaging)
 
 **Short answer:**
 Accuracy measures overall correctness, precision measures correctness among positive predictions, recall measures coverage of actual positives, and F1 is the harmonic mean of precision and recall.
@@ -829,6 +867,8 @@ In a synthetic screen with TP=80, FP=20, FN=40, and TN=860, accuracy is 94%, pre
 **Topic:** Classification decisions
 **Difficulty:** Intermediate
 
+**Key terms:** [Class imbalance](../GLOSSARY.md#class-imbalance) · [Class weighting](../GLOSSARY.md#class-weighting) · [Resampling and SMOTE](../GLOSSARY.md#resampling-and-smote) · [Decision threshold](../GLOSSARY.md#decision-threshold) · [Prevalence](../GLOSSARY.md#prevalence)
+
 **Short answer:**
 Evaluate minority-class performance explicitly, consider class weighting or training-data resampling, and select a threshold using validation data and the costs of errors.
 
@@ -869,8 +909,10 @@ A fraud team able to investigate 100 transactions per day may optimize precision
 **Topic:** Regression metrics
 **Difficulty:** Beginner
 
+**Key terms:** [Mean absolute error (MAE)](../GLOSSARY.md#mean-absolute-error-mae) · [Mean squared error and RMSE](../GLOSSARY.md#mean-squared-error-and-rmse) · [R-squared (R²)](../GLOSSARY.md#r-squared-r²) · [Residual](../GLOSSARY.md#residual)
+
 **Short answer:**
-MAE averages absolute errors. RMSE takes the square root of average squared errors, emphasizing large mistakes. R-squared compares squared error with a constant prediction of the evaluation target's mean.
+Mean absolute error (MAE) averages absolute residuals. Root mean squared error (RMSE) is the square root of mean squared residuals and emphasizes large misses. R-squared (R²) compares squared prediction error with the evaluation-set mean baseline.
 
 **Long answer:**
 MAE and RMSE use the target's units. R-squared is dimensionless and can be negative; it is not a percentage of predictions that are correct. Its usual formula needs special handling for constant targets. Choose a metric that reflects the cost of prediction errors.
@@ -907,6 +949,8 @@ For errors of 1, 1, and 10 minutes, MAE is 4 minutes while RMSE is about 5.83 mi
 
 **Topic:** Production ML
 **Difficulty:** Intermediate
+
+**Key terms:** [Data drift](../GLOSSARY.md#data-drift) · [Concept drift](../GLOSSARY.md#concept-drift) · [Distribution shift](../GLOSSARY.md#distribution-shift) · [Observability and SRE](../GLOSSARY.md#observability-and-sre)
 
 **Short answer:**
 Monitor input quality, feature and prediction distributions, serving reliability, and predictive performance when outcome labels become available.
@@ -950,6 +994,8 @@ Continue with [foundational GenAI and LLM questions](genai-foundations.md).
 
 **Topic:** Temporal validation
 **Difficulty:** Intermediate
+
+**Key terms:** [Temporal split](../GLOSSARY.md#temporal-split) · [Data leakage](../GLOSSARY.md#data-leakage) · [Baseline](../GLOSSARY.md#baseline)
 
 **Short answer:**
 Use evaluation windows that follow their training windows in time, with features constructed only from information available at prediction time.
@@ -996,6 +1042,8 @@ Illustrative monthly folds: validation always follows training; the gap must mat
 **Topic:** Feature reduction
 **Difficulty:** Intermediate
 
+**Key terms:** [Feature selection](../GLOSSARY.md#feature-selection) · [Principal component analysis (PCA)](../GLOSSARY.md#principal-component-analysis-pca) · [Cross-validation (CV)](../GLOSSARY.md#cross-validation-cv)
+
 **Short answer:**
 Feature selection retains a subset of original variables; PCA creates new axes that combine variables to explain input variance.
 
@@ -1040,6 +1088,8 @@ A schematic comparison; the illustrated feature names and component count are hy
 
 **Topic:** Interpretability
 **Difficulty:** Intermediate
+
+**Key terms:** [Permutation importance](../GLOSSARY.md#permutation-importance) · [Covariance and correlation](../GLOSSARY.md#covariance-and-correlation) · [Paired comparison](../GLOSSARY.md#paired-comparison)
 
 **Short answer:**
 It measures the drop in a fitted model’s score when a feature is shuffled, breaking its relationship with the target and other features.
@@ -1086,6 +1136,8 @@ Synthetic repeated-permutation results, not a benchmark or a causal ranking. The
 **Topic:** Ranking metrics
 **Difficulty:** Intermediate
 
+**Key terms:** [Precision-recall curve and AP](../GLOSSARY.md#precision-recall-curve-and-ap) · [ROC-AUC](../GLOSSARY.md#roc-auc) · [Precision and recall](../GLOSSARY.md#precision-and-recall) · [Prevalence](../GLOSSARY.md#prevalence)
+
 **Short answer:**
 Use precision–recall analysis when positive predictions and missed positives matter, especially when the positive class is rare.
 
@@ -1131,8 +1183,10 @@ The marked operating point has 80% recall, 5% false-positive rate, and about 14%
 **Topic:** Probability quality
 **Difficulty:** Intermediate
 
+**Key terms:** [Calibration and Brier score](../GLOSSARY.md#calibration-and-brier-score) · [Discrimination](../GLOSSARY.md#discrimination) · [Calibration and Brier score](../GLOSSARY.md#calibration-and-brier-score) · [Cross-entropy and log loss](../GLOSSARY.md#cross-entropy-and-log-loss)
+
 **Short answer:**
-Discrimination separates classes; calibration asks whether predicted probabilities match observed event frequencies.
+Discrimination is the ability to rank positive cases above negative cases. Calibration means predicted probabilities agree with observed outcome frequencies in comparable cases. A model can rank well while being overconfident.
 
 **Long answer:**
 A model can rank examples well yet be overconfident. A reliability diagram compares mean predicted probability with the observed positive fraction in each bin; report bin sizes and uncertainty. Fit calibration on data separate from model fitting and final testing. Calibration can change under distribution shift and does not guarantee good ranking or subgroup performance.
@@ -1175,6 +1229,8 @@ Synthetic bin averages. Being below the diagonal means predicted probabilities e
 
 **Topic:** Probabilistic classifiers
 **Difficulty:** Beginner
+
+**Key terms:** [Naive Bayes](../GLOSSARY.md#naive-bayes) · [Conditional probability](../GLOSSARY.md#conditional-probability) · [Conditional probability](../GLOSSARY.md#conditional-probability)
 
 **Short answer:**
 It treats features as conditionally independent given the class, then combines class priors and feature likelihoods using Bayes’ rule.
@@ -1221,6 +1277,8 @@ The arrows express the model’s factorization, not a claim that the class causa
 **Topic:** Data quality
 **Difficulty:** Intermediate
 
+**Key terms:** [Imputation](../GLOSSARY.md#imputation) · [Outlier](../GLOSSARY.md#outlier) · [Preprocessing pipeline](../GLOSSARY.md#preprocessing-pipeline)
+
 **Short answer:**
 Investigate why values are missing or extreme before choosing imputation, transformation, exclusion, or a model that supports them.
 
@@ -1266,8 +1324,10 @@ A possible preprocessing design. Missingness and outlier rules must be justified
 **Topic:** Clustering
 **Difficulty:** Intermediate
 
+**Key terms:** [DBSCAN](../GLOSSARY.md#dbscan) · [k-means](../GLOSSARY.md#k-means) · [Clustering](../GLOSSARY.md#clustering) · [Silhouette score](../GLOSSARY.md#silhouette-score)
+
 **Short answer:**
-DBSCAN can recover dense connected regions and mark sparse points as noise; k-means partitions all points around a chosen number of centroids.
+Density-Based Spatial Clustering of Applications with Noise (DBSCAN) groups density-connected points and marks sparse points as noise. Unlike k-means, it does not require a cluster count and can capture nonconvex shapes, but varying densities can be difficult.
 
 **Long answer:**
 K-means favors compact clusters under its distance objective. DBSCAN uses a neighborhood radius and minimum density, so it can handle some non-convex shapes without specifying the number of clusters. Scaling and distance choice matter. One global density threshold can struggle when densities vary; high-dimensional distances can also be uninformative. Neither method discovers the uniquely correct grouping without a useful representation and objective.
@@ -1310,6 +1370,8 @@ Synthetic geometry showing a possible use case; colors indicate intended groups,
 
 **Topic:** Regression diagnostics
 **Difficulty:** Intermediate
+
+**Key terms:** [Linear regression](../GLOSSARY.md#linear-regression) · [Residual](../GLOSSARY.md#residual) · [Heteroscedasticity](../GLOSSARY.md#heteroscedasticity) · [Confidence interval](../GLOSSARY.md#confidence-interval)
 
 **Short answer:**
 Check residual structure, dependence, changing error variance, influential observations, and whether the model is appropriate for the prediction or inference task.
@@ -1356,6 +1418,8 @@ Synthetic diagnostic patterns; the axes represent fitted values and residuals. T
 **Topic:** Transfer learning
 **Difficulty:** Intermediate
 
+**Key terms:** [Transfer learning](../GLOSSARY.md#transfer-learning) · [Data augmentation](../GLOSSARY.md#data-augmentation) · [Fine-tuning](../GLOSSARY.md#fine-tuning)
+
 **Short answer:**
 Start with a pretrained feature extractor and a task-specific head, then evaluate whether cautiously fine-tuning more layers improves held-out performance.
 
@@ -1401,8 +1465,10 @@ Stage one freezes the backbone; a later experiment may unfreeze selected layers.
 **Topic:** Imbalanced learning
 **Difficulty:** Intermediate
 
+**Key terms:** [Resampling and SMOTE](../GLOSSARY.md#resampling-and-smote) · [Class imbalance](../GLOSSARY.md#class-imbalance) · [Cross-validation (CV)](../GLOSSARY.md#cross-validation-cv) · [Calibration and Brier score](../GLOSSARY.md#calibration-and-brier-score)
+
 **Short answer:**
-Apply SMOTE only to the training portion of each fold, after suitable preprocessing and before fitting the classifier.
+Synthetic Minority Over-sampling Technique (SMOTE) creates synthetic minority-class training examples by interpolating between neighbors. Apply it only inside each training fold, after suitable preprocessing; keep validation and test data unchanged.
 
 **Long answer:**
 SMOTE interpolates between a minority example and selected minority neighbors. Creating samples before splitting can leak related synthetic examples into validation. Preserve natural class prevalence in evaluation. Interpolation may be implausible near class overlap, outliers, or categorical boundaries; use suitable variants for mixed features and compare against class weighting and threshold tuning.

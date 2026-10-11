@@ -1,6 +1,6 @@
 # Production Engineering Questions and Answers
 
-[Back to the README](../README.md) · [Agents](agents.md) · [Fine-tuning](fine-tuning.md) · [RAG](rag.md) · [Evaluation](evaluation.md)
+[Back to the README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [Agents](agents.md) · [Fine-tuning](fine-tuning.md) · [RAG](rag.md) · [Evaluation](evaluation.md)
 
 These questions cover deploying and operating reliable GenAI applications. Engineers can practice the short answers; interviewers can use the examples and follow-ups to explore operational judgment. Designs, numerical examples, and targets are illustrative. Serving behavior and supported optimizations depend on the model, runtime, hardware, and provider.
 
@@ -20,6 +20,8 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 
 **Topic:** Deployment architecture
 **Difficulty:** Intermediate
+
+**Key terms:** [API and SDK](../GLOSSARY.md#api-and-sdk) · [Inference](../GLOSSARY.md#inference) · [CPU, GPU, and accelerator](../GLOSSARY.md#cpu-gpu-and-accelerator) · [Cost per successful task](../GLOSSARY.md#cost-per-successful-task)
 
 **Short answer:**
 Compare task quality, data-handling requirements, control over the serving stack, operational capacity, and total cost under realistic traffic.
@@ -60,6 +62,8 @@ A sporadic internal assistant may leave dedicated GPUs idle most of the day. A s
 **Topic:** Service reliability
 **Difficulty:** Intermediate
 
+**Key terms:** [Service-level indicator (SLI)](../GLOSSARY.md#service-level-indicator-sli) · [Service-level objective (SLO)](../GLOSSARY.md#service-level-objective-slo) · [Error budget](../GLOSSARY.md#error-budget)
+
 **Short answer:**
 A service-level indicator (SLI) measures behavior, a service-level objective (SLO) sets a target over a window, and an error budget describes the allowed deviation.
 
@@ -98,6 +102,8 @@ An endpoint returning HTTP 200 with invalid JSON may still fail the user-facing 
 
 **Topic:** Latency analysis
 **Difficulty:** Intermediate
+
+**Key terms:** [Time to first token (TTFT)](../GLOSSARY.md#time-to-first-token-ttft) · [Latency and percentiles](../GLOSSARY.md#latency-and-percentiles) · [Prefill and decoding](../GLOSSARY.md#prefill-and-decoding) · [Trace and span](../GLOSSARY.md#trace-and-span)
 
 **Short answer:**
 Separate queueing, retrieval, prompt processing, token generation, and downstream work; measure time to first token and total completion time.
@@ -140,6 +146,8 @@ A proxy buffers chunks until a response is complete, so users see no benefit fro
 **Topic:** Throughput and scaling
 **Difficulty:** Intermediate
 
+**Key terms:** [Continuous batching](../GLOSSARY.md#continuous-batching) · [Throughput and concurrency](../GLOSSARY.md#throughput-and-concurrency) · [KV cache](../GLOSSARY.md#kv-cache) · [Throughput and concurrency](../GLOSSARY.md#throughput-and-concurrency)
+
 **Short answer:**
 Batching shares computation across requests, while available memory limits the model, active sequences, and their key-value caches. Capacity depends on token workload, not just request count.
 
@@ -180,6 +188,8 @@ A batch dominated by long generations can delay short interactive requests. Leng
 **Topic:** Model optimization
 **Difficulty:** Intermediate
 
+**Key terms:** [Numerical precision and quantization](../GLOSSARY.md#numerical-precision-and-quantization) · [Floating-point formats](../GLOSSARY.md#floating-point-formats) · [CPU, GPU, and accelerator](../GLOSSARY.md#cpu-gpu-and-accelerator)
+
 **Short answer:**
 Quantization stores selected tensors at lower precision, reducing their memory footprint. Validate both task quality and performance on the actual serving hardware.
 
@@ -218,6 +228,8 @@ A quantized model may preserve casual summarization quality but degrade exact nu
 
 **Topic:** Cache design
 **Difficulty:** Intermediate
+
+**Key terms:** [Response, semantic, and prefix caches](../GLOSSARY.md#response-semantic-and-prefix-caches) · [Response, semantic, and prefix caches](../GLOSSARY.md#response-semantic-and-prefix-caches) · [Response, semantic, and prefix caches](../GLOSSARY.md#response-semantic-and-prefix-caches) · [Time to live (TTL)](../GLOSSARY.md#time-to-live-ttl)
 
 **Short answer:**
 Response caching reuses a completed result, semantic caching reuses a result for a sufficiently similar request, and prefix caching reuses computation for an identical prompt prefix.
@@ -259,6 +271,8 @@ Reusing an answer about one customer's order for another customer is incorrect e
 
 **Topic:** Admission control
 **Difficulty:** Intermediate
+
+**Key terms:** [Admission control and backpressure](../GLOSSARY.md#admission-control-and-backpressure) · [Admission control and backpressure](../GLOSSARY.md#admission-control-and-backpressure) · [Rate limit and quota](../GLOSSARY.md#rate-limit-and-quota) · [Throughput and concurrency](../GLOSSARY.md#throughput-and-concurrency)
 
 **Short answer:**
 Limit admitted work, bound queues and concurrency, and reject or defer excess demand before it causes widespread timeouts or memory exhaustion.
@@ -316,6 +330,8 @@ During a traffic spike, rejecting excess requests quickly can preserve useful la
 **Topic:** Dependency failures
 **Difficulty:** Advanced
 
+**Key terms:** [Retry and backoff](../GLOSSARY.md#retry-and-backoff) · [Deadline and cancellation](../GLOSSARY.md#deadline-and-cancellation) · [Circuit breaker and fallback](../GLOSSARY.md#circuit-breaker-and-fallback) · [Circuit breaker and fallback](../GLOSSARY.md#circuit-breaker-and-fallback)
+
 **Short answer:**
 Set an overall request deadline, retry only appropriate failures within a bounded budget, and use fallbacks whose behavior has been evaluated in advance.
 
@@ -355,6 +371,8 @@ Falling back to a smaller model may work for summarization but fail a strict too
 
 **Topic:** Deployment lifecycle
 **Difficulty:** Intermediate
+
+**Key terms:** [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback) · [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback) · [Artifact and digest](../GLOSSARY.md#artifact-and-digest) · [Checkpoint](../GLOSSARY.md#checkpoint)
 
 **Short answer:**
 Version the complete application configuration, validate a candidate, expose limited traffic, and retain a tested path back to a compatible known-good release.
@@ -413,6 +431,8 @@ A new embedding model paired with an old document index can break retrieval even
 **Topic:** Monitoring and incident response
 **Difficulty:** Intermediate
 
+**Key terms:** [Observability and SRE](../GLOSSARY.md#observability-and-sre) · [Trace and span](../GLOSSARY.md#trace-and-span) · [Data provenance and lineage](../GLOSSARY.md#data-provenance-and-lineage)
+
 **Short answer:**
 Combine user-facing metrics with correlated traces and structured logs so you can identify the failing stage, mitigate impact, and verify recovery.
 
@@ -453,6 +473,8 @@ A spike in unsupported answers may coincide with an ingestion parser release rat
 **Topic:** Application security
 **Difficulty:** Intermediate
 
+**Key terms:** [Sandbox and least privilege](../GLOSSARY.md#sandbox-and-least-privilege) · [Authentication and authorization](../GLOSSARY.md#authentication-and-authorization) · [Prompt injection](../GLOSSARY.md#prompt-injection) · [Tenant](../GLOSSARY.md#tenant)
+
 **Short answer:**
 Enforce identity, authorization, secret handling, and action policy in trusted application components rather than relying on model instructions.
 
@@ -491,6 +513,8 @@ A model instructed never to reveal secrets should not receive unrelated credenti
 
 **Topic:** Cost and utilization
 **Difficulty:** Intermediate
+
+**Key terms:** [Cost per successful task](../GLOSSARY.md#cost-per-successful-task) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer) · [Baseline](../GLOSSARY.md#baseline)
 
 **Short answer:**
 Measure total cost per successfully completed task, then optimize the largest contributors while keeping quality and reliability requirements fixed.
@@ -536,6 +560,8 @@ Use the [evaluation question bank](evaluation.md) to define release criteria and
 **Topic:** Inference optimization
 **Difficulty:** Advanced
 
+**Key terms:** [Speculative decoding](../GLOSSARY.md#speculative-decoding) · [Autoregressive generation](../GLOSSARY.md#autoregressive-generation) · [Temperature and sampling](../GLOSSARY.md#temperature-and-sampling)
+
 **Short answer:**
 It can help when inexpensive draft tokens are often accepted by a larger target model and the saved target work exceeds drafting and verification overhead.
 
@@ -580,6 +606,8 @@ A simplified block illustration; exact sampling requires the paper’s probabili
 
 **Topic:** Performance diagnosis
 **Difficulty:** Advanced
+
+**Key terms:** [Context window](../GLOSSARY.md#context-window) · [Prefill and decoding](../GLOSSARY.md#prefill-and-decoding) · [KV cache](../GLOSSARY.md#kv-cache) · [Latency and percentiles](../GLOSSARY.md#latency-and-percentiles)
 
 **Short answer:**
 Compare actual workload and serving configuration separately, then attribute the regression to queueing, prefill, decoding, or other request stages.

@@ -1,6 +1,6 @@
 # Agents and Tool Use Questions and Answers
 
-[Back to the README](../README.md) · [Prompt engineering](prompt-engineering.md) · [RAG](rag.md) · [Fine-tuning](fine-tuning.md) · [Evaluation](evaluation.md)
+[Back to the README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [Prompt engineering](prompt-engineering.md) · [RAG](rag.md) · [Fine-tuning](fine-tuning.md) · [Evaluation](evaluation.md)
 
 These questions cover systems that use language models to select actions, interact with tools, and adapt to results. Engineers can practice the short answers; interviewers can explore design choices with the follow-ups. Examples and proposed designs are illustrative. Framework references demonstrate particular implementations, not universal agent behavior.
 
@@ -20,6 +20,8 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 
 **Topic:** Architecture choices
 **Difficulty:** Beginner
+
+**Key terms:** [Agent](../GLOSSARY.md#agent) · [Workflow](../GLOSSARY.md#workflow) · [Action space](../GLOSSARY.md#action-space)
 
 **Short answer:**
 In a fixed workflow, code determines the main sequence of steps. In an agent, a model chooses some next steps dynamically using the task and observed results.
@@ -59,6 +61,8 @@ A receipt extractor can use a fixed parse-and-validate workflow. Investigating a
 
 **Topic:** Execution model
 **Difficulty:** Beginner
+
+**Key terms:** [Agent](../GLOSSARY.md#agent) · [Tool calling](../GLOSSARY.md#tool-calling) · [Working state and memory](../GLOSSARY.md#working-state-and-memory) · [Planning and termination](../GLOSSARY.md#planning-and-termination)
 
 **Short answer:**
 The model selects an action, the application validates and executes it, and the resulting observation informs the next decision or final response.
@@ -116,6 +120,8 @@ An incident agent reads a failed health check, inspects a deployment diff, and p
 **Topic:** Tool design
 **Difficulty:** Intermediate
 
+**Key terms:** [Tool calling](../GLOSSARY.md#tool-calling) · [Structured output and schema](../GLOSSARY.md#structured-output-and-schema) · [Authentication and authorization](../GLOSSARY.md#authentication-and-authorization)
+
 **Short answer:**
 A reliable tool has a clear purpose, precise argument definitions, bounded behavior, and results that distinguish success, failure, and missing data.
 
@@ -157,6 +163,8 @@ A “cancel_order” tool should accept a stable order ID and return an authorit
 **Topic:** Memory
 **Difficulty:** Intermediate
 
+**Key terms:** [Working state and memory](../GLOSSARY.md#working-state-and-memory) · [Context window](../GLOSSARY.md#context-window) · [Data provenance and lineage](../GLOSSARY.md#data-provenance-and-lineage)
+
 **Short answer:**
 Context is the information supplied to a model call. Working state tracks the current task. Long-term memory stores information for later tasks or conversations.
 
@@ -195,6 +203,8 @@ A sales agent may retain a customer's preferred contact channel but should verif
 
 **Topic:** Planning and budgets
 **Difficulty:** Intermediate
+
+**Key terms:** [Planning and termination](../GLOSSARY.md#planning-and-termination) · [Planning and termination](../GLOSSARY.md#planning-and-termination) · [Guardrail](../GLOSSARY.md#guardrail)
 
 **Short answer:**
 Use a revisable plan and explicit completion criteria, with application-enforced limits on steps, time, tool calls, or spending.
@@ -235,6 +245,8 @@ A debugging agent that repeatedly reruns the same failing test without code chan
 **Topic:** Failure recovery
 **Difficulty:** Intermediate
 
+**Key terms:** [Retry and backoff](../GLOSSARY.md#retry-and-backoff) · [Idempotency](../GLOSSARY.md#idempotency) · [Side effect and reconciliation](../GLOSSARY.md#side-effect-and-reconciliation) · [Deadline and cancellation](../GLOSSARY.md#deadline-and-cancellation)
+
 **Short answer:**
 Classify the failure, retry transient problems within limits, and avoid repeating state-changing actions unless their effects can be deduplicated or verified.
 
@@ -273,6 +285,8 @@ If a payment request times out, blindly retrying with a new transaction ID can c
 
 **Topic:** Persistence and resumption
 **Difficulty:** Advanced
+
+**Key terms:** [Durable execution](../GLOSSARY.md#durable-execution) · [Checkpoint](../GLOSSARY.md#checkpoint) · [Side effect and reconciliation](../GLOSSARY.md#side-effect-and-reconciliation) · [Side effect and reconciliation](../GLOSSARY.md#side-effect-and-reconciliation)
 
 **Short answer:**
 Durable execution persists enough state and completed work to resume after interruption instead of starting the whole task again.
@@ -336,6 +350,8 @@ A provisioning agent creates a cloud resource and crashes before saving the resp
 **Topic:** Action control
 **Difficulty:** Intermediate
 
+**Key terms:** [Human-in-the-loop](../GLOSSARY.md#human-in-the-loop) · [Authentication and authorization](../GLOSSARY.md#authentication-and-authorization) · [Artifact and digest](../GLOSSARY.md#artifact-and-digest)
+
 **Short answer:**
 Enforce authorization in the application, and request human review where an action's impact or unresolved ambiguity requires it under the product's policy.
 
@@ -375,6 +391,8 @@ A manager approves a refund of $50 for one order. If the amount changes to $500 
 **Topic:** Untrusted inputs
 **Difficulty:** Intermediate
 
+**Key terms:** [Prompt injection](../GLOSSARY.md#prompt-injection) · [Sandbox and least privilege](../GLOSSARY.md#sandbox-and-least-privilege) · [Tenant](../GLOSSARY.md#tenant)
+
 **Short answer:**
 An injected instruction can influence tool selection and external actions, not only the wording of an answer.
 
@@ -413,6 +431,8 @@ A repository file tells a coding agent to upload environment variables to a diag
 
 **Topic:** Coordination
 **Difficulty:** Advanced
+
+**Key terms:** [Orchestration](../GLOSSARY.md#orchestration) · [Supervisor and handoff](../GLOSSARY.md#supervisor-and-handoff) · [Task graph and critical path](../GLOSSARY.md#task-graph-and-critical-path) · [Baseline](../GLOSSARY.md#baseline)
 
 **Short answer:**
 Use multiple agents when tasks can benefit from separate contexts, specializations, or independent work, and evaluation shows that the gains justify coordination costs.
@@ -455,6 +475,8 @@ Parallel agents can inspect independent modules, while one integration step chec
 **Topic:** Agent evaluation
 **Difficulty:** Intermediate
 
+**Key terms:** [Correctness and faithfulness](../GLOSSARY.md#correctness-and-faithfulness) · [Invariant](../GLOSSARY.md#invariant) · [Side effect and reconciliation](../GLOSSARY.md#side-effect-and-reconciliation) · [Robustness and adversarial evaluation](../GLOSSARY.md#robustness-and-adversarial-evaluation)
+
 **Short answer:**
 Evaluate the verified environment outcome, compliance with action constraints, and the resources used to complete the task.
 
@@ -493,6 +515,8 @@ A booking agent says a reservation is confirmed, but the booking database contai
 
 **Topic:** Observability
 **Difficulty:** Intermediate
+
+**Key terms:** [Trace and span](../GLOSSARY.md#trace-and-span) · [Observability and SRE](../GLOSSARY.md#observability-and-sre) · [Latency and percentiles](../GLOSSARY.md#latency-and-percentiles) · [Cost per successful task](../GLOSSARY.md#cost-per-successful-task)
 
 **Short answer:**
 Link model calls, tool executions, state transitions, and final outcomes into a trace, then monitor success, failure, latency, and cost by task type.
@@ -536,6 +560,8 @@ Continue with [Agent Orchestration](agent-orchestration.md), [Software Factory](
 
 **Topic:** Agent control flow
 **Difficulty:** Intermediate
+
+**Key terms:** [Planning and termination](../GLOSSARY.md#planning-and-termination) · [Workflow](../GLOSSARY.md#workflow) · [Agent](../GLOSSARY.md#agent) · [Planning and termination](../GLOSSARY.md#planning-and-termination)
 
 **Short answer:**
 A reactive loop chooses the next action after each observation; a planning approach establishes intermediate objectives first and revises them when evidence requires it.

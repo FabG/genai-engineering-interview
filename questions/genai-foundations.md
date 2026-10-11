@@ -1,6 +1,6 @@
 # Foundational GenAI and LLM Questions and Answers
 
-[Back to the README](../README.md) · [Previous: AI and machine learning foundations](ai-foundations.md) · [Next: RAG](rag.md)
+[Back to the README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [Previous: AI and machine learning foundations](ai-foundations.md) · [Next: RAG](rag.md)
 
 Start with the short answers, then use the explanations and follow-ups to practice deeper interview discussions. Examples are illustrative unless explicitly attributed to a source. Generation details below assume an autoregressive, decoder-only language model unless stated otherwise.
 
@@ -21,6 +21,8 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 
 **Topic:** GenAI basics
 **Difficulty:** Beginner
+
+**Key terms:** [Generative AI (GenAI)](../GLOSSARY.md#generative-ai-genai) · [Generative model](../GLOSSARY.md#generative-model) · [Discriminative model](../GLOSSARY.md#discriminative-model)
 
 **Short answer:**
 Generative AI learns patterns in data to produce content such as text, images, or audio. Discriminative models learn to predict a target, such as a class label, from an input.
@@ -61,8 +63,10 @@ A classifier flags a product review as negative, while a conditional generator d
 **Topic:** LLM basics
 **Difficulty:** Beginner
 
+**Key terms:** [Large language model (LLM)](../GLOSSARY.md#large-language-model-llm) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer) · [Inference](../GLOSSARY.md#inference)
+
 **Short answer:**
-An LLM is a neural language model trained at substantial scale to learn patterns in token sequences. Generative LLMs use those patterns to produce text conditioned on context.
+A large language model (LLM) is a neural model trained at substantial scale to represent patterns in token sequences. Generative LLMs use those patterns to produce text conditioned on supplied context.
 
 **Long answer:**
 Many LLMs use transformers. Their training supports multiple language tasks, but fluent output does not establish correctness. A language model is one component of a chat application, which may additionally provide retrieval, tools, and conversation storage. There is no universal parameter threshold for “large.”
@@ -99,6 +103,8 @@ The same model can summarize a document reliably when all facts are supplied yet
 
 **Topic:** Tokenization
 **Difficulty:** Beginner
+
+**Key terms:** [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer) · [Context window](../GLOSSARY.md#context-window)
 
 **Short answer:**
 Tokens are units that a tokenizer maps to integer IDs for a model. They may represent whole words, word fragments, punctuation, or bytes.
@@ -138,6 +144,8 @@ A short serial number can consume many tokens despite containing no spaces. A mu
 
 **Topic:** Representations
 **Difficulty:** Beginner
+
+**Key terms:** [Embedding](../GLOSSARY.md#embedding) · [Vector, matrix, and tensor](../GLOSSARY.md#vector-matrix-and-tensor) · [Dot product and cosine similarity](../GLOSSARY.md#dot-product-and-cosine-similarity)
 
 **Short answer:**
 An embedding is a learned vector representation of an item, such as a token, sentence, or document.
@@ -180,44 +188,109 @@ A retrieval model may place “reset my password” near “recover account acce
 **Topic:** Architecture
 **Difficulty:** Beginner
 
+**Key terms:** [Transformer](../GLOSSARY.md#transformer) · [Attention and self-attention](../GLOSSARY.md#attention-and-self-attention) · [Queries, keys, and values (QKV)](../GLOSSARY.md#queries-keys-and-values-qkv) · [Multi-head attention](../GLOSSARY.md#multi-head-attention) · [Positional encoding and RoPE](../GLOSSARY.md#positional-encoding-and-rope) · [Encoder and decoder](../GLOSSARY.md#encoder-and-decoder) · [Feed-forward layer](../GLOSSARY.md#feed-forward-layer) · [Residual connection and layer normalization](../GLOSSARY.md#residual-connection-and-layer-normalization)
+
 **Short answer:**
-A transformer processes sequences using attention and feed-forward layers, with residual connections and normalization.
+The Transformer architecture, introduced in the 2017 paper [**Attention Is All You Need**](https://arxiv.org/abs/1706.03762) by Vaswani and colleagues working with Google, is a neural network design that underpins modern AI model families associated with ChatGPT, Gemini, and Llama. It uses **attention** to connect information across token positions, allowing many positions to be processed in parallel during training. Ordinary autoregressive generation still produces new tokens step by step.
 
 **Long answer:**
-Attention mixes information across positions; feed-forward layers transform each position's representation. During training, many token positions can be processed in parallel. Ordinary autoregressive generation still depends on previously generated tokens.
 
-A transformer alternates attention-based information mixing with position-wise feed-forward computation, using residual paths and normalization to support optimization. Attention can connect distant token positions directly, but does not eliminate context-length or compute constraints. Architectural variants change masking, positional encoding, normalization order, and attention layout. Explain which variant is relevant before making claims about generation or bidirectional understanding.
+### What problem did it fix?
 
-**Metrics and checks:** Standard full attention forms a sequence-length-squared interaction structure; practical memory and runtime depend on kernels and architecture. Compare measured prefill latency and peak memory at realistic input lengths.
+- **Old way — recurrent neural networks (RNNs):** An RNN updates its hidden state one sequence position at a time. Each update depends on the previous one, limiting parallel computation across positions. Learning relationships between distant words can also be difficult, although gated architectures such as LSTMs help; RNNs do not inevitably forget every early word.
+- **Transformer approach:** Attention creates direct connections between permitted positions without requiring a recurrent chain. Training can process a known sequence's positions in parallel, improving hardware utilization. This makes distant context easier to access, but does not guarantee perfect long-range reasoning or unlimited memory.
+
+“All at once” refers to parallel computation **within a layer over available tokens**. Layers still depend on earlier layers. In a causal model, masks prevent future-token access during training; at generation time, the next token is not known until it has been selected. See the [original paper's comparison with recurrent architectures](https://arxiv.org/html/1706.03762v7).
+
+### Key building blocks
+
+**1. Self-attention — which other tokens matter here?**
+
+Self-attention lets a token combine information from other permitted positions to build its contextual representation. In *“The animal didn't cross the street because it was tired,”* useful context connects **“it”** with **“animal.”** This is an intuition for what the network can learn, not a guarantee that one attention head explicitly resolves the pronoun. An encoder can attend across the input; a causal decoder can attend only to the current and earlier positions. Models operate on **tokens**, which may be smaller than words.
+
+**2. Queries, keys, and values — how does attention choose information?**
+
+Learned projections produce three vectors from each token representation:
+
+| Vector | Intuition | Role |
+| --- | --- | --- |
+| **Query (Q)** | What am I looking for? | Compared with keys to compute compatibility scores |
+| **Key (K)** | What information can I be matched on? | Provides the matching signal for queries |
+| **Value (V)** | What information do I pass along? | Combined using the resulting attention weights |
+
+For one attention head, the computation is:
+
+`Attention(Q, K, V) = softmax(QKᵀ / sqrt(d_k) + mask) V`
+
+Here, `d_k` is the key/query dimension. Query-key dot products become scaled scores; masking excludes forbidden positions; softmax turns each query's scores into weights; those weights combine the value vectors. Q, K, and V are learned numerical representations, not literal questions or labels. [The original paper defines this operation as scaled dot-product attention](https://arxiv.org/html/1706.03762v7).
+
+**3. Multi-head attention — several learned views**
+
+Multiple heads use different learned projections, allowing different token relationships to contribute simultaneously. One may emphasize a syntactic relationship while another emphasizes nearby context, but heads do not have guaranteed human-assigned jobs such as “grammar” or “tone.” Their outputs are combined and projected back into the model representation.
+
+**4. Positional information — where is each token?**
+
+Attention needs position information to distinguish order. The original Transformer adds positional encodings to token embeddings. Other architectures use different schemes, including relative or rotary position methods, so “add a positional vector” is not a universal implementation rule. The sentences *“The dog chased the cat”* and *“The cat chased the dog”* contain the same words but have different meanings.
+
+**5. Encoder and decoder — understanding a source and generating a target**
+
+The original architecture uses an **encoder** to form contextual input representations and a **decoder** to generate a target sequence. Decoder self-attention is causal; cross-attention lets it use the encoder's output. This fits tasks such as translation. Transformer variants can instead be **encoder-only** or **decoder-only**; many chat-oriented language models use decoder-only architectures. See [Question 8](#question-8-how-do-encoder-only-decoder-only-and-encoder-decoder-models-differ) for that distinction.
+
+**6. Feed-forward layers, residual connections, and normalization**
+
+Attention mixes information across positions; feed-forward layers transform the resulting representation at each position. Residual connections preserve a path around a sublayer, and normalization helps control activation behavior during training. A Transformer therefore contains more than attention alone. For visual study, use [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/).
+
+**Metrics and checks:**
+
+- **Training efficiency:** Compare tokens per second, peak memory, and time to reach a stated validation quality under comparable hardware and data. Parallelization does not imply a fixed speedup for every workload.
+- **Attention scaling:** Dense attention considers roughly `n²` query-key pairs per head for sequence length `n`. Increasing length from 1,024 to 2,048 gives four times as many pairs. This does not mean total model runtime or memory must increase exactly fourfold; kernels, masking, and other layers matter.
+- **Inference:** Measure prefill latency, time to first token, and decoding tokens per second separately. Parallel prompt processing does not eliminate the dependency between newly generated tokens.
+- **Context use:** Test answer quality with evidence at different positions and distances. Accepting a long input is not proof that the model uses every part reliably.
 
 **Examples:**
 
-**Example 1:**
-Training can evaluate predictions at many positions in a sentence in one forward pass, while basic decoding selects the next token before continuing.
+**Example 1 — pronoun context:**
+In *“The animal didn't cross the street because it was tired,”* the surrounding words help identify the intended referent of “it.” Contrast this with *“The animal didn't cross the street because it was flooded,”* where “street” becomes the more plausible referent. Context changes the interpretation even though most words remain identical; the examples illustrate a reasoning task, not measured model performance.
 
-**Example 2:**
-A document encoder can use information on both sides of a word, while a causal text generator must prevent a token's training representation from seeing future target tokens.
+**Example 2 — translation:**
+An encoder processes *“The cat is sleeping.”* A decoder generates a French translation one token at a time while attending to the encoded source. During training, the known target can be shifted and processed across positions in parallel, with causal masking preventing each prediction from seeing its future answer.
+
+**Example 3 — chat generation:**
+For *“Explain gravity to a child,”* a decoder-only model processes the available prompt during prefill, then generates successive output tokens. A KV cache reuses earlier attention state to avoid recomputing it, but ordinary decoding still needs each selected token before continuing. See [Question 17](#question-17-what-are-prefill-decoding-and-the-kv-cache).
 
 **Quick Cheat Sheet:**
 
-| Cue | Remember |
-| --- | --- |
-| **Attention** | mixes positions |
-| **Feed-forward** | transforms representations |
-| **Mask** | determines permitted information flow |
+**Memory aid: Q asks, K matches, V carries. Position supplies order; masks restrict visibility.**
+
+| Component or distinction | Remember | Common trap |
+| --- | --- | --- |
+| **Self-attention** | Mix information across permitted token positions | Assuming every token can always see every other token |
+| **Q / K / V** | Match queries to keys, then combine values | Treating attention scores as proof of reasoning |
+| **Multi-head** | Several learned projections | Assuming each head has a fixed human-readable job |
+| **Position** | Preserve sequence-order information | Assuming every model adds the original sinusoidal encoding |
+| **Encoder / decoder** | Encode a source / generate a target | Assuming all Transformers contain both |
+| **Feed-forward + residual + normalization** | Transform representations and support training | Thinking the architecture is only attention |
+| **Training / generation** | Parallel known positions / sequential new tokens | Saying the whole answer is generated at once |
 
 **Follow-up questions:**
 
+- Why can causal language-model training process multiple target positions in parallel without leaking future tokens?
+- How does self-attention differ from encoder-decoder cross-attention?
 - Why do residual connections help train deep networks?
+- What changes when sequence length doubles, and which costs must you measure rather than infer?
 
 **References:**
 
-- [Vaswani et al.: Attention Is All You Need](https://arxiv.org/html/1706.03762v7)
+- [Vaswani et al.: Attention Is All You Need (2017)](https://arxiv.org/abs/1706.03762) — original architecture and [full-text explanation](https://arxiv.org/html/1706.03762v7).
+- [Jay Alammar: The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) — optional visual walkthrough.
+- [User-suggested attention video, starting at 0:05](https://www.youtube.com/watch?v=sznZ78HquPc&t=5s) — further viewing. The video and transcript could not be retrieved for this update; no explanation above is attributed to unverified video content.
 
 ## Question: 6. How does self-attention work?
 
 **Topic:** Attention
 **Difficulty:** Intermediate
+
+**Key terms:** [Attention and self-attention](../GLOSSARY.md#attention-and-self-attention) · [Queries, keys, and values (QKV)](../GLOSSARY.md#queries-keys-and-values-qkv) · [Logit and softmax](../GLOSSARY.md#logit-and-softmax) · [Causal mask](../GLOSSARY.md#causal-mask)
 
 **Short answer:**
 Self-attention uses learned query, key, and value projections to combine information from positions in the same sequence.
@@ -280,6 +353,8 @@ In “The trophy did not fit in the suitcase because it was too large,” contex
 **Topic:** Position encoding
 **Difficulty:** Intermediate
 
+**Key terms:** [Positional encoding and RoPE](../GLOSSARY.md#positional-encoding-and-rope) · [Positional encoding and RoPE](../GLOSSARY.md#positional-encoding-and-rope) · [Context window](../GLOSSARY.md#context-window)
+
 **Short answer:**
 Attention needs a way to represent token positions and their relationships so that sequence order can influence processing.
 
@@ -318,6 +393,8 @@ Attention without positional information cannot distinguish arbitrary reordering
 
 **Topic:** Model families
 **Difficulty:** Intermediate
+
+**Key terms:** [Encoder and decoder](../GLOSSARY.md#encoder-and-decoder) · [Cross-attention](../GLOSSARY.md#cross-attention) · [Causal mask](../GLOSSARY.md#causal-mask) · [Model families: BERT, GPT, and T5](../GLOSSARY.md#model-families-bert-gpt-and-t5)
 
 **Short answer:**
 Encoders build representations of input text, causal decoders generate continuations, and encoder-decoder models generate output conditioned on an encoded input.
@@ -367,6 +444,8 @@ A search system can use an encoder for document embeddings and a decoder for ans
 **Topic:** Pretraining objectives
 **Difficulty:** Beginner
 
+**Key terms:** [Autoregressive generation](../GLOSSARY.md#autoregressive-generation) · [Self-supervised learning](../GLOSSARY.md#self-supervised-learning) · [Cross-entropy and log loss](../GLOSSARY.md#cross-entropy-and-log-loss) · [Causal mask](../GLOSSARY.md#causal-mask)
+
 **Short answer:**
 Next-token prediction trains a model to predict each token from the preceding tokens. The text supplies its own targets, so separate human labels are unnecessary.
 
@@ -412,6 +491,8 @@ Token strings are illustrative; actual tokenization varies. A causal mask preven
 **Topic:** Model lifecycle
 **Difficulty:** Beginner
 
+**Key terms:** [Pretraining and base model](../GLOSSARY.md#pretraining-and-base-model) · [Fine-tuning](../GLOSSARY.md#fine-tuning) · [Inference](../GLOSSARY.md#inference)
+
 **Short answer:**
 Pretraining learns broad patterns from data. Fine-tuning further trains an existing model for a domain, task, or behavior. Inference uses a trained model to produce outputs.
 
@@ -450,6 +531,8 @@ A model can be pretrained on general text, fine-tuned on support conversations, 
 
 **Topic:** Post-training
 **Difficulty:** Intermediate
+
+**Key terms:** [Supervised fine-tuning (SFT)](../GLOSSARY.md#supervised-fine-tuning-sft) · [RLHF and reward model](../GLOSSARY.md#rlhf-and-reward-model) · [RLHF and reward model](../GLOSSARY.md#rlhf-and-reward-model) · [Direct preference optimization (DPO)](../GLOSSARY.md#direct-preference-optimization-dpo)
 
 **Short answer:**
 Instruction tuning trains on examples of requested behavior. Reinforcement learning from human feedback (RLHF) uses human feedback to guide optimization toward preferred outputs.
@@ -490,8 +573,10 @@ Raters may prefer a polished long response even when a short answer is more accu
 **Topic:** Machine learning basics
 **Difficulty:** Beginner
 
+**Key terms:** [Parameter and weight](../GLOSSARY.md#parameter-and-weight) · [Hyperparameter](../GLOSSARY.md#hyperparameter) · [Learning rate (LR)](../GLOSSARY.md#learning-rate-lr)
+
 **Short answer:**
-Parameters are values learned during training, such as weight matrices. Hyperparameters are configuration choices that govern the model or training process, such as learning rate and layer count.
+Parameters are values learned during fitting, such as weights and additive bias terms. Hyperparameters are chosen settings controlling architecture, training, or inference, such as layer count, learning rate, and sampling temperature.
 
 **Long answer:**
 An optimizer updates parameters using gradients. Engineers choose or search over hyperparameters. Generation controls such as temperature are inference settings; changing them does not retrain the model. Parameter count describes model size, not a count of stored facts.
@@ -528,6 +613,8 @@ Changing a classifier's learned coefficient requires training, while changing it
 
 **Topic:** Adaptation through prompts
 **Difficulty:** Beginner
+
+**Key terms:** [Zero-shot and few-shot learning](../GLOSSARY.md#zero-shot-and-few-shot-learning) · [Prompt and prompt engineering](../GLOSSARY.md#prompt-and-prompt-engineering) · [Fine-tuning](../GLOSSARY.md#fine-tuning)
 
 **Short answer:**
 Zero-shot prompting supplies a task without demonstrations. Few-shot prompting includes a small number of examples. In-context learning adapts behavior using the supplied context without updating model weights.
@@ -570,6 +657,8 @@ A ticket classifier shown only urgent examples may overpredict urgency. Include 
 **Topic:** Inference
 **Difficulty:** Beginner
 
+**Key terms:** [Autoregressive generation](../GLOSSARY.md#autoregressive-generation) · [Temperature and sampling](../GLOSSARY.md#temperature-and-sampling) · [Prefill and decoding](../GLOSSARY.md#prefill-and-decoding) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer)
+
 **Short answer:**
 It processes the prompt, computes scores for possible next tokens, selects one using a decoding strategy, and repeats with the selected token added to the context.
 
@@ -609,13 +698,17 @@ A code generator that chooses the wrong variable early can consistently reuse it
 **Topic:** Context limits
 **Difficulty:** Beginner
 
+**Key terms:** [Procedural memory](../GLOSSARY.md#procedural-memory) · [Context window](../GLOSSARY.md#context-window) · [Working state and memory](../GLOSSARY.md#working-state-and-memory) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer)
+
 **Short answer:**
-A context window bounds the token sequence a model can process. It is different from information learned in weights or stored by an application.
+A context window is the token capacity available to a model request under its model and serving configuration. It differs from information learned in weights or persisted by an application. A larger window allows more context, but does not guarantee better recall, coherence, or reasoning.
 
 **Long answer:**
 For a typical decoder-only request, prompt tokens and generated tokens share a context budget; serving systems may impose additional limits. A larger window does not guarantee reliable use of every detail. The Lost in the Middle study found sensitivity to information position in the models it evaluated.
 
 The context window bounds the tokens a model can process in a request; persistent memory requires an external mechanism that selects and supplies information across requests. Summaries and retrieved memories can lose details or preserve stale claims. Treat stored memory as data with provenance, retention, and access rules. A larger window reduces some truncation pressure but can add cost, latency, and distraction.
+
+**Procedural memory** stores instructions for how to perform a task, such as searching approved sources and returning the top three results. Semantic memory stores facts, while episodic memory records past events. These are application design categories; an agent does not automatically learn or persist a reliable procedure merely by completing a task.
 
 **Metrics and checks:** Track context tokens, truncation frequency, retrieval success, and task quality as conversations grow. Include system instructions, tool outputs, and reserved output capacity in the budget.
 
@@ -649,11 +742,15 @@ A travel assistant may remember a seating preference in a database while omittin
 **Topic:** Sampling
 **Difficulty:** Intermediate
 
+**Key terms:** [Temperature and sampling](../GLOSSARY.md#temperature-and-sampling) · [Top-k and top-p](../GLOSSARY.md#top-k-and-top-p) · [Logit and softmax](../GLOSSARY.md#logit-and-softmax)
+
 **Short answer:**
 Temperature reshapes token probabilities. Top-k limits sampling to the k highest-scoring tokens. Top-p limits sampling to the smallest highest-probability set whose cumulative probability reaches a threshold.
 
 **Long answer:**
-For positive temperature `T`, probabilities are proportional to `exp(logit / T)`. Lower values sharpen the distribution; higher values flatten it. Top-k and top-p filter candidates before sampling. Greedy decoding is commonly exposed separately or through a zero-temperature convention; implementations vary. Lower randomness does not guarantee factual accuracy or reproducibility across execution environments.
+• Temperature: Scales the raw probability scores (logits) before they are converted into percentages. A low temperature (< 1.0) sharpens the curve to make outputs more predictable and factual. A high temperature (> 1.0) flattens the curve, giving less likely words a better chance and increasing creativity.
+• Top-K: Restricts the selection pool to a fixed number (\(K\)) of the most probable next tokens. For example, a Top-K of 40 means the model only picks from the top 40 most likely words and ignores everything else.
+• Top-P (Nucleus Sampling): Restricts the selection pool to a dynamic set of tokens whose cumulative probability reaches a threshold (\(P\), such as 0.9 or 90%). If a single word is very confident, the pool shrinks to just that word; if the model is unsure, the pool grows to include more creative options.
 
 Temperature rescales logits before sampling; top-k retains a fixed number of candidates and top-p retains a probability-mass-based set. These controls change diversity and repetition, but do not verify facts. Their interaction depends on implementation order and model behavior. Even low-temperature output can vary because of serving details, so use deterministic validators when exact structure or business rules matter.
 
@@ -693,6 +790,8 @@ Synthetic probabilities without top-k or top-p filtering. Greedy decoding is a s
 
 **Topic:** Inference efficiency
 **Difficulty:** Intermediate
+
+**Key terms:** [Prefill and decoding](../GLOSSARY.md#prefill-and-decoding) · [KV cache](../GLOSSARY.md#kv-cache) · [Grouped-query attention (GQA)](../GLOSSARY.md#grouped-query-attention-gqa) · [Throughput and concurrency](../GLOSSARY.md#throughput-and-concurrency)
 
 **Short answer:**
 Prefill processes the prompt. Decoding generates subsequent tokens. A key-value (KV) cache stores earlier attention keys and values so decoding can reuse them.
@@ -752,13 +851,44 @@ With all other dimensions fixed, doubling a request's cached sequence length app
 **Topic:** Language-model evaluation
 **Difficulty:** Intermediate
 
+**Key terms:** [Perplexity](../GLOSSARY.md#perplexity) · [Cross-entropy and log loss](../GLOSSARY.md#cross-entropy-and-log-loss) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer)
+
 **Short answer:**
 Perplexity is the exponential of average negative log-likelihood per token. Lower values indicate that a model assigns higher probability to the observed evaluation text.
 
-**Long answer:**
+**Simple answer and analogy**
+**Perplexity** is a standard metric used to measure how well a large language model (LLM) predicts the next word or token in a sequence.
+
+How It Works
+
+• Next-token guessing: As an LLM reads text, it looks at the words so far and tries to guess what word comes next by assigning a probability to every possible word in its vocabulary.
+• Measuring surprise: Perplexity measures how "surprised" or "confused" the model is when it sees the actual real-world text.
+• High vs. Low scores:
+	• Low perplexity means the model is confident and usually correct in guessing the next word (it is not surprised).
+	• High perplexity means the model is confused, uncertain, and making poor guesses.
+
+A Simple Analogy
+
+Imagine the model has to guess the next word in the sentence: "The cat sat on the..."
+• A good model knows that words like "mat" or " floor" are very likely, so it assigns them high probability and gets a low perplexity score.
+• A confused model might think random words like "airplane" or "banana" are just as likely as "mat," which leads to a high perplexity score.
+
+What the Numbers Mean
+
+• Perplexity of 1: The model is 100% certain and never wrong (this is practically impossible for real human language).
+• Effective choices: A perplexity score of, say, 10 means that at each step, the model is as uncertain as if it were picking randomly out of 10 equal options.
+• Model comparison: Developers use perplexity to compare two different models or track progress while training a single model; lower scores generally mean a better-tuned model.
+
+Important Limits
+
+• Not true understanding: A low perplexity score does not mean the model truly "understands" what it is saying—it just means it is good at statistical pattern matching.
+• Not a measure of truth: A model can be very confident (low perplexity) while still stating a complete hallucination or a factual error.
+
+**Advanced answe and AI/maths:**
 Using natural logarithms, `perplexity = exp(cross-entropy)`. Compare results only under compatible tokenization, data, and context-evaluation protocols. Perplexity measures predictive fit, not directly factual accuracy, helpfulness, or application success. It is not directly defined in the same way for masked language models.
 
 Perplexity is the exponential of mean negative log likelihood when natural logarithms are used. It summarizes how surprised a model is by reference tokens, not whether generated answers are helpful or correct. Comparisons require the same tokenization, evaluation text, and masking conventions. A model can achieve better language-model loss while becoming worse at following a particular instruction format or producing evidence-backed answers.
+
 
 **Metrics and checks:** Perplexity = exp(cross-entropy in nats). Lower is better for predicting that reference distribution; scores across different tokenizers are generally not directly comparable.
 
@@ -790,6 +920,8 @@ A model that predicts common legal phrasing well may have low perplexity on cont
 
 **Topic:** Reliability
 **Difficulty:** Beginner
+
+**Key terms:** [Hallucination](../GLOSSARY.md#hallucination) · [Correctness and faithfulness](../GLOSSARY.md#correctness-and-faithfulness) · [Citation validity and support](../GLOSSARY.md#citation-validity-and-support) · [Abstention and coverage](../GLOSSARY.md#abstention-and-coverage)
 
 **Short answer:**
 A hallucination is generated content that is false or unsupported by the relevant evidence or input, even when it sounds plausible.
@@ -829,6 +961,8 @@ A financial assistant can retrieve the correct report yet compute a percentage i
 
 **Topic:** Scaling and model selection
 **Difficulty:** Intermediate
+
+**Key terms:** [Large language model (LLM)](../GLOSSARY.md#large-language-model-llm) · [Parameter and weight](../GLOSSARY.md#parameter-and-weight) · [Baseline](../GLOSSARY.md#baseline) · [Cost per successful task](../GLOSSARY.md#cost-per-successful-task)
 
 **Short answer:**
 No. Performance depends on training data, compute allocation, architecture, adaptation, and the task, as well as parameter count.
@@ -871,8 +1005,10 @@ A small classifier may reliably route a fixed set of ticket categories, while a 
 **Topic:** Generative model families
 **Difficulty:** Intermediate
 
+**Key terms:** [GAN](../GLOSSARY.md#gan) · [Variational autoencoder (VAE)](../GLOSSARY.md#variational-autoencoder-vae) · [Diffusion model](../GLOSSARY.md#diffusion-model) · [Latent representation](../GLOSSARY.md#latent-representation)
+
 **Short answer:**
-GANs learn through adversarial training, VAEs learn a probabilistic latent representation, and diffusion models learn to reverse a corruption process.
+Generative adversarial networks (GANs) learn through competition between a generator and discriminator. Variational autoencoders (VAEs) learn a probabilistic latent representation. Diffusion models learn to reverse a corruption or noise process.
 
 **Long answer:**
 A GAN pairs a generator with a discriminator during training. A VAE optimizes reconstruction together with a regularizer on its approximate latent posterior; sampling uses a prior and decoder. A diffusion model learns denoising transitions, often conditioned on text or another signal. Training stability, sampling cost, fidelity, and diversity depend on the implementation; no family wins every task.
@@ -918,8 +1054,10 @@ Basic generation paths only; training objectives and architecture variants diffe
 **Topic:** Sparse model architecture
 **Difficulty:** Intermediate
 
+**Key terms:** [Mixture of experts (MoE)](../GLOSSARY.md#mixture-of-experts-moe) · [Parameter and weight](../GLOSSARY.md#parameter-and-weight) · [Throughput and concurrency](../GLOSSARY.md#throughput-and-concurrency)
+
 **Short answer:**
-In a sparse MoE layer, a router selects a subset of experts for each token, so active computation differs from total parameter count.
+In a sparse mixture-of-experts (MoE) layer, a router selects a subset of expert components for each token. Active computation therefore differs from total stored parameter count.
 
 **Long answer:**
 Experts commonly replace feed-forward sublayers while attention remains shared. Routing introduces load-balance, capacity, and communication concerns. Sparse activation can reduce arithmetic relative to activating every expert, but all required weights still need storage somewhere. Latency depends on hardware placement, batching, and communication as well as active parameters.
@@ -962,6 +1100,8 @@ A schematic top-two layer; expert count and routing policy are model-specific. T
 
 **Topic:** Model selection
 **Difficulty:** Intermediate
+
+**Key terms:** [Pretraining and base model](../GLOSSARY.md#pretraining-and-base-model) · [Supervised fine-tuning (SFT)](../GLOSSARY.md#supervised-fine-tuning-sft) · [Chat template and message role](../GLOSSARY.md#chat-template-and-message-role)
 
 **Short answer:**
 Choose the checkpoint whose training behavior fits the task and whose measured performance, format, license, and operational constraints meet your needs.

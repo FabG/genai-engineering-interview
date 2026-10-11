@@ -1,6 +1,6 @@
 # GenAI Evaluation Questions and Answers
 
-[Back to the README](../README.md) · [AI foundations](ai-foundations.md) · [RAG](rag.md) · [Prompt engineering](prompt-engineering.md)
+[Back to the README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [AI foundations](ai-foundations.md) · [RAG](rag.md) · [Prompt engineering](prompt-engineering.md)
 
 These questions cover how to evaluate an entire application as well as its individual components. Use the examples to discuss experimental design and operational tradeoffs. Examples and proposed workflows are illustrative; metric definitions and grading conventions should be recorded explicitly for each project.
 
@@ -20,6 +20,8 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 
 **Topic:** Success criteria
 **Difficulty:** Beginner
+
+**Key terms:** [Benchmark and evaluation slice](../GLOSSARY.md#benchmark-and-evaluation-slice) · [Benchmark and evaluation slice](../GLOSSARY.md#benchmark-and-evaluation-slice) · [Baseline](../GLOSSARY.md#baseline) · [Correctness and faithfulness](../GLOSSARY.md#correctness-and-faithfulness)
 
 **Short answer:**
 A benchmark captures particular tasks and conditions, while an application must meet several requirements on its own users, data, and workflows.
@@ -60,6 +62,8 @@ A model that excels at multiple-choice knowledge questions may fail to extract a
 **Topic:** Test coverage
 **Difficulty:** Intermediate
 
+**Key terms:** [Dataset and corpus](../GLOSSARY.md#dataset-and-corpus) · [Ground truth](../GLOSSARY.md#ground-truth) · [Rubric and adjudication](../GLOSSARY.md#rubric-and-adjudication) · [Benchmark and evaluation slice](../GLOSSARY.md#benchmark-and-evaluation-slice)
+
 **Short answer:**
 Include representative tasks, important edge cases, and known failure patterns, together with the evidence and grading criteria needed to judge each result.
 
@@ -99,6 +103,8 @@ A customer-support evaluation can include common billing requests and rare accou
 
 **Topic:** Experimental integrity
 **Difficulty:** Intermediate
+
+**Key terms:** [Data leakage](../GLOSSARY.md#data-leakage) · [Validation set](../GLOSSARY.md#validation-set) · [Test set](../GLOSSARY.md#test-set)
 
 **Short answer:**
 Separate development cases from held-out evaluation cases, and avoid choosing prompts, examples, or retrieval settings using the held-out answers.
@@ -141,8 +147,10 @@ A team repeatedly edits a prompt after reading every failed test answer. The set
 **Topic:** Retrieval metrics
 **Difficulty:** Intermediate
 
+**Key terms:** [Precision@k and recall@k](../GLOSSARY.md#precisionk-and-recallk) · [Precision@k and recall@k](../GLOSSARY.md#precisionk-and-recallk) · [Mean reciprocal rank (MRR)](../GLOSSARY.md#mean-reciprocal-rank-mrr) · [DCG and nDCG](../GLOSSARY.md#dcg-and-ndcg)
+
 **Short answer:**
-They measure different properties of a ranked result list: relevance density, relevant-item coverage, the first relevant result's rank, and graded ranking quality.
+Precision@k measures the relevant fraction of the top k results; recall@k measures the fraction of known relevant items retrieved. Mean reciprocal rank (MRR) rewards the first relevant hit. Normalized discounted cumulative gain (nDCG) measures graded ranking quality relative to an ideal ordering.
 
 **Long answer:**
 
@@ -198,6 +206,8 @@ With relevant hits at ranks 2 and 5 among five results and four known relevant d
 **Topic:** Answer quality
 **Difficulty:** Intermediate
 
+**Key terms:** [Correctness and faithfulness](../GLOSSARY.md#correctness-and-faithfulness) · [Correctness and faithfulness](../GLOSSARY.md#correctness-and-faithfulness) · [Citation validity and support](../GLOSSARY.md#citation-validity-and-support) · [Entailment](../GLOSSARY.md#entailment)
+
 **Short answer:**
 Correctness asks whether the answer is right; faithfulness asks whether its claims are supported by the supplied context; citation quality asks whether the cited evidence supports and covers those claims.
 
@@ -244,6 +254,8 @@ The fictional office-hours example distinguishes support by retrieved evidence f
 **Topic:** Automated evaluation
 **Difficulty:** Beginner
 
+**Key terms:** [Deterministic check](../GLOSSARY.md#deterministic-check) · [Structured output and schema](../GLOSSARY.md#structured-output-and-schema) · [Rubric and adjudication](../GLOSSARY.md#rubric-and-adjudication)
+
 **Short answer:**
 Use deterministic checks for objectively testable requirements, and semantic or human judgment when acceptable answers vary in wording or require interpretation.
 
@@ -284,6 +296,8 @@ A generated SQL query can differ textually from a reference yet return the right
 
 **Topic:** Model-based grading
 **Difficulty:** Intermediate
+
+**Key terms:** [LLM-as-a-judge](../GLOSSARY.md#llm-as-a-judge) · [Rubric and adjudication](../GLOSSARY.md#rubric-and-adjudication) · [Calibration and Brier score](../GLOSSARY.md#calibration-and-brier-score)
 
 **Short answer:**
 An LLM judge can scale nuanced comparisons, but its judgments can be wrong, biased, or sensitive to presentation.
@@ -340,6 +354,8 @@ A longer answer can win a preference comparison despite inventing an extra fact.
 **Topic:** Human review
 **Difficulty:** Intermediate
 
+**Key terms:** [Inter-rater agreement](../GLOSSARY.md#inter-rater-agreement) · [Rubric and adjudication](../GLOSSARY.md#rubric-and-adjudication) · [Rubric and adjudication](../GLOSSARY.md#rubric-and-adjudication)
+
 **Short answer:**
 Give reviewers a clear rubric, examples, and the evidence needed to judge, then measure and investigate disagreement.
 
@@ -378,6 +394,8 @@ Reviewers may disagree whether a cautious answer counts as helpful or evasive. C
 
 **Topic:** Uncertainty and experiments
 **Difficulty:** Advanced
+
+**Key terms:** [Paired comparison](../GLOSSARY.md#paired-comparison) · [Bootstrap](../GLOSSARY.md#bootstrap) · [Confidence interval](../GLOSSARY.md#confidence-interval) · [Independent and identically distributed (IID)](../GLOSSARY.md#independent-and-identically-distributed-iid)
 
 **Short answer:**
 Evaluate both systems on matched cases, repeat generation where needed, and report the size and uncertainty of the difference rather than only two averages.
@@ -420,6 +438,8 @@ If a new prompt improves 30 tasks and worsens 28, the net change may be too smal
 **Topic:** Failure-oriented testing
 **Difficulty:** Intermediate
 
+**Key terms:** [Robustness and adversarial evaluation](../GLOSSARY.md#robustness-and-adversarial-evaluation) · [Prompt injection](../GLOSSARY.md#prompt-injection) · [Invariant](../GLOSSARY.md#invariant)
+
 **Short answer:**
 Test benign variations and malicious inputs against explicit behavioral requirements, including the application's permissions and tool boundaries.
 
@@ -460,6 +480,8 @@ Changing a customer's name should not change eligibility, but changing the purch
 **Topic:** Operational metrics
 **Difficulty:** Intermediate
 
+**Key terms:** [Latency and percentiles](../GLOSSARY.md#latency-and-percentiles) · [Time to first token (TTFT)](../GLOSSARY.md#time-to-first-token-ttft) · [Cost per successful task](../GLOSSARY.md#cost-per-successful-task)
+
 **Short answer:**
 Measure complete task performance under representative load, including latency distributions, failures, and total cost per successful task.
 
@@ -499,6 +521,8 @@ A model with half the per-token price can cost more per resolved ticket if it ne
 
 **Topic:** Continuous evaluation
 **Difficulty:** Intermediate
+
+**Key terms:** [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback) · [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback) · [A/B test](../GLOSSARY.md#ab-test) · [Data drift](../GLOSSARY.md#data-drift)
 
 **Short answer:**
 Offline tests provide controlled comparisons before release. Production monitoring reveals real traffic patterns, operational failures, and changes that the test set may miss.
@@ -557,6 +581,8 @@ A response style wins offline preference ratings but causes users to ask more fo
 
 **Topic:** Selective prediction
 **Difficulty:** Advanced
+
+**Key terms:** [Abstention and coverage](../GLOSSARY.md#abstention-and-coverage) · [Abstention and coverage](../GLOSSARY.md#abstention-and-coverage) · [Abstention and coverage](../GLOSSARY.md#abstention-and-coverage) · [Calibration and Brier score](../GLOSSARY.md#calibration-and-brier-score)
 
 **Short answer:**
 Report both how often the system answers and how often its accepted answers are wrong, plus the cost and quality of escalation.

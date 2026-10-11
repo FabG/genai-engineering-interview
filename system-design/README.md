@@ -1,5 +1,7 @@
 # System Design Scenarios
 
+[Terminology glossary](../GLOSSARY.md) — concise definitions for the architecture and metrics used below.
+
 [Back to the main README](../README.md) · [Hands-on Python exercises](../hands-on/README.md)
 
 Use these six scenarios for a 45–60 minute interview or a self-guided design session. All workloads, budgets, and targets below are hypothetical interview constraints, not product guarantees. Clarify requirements, estimate capacity, sketch the data flow, and discuss failures before selecting specific products.
@@ -30,6 +32,8 @@ Reference designs are expandable so candidates can attempt each problem first. T
 For each scenario, produce a component diagram, a data model or API sketch, one capacity estimate with units, and a rollout and failure-recovery plan. Strong answers connect choices to the stated workload and acknowledge what still needs measurement.
 
 ## 1. Permission-aware knowledge assistant
+
+**Key terms:** [Retrieval-augmented generation (RAG)](../GLOSSARY.md#retrieval-augmented-generation-rag) · [Authentication and authorization](../GLOSSARY.md#authentication-and-authorization) · [Chunk and overlap](../GLOSSARY.md#chunk-and-overlap) · [Precision@k and recall@k](../GLOSSARY.md#precisionk-and-recallk) · [Time to first token (TTFT)](../GLOSSARY.md#time-to-first-token-ttft)
 
 **Difficulty:** Intermediate to Advanced
 
@@ -81,6 +85,8 @@ Compare lexical, dense, and hybrid retrieval on labeled questions. Track evidenc
 **Related study:** [RAG](../questions/rag.md), [production engineering](../questions/production-engineering.md). [Microsoft's security-filter pattern](https://learn.microsoft.com/en-us/azure/search/search-security-trimming-for-azure-search) illustrates query-time filtering; the immediate-revocation requirement here is an additional design constraint.
 
 ## 2. Support agent with controlled actions
+
+**Key terms:** [Agent](../GLOSSARY.md#agent) · [Tool calling](../GLOSSARY.md#tool-calling) · [Idempotency](../GLOSSARY.md#idempotency) · [Human-in-the-loop](../GLOSSARY.md#human-in-the-loop)
 
 **Difficulty:** Advanced
 
@@ -141,6 +147,8 @@ Evaluate final external state, unauthorized actions, duplicate replacements, suc
 
 ## 3. Document extraction and review pipeline
 
+**Key terms:** [Optical character recognition (OCR)](../GLOSSARY.md#optical-character-recognition-ocr) · [Structured output and schema](../GLOSSARY.md#structured-output-and-schema) · [Deterministic check](../GLOSSARY.md#deterministic-check) · [Human-in-the-loop](../GLOSSARY.md#human-in-the-loop)
+
 **Difficulty:** Intermediate to Advanced
 
 **Prompt:** Design a service that extracts invoice fields from uploaded PDFs and produces validated records, routing uncertain or inconsistent cases to reviewers.
@@ -196,6 +204,8 @@ Deduplicate per tenant using appropriate business keys and content identity; a r
 **Related study:** [Fine-tuning](../questions/fine-tuning.md), [evaluation](../questions/evaluation.md), and exercises 6–7 in the [hands-on notebooks](../hands-on/README.md).
 
 ## 4. Multi-tenant inference gateway
+
+**Key terms:** [Tenant](../GLOSSARY.md#tenant) · [Rate limit and quota](../GLOSSARY.md#rate-limit-and-quota) · [Admission control and backpressure](../GLOSSARY.md#admission-control-and-backpressure) · [Service-level objective (SLO)](../GLOSSARY.md#service-level-objective-slo) · [KV cache](../GLOSSARY.md#kv-cache)
 
 **Difficulty:** Advanced
 
@@ -254,6 +264,8 @@ Distinguish prefix caching from answer caching. Scope reused answers to trusted 
 
 ## 5. Evaluation and release platform
 
+**Key terms:** [Benchmark and evaluation slice](../GLOSSARY.md#benchmark-and-evaluation-slice) · [Paired comparison](../GLOSSARY.md#paired-comparison) · [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback) · [Ground truth](../GLOSSARY.md#ground-truth)
+
 **Difficulty:** Intermediate to Advanced
 
 **Prompt:** Design a platform that compares prompt, model, and retrieval changes before release and detects regressions after rollout.
@@ -308,6 +320,8 @@ A release gate combines hard constraints with quality and operational targets. A
 **Related study:** [Evaluation](../questions/evaluation.md), [agents](../questions/agents.md). [Google SRE's canary-release guidance](https://sre.google/workbook/canarying-releases/) describes staged comparison and release risk.
 
 ## 6. Autonomous software factory
+
+**Key terms:** [Software factory](../GLOSSARY.md#software-factory) · [Orchestration](../GLOSSARY.md#orchestration) · [CI/CD](../GLOSSARY.md#cicd) · [Data provenance and lineage](../GLOSSARY.md#data-provenance-and-lineage) · [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback)
 
 **Difficulty:** Advanced
 

@@ -1,6 +1,6 @@
 # Software Factory Questions and Answers
 
-[Back to the README](../README.md) · [Agent Orchestration](agent-orchestration.md) · [Agents and tool use](agents.md) · [Production engineering](production-engineering.md) · [System design scenario](../system-design/README.md#6-autonomous-software-factory)
+[Back to the README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [Agent Orchestration](agent-orchestration.md) · [Agents and tool use](agents.md) · [Production engineering](production-engineering.md) · [System design scenario](../system-design/README.md#6-autonomous-software-factory)
 
 Here, a software factory means an end-to-end software development system in which fleets of autonomous AI agents handle planning, coding, testing, and monitoring, while human engineers define business intent and review results. Autonomy operates within explicit permissions and delivery policies. These questions describe illustrative architectures, not a claim that a particular product can reliably automate every development task. References support individual engineering techniques; the proposed factory combines them into a design for discussion.
 
@@ -19,6 +19,8 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 
 **Topic:** End-to-end development lifecycle
 **Difficulty:** Beginner
+
+**Key terms:** [Software factory](../GLOSSARY.md#software-factory) · [CI/CD](../GLOSSARY.md#cicd) · [Agent](../GLOSSARY.md#agent)
 
 **Short answer:**
 A software factory coordinates agents across the development lifecycle, turning business intent into verified changes and monitored releases. Coding assistance and CI/CD are components of that larger system.
@@ -59,6 +61,8 @@ A system that generates a patch but cannot validate compatibility or safely rele
 **Topic:** Requirements and acceptance criteria
 **Difficulty:** Intermediate
 
+**Key terms:** [Acceptance criteria](../GLOSSARY.md#acceptance-criteria) · [Invariant](../GLOSSARY.md#invariant) · [Latency and percentiles](../GLOSSARY.md#latency-and-percentiles)
+
 **Short answer:**
 Turn the requested outcome into versioned user scenarios, measurable acceptance criteria, constraints, and explicit non-goals, while recording ambiguities for human resolution.
 
@@ -97,6 +101,8 @@ Translate intent into observable behavior, inputs, exclusions, constraints, and 
 
 **Topic:** Planning and dependency management
 **Difficulty:** Advanced
+
+**Key terms:** [Task graph and critical path](../GLOSSARY.md#task-graph-and-critical-path) · [Supervisor and handoff](../GLOSSARY.md#supervisor-and-handoff) · [Merge queue and semantic conflict](../GLOSSARY.md#merge-queue-and-semantic-conflict)
 
 **Short answer:**
 Inspect the repository and architecture, define interfaces and bounded tasks, then schedule independent work around explicit dependencies and integration milestones.
@@ -139,6 +145,8 @@ Frontend and backend work can proceed in parallel after agreeing on an API contr
 **Topic:** Sandboxes and permissions
 **Difficulty:** Intermediate
 
+**Key terms:** [Sandbox and least privilege](../GLOSSARY.md#sandbox-and-least-privilege) · [VM and container](../GLOSSARY.md#vm-and-container) · [Artifact and digest](../GLOSSARY.md#artifact-and-digest) · [Sandbox and least privilege](../GLOSSARY.md#sandbox-and-least-privilege)
+
 **Short answer:**
 Provide an isolated, disposable environment with pinned inputs, scoped credentials, bounded compute, and only the network and tools needed for the task.
 
@@ -178,6 +186,8 @@ A patch passes locally because an undeclared package is already installed. A cle
 **Topic:** Independent verification
 **Difficulty:** Advanced
 
+**Key terms:** [Regression test and mutation testing](../GLOSSARY.md#regression-test-and-mutation-testing) · [Regression test and mutation testing](../GLOSSARY.md#regression-test-and-mutation-testing) · [Acceptance criteria](../GLOSSARY.md#acceptance-criteria)
+
 **Short answer:**
 Combine agent-generated tests with protected acceptance checks, existing regression coverage, and independent review tied to the approved specification.
 
@@ -216,6 +226,8 @@ An agent implements and tests a discount using the same wrong rounding rule. An 
 
 **Topic:** Integration and merge coordination
 **Difficulty:** Advanced
+
+**Key terms:** [Merge queue and semantic conflict](../GLOSSARY.md#merge-queue-and-semantic-conflict) · [Merge queue and semantic conflict](../GLOSSARY.md#merge-queue-and-semantic-conflict) · [CI/CD](../GLOSSARY.md#cicd)
 
 **Short answer:**
 Keep changes isolated, coordinate shared interfaces, and validate the combined candidate against the current target branch before merging.
@@ -275,6 +287,8 @@ One patch changes a field from nullable to required while another introduces a c
 **Topic:** Human intent and review
 **Difficulty:** Intermediate
 
+**Key terms:** [Human-in-the-loop](../GLOSSARY.md#human-in-the-loop) · [Human-in-the-loop](../GLOSSARY.md#human-in-the-loop) · [Artifact and digest](../GLOSSARY.md#artifact-and-digest)
+
 **Short answer:**
 Engineers define outcomes and constraints, resolve material ambiguities, and review concrete results at checkpoints determined by impact and organizational policy.
 
@@ -313,6 +327,8 @@ An engineer may approve a schema migration after reviewing compatibility and rol
 
 **Topic:** Artifact identity and audit trails
 **Difficulty:** Advanced
+
+**Key terms:** [Data provenance and lineage](../GLOSSARY.md#data-provenance-and-lineage) · [Artifact and digest](../GLOSSARY.md#artifact-and-digest) · [Artifact and digest](../GLOSSARY.md#artifact-and-digest)
 
 **Short answer:**
 Maintain a versioned chain from intent and task records through source commits, build inputs, test reports, approvals, and the deployed artifact digest.
@@ -372,6 +388,8 @@ A release report showing green tests is misleading if those tests ran before the
 **Topic:** Controlled release execution
 **Difficulty:** Advanced
 
+**Key terms:** [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback) · [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback) · [Feature flag](../GLOSSARY.md#feature-flag) · [Atomic operation and transaction](../GLOSSARY.md#atomic-operation-and-transaction)
+
 **Short answer:**
 Agents can propose rollout plans and analyze results, while a trusted release service enforces permissions, artifact identity, staged exposure, and stop conditions.
 
@@ -414,6 +432,8 @@ Reverting code after a destructive database migration does not restore deleted d
 **Topic:** Production feedback and incident response
 **Difficulty:** Advanced
 
+**Key terms:** [Observability and SRE](../GLOSSARY.md#observability-and-sre) · [Regression test and mutation testing](../GLOSSARY.md#regression-test-and-mutation-testing) · [Ground truth](../GLOSSARY.md#ground-truth)
+
 **Short answer:**
 Connect telemetry and user outcomes to release versions, detect meaningful regressions, and turn verified incidents into bounded remediation work.
 
@@ -454,6 +474,8 @@ A timeout alert may be caused by a downstream outage rather than inefficient app
 **Topic:** Delivery outcomes and economics
 **Difficulty:** Intermediate
 
+**Key terms:** [Cost per successful task](../GLOSSARY.md#cost-per-successful-task) · [Latency and percentiles](../GLOSSARY.md#latency-and-percentiles) · [Service-level objective (SLO)](../GLOSSARY.md#service-level-objective-slo)
+
 **Short answer:**
 Measure accepted business outcomes, delivery time, escaped defects, operational reliability, human effort, and total cost per accepted change.
 
@@ -492,6 +514,8 @@ A factory produces twice as many patches but half require extensive repair. Coun
 
 **Topic:** Factory evaluation and controlled evolution
 **Difficulty:** Advanced
+
+**Key terms:** [Prompt and prompt engineering](../GLOSSARY.md#prompt-and-prompt-engineering) · [Ablation](../GLOSSARY.md#ablation) · [Benchmark and evaluation slice](../GLOSSARY.md#benchmark-and-evaluation-slice) · [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback)
 
 **Short answer:**
 Version factory configurations, evaluate candidates on held-out representative tasks, and expand deployment only after quality and operational evidence support the change.

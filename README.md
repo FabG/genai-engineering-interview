@@ -24,6 +24,12 @@ A growing collection of questions and answers for conducting and preparing for G
 
 All question banks include short answers, detailed **Long answers**, relevant **metrics and checks**, at least **two examples per question**, **Quick Cheat Sheets**, follow-up questions, and references. Numerical examples are illustrative, not benchmark results or universal targets. There are **163 questions** across ten banks. Selected answers also include original diagrams, plotted examples, two attributed video snapshots, and a user-supplied RAG types infographic, with supporting sources linked beside them.
 
+## Definitions and Terminology
+
+Use the [AI and GenAI Terminology Glossary](GLOSSARY.md) for **275 concise definitions and explanations** covering foundational ML, LLMs, RAG, prompting, fine-tuning, evaluation, agents, and production engineering. It expands acronyms and distinguishes terms with multiple meanings, such as bias, precision, rank, and checkpoint. Every question, design scenario, and notebook exercise includes **Key terms** links for quick lookup.
+
+The glossary uses the supplied [Google ML Glossary](https://developers.google.com/machine-learning/glossary), [ML Cheatsheet glossary](https://ml-cheatsheet.readthedocs.io/en/latest/glossary.html), and [GeeksforGeeks terminology guide](https://www.geeksforgeeks.org/machine-learning/50-machine-learning-terms-explained/) as vocabulary references, with primary documentation and research papers for technical detail.
+
 ## Cheat Sheet
 
 Use the [AI and GenAI Interview Cheat Sheet](CHEAT_SHEET.md) for cross-topic revision, key formulas, common pitfalls, and memory aids such as **“V” for o“V”erfitting**. Every question also includes a compact **Quick Cheat Sheet** beside its detailed answer. Start with recall, then use the long answer to explain assumptions, tradeoffs, and how to measure success.
@@ -94,8 +100,11 @@ Use this template when adding a question:
 **Topic:** [Topic]
 **Difficulty:** [Beginner / Intermediate / Advanced]
 
+**Key terms:**
+[Link the relevant entries in GLOSSARY.md; expand unfamiliar acronyms on first use.]
+
 **Short answer:**
-[A concise answer suitable for an interview.]
+[Start with a crisp definition, then state the main distinction or use.]
 
 **Long answer:**
 [Explain the mechanism, assumptions, practical decisions, failure modes, and tradeoffs in depth.]
@@ -168,7 +177,7 @@ Use this template when adding a question:
 
 ## Contributing
 
-Add new questions, improve existing long answers, or suggest missing topics. Include meaningful metrics or checks, at least two distinct examples where possible, and a quick cheat sheet. Define units and denominators, explain metric limitations, and distinguish illustrative numbers from measured results. Keep answers clear, technically accurate, and supported by reliable references. Call out assumptions and distinguish general principles from behavior specific to a model or tool. For diagrams, include descriptive labels, a short explanation, and a primary source for the concept; label illustrative architectures as examples. Add alt text to images and `accTitle` / `accDescr` to Mermaid diagrams.
+Add new questions, improve existing long answers, or suggest missing topics. Include meaningful metrics or checks, at least two distinct examples where possible, and a quick cheat sheet. Define units and denominators, explain metric limitations, and distinguish illustrative numbers from measured results. Keep answers clear, technically accurate, and supported by reliable references. Define new technical terms in the [glossary](GLOSSARY.md), expand unfamiliar acronyms on first use, and add relevant Key terms links. Distinguish overloaded meanings rather than relying on context alone. Call out assumptions and distinguish general principles from behavior specific to a model or tool. For diagrams, include descriptive labels, a short explanation, and a primary source for the concept; label illustrative architectures as examples. Add alt text to images and `accTitle` / `accDescr` to Mermaid diagrams.
 
 ## License
 

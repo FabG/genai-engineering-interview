@@ -1,6 +1,6 @@
 # Agent Orchestration Questions and Answers
 
-[Back to the README](../README.md) · [Agents and tool use](agents.md) · [Software Factory](software-factory.md) · [Evaluation](evaluation.md)
+[Back to the README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [Agents and tool use](agents.md) · [Software Factory](software-factory.md) · [Evaluation](evaluation.md)
 
 These questions extend the single-agent foundations into coordinating fleets of agents. They cover how work is divided, scheduled, verified, and recovered. The architectures and examples are illustrative design proposals; cited systems demonstrate particular techniques rather than universal guarantees.
 
@@ -19,6 +19,8 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 
 **Topic:** Orchestration responsibilities
 **Difficulty:** Beginner
+
+**Key terms:** [Orchestration](../GLOSSARY.md#orchestration) · [Agent](../GLOSSARY.md#agent) · [Workflow](../GLOSSARY.md#workflow)
 
 **Short answer:**
 Orchestration coordinates tasks, dependencies, workers, and resources across a larger objective, while an individual agent chooses actions within its assigned task.
@@ -59,6 +61,8 @@ A research fleet may finish all worker responses yet fail to produce a consisten
 **Topic:** Coordination patterns
 **Difficulty:** Intermediate
 
+**Key terms:** [Supervisor and handoff](../GLOSSARY.md#supervisor-and-handoff) · [Workflow](../GLOSSARY.md#workflow) · [Orchestration](../GLOSSARY.md#orchestration)
+
 **Short answer:**
 Use a fixed workflow for known dependencies, a supervisor for dynamic decomposition, and peer coordination when local decisions justify the added reconciliation complexity.
 
@@ -97,6 +101,8 @@ A document pipeline can follow fixed extraction and validation stages, while inc
 
 **Topic:** Task graphs and dependencies
 **Difficulty:** Intermediate
+
+**Key terms:** [Task graph and critical path](../GLOSSARY.md#task-graph-and-critical-path) · [Task graph and critical path](../GLOSSARY.md#task-graph-and-critical-path) · [Amdahl's law](../GLOSSARY.md#amdahls-law)
 
 **Short answer:**
 Define bounded deliverables, interfaces, dependencies, and acceptance criteria; parallelize tasks whose inputs and ownership are sufficiently independent.
@@ -154,6 +160,8 @@ Four agents can inspect four independent services, but a shared API decision may
 **Topic:** Admission control and scheduling
 **Difficulty:** Advanced
 
+**Key terms:** [Throughput and concurrency](../GLOSSARY.md#throughput-and-concurrency) · [Admission control and backpressure](../GLOSSARY.md#admission-control-and-backpressure) · [Little's Law](../GLOSSARY.md#littles-law) · [Rate limit and quota](../GLOSSARY.md#rate-limit-and-quota)
+
 **Short answer:**
 Schedule ready tasks according to capabilities, authorization, priority, and available resources, with limits that prevent one run from exhausting the fleet.
 
@@ -193,6 +201,8 @@ A burst of long research jobs should not prevent short urgent incident tasks fro
 **Topic:** Task and result contracts
 **Difficulty:** Intermediate
 
+**Key terms:** [Supervisor and handoff](../GLOSSARY.md#supervisor-and-handoff) · [Acceptance criteria](../GLOSSARY.md#acceptance-criteria) · [Data provenance and lineage](../GLOSSARY.md#data-provenance-and-lineage)
+
 **Short answer:**
 A handoff should include the objective, input versions, constraints, expected output, evidence, and unresolved issues in a structured record.
 
@@ -231,6 +241,8 @@ A code-review task should include the exact commit, intended behavior, test evid
 
 **Topic:** State ownership and concurrency
 **Difficulty:** Advanced
+
+**Key terms:** [Shared state and optimistic concurrency](../GLOSSARY.md#shared-state-and-optimistic-concurrency) · [Shared state and optimistic concurrency](../GLOSSARY.md#shared-state-and-optimistic-concurrency) · [Atomic operation and transaction](../GLOSSARY.md#atomic-operation-and-transaction)
 
 **Short answer:**
 Give each task an isolated workspace, publish immutable outputs, and use explicit version checks when updating shared records or integrating changes.
@@ -272,6 +284,8 @@ Two workers increment a progress counter from the same old value and overwrite e
 
 **Topic:** Durable execution
 **Difficulty:** Advanced
+
+**Key terms:** [Durable execution](../GLOSSARY.md#durable-execution) · [Checkpoint](../GLOSSARY.md#checkpoint) · [Lease and fencing token](../GLOSSARY.md#lease-and-fencing-token) · [Lease and fencing token](../GLOSSARY.md#lease-and-fencing-token)
 
 **Short answer:**
 Persist the plan, task states, accepted outputs, and pending operations so the system can resume and reconcile incomplete work.
@@ -329,6 +343,8 @@ A worker pauses long enough for its lease to expire, then resumes after another 
 **Topic:** Failure and side-effect semantics
 **Difficulty:** Advanced
 
+**Key terms:** [Retry and backoff](../GLOSSARY.md#retry-and-backoff) · [Deadline and cancellation](../GLOSSARY.md#deadline-and-cancellation) · [Deadline and cancellation](../GLOSSARY.md#deadline-and-cancellation) · [Side effect and reconciliation](../GLOSSARY.md#side-effect-and-reconciliation)
+
 **Short answer:**
 Bound retries at the run level, deduplicate repeated operations, propagate cancellation, and reconcile effects that may already have happened.
 
@@ -367,6 +383,8 @@ A parent task is canceled while a worker submits a purchase request. The system 
 
 **Topic:** Resource limits and stopping conditions
 **Difficulty:** Intermediate
+
+**Key terms:** [Orchestration](../GLOSSARY.md#orchestration) · [Planning and termination](../GLOSSARY.md#planning-and-termination) · [Cost per successful task](../GLOSSARY.md#cost-per-successful-task)
 
 **Short answer:**
 Enforce shared limits on spending, elapsed time, active workers, delegation depth, and repair attempts, then stop or escalate when progress stalls.
@@ -409,6 +427,8 @@ A coding fleet that spends its entire budget drafting patches has no capacity to
 **Topic:** Evidence and disagreement
 **Difficulty:** Intermediate
 
+**Key terms:** [Rubric and adjudication](../GLOSSARY.md#rubric-and-adjudication) · [Ground truth](../GLOSSARY.md#ground-truth) · [Invariant](../GLOSSARY.md#invariant)
+
 **Short answer:**
 Compare outputs against explicit requirements and executable evidence; seek more evidence or human judgment when the disagreement cannot be resolved mechanically.
 
@@ -448,6 +468,8 @@ Two agents propose incompatible API schemas. A compatibility test against real c
 **Topic:** Distributed tracing and auditability
 **Difficulty:** Intermediate
 
+**Key terms:** [Trace and span](../GLOSSARY.md#trace-and-span) · [Observability and SRE](../GLOSSARY.md#observability-and-sre) · [Task graph and critical path](../GLOSSARY.md#task-graph-and-critical-path)
+
 **Short answer:**
 Correlate the overall run with tasks, attempts, model calls, tools, artifacts, and external operations so failures can be traced across delegation boundaries.
 
@@ -486,6 +508,8 @@ A user request appears slow because one child task never reaches a terminal stat
 
 **Topic:** Fleet evaluation
 **Difficulty:** Advanced
+
+**Key terms:** [Paired comparison](../GLOSSARY.md#paired-comparison) · [Baseline](../GLOSSARY.md#baseline) · [Cost per successful task](../GLOSSARY.md#cost-per-successful-task) · [Confidence interval](../GLOSSARY.md#confidence-interval)
 
 **Short answer:**
 Compare the fleet with a simpler baseline on matched tasks using verified outcomes, latency, cost, and human effort under comparable resource limits.

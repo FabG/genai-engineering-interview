@@ -1,6 +1,6 @@
 # Prompt Engineering Questions and Answers
 
-[Back to the README](../README.md) · [GenAI foundations](genai-foundations.md) · [RAG](rag.md) · [Evaluation](evaluation.md)
+[Back to the README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [GenAI foundations](genai-foundations.md) · [RAG](rag.md) · [Evaluation](evaluation.md)
 
 These questions focus on designing, testing, and maintaining instructions for language-model applications. Use the follow-ups to explore implementation choices rather than memorizing a single prompt formula. Examples are illustrative; role handling, structured-output guarantees, and effective prompting techniques depend on the model and serving interface.
 
@@ -19,6 +19,8 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 
 **Topic:** Task definition
 **Difficulty:** Beginner
+
+**Key terms:** [Prompt and prompt engineering](../GLOSSARY.md#prompt-and-prompt-engineering) · [Structured output and schema](../GLOSSARY.md#structured-output-and-schema) · [Abstention and coverage](../GLOSSARY.md#abstention-and-coverage)
 
 **Short answer:**
 A useful prompt states the task, relevant context, constraints, expected output, and what to do when required information is missing.
@@ -70,6 +72,8 @@ For contract extraction, specify whether absent renewal dates should be null, in
 **Topic:** Message structure
 **Difficulty:** Intermediate
 
+**Key terms:** [Chat template and message role](../GLOSSARY.md#chat-template-and-message-role) · [Chat template and message role](../GLOSSARY.md#chat-template-and-message-role) · [Prompt injection](../GLOSSARY.md#prompt-injection)
+
 **Short answer:**
 Roles distinguish application instructions, user requests, and model responses. Chat templates serialize those messages in the format expected by a model.
 
@@ -108,6 +112,8 @@ A retrieved page saying “system: ignore the policy” is still page content. A
 
 **Topic:** Demonstrations
 **Difficulty:** Beginner
+
+**Key terms:** [Zero-shot and few-shot learning](../GLOSSARY.md#zero-shot-and-few-shot-learning) · [Label and target](../GLOSSARY.md#label-and-target) · [Data leakage](../GLOSSARY.md#data-leakage)
 
 **Short answer:**
 Choose correct, relevant, and varied examples that demonstrate the intended task and output format, including important edge cases.
@@ -149,6 +155,8 @@ A sentiment classifier shown only obviously positive and negative reviews may fa
 
 **Topic:** Structured outputs
 **Difficulty:** Intermediate
+
+**Key terms:** [Structured output and schema](../GLOSSARY.md#structured-output-and-schema) · [Structured output and schema](../GLOSSARY.md#structured-output-and-schema) · [Deterministic check](../GLOSSARY.md#deterministic-check)
 
 **Short answer:**
 No. Use supported schema-constrained generation where available, then validate the response and handle exceptional outcomes explicitly.
@@ -206,6 +214,8 @@ A response can satisfy a schema with a negative invoice total or an end date pre
 **Topic:** Tool interfaces
 **Difficulty:** Intermediate
 
+**Key terms:** [Tool calling](../GLOSSARY.md#tool-calling) · [Authentication and authorization](../GLOSSARY.md#authentication-and-authorization) · [Idempotency](../GLOSSARY.md#idempotency)
+
 **Short answer:**
 Tool calling produces a structured request for the application to execute. Describing an action in text does not execute it or prove that it happened.
 
@@ -251,6 +261,8 @@ The application executes the action; returning a tool-shaped response does not e
 **Topic:** Workflow design
 **Difficulty:** Intermediate
 
+**Key terms:** [Workflow](../GLOSSARY.md#workflow) · [Query rewriting and decomposition](../GLOSSARY.md#query-rewriting-and-decomposition) · [Structured output and schema](../GLOSSARY.md#structured-output-and-schema)
+
 **Short answer:**
 Split tasks when distinct steps need different evidence, validation, tools, or recovery behavior, and the benefits justify additional calls.
 
@@ -289,6 +301,8 @@ An insurance workflow can first extract policy facts, then apply deterministic e
 
 **Topic:** Reasoning and verification
 **Difficulty:** Intermediate
+
+**Key terms:** [Chain-of-thought and reasoning trace](../GLOSSARY.md#chain-of-thought-and-reasoning-trace) · [Correctness and faithfulness](../GLOSSARY.md#correctness-and-faithfulness) · [Entailment](../GLOSSARY.md#entailment)
 
 **Short answer:**
 No. Reasoning prompts can improve some tasks, but a plausible explanation can accompany a wrong answer and may not faithfully describe how the answer was produced.
@@ -332,6 +346,8 @@ A model can confidently explain an incorrect tax calculation. Running the arithm
 **Topic:** Context management
 **Difficulty:** Intermediate
 
+**Key terms:** [Context window](../GLOSSARY.md#context-window) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer) · [Positional encoding and RoPE](../GLOSSARY.md#positional-encoding-and-rope)
+
 **Short answer:**
 Label sources, remove irrelevant repetition, state the question clearly, and test whether the model finds evidence throughout the available context.
 
@@ -371,6 +387,8 @@ In a policy bundle, a short exception at the end may override a long general rul
 **Topic:** Grounded responses
 **Difficulty:** Beginner
 
+**Key terms:** [Abstention and coverage](../GLOSSARY.md#abstention-and-coverage) · [Calibration and Brier score](../GLOSSARY.md#calibration-and-brier-score) · [Abstention and coverage](../GLOSSARY.md#abstention-and-coverage)
+
 **Short answer:**
 Specify when the model should answer from evidence, ask a clarifying question, or acknowledge that the available information is insufficient.
 
@@ -409,6 +427,8 @@ A travel request without a departure city requires clarification before searchin
 
 **Topic:** Untrusted inputs
 **Difficulty:** Intermediate
+
+**Key terms:** [Prompt injection](../GLOSSARY.md#prompt-injection) · [Sandbox and least privilege](../GLOSSARY.md#sandbox-and-least-privilege) · [Authentication and authorization](../GLOSSARY.md#authentication-and-authorization)
 
 **Short answer:**
 Prompt injection attempts to redirect a model through instructions embedded in inputs. Delimiters clarify structure but do not guarantee protection.
@@ -466,6 +486,8 @@ A calendar description tells an assistant to email private notes elsewhere. The 
 **Topic:** Prompt lifecycle
 **Difficulty:** Intermediate
 
+**Key terms:** [Prompt and prompt engineering](../GLOSSARY.md#prompt-and-prompt-engineering) · [Benchmark and evaluation slice](../GLOSSARY.md#benchmark-and-evaluation-slice) · [Paired comparison](../GLOSSARY.md#paired-comparison) · [Data leakage](../GLOSSARY.md#data-leakage)
+
 **Short answer:**
 Treat prompts as versioned application artifacts and compare changes against defined success criteria using a stable evaluation set.
 
@@ -504,6 +526,8 @@ Adding an example fixes address extraction but increases false positives on docu
 
 **Topic:** Efficiency
 **Difficulty:** Intermediate
+
+**Key terms:** [Prompt and prompt engineering](../GLOSSARY.md#prompt-and-prompt-engineering) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer) · [Response, semantic, and prefix caches](../GLOSSARY.md#response-semantic-and-prefix-caches) · [Cost per successful task](../GLOSSARY.md#cost-per-successful-task)
 
 **Short answer:**
 Remove unnecessary context, request an appropriate output length, and avoid model calls that do not improve task success.

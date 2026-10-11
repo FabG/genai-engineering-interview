@@ -1,6 +1,6 @@
 # Hands-on Python Exercises
 
-[Back to the main README](../README.md) · [System design scenarios](../system-design/README.md)
+[Back to the main README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [System design scenarios](../system-design/README.md)
 
 Practice eight interview exercises in two matching notebooks:
 

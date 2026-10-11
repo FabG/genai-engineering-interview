@@ -33,3 +33,15 @@ The broader model-family, MoE, distillation, and calibration questions are origi
 - [Third-party media](../assets/third-party/README.md): video sources and timestamps, plus attribution and rights notes for the user-supplied RAG types infographic.
 
 Use the external articles and video as additional practice. Compare their explanations with primary sources, especially for framework behavior, implementation-specific performance, and claims of guaranteed reliability.
+
+## Terminology references
+
+The [shared glossary](../GLOSSARY.md) consolidates definitions and explains distinctions used across the questions, design scenarios, cheat sheet, and notebook exercises. Its entries are original concise explanations, not copied glossary entries.
+
+| Resource | Use in this repository |
+| --- | --- |
+| [Google: Machine Learning Glossary](https://developers.google.com/machine-learning/glossary) | Vocabulary and acronym cross-checks for ML, neural networks, generative AI, and agents. |
+| [ML Cheatsheet: Glossary](https://ml-cheatsheet.readthedocs.io/en/latest/glossary.html) | Supplementary foundational and mathematical vocabulary review. |
+| [GeeksforGeeks: 50 Machine Learning Terms Explained](https://www.geeksforgeeks.org/machine-learning/50-machine-learning-terms-explained/) | Beginner vocabulary coverage checklist. |
+
+Primary documentation and papers linked in the glossary and question banks support specialized definitions such as LoRA, CRAG, Self-RAG, KV caching, and service-level objectives. Where shorthand can mislead, the glossary states the context and limitation explicitly.

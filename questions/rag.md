@@ -1,6 +1,6 @@
 # Retrieval-Augmented Generation Questions and Answers
 
-[Back to the README](../README.md) · [GenAI foundations](genai-foundations.md) · [Prompt engineering](prompt-engineering.md) · [Evaluation](evaluation.md)
+[Back to the README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [GenAI foundations](genai-foundations.md) · [Prompt engineering](prompt-engineering.md) · [Evaluation](evaluation.md)
 
 These questions cover designing and diagnosing systems that answer using retrieved evidence. Engineers can practice the short answers; interviewers can use the examples and follow-ups to explore tradeoffs. Examples and proposed designs are illustrative. Vendor references demonstrate implementations, not universal API behavior.
 
@@ -20,6 +20,8 @@ Each question includes a long answer, metrics or checks, at least two examples, 
 
 **Topic:** Architecture choices
 **Difficulty:** Beginner
+
+**Key terms:** [Retrieval-augmented generation (RAG)](../GLOSSARY.md#retrieval-augmented-generation-rag) · [Fine-tuning](../GLOSSARY.md#fine-tuning) · [Gold-context evaluation](../GLOSSARY.md#gold-context-evaluation)
 
 **Short answer:**
 Retrieval-augmented generation supplies externally retrieved information to a model when answering. It is useful when answers require changing, private, or traceable knowledge.
@@ -59,6 +61,8 @@ An employee assistant should retrieve this month's benefits policy, while fine-t
 
 **Topic:** System architecture
 **Difficulty:** Beginner
+
+**Key terms:** [Retrieval-augmented generation (RAG)](../GLOSSARY.md#retrieval-augmented-generation-rag) · [Ingestion and indexing](../GLOSSARY.md#ingestion-and-indexing) · [Chunk and overlap](../GLOSSARY.md#chunk-and-overlap) · [Embedding](../GLOSSARY.md#embedding)
 
 **Short answer:**
 Ingestion prepares searchable content. At request time, the system retrieves evidence, builds context, generates an answer, and checks the result.
@@ -122,6 +126,8 @@ A scanned table may be parsed in the wrong reading order, causing a correct sear
 **Topic:** Document preparation
 **Difficulty:** Intermediate
 
+**Key terms:** [Chunk and overlap](../GLOSSARY.md#chunk-and-overlap) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer) · [Precision@k and recall@k](../GLOSSARY.md#precisionk-and-recallk)
+
 **Short answer:**
 Choose chunks that preserve useful meaning while remaining specific enough to retrieve and small enough to fit the context budget. Tune overlap using representative questions.
 
@@ -167,8 +173,10 @@ Overlap preserves some boundary context while duplicating indexed text; it does 
 **Topic:** Semantic search
 **Difficulty:** Intermediate
 
+**Key terms:** [Embedding](../GLOSSARY.md#embedding) · [Dot product and cosine similarity](../GLOSSARY.md#dot-product-and-cosine-similarity) · [Vector index and approximate nearest neighbors](../GLOSSARY.md#vector-index-and-approximate-nearest-neighbors)
+
 **Short answer:**
-It should rank useful passages highly for the actual queries, language, and domain, within the system's latency and storage constraints.
+An embedding model maps queries and documents into comparable learned vectors. It is suitable when that representation retrieves relevant evidence for the actual language, domain, and query types within latency and storage limits.
 
 **Long answer:**
 Query and document encoders must produce compatible representations; some models use different query and document instructions. Match the model's expected similarity metric and normalization. Equal vector dimensions do not make two models' embedding spaces interchangeable. When changing models, rebuild affected embeddings and validate retrieval before switching traffic.
@@ -207,6 +215,8 @@ A general model may confuse similar product codes while a domain-adapted represe
 
 **Topic:** Retrieval strategies
 **Difficulty:** Intermediate
+
+**Key terms:** [Lexical retrieval and BM25](../GLOSSARY.md#lexical-retrieval-and-bm25) · [Dense and sparse retrieval](../GLOSSARY.md#dense-and-sparse-retrieval) · [Hybrid retrieval](../GLOSSARY.md#hybrid-retrieval) · [Reciprocal rank fusion (RRF)](../GLOSSARY.md#reciprocal-rank-fusion-rrf)
 
 **Short answer:**
 Lexical retrieval matches terms, dense retrieval compares learned vectors, and hybrid retrieval combines signals from both.
@@ -263,8 +273,10 @@ Both branches search eligible content. Rank fusion can combine lists whose raw r
 **Topic:** Ranking quality
 **Difficulty:** Intermediate
 
+**Key terms:** [Reranker](../GLOSSARY.md#reranker) · [Precision@k and recall@k](../GLOSSARY.md#precisionk-and-recallk) · [DCG and nDCG](../GLOSSARY.md#dcg-and-ndcg)
+
 **Short answer:**
-A reranker applies a more expensive relevance model to a limited candidate set, improving the ordering before context is assembled.
+A reranker reorders a retrieved candidate set using a relevance score, often from a more expensive model. It can improve context selection, but cannot recover relevant documents absent from the candidates.
 
 **Long answer:**
 A bi-encoder supports fast retrieval using separately encoded queries and documents. A cross-encoder scores each query-document pair jointly, often improving relevance at additional computational cost. Reranking cannot recover evidence that was never retrieved. Tune candidate count and final context size separately.
@@ -301,6 +313,8 @@ A retriever finds ten policies mentioning refunds; a reranker prioritizes the po
 
 **Topic:** Query preparation
 **Difficulty:** Intermediate
+
+**Key terms:** [Query rewriting and decomposition](../GLOSSARY.md#query-rewriting-and-decomposition) · [Context window](../GLOSSARY.md#context-window) · [Token and tokenizer](../GLOSSARY.md#token-and-tokenizer)
 
 **Short answer:**
 Rewrite when conversational wording obscures the search intent; decompose when answering requires distinct pieces of evidence.
@@ -340,6 +354,8 @@ After discussing Product A, rewrite “Does it work offline?” to “Product A 
 
 **Topic:** Context selection
 **Difficulty:** Intermediate
+
+**Key terms:** [Chunk and overlap](../GLOSSARY.md#chunk-and-overlap) · [Context window](../GLOSSARY.md#context-window) · [Correctness and faithfulness](../GLOSSARY.md#correctness-and-faithfulness)
 
 **Short answer:**
 Extra context costs tokens and can introduce duplication, distraction, or contradictions. Select enough evidence to answer while preserving the relevant qualifications.
@@ -382,6 +398,8 @@ Five near-duplicate marketing pages can displace one technical limitation docume
 **Topic:** Evidence-based answers
 **Difficulty:** Intermediate
 
+**Key terms:** [Correctness and faithfulness](../GLOSSARY.md#correctness-and-faithfulness) · [Citation validity and support](../GLOSSARY.md#citation-validity-and-support) · [Abstention and coverage](../GLOSSARY.md#abstention-and-coverage) · [Entailment](../GLOSSARY.md#entailment)
+
 **Short answer:**
 Grounding ties claims to evidence, citations identify that evidence, and abstention avoids unsupported answers when the evidence is insufficient.
 
@@ -420,6 +438,8 @@ A source may confirm that a product supports encryption but say nothing about a 
 
 **Topic:** Authorization
 **Difficulty:** Advanced
+
+**Key terms:** [Authentication and authorization](../GLOSSARY.md#authentication-and-authorization) · [Tenant](../GLOSSARY.md#tenant) · [Authentication and authorization](../GLOSSARY.md#authentication-and-authorization) · [Response, semantic, and prefix caches](../GLOSSARY.md#response-semantic-and-prefix-caches)
 
 **Short answer:**
 Enforce access in the application and retrieval layer using trusted identity and document permissions before content reaches an unauthorized user's model context.
@@ -460,6 +480,8 @@ Two employees ask the same salary question, but only one can access compensation
 **Topic:** Index lifecycle
 **Difficulty:** Intermediate
 
+**Key terms:** [Freshness and deletion propagation](../GLOSSARY.md#freshness-and-deletion-propagation) · [Data provenance and lineage](../GLOSSARY.md#data-provenance-and-lineage) · [Ingestion and indexing](../GLOSSARY.md#ingestion-and-indexing) · [Time to live (TTL)](../GLOSSARY.md#time-to-live-ttl)
+
 **Short answer:**
 Track source versions, update changed content, propagate deletions to all derived chunks, and measure how long those changes take to become searchable.
 
@@ -498,6 +520,8 @@ A refund policy changes at noon, but an answer cache retains yesterday's wording
 
 **Topic:** Failure analysis
 **Difficulty:** Advanced
+
+**Key terms:** [Gold-context evaluation](../GLOSSARY.md#gold-context-evaluation) · [Precision@k and recall@k](../GLOSSARY.md#precisionk-and-recallk) · [Correctness and faithfulness](../GLOSSARY.md#correctness-and-faithfulness)
 
 **Short answer:**
 Check whether the source contains the answer, whether retrieval found it, whether context retained it, and whether generation used it correctly.
@@ -541,6 +565,8 @@ Continue with [prompt engineering](prompt-engineering.md) and [evaluation](evalu
 
 **Topic:** Hierarchical retrieval
 **Difficulty:** Intermediate
+
+**Key terms:** [Parent-child and multi-vector retrieval](../GLOSSARY.md#parent-child-and-multi-vector-retrieval) · [Chunk and overlap](../GLOSSARY.md#chunk-and-overlap) · [Authentication and authorization](../GLOSSARY.md#authentication-and-authorization)
 
 **Short answer:**
 Small chunks can match a specific question precisely, while an associated parent passage supplies definitions and surrounding context.
@@ -587,8 +613,10 @@ Parent expansion is subject to permissions and a context budget; it is not autom
 **Topic:** Rank fusion
 **Difficulty:** Intermediate
 
+**Key terms:** [Reciprocal rank fusion (RRF)](../GLOSSARY.md#reciprocal-rank-fusion-rrf) · [Hybrid retrieval](../GLOSSARY.md#hybrid-retrieval) · [Discrimination](../GLOSSARY.md#discrimination)
+
 **Short answer:**
-RRF sums reciprocal contributions from each result’s rank in multiple lists, so it can combine rankings without comparing raw scores directly.
+Reciprocal rank fusion (RRF) combines ranked lists by summing decreasing contributions from each item’s rank. It avoids comparing incompatible raw retrieval scores directly.
 
 **Long answer:**
 A common form is score(d) = sum 1 / (c + rank_i(d)), with ranks starting at one and a positive smoothing constant c. A missing result contributes zero from that list. Deduplicate document identities and apply eligibility rules consistently. The constant controls rank sensitivity and is not the requested number of results. Fusion cannot recover relevant documents absent from every candidate list.
@@ -631,6 +659,8 @@ Hypothetical rankings with c = 60; the shared top candidate gains evidence from 
 
 **Topic:** Graph retrieval
 **Difficulty:** Advanced
+
+**Key terms:** [Knowledge graph and Graph RAG](../GLOSSARY.md#knowledge-graph-and-graph-rag) · [Entity resolution](../GLOSSARY.md#entity-resolution) · [Knowledge graph and Graph RAG](../GLOSSARY.md#knowledge-graph-and-graph-rag)
 
 **Short answer:**
 Consider it when questions depend on relationships or corpus-wide structure that isolated passages do not capture well.
@@ -677,8 +707,10 @@ A hypothetical dependency graph. Edges require evidence and may be incomplete or
 **Topic:** Structured data retrieval
 **Difficulty:** Advanced
 
+**Key terms:** [Text-to-SQL](../GLOSSARY.md#text-to-sql) · [Structured output and schema](../GLOSSARY.md#structured-output-and-schema) · [Authentication and authorization](../GLOSSARY.md#authentication-and-authorization) · [Deterministic check](../GLOSSARY.md#deterministic-check)
+
 **Short answer:**
-Treat generated SQL as an untrusted proposal, restrict what the database identity can do, and validate both execution safety and business meaning.
+Natural-language-to-SQL translates a request into Structured Query Language (SQL) for a database. Treat the generated query as an untrusted proposal: restrict permissions and resource use, then check that its results answer the intended business question.
 
 **Long answer:**
 Retrieve relevant schema and approved metric definitions, then generate a query against a least-privilege read-only role. Apply parsing and policy checks, parameterize literal values where feasible, enforce row-level access, and limit runtime and result size. Valid SQL can still use the wrong join, grain, date boundary, or metric. Ambiguous requests should trigger clarification; successful execution is not proof of correctness.
@@ -721,6 +753,8 @@ Illustrative controls; enforcement must reside in trusted services and database 
 
 **Topic:** Index migrations
 **Difficulty:** Advanced
+
+**Key terms:** [Embedding](../GLOSSARY.md#embedding) · [Vector index and approximate nearest neighbors](../GLOSSARY.md#vector-index-and-approximate-nearest-neighbors) · [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback) · [Canary, shadow, and rollback](../GLOSSARY.md#canary-shadow-and-rollback)
 
 **Short answer:**
 Re-embed the corpus and route queries to the matching embedding model and index version; matching vector dimensions alone is insufficient.
@@ -768,6 +802,8 @@ A hypothetical migration: keep model/index pairs compatible throughout rollout a
 
 **Topic:** RAG architecture selection
 **Difficulty:** Intermediate
+
+**Key terms:** [Naive, Advanced, and Modular RAG](../GLOSSARY.md#naive-advanced-and-modular-rag) · [Hybrid retrieval](../GLOSSARY.md#hybrid-retrieval) · [Knowledge graph and Graph RAG](../GLOSSARY.md#knowledge-graph-and-graph-rag) · [Agentic RAG](../GLOSSARY.md#agentic-rag) · [Corrective RAG (CRAG)](../GLOSSARY.md#corrective-rag-crag) · [Self-RAG](../GLOSSARY.md#self-rag)
 
 **Short answer:**
 Eight useful categories are **Naive, Advanced, Modular, Hybrid, Graph, Agentic, Corrective RAG (CRAG), and Self-RAG**. They describe different aspects of a system and can overlap. Start with a simple retrieval-and-generation baseline, measure its weaknesses, and add techniques that improve the outcomes you need.
