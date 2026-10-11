@@ -21,4 +21,4 @@ Explain the idea in plain language, with an analogy or practical example where u
 # Add a focused, runnable example.
 ```
 
-Explain how to run the example, its expected output, and any limitations. Continue with further concepts, examples, or exercises as needed.
+Explain how to run the example, its expected output, and any limitations. Include practical reference tables with concrete parameter values, use cases, and tradeoffs where relevant. Preserve this level of detail when adapting source lessons, and explain which recommendations are illustrative or model-dependent. Continue with further concepts, examples, or exercises as needed.

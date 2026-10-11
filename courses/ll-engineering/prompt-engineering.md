@@ -1,6 +1,6 @@
 # Prompt Engineering: Techniques and Patterns
 
-[Back to courses](README.md)
+[Back to courses](../README.md)
 
 | Field | Details |
 | --- | --- |
@@ -9,7 +9,7 @@
 | Level | Intermediate — repository assessment |
 | Best for | Learning practical prompt design, refreshing core patterns, and preparing for engineering interviews |
 
-Adapted from the MIT-licensed source; copyright © 2026 Rohit Ghumare. [Original license](licenses/ai-engineering-from-scratch-LICENSE). Explanations, prompt patterns, and the Python walkthrough are retained with accuracy and portability edits; the harness uses simulated responses.
+Adapted from the MIT-licensed source; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). Explanations, prompt patterns, and the Python walkthrough are retained with accuracy and portability edits; the harness uses simulated responses.
 
 ## The Problem
 
@@ -159,11 +159,41 @@ graph LR
 | Higher temperature | Useful diversity, repetition, and unsupported content |
 | Top-p cutoff | Candidate diversity and task quality at the chosen threshold |
 
+The source lesson gives the following practical starting points. These are illustrative presets, not universal rules: “Deterministic” does not guarantee identical outputs, and “Never use this in production” is a conservative recommendation rather than a technical limit. Validate settings against your task and model.
+
+| **Setting** | **Temperature** | **Top-p** | **Use case** |
+| :--- | :--- | :--- | :--- |
+| Deterministic | 0.0 | 1.0 | Data extraction, classification, code generation |
+| Conservative | 0.3 | 0.9 | Summarization, analysis, technical writing |
+| Balanced | 0.7 | 0.95 | General Q&A, explanations |
+| Creative | 1.0 | 1.0 | Brainstorming, creative writing, ideation |
+| Chaotic | 1.5+ | 1.0 | Never use this in production |
+
 **Top-p** (nucleus sampling) retains the smallest highest-probability token set whose cumulative probability reaches the configured threshold. Temperature and top-p can interact. Change one setting at a time for interpretable experiments; check which settings the selected model supports. Even low-temperature service calls need not produce byte-identical responses.
 
 ### Context Windows: What Fits Where
 
-A context window limits the tokens available to a request; interfaces can also impose separate output limits. Budget for instructions, documents, conversation history, tool results, and output as required by the model.
+Every model has a maximum context length. For a combined context window, input and generated output must fit within that total; providers may instead publish separate input and output limits. Budget for instructions, documents, conversation history, tool results, and generated tokens, including reasoning tokens where applicable.
+
+The following comparison preserves the requested model lineup. Figures were checked against the linked provider documentation on **2026-10-11**; availability and limits depend on the exact version and serving endpoint. Gemini rows report an **input limit**, rather than a combined input-plus-output window.
+
+| **Model** | **Context window / input limit** | **Output limit** | **Provider** |
+| :--- | :--- | :--- | :--- |
+| [GPT-5](https://developers.openai.com/api/docs/models/gpt-5) | 400,000 tokens | 128,000 tokens | OpenAI |
+| [GPT-5 mini](https://developers.openai.com/api/docs/models/gpt-5-mini) | 400,000 tokens | 128,000 tokens | OpenAI |
+| [o4-mini (reasoning)](https://developers.openai.com/api/docs/models/o4-mini) | 200,000 tokens | 100,000 tokens | OpenAI |
+| [Claude Opus 4.7](https://platform.claude.com/docs/de/models/opus-4-7/overview) | 1M tokens | 128K tokens | Anthropic |
+| [Claude Sonnet 4.6](https://platform.claude.com/docs/en/models/sonnet-4-6/overview) | 1M tokens | 128K tokens | Anthropic |
+| [Gemini 3 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-preview) | 1,048,576 input tokens | 65,536 tokens | Google |
+| [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/gemini-3) | 1M input tokens | 64K tokens | Google |
+| [Llama 4 Scout](https://ai.meta.com/blog/llama-4-multimodal-intelligence/) | 10M tokens | Deployment-specific; 8K not verified as a model-wide limit | Meta (open weights) |
+| [Qwen3 Max](https://docs.modelstudio.console.alibabacloud.com/en/model-studio/model-qwen3-max) | 262,144 tokens | 32,768 tokens (documented thinking mode) | Alibaba Cloud |
+| [DeepSeek-V3.1](https://api-docs.deepseek.com/news/news250821/) | 128K tokens | Endpoint/mode-specific; supplied 32K figure not verified | DeepSeek (open weights) |
+
+**Read the limits carefully:** Llama 4 is a family; the 10M figure applies to Scout, not every variant. A hosted model's output cap may differ from a locally served checkpoint. Do not infer that Qwen3 Max has downloadable weights because other Qwen models do. These are capacity examples, not a list of currently recommended deployments.
+
+Context window usage matters as much as size. A focused 10K-token prompt with 90% relevant information **can** outperform a 100K-token prompt with only 10% relevant information; those percentages illustrate the idea, not a measured benchmark or universal rule. Extra irrelevant content can distract the model and increase processing cost, while additional relevant evidence can improve an answer. Evaluate both on the same tasks. This is why **context engineering** is the broader discipline: it decides what goes into the window, not just how the prompt is worded.
+
 
 | Check | Why it matters |
 | --- | --- |
@@ -173,7 +203,7 @@ A context window limits the tokens available to a request; interfaces can also i
 | Evidence position | Test whether facts are used throughout long inputs |
 | Model and serving limits | Verify the exact deployed configuration |
 
-A larger context window is not a guarantee of better recall. The source's model-specific capacity table is omitted here because those limits require current provider verification. See the repository's [context-window explanation](../questions/genai-foundations.md#question-15-what-is-a-context-window-and-is-it-the-same-as-memory).
+A larger context window is not a guarantee of better recall. See the repository's [context-window explanation](../../questions/genai-foundations.md#question-15-what-is-a-context-window-and-is-it-the-same-as-memory).
 
 ### Prompt Patterns
 
@@ -945,8 +975,8 @@ The [upstream Python code](https://github.com/rohitg00/ai-engineering-from-scrat
 
 ## Attribution and Import Notes
 
-Imported from the [source Markdown](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/01-prompt-engineering/docs/en.md) on 2026-10-11. Original copyright and permission notice: [MIT License](licenses/ai-engineering-from-scratch-LICENSE).
+Imported from the [source Markdown](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/01-prompt-engineering/docs/en.md) on 2026-10-11. Original copyright and permission notice: [MIT License](../licenses/ai-engineering-from-scratch-LICENSE).
 
-Local edits simplify the opening, qualify reliability claims, replace the volatile model-limit table and commented live-provider examples, use explicit demo model names, replace a site-only figure marker with a portable diagram, add diagram accessibility metadata, and clarify simulated evaluation. Upstream reusable artifacts are linked rather than installed or bundled. Most of the lesson's explanation, patterns, Python build sequence, exercises, and reading links are preserved.
+Local edits simplify the opening, qualify reliability claims, update the model-limit table with provider references and qualify unverified limits, replace commented live-provider examples, use explicit demo model names, replace a site-only figure marker with a portable diagram, add diagram accessibility metadata, and clarify simulated evaluation. Upstream reusable artifacts are linked rather than installed or bundled. Most of the lesson's explanation, patterns, Python build sequence, exercises, and reading links are preserved.
 
 Source file SHA-256: `342126cd4dfb12e02a910da193fd3609388f6f0e6f79314e18bba6eda292c179`.

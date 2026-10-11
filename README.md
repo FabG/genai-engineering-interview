@@ -77,7 +77,10 @@ The exercises use Python 3.10+ and the standard library, with embedded data and 
 
 Use the [Courses section](courses/README.md) to collect useful courses for **interview preparation** and **refreshing key concepts**. Courses are organized by topic and can be linked to the question bank, coding exercises, and system design scenarios.
 
-Start with [Prompt Engineering — AI Engineering from Scratch](courses/prompt-engineering.md), with explanations, prompt patterns, Python examples, and exercises.
+### LLM Engineering
+
+- [Prompt Engineering](courses/ll-engineering/prompt-engineering.md) — Prompt patterns, Python examples, and exercises.
+- [Structured Outputs](courses/ll-engineering/structured-outputs.md) — JSON Schema, validation, constrained decoding, and extraction pipelines.
 
 To add a course, copy the [course template](courses/COURSE_TEMPLATE.md), record its origin, author, level, and what it is best for, then go straight into explanations and code examples. Add the course to the index.
 
@@ -202,4 +205,4 @@ For course contributions, use the [course template](courses/COURSE_TEMPLATE.md) 
 
 Original repository content is licensed under the [MIT License](LICENSE). The [identified third-party media](assets/third-party/README.md) are excluded from that license. You may use, copy, modify, and redistribute the original content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.
 
-The imported [Prompt Engineering lesson](courses/prompt-engineering.md) retains its upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
+The imported [Prompt Engineering](courses/ll-engineering/prompt-engineering.md) and [Structured Outputs](courses/ll-engineering/structured-outputs.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
