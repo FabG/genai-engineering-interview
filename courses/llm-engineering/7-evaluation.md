@@ -1,6 +1,6 @@
 # Evaluation and Testing LLM Applications
 
-[Back to courses](../README.md) · [RAG](5-rag-retrieval-augmented-generation.md) · [Function Calling](6-function-calling-tool.md)
+[Back to courses](../README.md) · [RAG](5-rag-retrieval-augmented-generation.md) · [Function Calling](6-function-calling.md)
 
 | Field | Details |
 | --- | --- |

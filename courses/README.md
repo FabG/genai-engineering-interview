@@ -37,7 +37,7 @@ Courses on tokens, embeddings, Transformers, attention, language-model training,
 3. [Embeddings](llm-engineering/3-embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
 4. [Context Engineering](llm-engineering/4-context-engineering.md) — Context budgets, memory, retrieval, tool selection, and an offline Python assembly pipeline.
 5. [RAG: Retrieval-Augmented Generation](llm-engineering/5-rag-retrieval-augmented-generation.md) — Document retrieval, grounded prompts, an offline pipeline, and retrieval/answer evaluation.
-6. [Function Calling and Tool Use](llm-engineering/6-function-calling-tool.md) — Tool schemas, validation, bounded execution loops, error handling, and MCP concepts.
+6. [Function Calling and Tool Use](llm-engineering/6-function-calling.md) — Tool schemas, validation, bounded execution loops, error handling, and MCP concepts.
 7. [Evaluation and Testing](llm-engineering/7-evaluation.md) — Datasets, rubrics, judge calibration, confidence intervals, regression comparisons, and eval costs.
 
 Courses on prompt design, structured outputs, embeddings, retrieval, and building reliable LLM applications.
