@@ -34,24 +34,7 @@ The glossary uses the supplied [Google ML Glossary](https://developers.google.co
 
 Use the [AI and GenAI Interview Cheat Sheet](CHEAT_SHEET.md) for cross-topic revision, key formulas, common pitfalls, and memory aids such as **“V” for o“V”erfitting**. Every question also includes a compact **Quick Cheat Sheet** beside its detailed answer. Start with recall, then use the advanced answer to explain assumptions, tradeoffs, and how to measure success.
 
-## Visual Study Guide
 
-Use these visuals to practice explaining a system or concept before reading the full answer:
-
-| Topic | Visuals to study |
-| --- | --- |
-| [AI foundations](questions/ai-foundations.md#data-and-validation) | Preprocessing (Q6); generalization (Q8); ensembles (Q14); PCA (Q18); confusion matrix (Q19); visual examples for Q23–33 |
-| [LLM foundations](questions/genai-foundations.md#transformer-architecture) | Attention and causal mask (Q6); shifted targets (Q9); sampling (Q16); caching (Q17); model families and checkpoints (Q21–23) |
-| [RAG](questions/rag.md#architecture-and-data) | Architecture and video snapshot (Q2); chunking (Q3); hybrid retrieval (Q5); hierarchical, graph, SQL, and migration examples (Q13–17); types infographic (Q18) |
-| [Prompt engineering](questions/prompt-engineering.md#outputs-and-workflows) | Output validation (Q4); data and authority boundaries (Q10) |
-| [Agents](questions/agents.md#architecture-and-tools) | Tool-use loop (Q2); recovery after an ambiguous write (Q7) |
-| [Agent orchestration](questions/agent-orchestration.md#architecture-and-decomposition) | Parallel task graph (Q3); durable state (Q7) |
-| [Software factory](questions/software-factory.md#implementation-and-verification) | Integration queue (Q6); release provenance (Q8) |
-| [Fine-tuning](questions/fine-tuning.md#goals-and-training-data) | Training objectives (Q2); LoRA diagram and video snapshot (Q6); distillation (Q13) |
-| [Evaluation](questions/evaluation.md#component-and-answer-quality) | Ranked retrieval (Q4); correctness and grounding (Q5); judges (Q7); online checks (Q12); risk–coverage plot (Q13) |
-| [Production engineering](questions/production-engineering.md#reliability-and-releases) | Overload control (Q7); releases (Q9); speculative decoding (Q13); latency diagnosis (Q14) |
-
-Diagrams use [Mermaid, which GitHub renders directly](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams). In other Markdown viewers, enable Mermaid support to see the diagrams. The [SVG illustrations](assets/diagrams/README.md) also open independently. Visuals simplify the concepts; the surrounding answers describe assumptions and limitations. The new visual supplement adds 32 original SVG illustrations across 32 answers, plus two attributed video preview frames. See the [resource and coverage guide](resources/README.md) for the supplied reading, primary-source approach, and video study prompts.
 
 ## System Design Scenarios
 
@@ -83,6 +66,7 @@ Use the [Courses section](courses/README.md) to collect useful courses for **int
 2. [Structured Outputs](courses/llm-engineering/2-structured-outputs.md) — JSON Schema, validation, constrained decoding, and extraction pipelines.
 3. [Embeddings](courses/llm-engineering/3-embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
 4. [Context Engineering](courses/llm-engineering/4-context-engineering.md) — Context budgets, memory, retrieval, tool selection, and an offline Python assembly pipeline.
+5. [RAG: Retrieval-Augmented Generation](courses/llm-engineering/5-rag-retrieval-augmented-generation.md) — Document retrieval, grounded prompts, an offline pipeline, and retrieval/answer evaluation.
 
 To add a course, copy the [course template](courses/COURSE_TEMPLATE.md), record its origin, author, level, and what it is best for, then go straight into explanations and code examples. Add the course to the index.
 
@@ -207,4 +191,4 @@ For course contributions, use the [course template](courses/COURSE_TEMPLATE.md) 
 
 Original repository content is licensed under the [MIT License](LICENSE). The [identified third-party media](assets/third-party/README.md) are excluded from that license. You may use, copy, modify, and redistribute the original content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.
 
-The imported [Prompt Engineering](courses/llm-engineering/1-prompt-engineering.md), [Structured Outputs](courses/llm-engineering/2-structured-outputs.md), [Embeddings](courses/llm-engineering/3-embeddings.md), and [Context Engineering](courses/llm-engineering/4-context-engineering.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
+The imported [Prompt Engineering](courses/llm-engineering/1-prompt-engineering.md), [Structured Outputs](courses/llm-engineering/2-structured-outputs.md), [Embeddings](courses/llm-engineering/3-embeddings.md), [Context Engineering](courses/llm-engineering/4-context-engineering.md), and [RAG](courses/llm-engineering/5-rag-retrieval-augmented-generation.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
