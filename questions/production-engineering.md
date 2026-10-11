@@ -10,6 +10,7 @@ These questions cover deploying and operating reliable GenAI applications. Engin
 - [Serving performance](#serving-performance): batching, memory, quantization, and caching.
 - [Reliability and releases](#reliability-and-releases): overload, retries, fallbacks, and rollout safety.
 - [Operations and cost](#operations-and-cost): observability, security, and efficiency.
+- [Inference optimization scenarios](#inference-optimization-scenarios)
 
 ## Deployment and service goals
 
@@ -321,3 +322,61 @@ Spending 12 cost units for 800 successful tasks costs 0.015 per success; spendin
 - [Hugging Face: Continuous batching and utilization](https://huggingface.co/docs/transformers/continuous_batching)
 
 Use the [evaluation question bank](evaluation.md) to define release criteria and assess these operational tradeoffs.
+
+## Inference optimization scenarios
+
+### Question: 13. When does speculative decoding reduce latency?
+
+**Topic:** Inference optimization
+**Difficulty:** Advanced
+
+**Short answer:**
+It can help when inexpensive draft tokens are often accepted by a larger target model and the saved target work exceeds drafting and verification overhead.
+
+**Explanation:**
+The draft proposes several tokens; the target verifies them together. An exact speculative-sampling algorithm uses acceptance and correction rules to preserve the target distribution, not simple agreement alone. Acceptance rate, draft cost, output length, batching, and hardware determine speedup. Gains are workload-dependent, and short requests or low acceptance can lose performance.
+
+**Example:**
+A draft proposes four tokens. The verifier accepts a prefix and corrects the first rejection; later proposals from that block are discarded. Measure end-to-end latency against ordinary target decoding.
+
+**Visual:**
+
+![A draft proposes a token block; the target accepts a prefix and corrects the first rejection.](../assets/diagrams/speculative-decoding.svg)
+
+A simplified block illustration; exact sampling requires the paper’s probability-based acceptance and correction rules. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Why is a fixed “2× faster” promise not portable across workloads?
+
+**References:**
+
+- [Leviathan et al.: speculative decoding](https://arxiv.org/abs/2211.17192)
+
+### Question: 14. How would you investigate a latency regression after increasing the context limit?
+
+**Topic:** Performance diagnosis
+**Difficulty:** Advanced
+
+**Short answer:**
+Compare actual workload and serving configuration separately, then attribute the regression to queueing, prefill, decoding, or other request stages.
+
+**Explanation:**
+A larger configured limit does not prove that prompts became longer. Replay matched requests and compare token lengths, concurrency, cache hits, memory allocation, and scheduler settings. Some implementations reserve more memory or change batching under a larger limit even with unchanged prompts. Diagnose time to first token separately from output-token throughput; optimize the stage supported by measurements.
+
+**Example:**
+If prompt lengths stay fixed but queueing rises, investigate capacity and KV-cache allocation before trimming evidence. If prefill grows with prompt length, test smaller context while checking answer quality.
+
+**Visual:**
+
+![Synthetic latency bars show queueing or prefill causing the same overall increase for different reasons.](../assets/diagrams/context-latency.svg)
+
+Illustrative measurements, not benchmark results. Inspired by the accessible first Medium scenario; see the resource guide. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- What controlled experiment would separate a workload change from a configuration change?
+
+**References:**
+
+- [vLLM: optimization and tuning](https://docs.vllm.ai/en/latest/configuration/optimization/)

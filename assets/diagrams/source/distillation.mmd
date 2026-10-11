@@ -1,0 +1,9 @@
+flowchart LR
+    accTitle: Train a student from teacher targets
+    accDescr: A teacher supplies probabilities or responses to a student training objective; the student is evaluated independently.
+    Inputs["Training inputs"] --> Teacher["Teacher model"]
+    Teacher --> Targets["Soft probabilities or responses"]
+    Targets --> Train["Student training objective"]
+    Labels["Optional human labels"] --> Train
+    Train --> Student["Student model"]
+    Student --> Eval["Independent held-out evaluation"]

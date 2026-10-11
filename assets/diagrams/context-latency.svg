@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="792pt" height="345.6pt" viewBox="0 0 792 345.6" xmlns="http://www.w3.org/2000/svg" version="1.1" role="img" aria-labelledby="chart-title chart-desc">
+<title id="chart-title">The same latency increase can have different causes</title><desc id="chart-desc">Synthetic total latency rises from 1.8 to 2.8 seconds because of either queueing or prefill, with decoding fixed.</desc>
+ <title>The same latency increase can have different causes</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>The same latency increase can have different causes</dc:title>
+    <dc:date>2026-10-11T09:16:12.108284</dc:date>
+    <dc:description>Synthetic total latency rises from 1.8 to 2.8 seconds because of either queueing or prefill, with decoding fixed.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Original repository illustration</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 345.6 
+L 792 345.6 
+L 792 0 
+L 0 0 
+z
+" style="fill: #f8fafc"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 172.0375 268.436953 
+L 762.12 268.436953 
+L 762.12 109.287047 
+L 172.0375 109.287047 
+z
+" style="fill: #f8fafc"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 172.0375 116.521134 
+L 210.107339 116.521134 
+L 210.107339 157.858772 
+L 172.0375 157.858772 
+z
+" clip-path="url(#p5deaa6bce6)" style="fill: #d97706"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 172.0375 168.193181 
+L 400.456532 168.193181 
+L 400.456532 209.530819 
+L 172.0375 209.530819 
+z
+" clip-path="url(#p5deaa6bce6)" style="fill: #d97706"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 172.0375 219.865228 
+L 210.107339 219.865228 
+L 210.107339 261.202866 
+L 172.0375 261.202866 
+z
+" clip-path="url(#p5deaa6bce6)" style="fill: #d97706"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 210.107339 116.521134 
+L 324.316855 116.521134 
+L 324.316855 157.858772 
+L 210.107339 157.858772 
+z
+" clip-path="url(#p5deaa6bce6)" style="fill: #3b5bdb"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 400.456532 168.193181 
+L 514.666048 168.193181 
+L 514.666048 209.530819 
+L 400.456532 209.530819 
+z
+" clip-path="url(#p5deaa6bce6)" style="fill: #3b5bdb"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 210.107339 219.865228 
+L 514.666048 219.865228 
+L 514.666048 261.202866 
+L 210.107339 261.202866 
+z
+" clip-path="url(#p5deaa6bce6)" style="fill: #3b5bdb"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 324.316855 116.521134 
+L 514.666048 116.521134 
+L 514.666048 157.858772 
+L 324.316855 157.858772 
+z
+" clip-path="url(#p5deaa6bce6)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 514.666048 168.193181 
+L 705.015242 168.193181 
+L 705.015242 209.530819 
+L 514.666048 209.530819 
+z
+" clip-path="url(#p5deaa6bce6)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 514.666048 219.865228 
+L 705.015242 219.865228 
+L 705.015242 261.202866 
+L 514.666048 261.202866 
+z
+" clip-path="url(#p5deaa6bce6)" style="fill: #087f8c"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mb337fa6fad" d="M 0 0 
+L 0 3.5 
+" style="stroke: #24364b; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mb337fa6fad" x="172.0375" y="268.436953" style="fill: #24364b; stroke: #24364b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="172.0375" y="285.313906" transform="rotate(-0 172.0375 285.313906)">0.0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mb337fa6fad" x="267.212097" y="268.436953" style="fill: #24364b; stroke: #24364b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="267.212097" y="285.313906" transform="rotate(-0 267.212097 285.313906)">0.5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mb337fa6fad" x="362.386694" y="268.436953" style="fill: #24364b; stroke: #24364b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="362.386694" y="285.313906" transform="rotate(-0 362.386694 285.313906)">1.0</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mb337fa6fad" x="457.56129" y="268.436953" style="fill: #24364b; stroke: #24364b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="457.56129" y="285.313906" transform="rotate(-0 457.56129 285.313906)">1.5</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mb337fa6fad" x="552.735887" y="268.436953" style="fill: #24364b; stroke: #24364b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="552.735887" y="285.313906" transform="rotate(-0 552.735887 285.313906)">2.0</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mb337fa6fad" x="647.910484" y="268.436953" style="fill: #24364b; stroke: #24364b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="647.910484" y="285.313906" transform="rotate(-0 647.910484 285.313906)">2.5</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#mb337fa6fad" x="743.085081" y="268.436953" style="fill: #24364b; stroke: #24364b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="743.085081" y="285.313906" transform="rotate(-0 743.085081 285.313906)">3.0</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="467.07875" y="302.314922" transform="rotate(-0 467.07875 302.314922)">Illustrative latency in seconds</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_8">
+      <defs>
+       <path id="m67244455ad" d="M 0 0 
+L -3.5 0 
+" style="stroke: #24364b; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m67244455ad" x="172.0375" y="137.189953" style="fill: #24364b; stroke: #24364b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: end; fill: #24364b" x="165.0375" y="142.128937" transform="rotate(-0 165.0375 142.128937)">Baseline</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m67244455ad" x="172.0375" y="188.862" style="fill: #24364b; stroke: #24364b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: end; fill: #24364b" x="165.0375" y="193.800984" transform="rotate(-0 165.0375 193.800984)">Queueing regression</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m67244455ad" x="172.0375" y="240.534047" style="fill: #24364b; stroke: #24364b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: end; fill: #24364b" x="165.0375" y="245.473032" transform="rotate(-0 165.0375 245.473032)">Prefill regression</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_12">
+    <path d="M 172.0375 268.436953 
+L 172.0375 109.287047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 172.0375 268.436953 
+L 762.12 268.436953 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="patch_14">
+     <path d="M 322.402969 94.464 
+L 348.402969 94.464 
+L 348.402969 85.364 
+L 322.402969 85.364 
+z
+" style="fill: #d97706"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #24364b" x="358.802969" y="94.464" transform="rotate(-0 358.802969 94.464)">Queue</text>
+    </g>
+    <g id="patch_15">
+     <path d="M 427.512031 94.464 
+L 453.512031 94.464 
+L 453.512031 85.364 
+L 427.512031 85.364 
+z
+" style="fill: #3b5bdb"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #24364b" x="463.912031" y="94.464" transform="rotate(-0 463.912031 94.464)">Prefill</text>
+    </g>
+    <g id="patch_16">
+     <path d="M 525.991094 94.464 
+L 551.991094 94.464 
+L 551.991094 85.364 
+L 525.991094 85.364 
+z
+" style="fill: #087f8c"/>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #24364b" x="562.391094" y="94.464" transform="rotate(-0 562.391094 94.464)">Decode</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_15">
+   <text style="font-weight: 700; font-size: 20px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #24364b" x="31.68" y="22.108875" transform="rotate(-0 31.68 22.108875)">The same latency increase can have different causes</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #52647a" x="31.68" y="336.96" transform="rotate(-0 31.68 336.96)">Matched-request teaching example; real systems also have network, retrieval, validation, and other stages.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5deaa6bce6">
+   <rect x="172.0375" y="109.287047" width="590.0825" height="159.149906"/>
+  </clipPath>
+ </defs>
+</svg>

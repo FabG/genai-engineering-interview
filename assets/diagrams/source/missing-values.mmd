@@ -1,0 +1,9 @@
+flowchart LR
+    accTitle: Learn preprocessing on training data
+    accDescr: Training data fits the imputer; new data uses that fitted imputer and preserves a missingness flag.
+    Train["Training partition"] --> Fit["Fit imputation statistics"]
+    New["New observation"] --> Flag["Record missingness flag"]
+    New --> Apply["Apply fitted imputer"]
+    Fit --> Apply
+    Flag --> Features["Model features"]
+    Apply --> Features

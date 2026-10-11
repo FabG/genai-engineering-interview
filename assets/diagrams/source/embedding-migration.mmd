@@ -1,0 +1,8 @@
+flowchart LR
+    accTitle: Keep encoder and index versions paired
+    accDescr: The old encoder queries the old index while the new encoder is evaluated against a re-embedded index.
+    Query["Versioned query routing"] --> Old["Encoder A"] --> IA["Index A"]
+    Query --> New["Encoder B"] --> IB["Index B: re-embedded corpus"]
+    IA --> Check["Compare quality and operational metrics"]
+    IB --> Check
+    Check --> Cutover["Coordinated cutover or rollback"]

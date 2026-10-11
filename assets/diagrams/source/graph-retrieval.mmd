@@ -1,0 +1,9 @@
+flowchart TD
+    accTitle: Relationships need supporting evidence
+    accDescr: Two projects depend on a service, and source records support the dependency edges.
+    Question["What breaks if Service S retires?"] --> S["Service S"]
+    A["Project A"] -->|Depends on| S
+    B["Project B"] -->|Depends on| S
+    EvidenceA["Source record A"] -.->|Supports edge| A
+    EvidenceB["Source record B"] -.->|Supports edge| B
+    S --> Answer["Impact answer with source citations"]

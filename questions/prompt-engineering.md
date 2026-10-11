@@ -145,6 +145,12 @@ Define precise tool names, descriptions, and argument schemas. The application v
 **Example:**
 A model requests an order lookup; the application fetches the record and supplies the result before the assistant reports its status.
 
+**Visual:**
+
+![A proposed tool call is validated, authorized, executed, and checked before reporting its result.](../assets/diagrams/guarded-tools.svg)
+
+The application executes the action; returning a tool-shaped response does not establish successful completion. Concept reference: [Anthropic: tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview).
+
 **Follow-up questions:**
 
 - How would you prevent a retry from duplicating a tool action with side effects?

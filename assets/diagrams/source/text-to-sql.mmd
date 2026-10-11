@@ -1,0 +1,9 @@
+flowchart TD
+    accTitle: Generated SQL is only a proposal
+    accDescr: Schema and metric definitions guide a query proposal that is checked before restricted database execution.
+    Question["Question and trusted identity"] --> Context["Relevant schema and metric definitions"]
+    Context --> SQL["Generate SQL proposal"]
+    SQL --> Gate{"Parse, authorize and bound query"}
+    Gate -->|Pass| DB["Read-only database role with row policy"]
+    Gate -->|Fail| Clarify["Reject or clarify"]
+    DB --> Result["Validate result meaning and explain"]

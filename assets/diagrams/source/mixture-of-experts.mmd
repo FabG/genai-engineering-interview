@@ -1,0 +1,10 @@
+flowchart TD
+    accTitle: Sparse activation in an MoE layer
+    accDescr: A router selects two experts from four drawn experts, and selected outputs are combined.
+    Token["Token representation"] --> Router["Router: illustrative top-two choice"]
+    Router -->|Selected| E1["Expert 1"]
+    Router -.->|Inactive| E2["Expert 2"]
+    Router -->|Selected| E3["Expert 3"]
+    Router -.->|Inactive| E4["Expert 4"]
+    E1 --> Combine["Weighted combination"]
+    E3 --> Combine

@@ -1,0 +1,7 @@
+flowchart TD
+    accTitle: Overlap preserves some boundary context
+    accDescr: Two illustrative chunks share tokens four and five, increasing context continuity and index duplication.
+    Text["Toy token stream: 1 2 3 4 5 6 7 8"] --> A["Chunk A: 1 2 3 4 5"]
+    Text --> B["Chunk B: 4 5 6 7 8"]
+    A --> Shared["Shared boundary tokens: 4 and 5"]
+    B --> Shared

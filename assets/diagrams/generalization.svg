@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="345.6pt" viewBox="0 0 720 345.6" xmlns="http://www.w3.org/2000/svg" version="1.1" role="img" aria-labelledby="chart-title chart-desc">
+<title id="chart-title">Training fit and generalization can diverge</title><desc id="chart-desc">Illustrative training error falls with complexity while validation error eventually rises.</desc>
+ <title>Training fit and generalization can diverge</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Training fit and generalization can diverge</dc:title>
+    <dc:date>2026-10-11T09:16:12.155638</dc:date>
+    <dc:description>Illustrative training error falls with complexity while validation error eventually rises.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Original repository illustration</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 345.6 
+L 720 345.6 
+L 720 0 
+L 0 0 
+z
+" style="fill: #f8fafc"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 49.243047 288.436953 
+L 691.56 288.436953 
+L 691.56 79.184 
+L 49.243047 79.184 
+z
+" style="fill: #f8fafc"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="text_1">
+     <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="370.401523" y="302.314922" transform="rotate(-0 370.401523 302.314922)">Model complexity →</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="text_2">
+     <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="42.12" y="183.810477" transform="rotate(-90 42.12 183.810477)">Prediction error</text>
+    </g>
+   </g>
+   <g id="line2d_1">
+    <path d="M 78.439272 114.047124 
+L 84.337499 120.697902 
+L 90.235727 127.085317 
+L 96.133954 133.2198 
+L 102.032181 139.111365 
+L 107.930409 144.769631 
+L 113.828636 150.203838 
+L 119.726863 155.422857 
+L 125.62509 160.435211 
+L 131.523318 165.249081 
+L 137.421545 169.872329 
+L 143.319772 174.312502 
+L 149.218 178.57685 
+L 155.116227 182.672336 
+L 161.014454 186.605645 
+L 166.912682 190.383201 
+L 172.810909 194.011171 
+L 178.709136 197.495478 
+L 184.607363 200.841811 
+L 190.505591 204.055633 
+L 196.403818 207.142192 
+L 202.302045 210.106528 
+L 208.200273 212.95348 
+L 214.0985 215.687696 
+L 219.996727 218.313641 
+L 225.894955 220.835603 
+L 231.793182 223.257697 
+L 237.691409 225.58388 
+L 243.589636 227.817949 
+L 249.487864 229.963553 
+L 255.386091 232.024192 
+L 261.284318 234.003234 
+L 267.182546 235.903908 
+L 273.080773 237.729317 
+L 278.979 239.482443 
+L 284.877228 241.166148 
+L 290.775455 242.78318 
+L 296.673682 244.336179 
+L 302.571909 245.827682 
+L 308.470137 247.260124 
+L 314.368364 248.635842 
+L 320.266591 249.957084 
+L 326.164819 251.226007 
+L 332.063046 252.444682 
+L 337.961273 253.615099 
+L 343.859501 254.739168 
+L 349.757728 255.818727 
+L 355.655955 256.855536 
+L 361.554182 257.851289 
+L 367.45241 258.807611 
+L 373.350637 259.726065 
+L 379.248864 260.608148 
+L 385.147092 261.455303 
+L 391.045319 262.268911 
+L 396.943546 263.050301 
+L 402.841774 263.80075 
+L 408.740001 264.521481 
+L 414.638228 265.213673 
+L 420.536455 265.878455 
+L 426.434683 266.516912 
+L 432.33291 267.130087 
+L 438.231137 267.718981 
+L 444.129365 268.284556 
+L 450.027592 268.827735 
+L 455.925819 269.349405 
+L 461.824047 269.850417 
+L 467.722274 270.33159 
+L 473.620501 270.793709 
+L 479.518729 271.237528 
+L 485.416956 271.663773 
+L 491.315183 272.07314 
+L 497.21341 272.466295 
+L 503.111638 272.843883 
+L 509.009865 273.206518 
+L 514.908092 273.554794 
+L 520.80632 273.889278 
+L 526.704547 274.210517 
+L 532.602774 274.519036 
+L 538.501002 274.815338 
+L 544.399229 275.099906 
+L 550.297456 275.373206 
+L 556.195683 275.635684 
+L 562.093911 275.887768 
+L 567.992138 276.129869 
+L 573.890365 276.362384 
+L 579.788593 276.585691 
+L 585.68682 276.800156 
+L 591.585047 277.006129 
+L 597.483275 277.203945 
+L 603.381502 277.393927 
+L 609.279729 277.576387 
+L 615.177956 277.751622 
+L 621.076184 277.919917 
+L 626.974411 278.081548 
+L 632.872638 278.236779 
+L 638.770866 278.385863 
+L 644.669093 278.529043 
+L 650.56732 278.666554 
+L 656.465548 278.798619 
+L 662.363775 278.925455 
+" clip-path="url(#p8833c43408)" style="fill: none; stroke: #087f8c; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 78.439272 88.695498 
+L 84.337499 95.331726 
+L 90.235727 101.675492 
+L 96.133954 107.737225 
+L 102.032181 113.526941 
+L 107.930409 119.054259 
+L 113.828636 124.328418 
+L 119.726863 129.358289 
+L 125.62509 134.152395 
+L 131.523318 138.718918 
+L 137.421545 143.065719 
+L 143.319772 147.200346 
+L 149.218 151.130048 
+L 155.116227 154.861788 
+L 161.014454 158.402252 
+L 166.912682 161.757863 
+L 172.810909 164.934787 
+L 178.709136 167.93895 
+L 184.607363 170.776039 
+L 190.505591 173.451517 
+L 196.403818 175.970633 
+L 202.302045 178.338426 
+L 208.200273 180.559735 
+L 214.0985 182.639209 
+L 219.996727 184.581312 
+L 225.894955 186.390331 
+L 231.793182 188.070385 
+L 237.691409 189.625427 
+L 243.589636 191.059255 
+L 249.487864 192.375518 
+L 255.386091 193.577718 
+L 261.284318 194.669219 
+L 267.182546 195.653254 
+L 273.080773 196.532924 
+L 278.979 197.311212 
+L 284.877228 197.990978 
+L 290.775455 198.574972 
+L 296.673682 199.065834 
+L 302.571909 199.466099 
+L 308.470137 199.778204 
+L 314.368364 200.004485 
+L 320.266591 200.147191 
+L 326.164819 200.208477 
+L 332.063046 200.190417 
+L 337.961273 200.094998 
+L 343.859501 199.924133 
+L 349.757728 199.679657 
+L 355.655955 199.363332 
+L 361.554182 198.976851 
+L 367.45241 198.521839 
+L 373.350637 197.999859 
+L 379.248864 197.41241 
+L 385.147092 196.760932 
+L 391.045319 196.046808 
+L 396.943546 195.271366 
+L 402.841774 194.435883 
+L 408.740001 193.541583 
+L 414.638228 192.589644 
+L 420.536455 191.581195 
+L 426.434683 190.517322 
+L 432.33291 189.399067 
+L 438.231137 188.227432 
+L 444.129365 187.003377 
+L 450.027592 185.727827 
+L 455.925819 184.401668 
+L 461.824047 183.025752 
+L 467.722274 181.600897 
+L 473.620501 180.127888 
+L 479.518729 178.607481 
+L 485.416956 177.040399 
+L 491.315183 175.427339 
+L 497.21341 173.768968 
+L 503.111638 172.06593 
+L 509.009865 170.31884 
+L 514.908092 168.52829 
+L 520.80632 166.694849 
+L 526.704547 164.819064 
+L 532.602774 162.901458 
+L 538.501002 160.942536 
+L 544.399229 158.942781 
+L 550.297456 156.902658 
+L 556.195683 154.822613 
+L 562.093911 152.703074 
+L 567.992138 150.544453 
+L 573.890365 148.347146 
+L 579.788593 146.111532 
+L 585.68682 143.837976 
+L 591.585047 141.526827 
+L 597.483275 139.178423 
+L 603.381502 136.793085 
+L 609.279729 134.371125 
+L 615.177956 131.91284 
+L 621.076184 129.418517 
+L 626.974411 126.888429 
+L 632.872638 124.322841 
+L 638.770866 121.722007 
+L 644.669093 119.08617 
+L 650.56732 116.415563 
+L 656.465548 113.710411 
+L 662.363775 110.97093 
+" clip-path="url(#p8833c43408)" style="fill: none; stroke: #3b5bdb; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 49.243047 288.436953 
+L 49.243047 79.184 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 49.243047 288.436953 
+L 691.56 288.436953 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #24364b" x="68.512555" y="263.326599" transform="rotate(-0 68.512555 263.326599)">Underfit</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #24364b" x="518.134423" y="131.497238" transform="rotate(-0 518.134423 131.497238)">Overfit</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_3">
+     <path d="M 543.662656 172.88743 
+L 556.662656 172.88743 
+L 569.662656 172.88743 
+" style="fill: none; stroke: #087f8c; stroke-width: 3; stroke-linecap: square"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #24364b" x="580.062656" y="177.43743" transform="rotate(-0 580.062656 177.43743)">Training error</text>
+    </g>
+    <g id="line2d_4">
+     <path d="M 543.662656 192.388445 
+L 556.662656 192.388445 
+L 569.662656 192.388445 
+" style="fill: none; stroke: #3b5bdb; stroke-width: 3; stroke-linecap: square"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #24364b" x="580.062656" y="196.938445" transform="rotate(-0 580.062656 196.938445)">Validation error</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_7">
+   <text style="font-weight: 700; font-size: 20px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #24364b" x="28.8" y="22.108875" transform="rotate(-0 28.8 22.108875)">Training fit and generalization can diverge</text>
+  </g>
+  <g id="text_8">
+   <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #52647a" x="28.8" y="336.96" transform="rotate(-0 28.8 336.96)">Conceptual curves, not a universal law: data, optimization, regularization, and model family change their shapes.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8833c43408">
+   <rect x="49.243047" y="79.184" width="642.316953" height="209.252953"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,10 @@
+flowchart LR
+    accTitle: Independent ensembles and sequential corrections
+    accDescr: Bagging fits models on resampled data in parallel; boosting adds learners sequentially to improve the ensemble objective.
+    Data["Training data"] --> A["Bootstrap sample A → tree A"]
+    Data --> B["Bootstrap sample B → tree B"]
+    A --> Average["Average or vote"]
+    B --> Average
+    Start["Initial prediction"] --> L1["Fit learner to improve loss"]
+    L1 --> L2["Update ensemble, fit next learner"]
+    L2 --> Sum["Weighted additive prediction"]

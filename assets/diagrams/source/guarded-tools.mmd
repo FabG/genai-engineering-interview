@@ -1,0 +1,7 @@
+flowchart LR
+    accTitle: A model proposal is not a completed action
+    accDescr: A tool proposal is validated and authorized before execution, then the result is checked.
+    Model["Model proposes tool and arguments"] --> Gate["Application validates and authorizes"]
+    Gate --> Tool["Execute scoped operation"]
+    Tool --> Observe["Observe authoritative outcome"]
+    Observe --> Reply["Report verified result"]

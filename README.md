@@ -11,18 +11,18 @@ A growing collection of questions and answers for conducting and preparing for G
 
 ## Question Bank
 
-- [Foundational AI and machine learning questions](questions/ai-foundations.md): 22 questions covering traditional ML concepts, data preparation, training, common algorithms, evaluation, and production monitoring, with short answers, explanations, examples, follow-ups, and references.
-- [Foundational GenAI and LLM questions](questions/genai-foundations.md): 20 questions covering core concepts, transformer architecture, training, inference, and limitations, with short answers, explanations, examples, follow-ups, and references.
-- [Retrieval-augmented generation questions](questions/rag.md): 12 questions covering ingestion, chunking, search, reranking, grounding, access control, and troubleshooting.
+- [Foundational AI and machine learning questions](questions/ai-foundations.md): 33 questions covering traditional ML concepts, data preparation, training, common algorithms, evaluation, and production monitoring, with short answers, explanations, examples, follow-ups, and references.
+- [Foundational GenAI and LLM questions](questions/genai-foundations.md): 23 questions covering core concepts, transformer architecture, training, inference, and limitations, with short answers, explanations, examples, follow-ups, and references.
+- [Retrieval-augmented generation questions](questions/rag.md): 17 questions covering ingestion, chunking, search, reranking, grounding, access control, and troubleshooting.
 - [Prompt engineering questions](questions/prompt-engineering.md): 12 questions covering instructions, examples, structured outputs, tool use, context, prompt injection, and iteration.
-- [Agents and tool use questions](questions/agents.md): 12 questions covering execution loops, tool design, memory, retries, persistence, permissions, coordination, and evaluation.
+- [Agents and tool use questions](questions/agents.md): 13 questions covering execution loops, tool design, memory, retries, persistence, permissions, coordination, and evaluation.
 - [Agent Orchestration questions](questions/agent-orchestration.md): 12 questions covering task decomposition, coordination patterns, scheduling, handoffs, shared state, recovery, budgets, and fleet evaluation.
 - [Software Factory questions](questions/software-factory.md): 12 questions covering business intent, agent planning and coding, independent testing, integration, human review, deployment, monitoring, and delivery outcomes.
-- [Fine-tuning questions](questions/fine-tuning.md): 12 questions covering training objectives, data preparation, PEFT, LoRA, QLoRA, preference optimization, evaluation, and deployment.
-- [GenAI evaluation questions](questions/evaluation.md): 12 questions covering datasets, retrieval and answer metrics, model judges, human review, experiments, robustness, and production monitoring.
-- [Production engineering questions](questions/production-engineering.md): 12 questions covering deployment, service objectives, inference performance, caching, overload, retries, releases, observability, security, and cost.
+- [Fine-tuning questions](questions/fine-tuning.md): 13 questions covering training objectives, data preparation, PEFT, LoRA, QLoRA, preference optimization, evaluation, and deployment.
+- [GenAI evaluation questions](questions/evaluation.md): 13 questions covering datasets, retrieval and answer metrics, model judges, human review, experiments, robustness, and production monitoring.
+- [Production engineering questions](questions/production-engineering.md): 14 questions covering deployment, service objectives, inference performance, caching, overload, retries, releases, observability, security, and cost.
 
-All question banks include short answers, explanations, practical examples, follow-up questions, and references. Selected answers also include original diagrams and worked visual examples, with supporting sources linked beside them.
+All question banks include short answers, explanations, practical examples, follow-up questions, and references. There are **162 questions** across ten banks. Selected answers also include original diagrams, plotted examples, and two attributed video snapshots, with supporting sources linked beside them.
 
 ## Visual Study Guide
 
@@ -30,18 +30,18 @@ Use these visuals to practice explaining a system or concept before reading the 
 
 | Topic | Visuals to study |
 | --- | --- |
-| [AI foundations](questions/ai-foundations.md#data-and-validation) | Training-only preprocessing (Q6); confusion matrix (Q19) |
-| [LLM foundations](questions/genai-foundations.md#transformer-architecture) | Attention head and causal mask (Q6); prefill and decoding (Q17) |
-| [RAG](questions/rag.md#architecture-and-data) | Ingestion and answering paths (Q2); hybrid retrieval (Q5) |
+| [AI foundations](questions/ai-foundations.md#data-and-validation) | Preprocessing (Q6); generalization (Q8); ensembles (Q14); PCA (Q18); confusion matrix (Q19); visual examples for Q23–33 |
+| [LLM foundations](questions/genai-foundations.md#transformer-architecture) | Attention and causal mask (Q6); shifted targets (Q9); sampling (Q16); caching (Q17); model families and checkpoints (Q21–23) |
+| [RAG](questions/rag.md#architecture-and-data) | Architecture and video snapshot (Q2); chunking (Q3); hybrid retrieval (Q5); hierarchical, graph, SQL, and migration examples (Q13–17) |
 | [Prompt engineering](questions/prompt-engineering.md#outputs-and-workflows) | Output validation (Q4); data and authority boundaries (Q10) |
 | [Agents](questions/agents.md#architecture-and-tools) | Tool-use loop (Q2); recovery after an ambiguous write (Q7) |
 | [Agent orchestration](questions/agent-orchestration.md#architecture-and-decomposition) | Parallel task graph (Q3); durable state (Q7) |
 | [Software factory](questions/software-factory.md#implementation-and-verification) | Integration queue (Q6); release provenance (Q8) |
-| [Fine-tuning](questions/fine-tuning.md#goals-and-training-data) | Training objectives (Q2); LoRA branches and dimensions (Q6) |
-| [Evaluation](questions/evaluation.md#component-and-answer-quality) | Ranked retrieval example (Q4); judge calibration (Q7); offline and online checks (Q12) |
-| [Production engineering](questions/production-engineering.md#reliability-and-releases) | Overload control (Q7); staged release (Q9) |
+| [Fine-tuning](questions/fine-tuning.md#goals-and-training-data) | Training objectives (Q2); LoRA diagram and video snapshot (Q6); distillation (Q13) |
+| [Evaluation](questions/evaluation.md#component-and-answer-quality) | Ranked retrieval (Q4); correctness and grounding (Q5); judges (Q7); online checks (Q12); risk–coverage plot (Q13) |
+| [Production engineering](questions/production-engineering.md#reliability-and-releases) | Overload control (Q7); releases (Q9); speculative decoding (Q13); latency diagnosis (Q14) |
 
-Diagrams use [Mermaid, which GitHub renders directly](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams). In other Markdown viewers, enable Mermaid support to see the diagrams. The [SVG illustrations](assets/diagrams/README.md) also open independently. Visuals simplify the concepts; the surrounding answers describe assumptions and limitations. Web references support the concepts, and third-party figures have not been copied into the repository.
+Diagrams use [Mermaid, which GitHub renders directly](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams). In other Markdown viewers, enable Mermaid support to see the diagrams. The [SVG illustrations](assets/diagrams/README.md) also open independently. Visuals simplify the concepts; the surrounding answers describe assumptions and limitations. The new visual supplement adds 32 original SVG illustrations across 32 answers, plus two attributed video preview frames. See the [resource and coverage guide](resources/README.md) for the supplied reading, primary-source approach, and video study prompts.
 
 ## System Design Scenarios
 
@@ -149,4 +149,4 @@ Add new questions, improve existing explanations, or suggest missing topics. Kee
 
 ## License
 
-This repository is licensed under the [MIT License](LICENSE). You may use, copy, modify, and redistribute its content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.
+Original repository content is licensed under the [MIT License](LICENSE). The [identified third-party video frames](assets/third-party/README.md) are excluded from that license. You may use, copy, modify, and redistribute the original content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.

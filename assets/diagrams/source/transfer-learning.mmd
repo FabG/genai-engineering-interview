@@ -1,0 +1,8 @@
+flowchart LR
+    accTitle: Adapt a pretrained representation
+    accDescr: Inputs pass through a pretrained backbone and new task head, with separate adaptation choices.
+    Image["Preprocessed image"] --> Backbone["Pretrained backbone"]
+    Backbone --> Head["New task head"]
+    Head --> Prediction["Task prediction"]
+    Stage1["First: freeze backbone, train head"] -.-> Backbone
+    Stage2["Then evaluate selective unfreezing"] -.-> Backbone

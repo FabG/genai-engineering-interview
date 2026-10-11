@@ -1,0 +1,7 @@
+flowchart LR
+    accTitle: Select columns or build new axes
+    accDescr: Selection preserves original feature columns while projection creates linear combinations.
+    Raw["Original features: age, tenure, spend"] --> Select["Select original columns"]
+    Raw --> Project["Project onto learned axes"]
+    Select --> Kept["Age and spend"]
+    Project --> PCs["PC1 and PC2: mixtures of inputs"]

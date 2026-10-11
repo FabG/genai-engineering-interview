@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="792pt" height="331.2pt" viewBox="0 0 792 331.2" xmlns="http://www.w3.org/2000/svg" version="1.1" role="img" aria-labelledby="chart-title chart-desc">
+<title id="chart-title">Evaluate on the future, using only the past</title><desc id="chart-desc">Three expanding training windows, each with one gap month and two later validation months.</desc>
+ <title>Evaluate on the future, using only the past</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Evaluate on the future, using only the past</dc:title>
+    <dc:date>2026-10-11T09:16:11.840274</dc:date>
+    <dc:description>Three expanding training windows, each with one gap month and two later validation months.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Original repository illustration</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 331.2 
+L 792 331.2 
+L 792 0 
+L 0 0 
+z
+" style="fill: #f8fafc"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 75.75875 258.616953 
+L 762.12 258.616953 
+L 762.12 77.888 
+L 75.75875 77.888 
+z
+" style="fill: #f8fafc"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 81.431157 89.547932 
+L 134.751783 89.547932 
+L 134.751783 130.357696 
+L 81.431157 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 138.155227 89.547932 
+L 191.475853 89.547932 
+L 191.475853 130.357696 
+L 138.155227 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 194.879298 89.547932 
+L 248.199924 89.547932 
+L 248.199924 130.357696 
+L 194.879298 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 251.603368 89.547932 
+L 304.923994 89.547932 
+L 304.923994 130.357696 
+L 251.603368 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 308.327438 89.547932 
+L 361.648064 89.547932 
+L 361.648064 130.357696 
+L 308.327438 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #d97706"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 365.051508 89.547932 
+L 418.372134 89.547932 
+L 418.372134 130.357696 
+L 365.051508 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #3b5bdb"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 421.775579 89.547932 
+L 475.096205 89.547932 
+L 475.096205 130.357696 
+L 421.775579 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #3b5bdb"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 478.499649 89.547932 
+L 531.820275 89.547932 
+L 531.820275 130.357696 
+L 478.499649 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 535.223719 89.547932 
+L 588.544345 89.547932 
+L 588.544345 130.357696 
+L 535.223719 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 591.947789 89.547932 
+L 645.268415 89.547932 
+L 645.268415 130.357696 
+L 591.947789 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 648.67186 89.547932 
+L 701.992486 89.547932 
+L 701.992486 130.357696 
+L 648.67186 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 705.39593 89.547932 
+L 758.716556 89.547932 
+L 758.716556 130.357696 
+L 705.39593 130.357696 
+z
+" clip-path="url(#p469417bee7)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 81.431157 147.847595 
+L 134.751783 147.847595 
+L 134.751783 188.657358 
+L 81.431157 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 138.155227 147.847595 
+L 191.475853 147.847595 
+L 191.475853 188.657358 
+L 138.155227 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 194.879298 147.847595 
+L 248.199924 147.847595 
+L 248.199924 188.657358 
+L 194.879298 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 251.603368 147.847595 
+L 304.923994 147.847595 
+L 304.923994 188.657358 
+L 251.603368 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 308.327438 147.847595 
+L 361.648064 147.847595 
+L 361.648064 188.657358 
+L 308.327438 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 365.051508 147.847595 
+L 418.372134 147.847595 
+L 418.372134 188.657358 
+L 365.051508 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 421.775579 147.847595 
+L 475.096205 147.847595 
+L 475.096205 188.657358 
+L 421.775579 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #d97706"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 478.499649 147.847595 
+L 531.820275 147.847595 
+L 531.820275 188.657358 
+L 478.499649 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #3b5bdb"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 535.223719 147.847595 
+L 588.544345 147.847595 
+L 588.544345 188.657358 
+L 535.223719 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #3b5bdb"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 591.947789 147.847595 
+L 645.268415 147.847595 
+L 645.268415 188.657358 
+L 591.947789 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 648.67186 147.847595 
+L 701.992486 147.847595 
+L 701.992486 188.657358 
+L 648.67186 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 705.39593 147.847595 
+L 758.716556 147.847595 
+L 758.716556 188.657358 
+L 705.39593 188.657358 
+z
+" clip-path="url(#p469417bee7)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 81.431157 206.147257 
+L 134.751783 206.147257 
+L 134.751783 246.957021 
+L 81.431157 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 138.155227 206.147257 
+L 191.475853 206.147257 
+L 191.475853 246.957021 
+L 138.155227 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 194.879298 206.147257 
+L 248.199924 206.147257 
+L 248.199924 246.957021 
+L 194.879298 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 251.603368 206.147257 
+L 304.923994 206.147257 
+L 304.923994 246.957021 
+L 251.603368 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 308.327438 206.147257 
+L 361.648064 206.147257 
+L 361.648064 246.957021 
+L 308.327438 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 365.051508 206.147257 
+L 418.372134 206.147257 
+L 418.372134 246.957021 
+L 365.051508 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 421.775579 206.147257 
+L 475.096205 206.147257 
+L 475.096205 246.957021 
+L 421.775579 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_34">
+    <path d="M 478.499649 206.147257 
+L 531.820275 206.147257 
+L 531.820275 246.957021 
+L 478.499649 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #087f8c"/>
+   </g>
+   <g id="patch_35">
+    <path d="M 535.223719 206.147257 
+L 588.544345 206.147257 
+L 588.544345 246.957021 
+L 535.223719 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #d97706"/>
+   </g>
+   <g id="patch_36">
+    <path d="M 591.947789 206.147257 
+L 645.268415 206.147257 
+L 645.268415 246.957021 
+L 591.947789 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #3b5bdb"/>
+   </g>
+   <g id="patch_37">
+    <path d="M 648.67186 206.147257 
+L 701.992486 206.147257 
+L 701.992486 246.957021 
+L 648.67186 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #3b5bdb"/>
+   </g>
+   <g id="patch_38">
+    <path d="M 705.39593 206.147257 
+L 758.716556 206.147257 
+L 758.716556 246.957021 
+L 705.39593 246.957021 
+z
+" clip-path="url(#p469417bee7)" style="fill: #e8edf3"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="106.956989" y="271.993906" transform="rotate(-0 106.956989 271.993906)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="163.681059" y="271.993906" transform="rotate(-0 163.681059 271.993906)">2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="220.405129" y="271.993906" transform="rotate(-0 220.405129 271.993906)">3</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="277.129199" y="271.993906" transform="rotate(-0 277.129199 271.993906)">4</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="333.85327" y="271.993906" transform="rotate(-0 333.85327 271.993906)">5</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="390.57734" y="271.993906" transform="rotate(-0 390.57734 271.993906)">6</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="447.30141" y="271.993906" transform="rotate(-0 447.30141 271.993906)">7</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8"/>
+     <g id="text_8">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="504.02548" y="271.993906" transform="rotate(-0 504.02548 271.993906)">8</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9"/>
+     <g id="text_9">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="560.749551" y="271.993906" transform="rotate(-0 560.749551 271.993906)">9</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_10"/>
+     <g id="text_10">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="617.473621" y="271.993906" transform="rotate(-0 617.473621 271.993906)">10</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_11"/>
+     <g id="text_11">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="674.197691" y="271.993906" transform="rotate(-0 674.197691 271.993906)">11</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_12"/>
+     <g id="text_12">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="730.921761" y="271.993906" transform="rotate(-0 730.921761 271.993906)">12</text>
+     </g>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #24364b" x="418.939375" y="288.994922" transform="rotate(-0 418.939375 288.994922)">Month →</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_13"/>
+     <g id="text_14">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: end; fill: #24364b" x="72.25875" y="114.891799" transform="rotate(-0 72.25875 114.891799)">Fold 1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_14"/>
+     <g id="text_15">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: end; fill: #24364b" x="72.25875" y="173.191461" transform="rotate(-0 72.25875 173.191461)">Fold 2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_15"/>
+     <g id="text_16">
+      <text style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-anchor: end; fill: #24364b" x="72.25875" y="231.491123" transform="rotate(-0 72.25875 231.491123)">Fold 3</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #ffffff" x="163.681059" y="112.810666" transform="rotate(-0 163.681059 112.810666)">Train</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #ffffff" x="333.85327" y="112.810236" transform="rotate(-0 333.85327 112.810236)">Gap</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #ffffff" x="390.57734" y="112.810666" transform="rotate(-0 390.57734 112.810666)">Valid.</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #ffffff" x="163.681059" y="171.110328" transform="rotate(-0 163.681059 171.110328)">Train</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #ffffff" x="447.30141" y="171.109898" transform="rotate(-0 447.30141 171.109898)">Gap</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #ffffff" x="504.02548" y="171.110328" transform="rotate(-0 504.02548 171.110328)">Valid.</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #ffffff" x="163.681059" y="229.40999" transform="rotate(-0 163.681059 229.40999)">Train</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #ffffff" x="560.749551" y="229.409561" transform="rotate(-0 560.749551 229.409561)">Gap</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: middle; fill: #ffffff" x="617.473621" y="229.40999" transform="rotate(-0 617.473621 229.40999)">Valid.</text>
+   </g>
+  </g>
+  <g id="text_26">
+   <text style="font-weight: 700; font-size: 20px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #24364b" x="31.68" y="21.820875" transform="rotate(-0 31.68 21.820875)">Evaluate on the future, using only the past</text>
+  </g>
+  <g id="text_27">
+   <text style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-anchor: start; fill: #52647a" x="31.68" y="322.92" transform="rotate(-0 31.68 322.92)">Illustrative folds. Gap and horizon must match label availability and the deployment task.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p469417bee7">
+   <rect x="75.75875" y="77.888" width="686.36125" height="180.728953"/>
+  </clipPath>
+ </defs>
+</svg>

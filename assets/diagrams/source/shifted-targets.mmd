@@ -1,0 +1,6 @@
+flowchart LR
+    accTitle: Next-token training shifts the targets
+    accDescr: For a toy token sequence, each input position predicts the following token under a causal mask.
+    I1["Input 1: The"] --> T1["Target 1: cat"]
+    I2["Input 2: cat"] --> T2["Target 2: sat"]
+    I3["Input 3: sat"] --> T3["Target 3: EOS"]

@@ -1,0 +1,7 @@
+flowchart LR
+    accTitle: Grounding and correctness ask different questions
+    accDescr: A claim can agree with a retrieved source while that source is outdated or wrong.
+    Source["Outdated source: office closes at 5"] --> Answer["Answer: office closes at 5"]
+    Answer --> Grounded["Supported by this source"]
+    Current["Current verified policy: closes at 6"] --> Wrong["Answer is factually outdated"]
+    Answer --> Wrong

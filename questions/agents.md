@@ -10,6 +10,7 @@ These questions cover systems that use language models to select actions, intera
 - [State and execution](#state-and-execution): memory, stopping conditions, retries, and persistence.
 - [Control and coordination](#control-and-coordination): approvals, prompt injection, and multiple agents.
 - [Evaluation and observability](#evaluation-and-observability): outcomes, traces, and operational metrics.
+- [Planning patterns](#planning-patterns)
 
 ## Architecture and tools
 
@@ -322,3 +323,34 @@ A trace reveals that a slow run spent most of its time retrying a search timeout
 - [LangSmith: Observability concepts](https://docs.langchain.com/langsmith/observability-concepts)
 
 Continue with [Agent Orchestration](agent-orchestration.md), [Software Factory](software-factory.md), [fine-tuning](fine-tuning.md), [evaluation](evaluation.md), or [production engineering](production-engineering.md).
+
+## Planning patterns
+
+### Question: 13. How does a reactive tool loop differ from planning before execution?
+
+**Topic:** Agent control flow
+**Difficulty:** Intermediate
+
+**Short answer:**
+A reactive loop chooses the next action after each observation; a planning approach establishes intermediate objectives first and revises them when evidence requires it.
+
+**Explanation:**
+ReAct interleaves reasoning, actions, and observations. Plan-and-Solve studies planning before solving reasoning tasks; production plan-and-execute agents extend that idea with explicit execution state and tools. Plans help expose dependencies, but they can become stale. Reactive loops adapt locally but may revisit unproductive actions. Both need independent authorization, progress checks, and bounded execution.
+
+**Example:**
+A research task starts with a search plan. If the first source disproves a premise, revise the remaining steps rather than completing a now-irrelevant checklist.
+
+**Visual:**
+
+![A reactive observation loop is compared with planning, executing a step, checking evidence, and replanning.](../assets/diagrams/react-plan.svg)
+
+A conceptual comparison; the plan-and-execute workflow is an engineering synthesis, not a verbatim paper architecture. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Which observations should invalidate the current plan?
+
+**References:**
+
+- [Yao et al.: ReAct](https://arxiv.org/abs/2210.03629)
+- [Wang et al.: Plan-and-Solve Prompting](https://arxiv.org/abs/2305.04091)

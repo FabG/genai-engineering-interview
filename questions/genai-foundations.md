@@ -11,6 +11,7 @@ Start with the short answers, then use the explanations and follow-ups to practi
 - [Training and adaptation](#training-and-adaptation): objectives, fine-tuning, human feedback, parameters, and in-context learning.
 - [Inference and context](#inference-and-context): generation, context windows, sampling, and caching.
 - [Evaluation and limitations](#evaluation-and-limitations): perplexity, hallucinations, and model scale.
+- [Model families and checkpoint choices](#model-families-and-checkpoint-choices)
 
 ## Core concepts
 
@@ -237,6 +238,12 @@ Training commonly minimizes cross-entropy: the negative log probability assigned
 **Example:**
 For “Birds can fly,” the token sequence corresponding to “Birds can” provides context for predicting the next token.
 
+**Visual:**
+
+![Toy training inputs The, cat, sat predict cat, sat, and an end-of-sequence token.](../assets/diagrams/shifted-targets.svg)
+
+Token strings are illustrative; actual tokenization varies. A causal mask prevents seeing the target’s future context. Concept reference: [Hugging Face: causal language modeling](https://huggingface.co/docs/transformers/tasks/language_modeling).
+
 **Follow-up questions:**
 
 - Why would access to future tokens invalidate causal language-model training?
@@ -394,6 +401,12 @@ For positive temperature `T`, probabilities are proportional to `exp(logit / T)`
 **Example:**
 With probabilities `[0.60, 0.25, 0.10, 0.05]`, top-p at `0.80` retains the first two candidates and renormalizes their probabilities.
 
+**Visual:**
+
+![The same logits produce sharper or flatter probabilities at temperatures 0.5, 1, and 2.](../assets/diagrams/temperature.svg)
+
+Synthetic probabilities without top-k or top-p filtering. Greedy decoding is a separate selection rule; lower temperature does not guarantee truth. Concept reference: [Hugging Face: generation strategies](https://huggingface.co/docs/transformers/generation_strategies).
+
 **Follow-up questions:**
 
 - How can changing both temperature and top-p complicate an experiment?
@@ -508,3 +521,91 @@ For a narrow support-labeling task, evaluate whether a smaller adapted model mee
 **References:**
 
 - [Hoffmann et al.: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556)
+
+## Model families and checkpoint choices
+
+### Question: 21. How do GANs, VAEs, and diffusion models generate data differently?
+
+**Topic:** Generative model families
+**Difficulty:** Intermediate
+
+**Short answer:**
+GANs learn through adversarial training, VAEs learn a probabilistic latent representation, and diffusion models learn to reverse a corruption process.
+
+**Explanation:**
+A GAN pairs a generator with a discriminator during training. A VAE optimizes reconstruction together with a regularizer on its approximate latent posterior; sampling uses a prior and decoder. A diffusion model learns denoising transitions, often conditioned on text or another signal. Training stability, sampling cost, fidelity, and diversity depend on the implementation; no family wins every task.
+
+**Example:**
+Image generation may map noise through a GAN generator, decode a VAE latent sample, or iteratively denoise a diffusion sample. The discriminator and VAE encoder are not required for those basic sampling paths.
+
+**Visual:**
+
+![Three sampling paths: GAN generator, VAE decoder, and iterative diffusion denoising.](../assets/diagrams/generative-families.svg)
+
+Basic generation paths only; training objectives and architecture variants differ. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Why should sampling steps be included in a diffusion model’s latency evaluation?
+
+**References:**
+
+- [Goodfellow et al.: Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)
+- [Kingma and Welling: Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114)
+- [Ho et al.: Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
+
+### Question: 22. Does a mixture-of-experts model run every expert for every token?
+
+**Topic:** Sparse model architecture
+**Difficulty:** Intermediate
+
+**Short answer:**
+In a sparse MoE layer, a router selects a subset of experts for each token, so active computation differs from total parameter count.
+
+**Explanation:**
+Experts commonly replace feed-forward sublayers while attention remains shared. Routing introduces load-balance, capacity, and communication concerns. Sparse activation can reduce arithmetic relative to activating every expert, but all required weights still need storage somewhere. Latency depends on hardware placement, batching, and communication as well as active parameters.
+
+**Example:**
+An illustrative top-two router chooses two of eight experts for one token and combines their weighted outputs. This does not mean the whole model uses exactly one quarter of its parameters.
+
+**Visual:**
+
+![A router activates two of four drawn experts and combines their outputs.](../assets/diagrams/mixture-of-experts.svg)
+
+A schematic top-two layer; expert count and routing policy are model-specific. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- When can communication erase the compute savings of sparse routing?
+
+**References:**
+
+- [Fedus et al.: Switch Transformers](https://arxiv.org/abs/2101.03961)
+
+### Question: 23. How should you choose between a base checkpoint and an instruction-tuned checkpoint?
+
+**Topic:** Model selection
+**Difficulty:** Intermediate
+
+**Short answer:**
+Choose the checkpoint whose training behavior fits the task and whose measured performance, format, license, and operational constraints meet your needs.
+
+**Explanation:**
+A base language model primarily learns continuation; instruction tuning encourages responses to requests. Chat formatting and role conventions are part of the checkpoint interface. An instruction-tuned model can still hallucinate or ignore constraints. A base checkpoint may suit specialized adaptation, but it requires task-specific validation rather than assuming that completion ability implies assistant behavior.
+
+**Example:**
+The same text, “Classify this ticket,” may elicit a continued document from a base model and a label from an instruction-tuned model. Test actual prompts and output contracts on representative cases.
+
+**Visual:**
+
+![A pretrained checkpoint can be adapted with demonstrations and preferences into an instruction-oriented checkpoint.](../assets/diagrams/base-instruction.svg)
+
+A conceptual training path. Some pipelines use different stages or omit preference optimization. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- How can an incorrect chat template make a capable checkpoint look poor?
+
+**References:**
+
+- [Ouyang et al.: instruction following with human feedback](https://arxiv.org/abs/2203.02155)

@@ -1,0 +1,9 @@
+flowchart LR
+    accTitle: Draft a block, verify against the target
+    accDescr: A target accepts a prefix of draft tokens and corrects the first rejected token before continuing.
+    Draft["Draft proposes: A, B, C, D"] --> Target["Target verifies token block"]
+    Target --> Prefix["Accepted prefix: A, B"]
+    Target --> Correct["Reject C, sample corrected token X"]
+    Prefix --> Output["Continue from A, B, X"]
+    Correct --> Output
+    Target -.-> Discard["Discard later proposal D"]

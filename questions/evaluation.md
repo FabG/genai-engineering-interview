@@ -10,6 +10,7 @@ These questions cover how to evaluate an entire application as well as its indiv
 - [Component and answer quality](#component-and-answer-quality): retrieval, grounding, and automated checks.
 - [Judgment and experiments](#judgment-and-experiments): model judges, human review, and uncertainty.
 - [Robustness and operations](#robustness-and-operations): adversarial tests, efficiency, and production monitoring.
+- [Abstention and coverage](#abstention-and-coverage)
 
 ## Evaluation design
 
@@ -135,6 +136,12 @@ A response can accurately repeat an outdated source and still be wrong today. Co
 
 **Example:**
 An answer citing an old return policy is traceable, but may fail correctness against the policy effective on the user's purchase date.
+
+**Visual:**
+
+![An answer can match an outdated source and still contradict current verified facts.](../assets/diagrams/faithfulness-correctness.svg)
+
+The fictional office-hours example distinguishes support by retrieved evidence from correctness against an authoritative reference. Concept reference: [Es et al.: RAGAS evaluation](https://arxiv.org/abs/2309.15217).
 
 **Follow-up questions:**
 
@@ -337,3 +344,33 @@ Canarying tests production behavior. Route reviewed incidents into development r
 **References:**
 
 - [Google: Monitoring production ML systems](https://developers.google.com/machine-learning/crash-course/production-ml-systems/monitoring)
+
+## Abstention and coverage
+
+### Question: 13. How do you evaluate a system that can abstain?
+
+**Topic:** Selective prediction
+**Difficulty:** Advanced
+
+**Short answer:**
+Report both how often the system answers and how often its accepted answers are wrong, plus the cost and quality of escalation.
+
+**Explanation:**
+Coverage is the fraction of cases answered. Selective risk measures error among answered cases under a specified loss. Raising an acceptance threshold may reduce coverage, but risk improves only if the acceptance score identifies difficult cases. Tune thresholds on validation data and assess important slices on held-out data. A zero-coverage system should not receive a perfect-quality score; conditional risk is undefined when no answers are accepted.
+
+**Example:**
+Out of 100 requests, 70 are answered and 7 of those are wrong: coverage is 70%, and selective error is 10%. The other 30 still incur a user or review cost.
+
+**Visual:**
+
+![A synthetic risk-versus-coverage curve illustrates the tradeoff between answering more cases and errors among accepted answers.](../assets/diagrams/risk-coverage.svg)
+
+A hypothetical informative acceptance score; real curves need measurement and may be non-monotonic. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- What would reveal that abstention disproportionately rejects one user group?
+
+**References:**
+
+- [Geifman and El-Yaniv: selective classification](https://arxiv.org/abs/1705.08500)

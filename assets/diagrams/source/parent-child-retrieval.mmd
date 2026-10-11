@@ -1,0 +1,7 @@
+flowchart LR
+    accTitle: Retrieve precisely, expand carefully
+    accDescr: Child hits map to an authorized parent passage, which is deduplicated and budgeted for context.
+    Query["Question"] --> Child["Search child chunks"]
+    Child --> IDs["Parent IDs"]
+    IDs --> Parent["Fetch authorized parent passages"]
+    Parent --> Context["Deduplicate and budget context"]

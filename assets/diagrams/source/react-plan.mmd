@@ -1,0 +1,10 @@
+flowchart LR
+    accTitle: Observe continuously, replan when needed
+    accDescr: A reactive loop chooses actions from observations; a planning workflow checks evidence and revises its plan.
+    Obs["Observation"] --> Act["Choose and execute action"]
+    Act --> Obs
+    Plan["Plan objectives"] --> Execute["Execute next step"]
+    Execute --> Check["Check result and progress"]
+    Check -->|Continue| Execute
+    Check -->|Revise| Plan
+    Check -->|Done or limit| Stop["Verify or escalate"]

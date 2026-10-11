@@ -1,0 +1,7 @@
+flowchart LR
+    accTitle: Adapt continuation into instruction following
+    accDescr: A base checkpoint is adapted with demonstrations and optionally preference-based training.
+    Corpus["Pretraining corpus"] --> Base["Base checkpoint"]
+    Base --> SFT["Learn from examples"]
+    SFT --> Chat["Instruction model"]
+    Chat --> Preference["Optional preference optimization"]

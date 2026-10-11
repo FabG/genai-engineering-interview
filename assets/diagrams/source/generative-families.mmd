@@ -1,0 +1,6 @@
+flowchart LR
+    accTitle: Three different sampling paths
+    accDescr: GANs map noise through a generator, VAEs decode latent samples, and diffusion models iteratively denoise.
+    GNoise["Noise z"] --> GAN["GAN generator"] --> GOut["Sample"]
+    VPrior["Latent prior sample z"] --> VAE["VAE decoder"] --> VOut["Sample"]
+    DNoise["Noise x_T"] --> Denoise["Conditioned denoising steps"] --> DOut["Sample x_0"]

@@ -1,0 +1,10 @@
+flowchart TD
+    accTitle: Conditional independence in naive Bayes
+    accDescr: A class variable has separate likelihoods for each feature given the class.
+    Class["Class y"] --> X1["Feature x1"]
+    Class --> X2["Feature x2"]
+    Class --> X3["Feature x3"]
+    Prior["Prior P(y)"] -.-> Class
+    X1 --> Score["Score: prior × conditional likelihoods"]
+    X2 --> Score
+    X3 --> Score

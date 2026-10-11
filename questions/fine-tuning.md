@@ -10,6 +10,7 @@ These questions cover adapting pretrained language models, from choosing an obje
 - [Adaptation methods](#adaptation-methods): full fine-tuning, PEFT, LoRA, and QLoRA.
 - [Training and preferences](#training-and-preferences): configuration, generalization, and preference optimization.
 - [Evaluation and delivery](#evaluation-and-delivery): comparisons, checkpoints, and deployment.
+- [Distillation and compression](#distillation-and-compression)
 
 ## Goals and training data
 
@@ -178,6 +179,12 @@ flowchart LR
 
 For the original LoRA scaling, `y = Wx + (alpha / r)BAx`. This layer trains `r × (d_in + d_out)` adapter parameters; biases and other trainable modules are omitted. Concept reference: [Hu et al.: LoRA](https://arxiv.org/abs/2106.09685).
 
+**Video comparison:**
+
+[![Simplilearn preview frame comparing full fine-tuning with LoRA near 26 minutes.](../assets/third-party/simplilearn/lora-26m00s.jpg)](https://www.youtube.com/watch?v=j5FU7kOGrsU&t=1560s)
+
+[Simplilearn, near 26:00](https://www.youtube.com/watch?v=j5FU7kOGrsU&t=1560s): use the slide’s full-tuning/LoRA contrast as a starting point, then explain the matrix dimensions and trainable parameter count in the original diagram above. This is a 320 × 180 public preview frame; open the video for readable slide details. [Attribution and reuse notice](../assets/third-party/README.md).
+
 **Follow-up questions:**
 
 - Why might adapting more layers matter as much as increasing rank?
@@ -325,3 +332,33 @@ An adapter loads successfully but uses a different chat template at serving time
 - [Hugging Face: Trainer checkpoints](https://huggingface.co/docs/transformers/main_classes/trainer)
 
 Use the [evaluation question bank](evaluation.md) to design comparisons for these methods, then explore [production engineering](production-engineering.md) for serving and operating the resulting application.
+
+## Distillation and compression
+
+### Question: 13. How does knowledge distillation differ from quantization or ordinary fine-tuning?
+
+**Topic:** Model compression
+**Difficulty:** Intermediate
+
+**Short answer:**
+Distillation trains a student using teacher-provided targets; quantization reduces numerical precision, while fine-tuning adapts parameters to a training objective.
+
+**Explanation:**
+Classic distillation uses softened teacher probabilities, often combined with labeled data. LLM pipelines may instead train on teacher-generated responses when logits are unavailable. This transfers behavior rather than guaranteeing equivalent knowledge or accuracy. Validate the student independently on rare cases and important slices; teacher errors and selection bias can propagate. Distillation and quantization can be combined.
+
+**Example:**
+A compact classifier learns from human labels and a larger teacher’s class probabilities. A generated-response dataset is a different supervision channel and needs quality checks.
+
+**Visual:**
+
+![Teacher probabilities or generated responses become training targets for a student that is evaluated independently.](../assets/diagrams/distillation.svg)
+
+Teacher targets supplement a training objective; held-out ground truth must remain independent. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Why can a student score well on teacher agreement while failing the real task?
+
+**References:**
+
+- [Hinton et al.: knowledge distillation](https://arxiv.org/abs/1503.02531)

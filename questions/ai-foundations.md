@@ -11,6 +11,7 @@ This section covers traditional machine learning before moving into GenAI. Engin
 - [Training and generalization](#training-and-generalization): overfitting, regularization, optimization, and neural networks.
 - [Traditional models](#traditional-models): linear models, trees, ensembles, nearest neighbors, SVMs, clustering, and PCA.
 - [Evaluation and production](#evaluation-and-production): metrics, class imbalance, thresholds, and monitoring.
+- [Additional ML interview topics](#additional-ml-interview-topics)
 
 ## Core concepts
 
@@ -203,6 +204,12 @@ Poor training and validation performance can indicate underfitting. Strong train
 **Example:**
 An unrestricted tree memorizes training records but misclassifies many new records; limiting its depth may improve validation results.
 
+**Visual:**
+
+![Illustrative training error falls with model complexity while validation error eventually rises.](../assets/diagrams/generalization.svg)
+
+These are conceptual curves, not measured performance or a universal law. Concept reference: [scikit-learn: validation curves](https://scikit-learn.org/stable/modules/learning_curve.html).
+
 **Follow-up questions:**
 
 - When might more training data help, and when might better features matter more?
@@ -337,6 +344,12 @@ Standard random forests use bootstrap samples and random feature subsets to redu
 **Example:**
 For tabular demand prediction, compare a forest baseline with boosted trees using the same temporal validation split.
 
+**Visual:**
+
+![Bagging aggregates separately fitted trees; boosting adds learners sequentially to improve a loss.](../assets/diagrams/bagging-boosting.svg)
+
+The sketch shows the training dependency; random forests also randomize feature selection. Concept reference: [scikit-learn: ensemble methods](https://scikit-learn.org/stable/modules/ensemble.html).
+
 **Follow-up questions:**
 
 - Why does averaging highly correlated trees provide less benefit?
@@ -424,6 +437,12 @@ PCA creates combinations of features rather than selecting original columns. Fea
 
 **Example:**
 Compress correlated sensor measurements into a few components, then verify that downstream predictive performance remains acceptable.
+
+**Visual:**
+
+![Synthetic correlated data with perpendicular first and second principal directions.](../assets/diagrams/pca-directions.svg)
+
+Input variance is not necessarily useful signal for predicting a target. Concept reference: [scikit-learn: PCA](https://scikit-learn.org/stable/modules/decomposition.html#pca).
 
 **Follow-up questions:**
 
@@ -540,3 +559,313 @@ A unit change from dollars to cents shifts a feature dramatically; fixing the pi
 - [Google: Monitoring production ML pipelines](https://developers.google.com/machine-learning/crash-course/production-ml-systems/monitoring)
 
 Continue with [foundational GenAI and LLM questions](genai-foundations.md).
+
+## Additional ML interview topics
+
+### Question: 23. How do you validate a model that predicts future events?
+
+**Topic:** Temporal validation
+**Difficulty:** Intermediate
+
+**Short answer:**
+Use evaluation windows that follow their training windows in time, with features constructed only from information available at prediction time.
+
+**Explanation:**
+An expanding window adds older observations to training; a sliding window keeps a fixed history. Match the evaluation horizon to deployment. Add a gap when feature windows or delayed labels overlap the evaluation period. A chronological split still leaks if features incorporate future events. TimeSeriesSplit assumes equally spaced samples when comparing equal-duration folds; irregular data may need calendar-based splits.
+
+**Example:**
+To predict next-week demand, train through June, leave any required gap, and evaluate July. Repeat at later cutoffs; keep the final period untouched during model selection.
+
+**Visual:**
+
+![Three expanding training windows followed by a gap and a later validation window.](../assets/diagrams/time-validation.svg)
+
+Illustrative monthly folds: validation always follows training; the gap must match the application. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- How would delayed labels change the training cutoff?
+
+**References:**
+
+- [scikit-learn: TimeSeriesSplit](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)
+
+### Question: 24. How does feature selection differ from PCA?
+
+**Topic:** Feature reduction
+**Difficulty:** Intermediate
+
+**Short answer:**
+Feature selection retains a subset of original variables; PCA creates new axes that combine variables to explain input variance.
+
+**Explanation:**
+Filters, wrappers, and embedded selection methods use different criteria and computational budgets. Supervised selection can use labels, so fit it inside each training fold. PCA does not need labels, but high-variance directions need not be predictive. Compare predictive quality, stability, interpretability, and inference cost rather than reducing dimensions automatically.
+
+**Example:**
+Keeping tenure and purchase count preserves their meanings. Replacing them with principal components creates mixtures that may be harder to explain.
+
+**Visual:**
+
+![Feature selection keeps original columns; projection combines them into new components.](../assets/diagrams/selection-projection.svg)
+
+A schematic comparison; the illustrated feature names and component count are hypothetical. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- When could removing a low-variance feature destroy useful signal?
+
+**References:**
+
+- [scikit-learn: feature selection](https://scikit-learn.org/stable/modules/feature_selection.html)
+
+### Question: 25. What does permutation importance tell you, and when can it mislead?
+
+**Topic:** Interpretability
+**Difficulty:** Intermediate
+
+**Short answer:**
+It measures the drop in a fitted model’s score when a feature is shuffled, breaking its relationship with the target and other features.
+
+**Explanation:**
+Compute a baseline on appropriate held-out data, shuffle one column repeatedly, and compare scores. The result depends on the model, metric, and evaluation distribution; it is not a causal effect. Correlated substitutes can hide each other’s usefulness. Shuffling may also create unrealistic inputs. Inspect correlated groups and repeat measurements instead of treating a single ordering as universal.
+
+**Example:**
+If validation accuracy falls from 0.88 to 0.80 when tenure is shuffled, its importance under this metric is 0.08, not “8% of the prediction.”
+
+**Visual:**
+
+![Illustrative score drops with variation across permutations for three features.](../assets/diagrams/permutation-importance.svg)
+
+Synthetic repeated-permutation results, not a benchmark or a causal ranking. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- How would you investigate two highly correlated features with low individual importance?
+
+**References:**
+
+- [scikit-learn: permutation importance](https://scikit-learn.org/stable/modules/permutation_importance.html)
+
+### Question: 26. When should you inspect a precision–recall curve instead of only ROC-AUC?
+
+**Topic:** Ranking metrics
+**Difficulty:** Intermediate
+
+**Short answer:**
+Use precision–recall analysis when positive predictions and missed positives matter, especially when the positive class is rare.
+
+**Explanation:**
+ROC plots true-positive rate against false-positive rate; PR plots precision against recall. With many negatives, a small false-positive rate can still produce many false alerts. ROC-AUC evaluates ranking across thresholds; it does not pick an operating threshold. PR results depend on prevalence. Average precision and trapezoidal PR area are different summaries, so name the metric explicitly.
+
+**Example:**
+At 1% prevalence, 80% recall and 5% false-positive rate yield 80 true alerts and 495 false alerts per 10,000 cases: precision is about 14%.
+
+**Visual:**
+
+![ROC and precision–recall views of the same illustrative classifier at one-percent prevalence.](../assets/diagrams/roc-pr.svg)
+
+The marked operating point has 80% recall, 5% false-positive rate, and about 14% precision. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Why can precision change after deployment even if class-conditional score distributions stay fixed?
+
+**References:**
+
+- [scikit-learn: classification metrics](https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics)
+
+### Question: 27. How is probability calibration different from discrimination?
+
+**Topic:** Probability quality
+**Difficulty:** Intermediate
+
+**Short answer:**
+Discrimination separates classes; calibration asks whether predicted probabilities match observed event frequencies.
+
+**Explanation:**
+A model can rank examples well yet be overconfident. A reliability diagram compares mean predicted probability with the observed positive fraction in each bin; report bin sizes and uncertainty. Fit calibration on data separate from model fitting and final testing. Calibration can change under distribution shift and does not guarantee good ranking or subgroup performance.
+
+**Example:**
+Among many comparable predictions near 0.8, about 80% should be positive if that group is calibrated. An observed rate of 0.5 suggests overconfidence.
+
+**Visual:**
+
+![A reliability curve below the diagonal shows overconfident synthetic predictions.](../assets/diagrams/calibration.svg)
+
+Synthetic bin averages. Being below the diagonal means predicted probabilities exceed observed frequencies. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Why is predicting the base rate for every case calibrated but often unhelpful?
+
+**References:**
+
+- [scikit-learn: probability calibration](https://scikit-learn.org/stable/modules/calibration.html)
+
+### Question: 28. What assumption makes naive Bayes naive?
+
+**Topic:** Probabilistic classifiers
+**Difficulty:** Beginner
+
+**Short answer:**
+It treats features as conditionally independent given the class, then combines class priors and feature likelihoods using Bayes’ rule.
+
+**Explanation:**
+For features x_i and class y, the score is proportional to P(y) × product P(x_i | y). The assumption is conditional independence, not independence in the full dataset. Choose a likelihood appropriate to the feature type; smoothing avoids zero-count failures in discrete models. Correlated evidence can be counted more than once, so classification may be useful while probabilities are poorly calibrated.
+
+**Example:**
+A bag-of-words spam classifier combines the spam prior with word likelihoods. Two near-duplicate indicators may exaggerate its confidence.
+
+**Visual:**
+
+![A class node points separately to three conditionally independent feature nodes.](../assets/diagrams/naive-bayes.svg)
+
+The arrows express the model’s factorization, not a claim that the class causally generates real-world features. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Why can the classifier still work when the independence assumption is imperfect?
+
+**References:**
+
+- [scikit-learn: naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html)
+
+### Question: 29. How should you handle missing values and extreme observations?
+
+**Topic:** Data quality
+**Difficulty:** Intermediate
+
+**Short answer:**
+Investigate why values are missing or extreme before choosing imputation, transformation, exclusion, or a model that supports them.
+
+**Explanation:**
+Fit imputation statistics using training data only and apply the same transformation at inference. Missingness indicators can preserve useful information but may encode a collection process that later changes. An extreme observation may be a data error or the event the model must detect. Evaluate handling rules on realistic slices; avoid blanket deletion or using future values to fill past records.
+
+**Example:**
+A missing sensor reading receives a training-set median plus a missingness flag. A verified high reading is retained because it may indicate the failure being predicted.
+
+**Visual:**
+
+![Training data fits imputation; production inputs use the fitted transform and retain a missingness indicator.](../assets/diagrams/missing-values.svg)
+
+A possible preprocessing design. Missingness and outlier rules must be justified for the task. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- What monitoring would reveal that the missing-data mechanism changed?
+
+**References:**
+
+- [scikit-learn: missing-value imputation](https://scikit-learn.org/stable/modules/impute.html)
+
+### Question: 30. When would DBSCAN be preferable to k-means?
+
+**Topic:** Clustering
+**Difficulty:** Intermediate
+
+**Short answer:**
+DBSCAN can recover dense connected regions and mark sparse points as noise; k-means partitions all points around a chosen number of centroids.
+
+**Explanation:**
+K-means favors compact clusters under its distance objective. DBSCAN uses a neighborhood radius and minimum density, so it can handle some non-convex shapes without specifying the number of clusters. Scaling and distance choice matter. One global density threshold can struggle when densities vary; high-dimensional distances can also be uninformative. Neither method discovers the uniquely correct grouping without a useful representation and objective.
+
+**Example:**
+Two interlocking crescent-shaped groups may suit density connectivity better than nearest-centroid partitions. Isolated points can remain unassigned.
+
+**Visual:**
+
+![Two synthetic crescent clusters and isolated points illustrate non-convex density groups.](../assets/diagrams/density-clustering.svg)
+
+Synthetic geometry showing a possible use case; colors indicate intended groups, not fitted algorithm output. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- What happens when one meaningful cluster is much sparser than another?
+
+**References:**
+
+- [scikit-learn: clustering](https://scikit-learn.org/stable/modules/clustering.html#dbscan)
+
+### Question: 31. What should you check before trusting linear-regression results?
+
+**Topic:** Regression diagnostics
+**Difficulty:** Intermediate
+
+**Short answer:**
+Check residual structure, dependence, changing error variance, influential observations, and whether the model is appropriate for the prediction or inference task.
+
+**Explanation:**
+Linearity concerns the conditional mean represented by the model. Curved residual patterns suggest omitted structure; a widening spread suggests heteroscedasticity. Predictive validation and classical confidence-interval assumptions are different checks. Normal errors are not required merely to fit least squares; they matter for some exact small-sample inference procedures. Correlated errors and multicollinearity can undermine uncertainty estimates or coefficient stability.
+
+**Example:**
+A demand model has near-zero mean residuals overall but consistently underpredicts at both low and high temperatures. Add plausible nonlinear terms and validate again.
+
+**Visual:**
+
+![Residual plots contrast random scatter with curvature and increasing variance.](../assets/diagrams/residual-diagnostics.svg)
+
+Synthetic diagnostic patterns; the axes represent fitted values and residuals. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Why does a high R-squared not establish that residual assumptions hold?
+
+**References:**
+
+- [NIST: model validation and residual analysis](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm)
+
+### Question: 32. How would you use a pretrained vision model with a small labeled dataset?
+
+**Topic:** Transfer learning
+**Difficulty:** Intermediate
+
+**Short answer:**
+Start with a pretrained feature extractor and a task-specific head, then evaluate whether cautiously fine-tuning more layers improves held-out performance.
+
+**Explanation:**
+Keep preprocessing compatible with the backbone. Training only the head lowers the number of trainable parameters; unfreezing layers increases adaptation capacity and overfitting risk. Tune learning rates and augmentation on validation data. Preserve a meaningful split across related subjects or sources. Pretraining does not remove domain mismatch or data-license constraints.
+
+**Example:**
+For product-defect images, compare a frozen backbone plus classifier with fine-tuning the last block. Split by production batch so nearly identical images do not cross partitions.
+
+**Visual:**
+
+![Images pass through a pretrained backbone and a newly trained classification head.](../assets/diagrams/transfer-learning.svg)
+
+Stage one freezes the backbone; a later experiment may unfreeze selected layers. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- What evidence would justify unfreezing the entire backbone?
+
+**References:**
+
+- [PyTorch: transfer learning tutorial](https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)
+
+### Question: 33. Where does SMOTE belong in a validation pipeline?
+
+**Topic:** Imbalanced learning
+**Difficulty:** Intermediate
+
+**Short answer:**
+Apply SMOTE only to the training portion of each fold, after suitable preprocessing and before fitting the classifier.
+
+**Explanation:**
+SMOTE interpolates between a minority example and selected minority neighbors. Creating samples before splitting can leak related synthetic examples into validation. Preserve natural class prevalence in evaluation. Interpolation may be implausible near class overlap, outliers, or categorical boundaries; use suitable variants for mixed features and compare against class weighting and threshold tuning.
+
+**Example:**
+For numeric features, a new point is x_new = x_i + λ(x_neighbor − x_i), with λ between zero and one. It lies on the segment rather than being a new independent observation.
+
+**Visual:**
+
+![A synthetic minority point lies between two observed minority points.](../assets/diagrams/smote.svg)
+
+An illustration of interpolation, not evidence that the generated point is realistic for a particular dataset. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Why should you still measure precision at deployment prevalence?
+
+**References:**
+
+- [imbalanced-learn: oversampling and SMOTE](https://imbalanced-learn.org/stable/over_sampling.html)

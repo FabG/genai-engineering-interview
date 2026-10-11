@@ -1,0 +1,10 @@
+flowchart LR
+    accTitle: Fuse ranks, not incompatible raw scores
+    accDescr: Document A ranks first lexically and second semantically, so it receives two reciprocal-rank contributions.
+    Lex["Lexical list: A then B"] --> A["A: 1/61 + 1/62 ≈ 0.0325"]
+    Dense["Dense list: C then A"] --> A
+    Lex --> B["B: 1/62 ≈ 0.0161"]
+    Dense --> C["C: 1/61 ≈ 0.0164"]
+    A --> Order["Fused order: A, C, B"]
+    B --> Order
+    C --> Order

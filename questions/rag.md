@@ -9,6 +9,7 @@ These questions cover designing and diagnosing systems that answer using retriev
 - [Architecture and data](#architecture-and-data): when to use RAG, ingestion, chunking, and embeddings.
 - [Retrieval and context](#retrieval-and-context): hybrid search, reranking, query rewriting, and context selection.
 - [Reliability and operations](#reliability-and-operations): grounding, access control, freshness, and diagnosis.
+- [Advanced retrieval and structured data](#advanced-retrieval-and-structured-data)
 
 ## Architecture and data
 
@@ -65,6 +66,12 @@ flowchart TD
 
 The index is built ahead of queries. Enforce current access policy before evidence enters model context. Concept reference: [Microsoft: RAG architecture](https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview).
 
+**Video comparison:**
+
+[![Simplilearn preview frame showing RAG ingestion and query paths near 20 minutes.](../assets/third-party/simplilearn/rag-architecture-20m00s.jpg)](https://www.youtube.com/watch?v=j5FU7kOGrsU&t=1200s)
+
+[Simplilearn, near 20:00](https://www.youtube.com/watch?v=j5FU7kOGrsU&t=1200s): compare the slide’s ingestion and query paths with the diagram above. The interview answer must also address authorization, freshness, and evidence checking. This is a 320 × 180 public preview frame; open the video for readable slide details. [Attribution and reuse notice](../assets/third-party/README.md).
+
 **Follow-up questions:**
 
 - Which stages would you inspect if the answer cites the right document but the wrong product version?
@@ -86,6 +93,12 @@ Small chunks can lose definitions or qualifications; large chunks can dilute rel
 
 **Example:**
 Keep a policy rule and its exception together instead of splitting precisely between them at a fixed character boundary.
+
+**Visual:**
+
+![Toy token chunks 1 through 5 and 4 through 8 share boundary tokens 4 and 5.](../assets/diagrams/chunk-overlap.svg)
+
+Overlap preserves some boundary context while duplicating indexed text; it does not guarantee semantic completeness. Concept reference: [Microsoft: chunking documents](https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-chunk-documents).
 
 **Follow-up questions:**
 
@@ -314,3 +327,145 @@ If the correct exception appears in retrieved candidates but is absent from the 
 - [Es et al.: Ragas and component-level RAG evaluation](https://arxiv.org/abs/2309.15217)
 
 Continue with [prompt engineering](prompt-engineering.md) and [evaluation](evaluation.md).
+
+## Advanced retrieval and structured data
+
+### Question: 13. Why retrieve a small chunk but give the generator a larger parent passage?
+
+**Topic:** Hierarchical retrieval
+**Difficulty:** Intermediate
+
+**Short answer:**
+Small chunks can match a specific question precisely, while an associated parent passage supplies definitions and surrounding context.
+
+**Explanation:**
+Index child chunks with stable parent IDs and keep parent text in a document store. Retrieve children, deduplicate parents, enforce current permissions on expanded content, and select context within a token budget. Expanding every hit can reintroduce irrelevant material or exceed the budget. Compare against fixed chunks on evidence coverage and answer quality.
+
+**Example:**
+A child chunk mentions a cancellation fee, while its parent section includes the exception and effective date. The answer needs both the match and its qualifying context.
+
+**Visual:**
+
+![Matching child chunks resolve to an authorized parent passage before context assembly.](../assets/diagrams/parent-child-retrieval.svg)
+
+Parent expansion is subject to permissions and a context budget; it is not automatic access to the full document. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- What if a parent contains sections the user is not authorized to read?
+
+**References:**
+
+- [MongoDB: parent document retrieval with LangChain](https://www.mongodb.com/docs/atlas/ai-integrations/langchain/parent-document-retrieval/)
+
+### Question: 14. How does reciprocal rank fusion combine retrieval results?
+
+**Topic:** Rank fusion
+**Difficulty:** Intermediate
+
+**Short answer:**
+RRF sums reciprocal contributions from each result’s rank in multiple lists, so it can combine rankings without comparing raw scores directly.
+
+**Explanation:**
+A common form is score(d) = sum 1 / (c + rank_i(d)), with ranks starting at one and a positive smoothing constant c. A missing result contributes zero from that list. Deduplicate document identities and apply eligibility rules consistently. The constant controls rank sensitivity and is not the requested number of results. Fusion cannot recover relevant documents absent from every candidate list.
+
+**Example:**
+With c = 60, a document ranked first lexically and second semantically scores 1/61 + 1/62 ≈ 0.0325. A document appearing only at rank one scores about 0.0164.
+
+**Visual:**
+
+![Two ranked candidate lists contribute reciprocal scores to a merged ranking.](../assets/diagrams/rank-fusion.svg)
+
+Hypothetical rankings with c = 60; the shared top candidate gains evidence from both lists. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Why can adding a low-quality retrieval branch hurt despite using rank fusion?
+
+**References:**
+
+- [Microsoft: reciprocal rank fusion](https://learn.microsoft.com/en-us/azure/search/hybrid-search-ranking)
+
+### Question: 15. When is graph-based retrieval worth its additional complexity?
+
+**Topic:** Graph retrieval
+**Difficulty:** Advanced
+
+**Short answer:**
+Consider it when questions depend on relationships or corpus-wide structure that isolated passages do not capture well.
+
+**Explanation:**
+A knowledge graph represents entities and relationships; retrieval can traverse connections and return supporting evidence. Microsoft GraphRAG also uses extracted structure and community summaries for some broader questions. Extraction errors, entity resolution, update cost, and summary provenance become additional failure modes. A graph edge is not automatically a verified fact. Compare a graph approach with simpler hybrid retrieval on the actual question set.
+
+**Example:**
+To explain which projects depend on a retiring service, traverse documented dependency links and cite their source records. For a single policy lookup, ordinary retrieval may be sufficient.
+
+**Visual:**
+
+![Service and project relationships connect to cited source records for an impact question.](../assets/diagrams/graph-retrieval.svg)
+
+A hypothetical dependency graph. Edges require evidence and may be incomplete or incorrect. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- How would you invalidate a summary after a supporting source is deleted?
+
+**References:**
+
+- [Microsoft: GraphRAG overview](https://microsoft.github.io/graphrag/)
+
+### Question: 16. How would you make natural-language-to-SQL answers trustworthy?
+
+**Topic:** Structured data retrieval
+**Difficulty:** Advanced
+
+**Short answer:**
+Treat generated SQL as an untrusted proposal, restrict what the database identity can do, and validate both execution safety and business meaning.
+
+**Explanation:**
+Retrieve relevant schema and approved metric definitions, then generate a query against a least-privilege read-only role. Apply parsing and policy checks, parameterize literal values where feasible, enforce row-level access, and limit runtime and result size. Valid SQL can still use the wrong join, grain, date boundary, or metric. Ambiguous requests should trigger clarification; successful execution is not proof of correctness.
+
+**Example:**
+“Revenue last month” requires an agreed revenue definition, reporting timezone, and treatment of refunds. Review those semantics before interpreting a query result.
+
+**Visual:**
+
+![A question uses schema and metric definitions to propose SQL, which passes a policy gate before restricted execution.](../assets/diagrams/text-to-sql.svg)
+
+Illustrative controls; enforcement must reside in trusted services and database permissions. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- Why is checking that a statement starts with SELECT insufficient?
+
+**References:**
+
+- [LangChain: SQL agent and database permission guidance](https://docs.langchain.com/oss/python/langchain/sql-agent)
+
+### Question: 17. What must change when you replace an embedding model?
+
+**Topic:** Index migrations
+**Difficulty:** Advanced
+
+**Short answer:**
+Re-embed the corpus and route queries to the matching embedding model and index version; matching vector dimensions alone is insufficient.
+
+**Explanation:**
+Different encoders can create incompatible coordinate spaces. Version the encoder, preprocessing, normalization, distance metric, and corpus snapshot. Build a parallel index, evaluate retrieval quality and latency, then switch query routing and index selection together with a rollback path. Similarity thresholds and caches may also need revalidation. A staged migration is an engineering pattern, not a guarantee from the embedding library.
+
+**Example:**
+A new 768-dimensional encoder cannot safely query old 768-dimensional document vectors merely because the shapes match.
+
+**Visual:**
+
+![Old and new encoders each route to their own matching index before a coordinated cutover.](../assets/diagrams/embedding-migration.svg)
+
+A hypothetical migration: keep model/index pairs compatible throughout rollout and rollback. The primary references below support the concept.
+
+**Follow-up questions:**
+
+- How would you migrate while documents continue to change?
+
+**References:**
+
+- [Sentence Transformers: semantic search](https://www.sbert.net/examples/sentence_transformer/applications/semantic-search/README.html)
