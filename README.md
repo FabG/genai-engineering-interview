@@ -73,6 +73,14 @@ Diagrams use [Mermaid, which GitHub renders directly](https://docs.github.com/en
 
 The exercises use Python 3.10+ and the standard library, with embedded data and no API keys or model downloads. The hands-on guide explains notebook setup and how to work through the exercises.
 
+## Courses
+
+Use the [Courses section](courses/README.md) to collect useful courses for **interview preparation** and **refreshing key concepts**. Courses are organized by topic and can be linked to the question bank, coding exercises, and system design scenarios.
+
+Start with [Prompt Engineering — AI Engineering from Scratch](courses/prompt-engineering.md), with explanations, prompt patterns, Python examples, and exercises.
+
+To add a course, copy the [course template](courses/COURSE_TEMPLATE.md), record its origin, author, level, and what it is best for, then go straight into explanations and code examples. Add the course to the index.
+
 ## Topics to Cover
 
 - **AI and machine learning foundations:** Learning paradigms, data preparation, generalization, traditional algorithms, evaluation metrics, and production monitoring.
@@ -181,12 +189,17 @@ Use this template when adding a question:
 - [x] Add Agent Orchestration and Software Factory questions and answers.
 - **− In progress:** Expand system design scenarios (6 available; more planned).
 - **− In progress:** Expand hands-on Python coding exercises with question and answer notebooks (8 available; more planned).
+- **− In progress:** Build the course collection for interview preparation and concept refreshers.
 - [x] Organize the question bank into topic-specific Markdown files as it grows.
 
 ## Contributing
 
 Add new questions, improve existing answers, or suggest missing topics. Follow the three layers: a crisp short answer, an accessible simple explanation with a concrete analogy, and an advanced answer with relevant technical detail or mathematics. Keep analogies accurate and do not assume prior AI/ML knowledge in the simple section. Include meaningful metrics or checks, at least two distinct examples where possible, and a quick cheat sheet. Define units and denominators, explain metric limitations, and distinguish illustrative numbers from measured results. Keep answers clear, technically accurate, and supported by reliable references. Define new technical terms in the [glossary](GLOSSARY.md), expand unfamiliar acronyms on first use, and add relevant Key terms links. Distinguish overloaded meanings rather than relying on context alone. Call out assumptions and distinguish general principles from behavior specific to a model or tool. For diagrams, include descriptive labels, a short explanation, and a primary source for the concept; label illustrative architectures as examples. Add alt text to images and `accTitle` / `accDescr` to Mermaid diagrams.
 
+For course contributions, use the [course template](courses/COURSE_TEMPLATE.md) and link the most relevant interview practice.
+
 ## License
 
 Original repository content is licensed under the [MIT License](LICENSE). The [identified third-party media](assets/third-party/README.md) are excluded from that license. You may use, copy, modify, and redistribute the original content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.
+
+The imported [Prompt Engineering lesson](courses/prompt-engineering.md) retains its upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
