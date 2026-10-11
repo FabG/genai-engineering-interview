@@ -1,6 +1,6 @@
 # Structured Outputs: JSON, Schema Validation, and Constrained Decoding
 
-[Back to courses](../README.md) · [Prompt Engineering](prompt-engineering.md)
+[Back to courses](../README.md) · [Prompt Engineering](1-prompt-engineering.md)
 
 | Field | Details |
 | --- | --- |

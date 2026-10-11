@@ -1,6 +1,6 @@
 # Embeddings and Vector Representations
 
-[Back to courses](../README.md) · [Prompt Engineering](prompt-engineering.md) · [Structured Outputs](structured-outputs.md)
+[Back to courses](../README.md) · [Prompt Engineering](1-prompt-engineering.md) · [Structured Outputs](2-structured-outputs.md)
 
 | Field | Details |
 | --- | --- |

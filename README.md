@@ -79,9 +79,10 @@ Use the [Courses section](courses/README.md) to collect useful courses for **int
 
 ### LLM Engineering
 
-- [Prompt Engineering](courses/ll-engineering/prompt-engineering.md) — Prompt patterns, Python examples, and exercises.
-- [Structured Outputs](courses/ll-engineering/structured-outputs.md) — JSON Schema, validation, constrained decoding, and extraction pipelines.
-- [Embeddings](courses/ll-engineering/embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
+1. [Prompt Engineering](courses/llm-engineering/1-prompt-engineering.md) — Prompt patterns, Python examples, and exercises.
+2. [Structured Outputs](courses/llm-engineering/2-structured-outputs.md) — JSON Schema, validation, constrained decoding, and extraction pipelines.
+3. [Embeddings](courses/llm-engineering/3-embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
+4. [Context Engineering](courses/llm-engineering/4-context-engineering.md) — Context budgets, memory, retrieval, tool selection, and an offline Python assembly pipeline.
 
 To add a course, copy the [course template](courses/COURSE_TEMPLATE.md), record its origin, author, level, and what it is best for, then go straight into explanations and code examples. Add the course to the index.
 
@@ -206,4 +207,4 @@ For course contributions, use the [course template](courses/COURSE_TEMPLATE.md) 
 
 Original repository content is licensed under the [MIT License](LICENSE). The [identified third-party media](assets/third-party/README.md) are excluded from that license. You may use, copy, modify, and redistribute the original content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.
 
-The imported [Prompt Engineering](courses/ll-engineering/prompt-engineering.md) [Structured Outputs](courses/ll-engineering/structured-outputs.md), and [Embeddings](courses/ll-engineering/embeddings.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
+The imported [Prompt Engineering](courses/llm-engineering/1-prompt-engineering.md), [Structured Outputs](courses/llm-engineering/2-structured-outputs.md), [Embeddings](courses/llm-engineering/3-embeddings.md), and [Context Engineering](courses/llm-engineering/4-context-engineering.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).

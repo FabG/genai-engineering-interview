@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course identifies its origin, author, level, and best use, then goes straight into explanations and practical examples.
 
-**3 courses available.** Start with [Prompt Engineering](ll-engineering/prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**4 courses available.** Start with [Prompt Engineering](llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -32,9 +32,10 @@ Courses on tokens, embeddings, Transformers, attention, language-model training,
 
 ## LLM Engineering
 
-- [Prompt Engineering — AI Engineering from Scratch](ll-engineering/prompt-engineering.md) — Intermediate (our assessment) · Interview preparation and refresher · Explanations, ten prompt patterns, and a Python testing-harness walkthrough.
-- [Structured Outputs — AI Engineering from Scratch](ll-engineering/structured-outputs.md) — Intermediate · JSON Schema, Pydantic, constrained decoding, validation, retries, and extraction evaluation.
-- [Embeddings](ll-engineering/embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
+1. [Prompt Engineering — AI Engineering from Scratch](llm-engineering/1-prompt-engineering.md) — Intermediate (our assessment) · Interview preparation and refresher · Explanations, ten prompt patterns, and a Python testing-harness walkthrough.
+2. [Structured Outputs — AI Engineering from Scratch](llm-engineering/2-structured-outputs.md) — Intermediate · JSON Schema, Pydantic, constrained decoding, validation, retries, and extraction evaluation.
+3. [Embeddings](llm-engineering/3-embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
+4. [Context Engineering](llm-engineering/4-context-engineering.md) — Context budgets, memory, retrieval, tool selection, and an offline Python assembly pipeline.
 
 Courses on prompt design, structured outputs, embeddings, retrieval, and building reliable LLM applications.
 
