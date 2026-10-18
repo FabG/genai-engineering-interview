@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course identifies its origin, author, level, and best use, then goes straight into explanations and practical examples.
 
-**14 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**15 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -53,6 +53,7 @@ Courses on prompt design, structured outputs, embeddings, retrieval, and buildin
 ## Agent Engineering
 
 1. [The Agent Loop: Observe, Think, Act](2-agent-engineering/1-agent-loop.md) — ReAct, tool dispatch, observations, call IDs, stopping conditions, and a bounded offline Python loop.
+2. [ReWOO and Plan-and-Execute](2-agent-engineering/2-rewoo-plan-execute.md) — Decoupled planning, evidence dependencies, validated DAG execution, failure handling, and bounded replanning.
 
 Courses on tool use, planning, state, memory, durable execution, permissions, and coordination.
 
