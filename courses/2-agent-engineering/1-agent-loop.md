@@ -11,6 +11,8 @@
 
 Adapted from the MIT-licensed lesson and companion example; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python walkthrough uses a deterministic toy policy and local tools. It requires no model download, API key, or network access.
 
+> Every agent in 2026 is a variant of the ReAct loop from 2022 — Claude Code, Cursor, Devin, Operator included. Reasoning tokens interleave with tool calls and observations until a stop condition fires. Learn this loop cold before touching any framework.
+
 ## The Problem
 
 A model can propose a database lookup or calculate an answer in text, but reading an external database requires an execution environment. A tool-using application must validate the proposal, execute the permitted operation, return its result, and decide whether another step is needed.

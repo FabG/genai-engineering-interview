@@ -11,6 +11,9 @@
 
 Adapted from the MIT-licensed lesson and companion implementation; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python example runs offline with a scripted planner, fixture tools, and a deterministic solver.
 
+
+> ReAct interleaves thought and action in one stream. ReWOO separates them: one big plan up front, then execute. 5x fewer tokens, +4% accuracy on HotpotQA, and you can distill the planner into a 7B model. Plan-and-Execute generalized it; Plan-and-Act scaled it to web navigation.
+
 ## The Problem
 
 An interleaved agent decides, calls a tool, reads the result, and decides again. That flexibility is useful when the next step depends on what the environment reveals. It can also repeat a growing amount of context across model calls.

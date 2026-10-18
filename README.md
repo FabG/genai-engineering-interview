@@ -80,6 +80,7 @@ Use the [Courses section](courses/README.md) to collect useful courses for **int
 
 1. [The Agent Loop: Observe, Think, Act](courses/2-agent-engineering/1-agent-loop.md) — ReAct, tool dispatch, observations, call IDs, stopping conditions, and a bounded offline Python loop.
 2. [ReWOO and Plan-and-Execute](courses/2-agent-engineering/2-rewoo-plan-execute.md) — Decoupled planning, evidence dependencies, validated DAG execution, failure handling, and bounded replanning.
+3. [Reflexion: Verbal Reinforcement Learning](courses/2-agent-engineering/3-reflexion-verbal-rl.md) — Actor, evaluator, self-reflector, episodic memory, bounded retries, and an offline Python demonstration.
 
 To add a course, copy the [course template](courses/COURSE_TEMPLATE.md), record its origin, author, level, and what it is best for, then go straight into explanations and code examples. Add the course to the index.
 
@@ -206,4 +207,4 @@ Original repository content is licensed under the [MIT License](LICENSE). The [i
 
 The imported [Prompt Engineering](courses/1-llm-engineering/1-prompt-engineering.md), [Structured Outputs](courses/1-llm-engineering/2-structured-outputs.md), [Embeddings](courses/1-llm-engineering/3-embeddings.md), [Context Engineering](courses/1-llm-engineering/4-context-engineering.md), [RAG](courses/1-llm-engineering/5-rag-retrieval-augmented-generation.md), [Function Calling](courses/1-llm-engineering/6-function-calling.md), [Evaluation](courses/1-llm-engineering/7-evaluation.md), [Caching and Cost](courses/1-llm-engineering/8-caching-cost.md), [Guardrails](courses/1-llm-engineering/9-guardrails.md), [Production App](courses/1-llm-engineering/10-production-app.md), [LLM Routing Layer](courses/1-llm-engineering/11-llm-routing-layer.md), [Shadow and Canary Deployment](courses/1-llm-engineering/12-shadow-canary-progressive.md), and [Agent Framework Tradeoffs](courses/1-llm-engineering/13-agent-framework-tradeoffs.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
 
-The imported [Agent Loop](courses/2-agent-engineering/1-agent-loop.md) and [ReWOO and Plan-and-Execute](courses/2-agent-engineering/2-rewoo-plan-execute.md) lessons also retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
+The imported [Agent Loop](courses/2-agent-engineering/1-agent-loop.md), [ReWOO and Plan-and-Execute](courses/2-agent-engineering/2-rewoo-plan-execute.md), and [Reflexion](courses/2-agent-engineering/3-reflexion-verbal-rl.md) lessons also retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
