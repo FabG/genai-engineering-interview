@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course identifies its origin, author, level, and best use, then goes straight into explanations and practical examples.
 
-**12 courses available.** Start with [Prompt Engineering](llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**13 courses available.** Start with [Prompt Engineering](llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -44,6 +44,7 @@ Courses on tokens, embeddings, Transformers, attention, language-model training,
 10. [Building a Production LLM Application](llm-engineering/10-production-app.md) — Service architecture, prompt rollout, streaming, retries, observability, cost accounting, and deployment patterns.
 11. [LLM Routing Layer — LiteLLM, OpenRouter, and Portkey](llm-engineering/11-llm-routing-layer.md) — Model aliases, routing strategies, bounded failover, gateway tradeoffs, usage attribution, and MCP sampling.
 12. [Shadow Traffic, Canary Rollouts, and Progressive Deployment](llm-engineering/12-shadow-canary-progressive.md) — Shadow comparisons, rollout gates, sample sizes, cost tradeoffs, and tested rollback plans.
+13. [Agent Framework Tradeoffs](llm-engineering/13-agent-framework-tradeoffs.md) — LangGraph, CrewAI, AutoGen, Agno, Google ADK, Microsoft Agent Framework, and Pydantic AI; state, branching, recovery, and cost comparisons.
 
 Courses on prompt design, structured outputs, embeddings, retrieval, and building reliable LLM applications.
 
