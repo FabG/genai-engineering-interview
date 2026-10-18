@@ -19,6 +19,17 @@ The wrong abstraction creates extra work: important state becomes hidden in pros
 
 An **agent framework** supplies abstractions for model calls, tools, state, and execution. **Orchestration** determines which operation runs next and how results move between operations. Choose based on the workflow and failure semantics you need, not the most impressive demo.
 
+
+[Anthropic's workflow/agent discussion](https://www.anthropic.com/engineering/building-effective-agents) makes this distinction and emphasizes starting with simple patterns.
+--> "the most successful implementations use simple, composable patterns rather than complex frameworks."
+
+Agent frameworks make it easy to get started by simplifying standard low-level tasks like calling LLMs, defining and parsing tools, and chaining calls together. However, they often create extra layers of abstraction that can obscure the underlying prompts ​​and responses, making them harder to debug. They can also make it tempting to add complexity when a simpler setup would suffice.
+
+We suggest that developers start by using LLM APIs directly: many patterns can be implemented in a few lines of code. If you do use a framework, ensure you understand the underlying code. Incorrect assumptions about what's under the hood are a common source of customer error.
+See [Anthropic cookbook](https://platform.claude.com/cookbook/patterns-agents-basic-workflows) for some sample implementations.
+
+
+
 ## The Concept
 
 ### Start with the Shape of the Work

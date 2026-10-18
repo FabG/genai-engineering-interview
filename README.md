@@ -62,19 +62,23 @@ Use the [Courses section](courses/README.md) to collect useful courses for **int
 
 ### LLM Engineering
 
-1. [Prompt Engineering](courses/llm-engineering/1-prompt-engineering.md) — Prompt patterns, Python examples, and exercises.
-2. [Structured Outputs](courses/llm-engineering/2-structured-outputs.md) — JSON Schema, validation, constrained decoding, and extraction pipelines.
-3. [Embeddings](courses/llm-engineering/3-embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
-4. [Context Engineering](courses/llm-engineering/4-context-engineering.md) — Context budgets, memory, retrieval, tool selection, and an offline Python assembly pipeline.
-5. [RAG: Retrieval-Augmented Generation](courses/llm-engineering/5-rag-retrieval-augmented-generation.md) — Document retrieval, grounded prompts, an offline pipeline, and retrieval/answer evaluation.
-6. [Function Calling and Tool Use](courses/llm-engineering/6-function-calling.md) — Tool schemas, validation, bounded execution loops, error handling, and MCP concepts.
-7. [Evaluation and Testing](courses/llm-engineering/7-evaluation.md) — Datasets, rubrics, judge calibration, confidence intervals, regression comparisons, and eval costs.
-8. [Caching, Rate Limiting, and Cost Optimization](courses/llm-engineering/8-caching-cost.md) — Prompt and response caches, model routing, token buckets, cost tracking, batching, and budget controls.
-9. [Guardrails, Safety, and Content Filtering](courses/llm-engineering/9-guardrails.md) — Input/output validation, prompt injection, privacy, tool boundaries, monitoring, and red-team evaluation.
-10. [Building a Production LLM Application](courses/llm-engineering/10-production-app.md) — Service architecture, prompt rollout, streaming, retries, observability, cost accounting, and deployment patterns.
-11. [LLM Routing Layer — LiteLLM, OpenRouter, and Portkey](courses/llm-engineering/11-llm-routing-layer.md) — Model aliases, routing strategies, bounded failover, gateway tradeoffs, usage attribution, and MCP sampling.
-12. [Shadow Traffic, Canary Rollouts, and Progressive Deployment](courses/llm-engineering/12-shadow-canary-progressive.md) — Shadow comparisons, rollout gates, sample sizes, cost tradeoffs, and tested rollback plans.
-13. [Agent Framework Tradeoffs](courses/llm-engineering/13-agent-framework-tradeoffs.md) — LangGraph, CrewAI, AutoGen, Agno, Google ADK, Microsoft Agent Framework, and Pydantic AI; state, branching, recovery, and cost comparisons.
+1. [Prompt Engineering](courses/1-llm-engineering/1-prompt-engineering.md) — Prompt patterns, Python examples, and exercises.
+2. [Structured Outputs](courses/1-llm-engineering/2-structured-outputs.md) — JSON Schema, validation, constrained decoding, and extraction pipelines.
+3. [Embeddings](courses/1-llm-engineering/3-embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
+4. [Context Engineering](courses/1-llm-engineering/4-context-engineering.md) — Context budgets, memory, retrieval, tool selection, and an offline Python assembly pipeline.
+5. [RAG: Retrieval-Augmented Generation](courses/1-llm-engineering/5-rag-retrieval-augmented-generation.md) — Document retrieval, grounded prompts, an offline pipeline, and retrieval/answer evaluation.
+6. [Function Calling and Tool Use](courses/1-llm-engineering/6-function-calling.md) — Tool schemas, validation, bounded execution loops, error handling, and MCP concepts.
+7. [Evaluation and Testing](courses/1-llm-engineering/7-evaluation.md) — Datasets, rubrics, judge calibration, confidence intervals, regression comparisons, and eval costs.
+8. [Caching, Rate Limiting, and Cost Optimization](courses/1-llm-engineering/8-caching-cost.md) — Prompt and response caches, model routing, token buckets, cost tracking, batching, and budget controls.
+9. [Guardrails, Safety, and Content Filtering](courses/1-llm-engineering/9-guardrails.md) — Input/output validation, prompt injection, privacy, tool boundaries, monitoring, and red-team evaluation.
+10. [Building a Production LLM Application](courses/1-llm-engineering/10-production-app.md) — Service architecture, prompt rollout, streaming, retries, observability, cost accounting, and deployment patterns.
+11. [LLM Routing Layer — LiteLLM, OpenRouter, and Portkey](courses/1-llm-engineering/11-llm-routing-layer.md) — Model aliases, routing strategies, bounded failover, gateway tradeoffs, usage attribution, and MCP sampling.
+12. [Shadow Traffic, Canary Rollouts, and Progressive Deployment](courses/1-llm-engineering/12-shadow-canary-progressive.md) — Shadow comparisons, rollout gates, sample sizes, cost tradeoffs, and tested rollback plans.
+13. [Agent Framework Tradeoffs](courses/1-llm-engineering/13-agent-framework-tradeoffs.md) — LangGraph, CrewAI, AutoGen, Agno, Google ADK, Microsoft Agent Framework, and Pydantic AI; state, branching, recovery, and cost comparisons.
+
+### Agent Engineering
+
+1. [The Agent Loop: Observe, Think, Act](courses/2-agent-engineering/1-agent-loop.md) — ReAct, tool dispatch, observations, call IDs, stopping conditions, and a bounded offline Python loop.
 
 To add a course, copy the [course template](courses/COURSE_TEMPLATE.md), record its origin, author, level, and what it is best for, then go straight into explanations and code examples. Add the course to the index.
 
@@ -199,4 +203,6 @@ For course contributions, use the [course template](courses/COURSE_TEMPLATE.md) 
 
 Original repository content is licensed under the [MIT License](LICENSE). The [identified third-party media](assets/third-party/README.md) are excluded from that license. You may use, copy, modify, and redistribute the original content for personal or commercial purposes, provided you retain the copyright and license notices. The content is provided without warranty. Linked third-party resources remain subject to their own licenses.
 
-The imported [Prompt Engineering](courses/llm-engineering/1-prompt-engineering.md), [Structured Outputs](courses/llm-engineering/2-structured-outputs.md), [Embeddings](courses/llm-engineering/3-embeddings.md), [Context Engineering](courses/llm-engineering/4-context-engineering.md), [RAG](courses/llm-engineering/5-rag-retrieval-augmented-generation.md), [Function Calling](courses/llm-engineering/6-function-calling.md), [Evaluation](courses/llm-engineering/7-evaluation.md), [Caching and Cost](courses/llm-engineering/8-caching-cost.md), [Guardrails](courses/llm-engineering/9-guardrails.md), [Production App](courses/llm-engineering/10-production-app.md), [LLM Routing Layer](courses/llm-engineering/11-llm-routing-layer.md), [Shadow and Canary Deployment](courses/llm-engineering/12-shadow-canary-progressive.md), and [Agent Framework Tradeoffs](courses/llm-engineering/13-agent-framework-tradeoffs.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
+The imported [Prompt Engineering](courses/1-llm-engineering/1-prompt-engineering.md), [Structured Outputs](courses/1-llm-engineering/2-structured-outputs.md), [Embeddings](courses/1-llm-engineering/3-embeddings.md), [Context Engineering](courses/1-llm-engineering/4-context-engineering.md), [RAG](courses/1-llm-engineering/5-rag-retrieval-augmented-generation.md), [Function Calling](courses/1-llm-engineering/6-function-calling.md), [Evaluation](courses/1-llm-engineering/7-evaluation.md), [Caching and Cost](courses/1-llm-engineering/8-caching-cost.md), [Guardrails](courses/1-llm-engineering/9-guardrails.md), [Production App](courses/1-llm-engineering/10-production-app.md), [LLM Routing Layer](courses/1-llm-engineering/11-llm-routing-layer.md), [Shadow and Canary Deployment](courses/1-llm-engineering/12-shadow-canary-progressive.md), and [Agent Framework Tradeoffs](courses/1-llm-engineering/13-agent-framework-tradeoffs.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
+
+The imported [Agent Loop](courses/2-agent-engineering/1-agent-loop.md) lesson also retains its upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).

@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course identifies its origin, author, level, and best use, then goes straight into explanations and practical examples.
 
-**13 courses available.** Start with [Prompt Engineering](llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**14 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -32,25 +32,27 @@ Courses on tokens, embeddings, Transformers, attention, language-model training,
 
 ## LLM Engineering
 
-1. [Prompt Engineering — AI Engineering from Scratch](llm-engineering/1-prompt-engineering.md) — Intermediate (our assessment) · Interview preparation and refresher · Explanations, ten prompt patterns, and a Python testing-harness walkthrough.
-2. [Structured Outputs — AI Engineering from Scratch](llm-engineering/2-structured-outputs.md) — Intermediate · JSON Schema, Pydantic, constrained decoding, validation, retries, and extraction evaluation.
-3. [Embeddings](llm-engineering/3-embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
-4. [Context Engineering](llm-engineering/4-context-engineering.md) — Context budgets, memory, retrieval, tool selection, and an offline Python assembly pipeline.
-5. [RAG: Retrieval-Augmented Generation](llm-engineering/5-rag-retrieval-augmented-generation.md) — Document retrieval, grounded prompts, an offline pipeline, and retrieval/answer evaluation.
-6. [Function Calling and Tool Use](llm-engineering/6-function-calling.md) — Tool schemas, validation, bounded execution loops, error handling, and MCP concepts.
-7. [Evaluation and Testing](llm-engineering/7-evaluation.md) — Datasets, rubrics, judge calibration, confidence intervals, regression comparisons, and eval costs.
-8. [Caching, Rate Limiting, and Cost Optimization](llm-engineering/8-caching-cost.md) — Prompt and response caches, model routing, token buckets, cost tracking, batching, and budget controls.
-9. [Guardrails, Safety, and Content Filtering](llm-engineering/9-guardrails.md) — Input/output validation, prompt injection, privacy, tool boundaries, monitoring, and red-team evaluation.
-10. [Building a Production LLM Application](llm-engineering/10-production-app.md) — Service architecture, prompt rollout, streaming, retries, observability, cost accounting, and deployment patterns.
-11. [LLM Routing Layer — LiteLLM, OpenRouter, and Portkey](llm-engineering/11-llm-routing-layer.md) — Model aliases, routing strategies, bounded failover, gateway tradeoffs, usage attribution, and MCP sampling.
-12. [Shadow Traffic, Canary Rollouts, and Progressive Deployment](llm-engineering/12-shadow-canary-progressive.md) — Shadow comparisons, rollout gates, sample sizes, cost tradeoffs, and tested rollback plans.
-13. [Agent Framework Tradeoffs](llm-engineering/13-agent-framework-tradeoffs.md) — LangGraph, CrewAI, AutoGen, Agno, Google ADK, Microsoft Agent Framework, and Pydantic AI; state, branching, recovery, and cost comparisons.
+1. [Prompt Engineering — AI Engineering from Scratch](1-llm-engineering/1-prompt-engineering.md) — Intermediate (our assessment) · Interview preparation and refresher · Explanations, ten prompt patterns, and a Python testing-harness walkthrough.
+2. [Structured Outputs — AI Engineering from Scratch](1-llm-engineering/2-structured-outputs.md) — Intermediate · JSON Schema, Pydantic, constrained decoding, validation, retries, and extraction evaluation.
+3. [Embeddings](1-llm-engineering/3-embeddings.md) — Vector representations, similarity metrics, chunking, retrieval, reranking, and a NumPy walkthrough.
+4. [Context Engineering](1-llm-engineering/4-context-engineering.md) — Context budgets, memory, retrieval, tool selection, and an offline Python assembly pipeline.
+5. [RAG: Retrieval-Augmented Generation](1-llm-engineering/5-rag-retrieval-augmented-generation.md) — Document retrieval, grounded prompts, an offline pipeline, and retrieval/answer evaluation.
+6. [Function Calling and Tool Use](1-llm-engineering/6-function-calling.md) — Tool schemas, validation, bounded execution loops, error handling, and MCP concepts.
+7. [Evaluation and Testing](1-llm-engineering/7-evaluation.md) — Datasets, rubrics, judge calibration, confidence intervals, regression comparisons, and eval costs.
+8. [Caching, Rate Limiting, and Cost Optimization](1-llm-engineering/8-caching-cost.md) — Prompt and response caches, model routing, token buckets, cost tracking, batching, and budget controls.
+9. [Guardrails, Safety, and Content Filtering](1-llm-engineering/9-guardrails.md) — Input/output validation, prompt injection, privacy, tool boundaries, monitoring, and red-team evaluation.
+10. [Building a Production LLM Application](1-llm-engineering/10-production-app.md) — Service architecture, prompt rollout, streaming, retries, observability, cost accounting, and deployment patterns.
+11. [LLM Routing Layer — LiteLLM, OpenRouter, and Portkey](1-llm-engineering/11-llm-routing-layer.md) — Model aliases, routing strategies, bounded failover, gateway tradeoffs, usage attribution, and MCP sampling.
+12. [Shadow Traffic, Canary Rollouts, and Progressive Deployment](1-llm-engineering/12-shadow-canary-progressive.md) — Shadow comparisons, rollout gates, sample sizes, cost tradeoffs, and tested rollback plans.
+13. [Agent Framework Tradeoffs](1-llm-engineering/13-agent-framework-tradeoffs.md) — LangGraph, CrewAI, AutoGen, Agno, Google ADK, Microsoft Agent Framework, and Pydantic AI; state, branching, recovery, and cost comparisons.
 
 Courses on prompt design, structured outputs, embeddings, retrieval, and building reliable LLM applications.
 
 **Practice alongside:** [RAG](../questions/rag.md), [prompt engineering](../questions/prompt-engineering.md), and [retrieval exercises](../hands-on/README.md).
 
-## Agents and Orchestration
+## Agent Engineering
+
+1. [The Agent Loop: Observe, Think, Act](2-agent-engineering/1-agent-loop.md) — ReAct, tool dispatch, observations, call IDs, stopping conditions, and a bounded offline Python loop.
 
 Courses on tool use, planning, state, memory, durable execution, permissions, and coordination.
 
