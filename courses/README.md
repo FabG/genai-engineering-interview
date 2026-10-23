@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course identifies its origin, author, level, and best use, then goes straight into explanations and practical examples.
 
-**17 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**18 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -56,6 +56,7 @@ Courses on prompt design, structured outputs, embeddings, retrieval, and buildin
 2. [ReWOO and Plan-and-Execute](2-agent-engineering/2-rewoo-plan-execute.md) — Decoupled planning, evidence dependencies, validated DAG execution, failure handling, and bounded replanning.
 3. [Reflexion: Verbal Reinforcement Learning](2-agent-engineering/3-reflexion-verbal-rl.md) — Actor, evaluator, self-reflector, episodic memory, bounded retries, and an offline Python demonstration.
 4. [Tree of Thoughts and LATS](2-agent-engineering/4-tree-of-thoughts-lats.md) — Branching search, MCTS, UCT, evaluation tradeoffs, and runnable offline BFS and MCTS examples.
+5. [Self-Refine and CRITIC](2-agent-engineering/5-self-refine-and-critic.md) — Iterative revision, tool-grounded critique, stopping policies, evaluation metrics, and an offline Python example.
 
 Courses on tool use, planning, state, memory, durable execution, permissions, and coordination.
 
