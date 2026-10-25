@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course identifies its origin, author, level, and best use, then goes straight into explanations and practical examples.
 
-**20 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**21 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -59,6 +59,7 @@ Courses on prompt design, structured outputs, embeddings, retrieval, and buildin
 5. [Self-Refine and CRITIC](2-agent-engineering/5-self-refine-and-critic.md) — Iterative revision, tool-grounded critique, stopping policies, evaluation metrics, and an offline Python example.
 6. [Anthropic Workflow Patterns](2-agent-engineering/6-anthropic-workflow-patterns.md) — Chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer, and runnable offline examples.
 7. [LangGraph Stateful Graphs](2-agent-engineering/7-langgraph-stateful-graphs.md) — Typed state, reducers, checkpoints, approval interrupts, recovery, and a runnable SQLite example.
+8. [AutoGen and the Actor Model](2-agent-engineering/8-autogen-actor-model.md) — Async messages, typed runtimes, bounded mailboxes, failure isolation, and an offline two-actor demonstration.
 
 Courses on tool use, planning, state, memory, durable execution, permissions, and coordination.
 
