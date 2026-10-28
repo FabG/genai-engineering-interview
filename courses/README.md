@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course identifies its origin, author, level, and best use, then goes straight into explanations and practical examples.
 
-**23 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**24 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -62,6 +62,7 @@ Courses on prompt design, structured outputs, embeddings, retrieval, and buildin
 8. [AutoGen and the Actor Model](2-agent-engineering/8-autogen-actor-model.md) — Async messages, typed runtimes, bounded mailboxes, failure isolation, and an offline two-actor demonstration.
 9. [CrewAI Role-Based Crews](2-agent-engineering/9-crewai-role-based-crews.md) — Agents, tasks, sequential and hierarchical processes, Flows, structured handoffs, memory, and an offline three-role crew.
 10. [OpenAI Agents SDK](2-agent-engineering/10-openai-agents-sdk.md) — Handoffs, guardrails, sessions, tracing, ownership boundaries, and a bounded offline runtime.
+11. [Claude Agent SDK](2-agent-engineering/10--claude-agent-sdk.md) — Harness design, isolated worker contexts, hooks, session persistence, tracing, and an offline SQLite example.
 
 Courses on tool use, planning, state, memory, durable execution, permissions, and coordination.
 
