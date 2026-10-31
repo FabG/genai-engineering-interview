@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [Workflow Patterns](6-anthropic-workflow-patterns.md) · [LangGraph Stateful Graphs](7-langgraph-stateful-graphs.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/14-autogen-actor-model/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Explaining message-driven agents, comparing actor and graph orchestration, designing failure handling, and understanding AutoGen's Core, AgentChat, and Extensions layers |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The runnable example uses Python's standard library, not an installed AutoGen runtime or a live model.
-
 **Framework status, checked 2026-10-25:** Microsoft's [AutoGen repository notice](https://github.com/microsoft/autogen#readme) says the project is archived and no longer maintained, and directs users toward Microsoft Agent Framework and its migration guide. This supersedes the source lesson's maintenance-mode description. The course studies AutoGen's architecture and transferable actor concepts; it is not a recommendation to start a new production deployment on the archived framework.
 
 ## Why Agents as Actors?
@@ -332,6 +323,17 @@ Moving to remote transport adds schema versions, authentication, encryption, ack
 | Fault isolation | Contain a handler's failure | Process and shared-resource failures remain possible |
 
 An interview answer: “The actor model separates stateful participants through message contracts and runtime-managed delivery. It can support independently scheduled agents, but I would explicitly define handler concurrency, mailbox limits, delivery and retry semantics, and shutdown behavior. AutoGen's Core, AgentChat, and Extensions illustrate different abstraction layers; the actor principles remain useful even though the project is now archived.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The runnable example uses Python's standard library, not an installed AutoGen runtime or a live model.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/14-autogen-actor-model/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Explaining message-driven agents, comparing actor and graph orchestration, designing failure handling, and understanding AutoGen's Core, AgentChat, and Extensions layers |
 
 ## References and Attribution
 

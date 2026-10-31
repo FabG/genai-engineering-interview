@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md) · [Prompt Engineering](1-prompt-engineering.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/03-structured-outputs/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Building typed LLM responses, reliable extraction pipelines, and preparing for engineering interviews |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The core walkthrough runs offline with simulated responses.
-
 ## The Problem
 
 You ask an LLM: "Extract the product name, price, and availability from this text." It responds:
@@ -591,6 +582,17 @@ For example, 95 schema-valid records out of 100 requests gives a 95% schema pass
 - [Dong et al., "XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models" (MLSys 2025)](https://arxiv.org/abs/2411.15100) -- research on efficient grammar compilation and token masking; consult the paper for benchmark conditions.
 - [Beurer-Kellner et al., "Prompting Is Programming: A Query Language for Large Language Models" (LMQL)](https://arxiv.org/abs/2212.06094) -- the LMQL paper framing constrained decoding as a query language with type and value constraints.
 - [Microsoft Guidance (framework docs)](https://github.com/guidance-ai/guidance) -- template-driven constrained generation; vendor-agnostic complement to Outlines and XGrammar.
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The core walkthrough runs offline with simulated responses.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/03-structured-outputs/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Building typed LLM responses, reliable extraction pipelines, and preparing for engineering interviews |
 
 ## Attribution and Import Notes
 

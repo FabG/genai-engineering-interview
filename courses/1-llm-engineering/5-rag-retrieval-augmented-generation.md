@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md) · [Embeddings](3-embeddings.md) · [Context Engineering](4-context-engineering.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/06-rag/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Building document question-answering pipelines, evaluating retrieval and grounding, and preparing for RAG interviews |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The main walkthrough runs offline with lexical retrieval and simulated generation.
-
 ## The Problem
 
 You build a chatbot for your company. A customer asks "What's the refund policy for enterprise plans?" The LLM responds with a generic answer about typical SaaS refund policies. The actual policy, buried in a 200-page internal wiki, says enterprise customers get a 60-day window with pro-rated refunds. The LLM has never seen this document. It cannot know what it was not trained on.
@@ -501,6 +492,17 @@ Upstream resources: [RAG architect prompt](https://github.com/rohitg00/ai-engine
 - [Karpukhin et al., "Dense Passage Retrieval for Open-Domain Question Answering" (EMNLP 2020)](https://arxiv.org/abs/2004.04906) -- the DPR paper that compared dense bi-encoder retrieval with BM25 on evaluated open-domain QA tasks and set the pattern for modern RAG retrievers.
 - [LlamaIndex High-Level Concepts](https://docs.llamaindex.ai/en/stable/getting_started/concepts.html) -- the main concepts to know when building RAG pipelines: data loaders, node parsers, indices, retrievers, response synthesizers.
 - [LangChain RAG tutorial](https://python.langchain.com/docs/tutorials/rag/) -- the opposite-flavor orchestrator; chain-of-runnables view of the same retrieve-then-generate pattern.
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The main walkthrough runs offline with lexical retrieval and simulated generation.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/06-rag/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Building document question-answering pipelines, evaluating retrieval and grounding, and preparing for RAG interviews |
 
 ## Attribution and Import Notes
 

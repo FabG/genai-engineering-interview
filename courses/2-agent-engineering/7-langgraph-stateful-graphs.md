@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [Workflow Patterns](6-anthropic-workflow-patterns.md) · [The Agent Loop](1-agent-loop.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/13-langgraph-stateful-graphs/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Modeling stateful workflows, understanding reducers and checkpoint recovery, implementing approval pauses, and distinguishing durable state from exactly-once external actions |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The runnable example is an original standard-library teaching runtime with real SQLite storage. A separate LangGraph API example shows how the concepts map to the framework.
-
 ## Why Make State Explicit?
 
 Imagine processing a support request through classification, investigation, approval, and response preparation. If the process crashes near the end, restarting every stage wastes work and might repeat an external action.
@@ -360,6 +351,17 @@ Test failure windows, not just successful runs: crash before a write, after a wr
 | Subgraph | Reusable nested workflow | Define state and budget boundaries |
 
 An interview answer: “LangGraph models execution through state, nodes, transitions, and reducers. Checkpointing supports persistence and recovery, while interrupts enable review pauses. I would define serializable state and merge semantics, use a durable backend, and test replay behavior. External actions still need idempotency or reconciliation because restoring graph state does not make those actions exactly once.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The runnable example is an original standard-library teaching runtime with real SQLite storage. A separate LangGraph API example shows how the concepts map to the framework.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/13-langgraph-stateful-graphs/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Modeling stateful workflows, understanding reducers and checkpoint recovery, implementing approval pauses, and distinguishing durable state from exactly-once external actions |
 
 ## References and Attribution
 

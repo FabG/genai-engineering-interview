@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [The Agent Loop](1-agent-loop.md) · [Self-Refine and CRITIC](5-self-refine-and-critic.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/12-anthropic-workflow-patterns/docs/en.md) |
-| Author | Rohit Ghumare and contributors; workflow taxonomy attributed to Anthropic |
-| Level | Intermediate — repository assessment |
-| Best for | Selecting and combining workflow patterns, explaining workflows versus agents, and implementing explicit control flow before choosing a framework |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python demonstration uses scripted functions, no external packages, and no live model calls.
-
 ## Start With the Shape of the Task
 
 A useful architecture follows the decisions a task actually requires. Some tasks need one answer, some need several predictable transformations, and others need decisions based on observations that do not exist yet.
@@ -335,6 +326,17 @@ Start with one call when it meets the quality target. Add chaining for predictab
 | Agent | Investigator choosing the next lead | Does new evidence determine the next action? |
 
 An interview answer: “I would begin with the simplest design that meets the quality target. Anthropic's five workflow patterns organize predictable sequences, dispatch, independent work, dynamic decomposition, and feedback-driven revision. I would choose based on task dependencies, define gates and budgets, then compare verified completion, cost, and latency before adding more autonomy.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python demonstration uses scripted functions, no external packages, and no live model calls.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/12-anthropic-workflow-patterns/docs/en.md) |
+| Author | Rohit Ghumare and contributors; workflow taxonomy attributed to Anthropic |
+| Level | Intermediate — repository assessment |
+| Best for | Selecting and combining workflow patterns, explaining workflows versus agents, and implementing explicit control flow before choosing a framework |
 
 ## References and Attribution
 

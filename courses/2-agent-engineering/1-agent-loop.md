@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [Function Calling](../1-llm-engineering/6-function-calling.md) · [Agent Framework Tradeoffs](../1-llm-engineering/13-agent-framework-tradeoffs.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/01-the-agent-loop/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Understanding tool-using agents, implementing a bounded loop, handling observations and errors, and explaining agent architecture in interviews |
-
-Adapted from the MIT-licensed lesson and companion example; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python walkthrough uses a deterministic toy policy and local tools. It requires no model download, API key, or network access.
-
 > Every agent in 2026 is a variant of the ReAct loop from 2022 — Claude Code, Cursor, Devin, Operator included. Reasoning tokens interleave with tool calls and observations until a stop condition fires. Learn this loop cold before touching any framework.
 
 ## The Problem
@@ -360,6 +351,17 @@ For example, 90 completed tasks out of 100 evaluated runs give a 90% task-succes
 - [Function Calling](../1-llm-engineering/6-function-calling.md) — schemas, tool dispatch, and protocol handling.
 - [Guardrails](../1-llm-engineering/9-guardrails.md) — validation and action boundaries.
 - [Agent Framework Tradeoffs](../1-llm-engineering/13-agent-framework-tradeoffs.md) — state, orchestration, and recovery abstractions.
+
+## Resource
+
+Adapted from the MIT-licensed lesson and companion example; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python walkthrough uses a deterministic toy policy and local tools. It requires no model download, API key, or network access.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/01-the-agent-loop/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Understanding tool-using agents, implementing a bounded loop, handling observations and errors, and explaining agent architecture in interviews |
 
 ## Attribution and Import Notes
 

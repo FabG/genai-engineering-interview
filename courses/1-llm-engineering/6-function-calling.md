@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md) · [Structured Outputs](2-structured-outputs.md) · [RAG](5-rag-retrieval-augmented-generation.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/09-function-calling/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Designing tool schemas, implementing bounded tool loops, handling errors, and preparing for agent engineering interviews |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The walkthrough is offline and uses simulated tools and model decisions.
-
 ## The Problem
 
 You build a chatbot. A user asks: "What's the weather in Tokyo right now?"
@@ -744,6 +735,17 @@ Upstream resources: [tool-designer prompt](https://github.com/rohitg00/ai-engine
 - [Berkeley Function Calling Leaderboard](https://gorilla.cs.berkeley.edu/leaderboard.html) -- real-time benchmark comparing function calling accuracy across GPT-4o, Claude, Gemini, and open models
 - [Yao et al., "ReAct: Synergizing Reasoning and Acting in Language Models" (ICLR 2023)](https://arxiv.org/abs/2210.03629) -- a reasoning-and-action pattern; not every tool loop uses explicit ReAct traces.
 - [Anthropic — Building effective agents (Dec 2024)](https://www.anthropic.com/research/building-effective-agents) -- five composable patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer) built from the single tool-use primitive.
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The walkthrough is offline and uses simulated tools and model decisions.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/09-function-calling/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Designing tool schemas, implementing bounded tool loops, handling errors, and preparing for agent engineering interviews |
 
 ## Attribution and Import Notes
 

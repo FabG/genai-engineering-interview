@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [The Agent Loop](1-agent-loop.md) · [Workflow Patterns](6-anthropic-workflow-patterns.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/16-openai-agents-sdk/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Designing specialist ownership, placing validation at the right boundary, managing conversation history, and debugging bounded agent runs |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The main Python demonstration is a scripted standard-library simulation, not an SDK implementation or a model benchmark.
-
 ## Why Use an Agent Runtime?
 
 An application that repeatedly asks a model what to do must interpret tool requests, execute permitted operations, return observations, and decide when to stop. Adding specialists introduces another question: which agent owns the next response?
@@ -353,6 +344,17 @@ Report metric denominators because terms such as false-accept rate are used diff
 | Approval | Authorize a specific proposed action | Bind it to identity and exact arguments |
 
 An interview answer: “The Agents SDK manages an agent loop with tools, handoffs, guardrails, sessions, and tracing. I would choose handoffs when a specialist should take over, and agents-as-tools when a manager should retain control. I would enforce permission checks at the tool boundary, bound turns and transfers, and distinguish conversation history from resumable execution and business state.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The main Python demonstration is a scripted standard-library simulation, not an SDK implementation or a model benchmark.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/16-openai-agents-sdk/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Designing specialist ownership, placing validation at the right boundary, managing conversation history, and debugging bounded agent runs |
 
 ## References and Attribution
 

@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [The Agent Loop](1-agent-loop.md) · [ReWOO and Plan-and-Execute](2-rewoo-plan-execute.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/03-reflexion-verbal-rl/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Understanding feedback-driven retries, designing episodic memory, evaluating self-correction, and explaining how Reflexion differs from weight-based training |
-
-Adapted from the MIT-licensed lesson and companion implementation; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python example runs offline and uses scripted components to demonstrate control flow.
-
 > Gradient-based RL needs thousands of trials and a GPU cluster to fix a failure mode. Reflexion (Shinn et al., NeurIPS 2023) does it in natural language: after each failed trial, the agent writes a reflection, stores it in episodic memory, and conditions the next trial on that memory. This is the pattern behind Letta's sleep-time compute, Claude Code's CLAUDE.md learnings, and pro-workflow's learn-rule.
 
 ## The Problem: Retrying Without Learning From the Failure
@@ -344,6 +335,17 @@ The original [Reflexion paper](https://arxiv.org/abs/2303.11366) evaluates langu
 | Retry budget | A limit on another chance | Count time and cost as well as attempts |
 
 A concise interview answer: “Reflexion wraps an agent in an evaluation-and-retry loop. It converts failure feedback into language notes, stores them in episodic memory, and supplies relevant notes to later attempts without updating model weights. Its value depends on reliable evaluation, actionable feedback, bounded retries, and evidence that the memories improve outcomes.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson and companion implementation; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python example runs offline and uses scripted components to demonstrate control flow.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/03-reflexion-verbal-rl/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Understanding feedback-driven retries, designing episodic memory, evaluating self-correction, and explaining how Reflexion differs from weight-based training |
 
 ## References
 

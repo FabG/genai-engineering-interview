@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md) · [Function Calling](6-function-calling.md) · [Caching and Cost](8-caching-cost.md) · [Production App](10-production-app.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — pinned source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/fe27da89a34ac7a6fcd81659df9347f5eb31fc25/phases/13-tools-and-protocols/21-llm-routing-layer/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Choosing routing gateways, designing model aliases and failover policies, attributing usage, and explaining multi-provider tradeoffs in interviews |
-
-Adapted from the MIT-licensed lesson and its companion Python example; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The walkthrough uses provider stubs and fictional prices; it makes no API calls.
-
 ## The Problem
 
 Different workloads need different models. A short classification task may work well on a smaller model, while difficult synthesis may justify a stronger one. If each feature implements provider selection, retries, pricing, and credentials independently, behavior becomes difficult to control and audit.
@@ -392,6 +383,17 @@ Keep provider credentials server-side. Use a timeout-aware asynchronous adapter 
 - [Portkey documentation](https://portkey.ai/docs) — gateway and platform integration.
 - [MCP sampling specification](https://modelcontextprotocol.io/specification/2025-11-25/client/sampling) — model preferences and client controls.
 - [Production App](10-production-app.md) — deadlines, accounting, streaming, and deployment.
+
+## Resource
+
+Adapted from the MIT-licensed lesson and its companion Python example; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The walkthrough uses provider stubs and fictional prices; it makes no API calls.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — pinned source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/fe27da89a34ac7a6fcd81659df9347f5eb31fc25/phases/13-tools-and-protocols/21-llm-routing-layer/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Choosing routing gateways, designing model aliases and failover policies, attributing usage, and explaining multi-provider tradeoffs in interviews |
 
 ## Attribution and Import Notes
 

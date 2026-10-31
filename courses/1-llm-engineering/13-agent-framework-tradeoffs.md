@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md) · [Function Calling](6-function-calling.md) · [Production App](10-production-app.md) · [LLM Routing Layer](11-llm-routing-layer.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/17-agent-framework-tradeoffs/docs/en.md), supplemented with official framework documentation |
-| Author | Rohit Ghumare and contributors; local comparison and examples adapted for this repository |
-| Level | Intermediate to advanced — repository assessment |
-| Best for | Choosing agent orchestration abstractions, evaluating state/recovery tradeoffs, comparing Google ADK and other frameworks, and defending architecture choices in interviews |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). Framework documentation reviewed on **2026-10-18**. Capabilities vary by package, language, version, integration, and deployment; the comparison is a shortlist guide, not a measured performance ranking.
-
 ## The Problem
 
 A research assistant plans, searches, drafts, and checks citations. A code-review service parses a diff, proposes changes, validates them, and waits for approval. A customer assistant selects tools during a conversation. These are different orchestration problems even when each uses an LLM.
@@ -369,6 +360,17 @@ Repeat model-based runs and report sample sizes and uncertainty. Lines of code c
 - [Microsoft Agent Framework overview](https://learn.microsoft.com/en-us/agent-framework/overview/).
 - [Pydantic AI documentation](https://ai.pydantic.dev/).
 - [Evaluation](7-evaluation.md) and [Guardrails](9-guardrails.md) — evaluate behavior and enforce permissions independently of the chosen framework.
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). Framework documentation reviewed on **2026-10-18**. Capabilities vary by package, language, version, integration, and deployment; the comparison is a shortlist guide, not a measured performance ranking.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/17-agent-framework-tradeoffs/docs/en.md), supplemented with official framework documentation |
+| Author | Rohit Ghumare and contributors; local comparison and examples adapted for this repository |
+| Level | Intermediate to advanced — repository assessment |
+| Best for | Choosing agent orchestration abstractions, evaluating state/recovery tradeoffs, comparing Google ADK and other frameworks, and defending architecture choices in interviews |
 
 ## Attribution and Import Notes
 

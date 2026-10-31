@@ -2,14 +2,14 @@
 
 [Back to the main README](../README.md) · [Terminology glossary](../GLOSSARY.md) · [Cheat sheet](../CHEAT_SHEET.md)
 
-A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course identifies its origin, author, level, and best use, then goes straight into explanations and practical examples.
+A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course goes straight into explanations and practical examples, with its origin, author, level, and best use listed in a Resource section near the bottom.
 
-**26 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**27 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
 1. Copy [COURSE_TEMPLATE.md](COURSE_TEMPLATE.md) into this directory with a descriptive filename, such as `machine-learning-refresher.md`.
-2. Fill in the origin, author, level, and what the course is best for. Follow the metadata with explanations, code examples, and useful exercises. When importing content, check its license and preserve attribution and required notices.
+2. Start with explanations, code examples, and useful exercises. Fill in the Resource section near the bottom with the origin, author, level, and what the course is best for. When importing content, check its license and preserve attribution and required notices in the Resource section.
 3. Preserve useful source prose and diagrams, blending them into the explanations rather than rewriting everything. Use course-level attribution and license notices without repeating captions under every diagram, unless an asset requires separate credit. Avoid duplicate visuals; link interactive figures that cannot render in Markdown.
 4. Add a link under the relevant category below.
 
@@ -73,6 +73,7 @@ Courses on tool use, planning, state, memory, durable execution, permissions, an
 ## Multi-Agent and Swarms
 
 1. [Why Multi-Agent?](3-multi-agent-and-swarms/1-why-multi-agent.md) — Decomposition, context boundaries, coordination patterns, message contracts, and when a single agent is enough.
+2. [Communication Protocols](3-multi-agent-and-swarms/2-communication-protocols.md) — MCP, A2A, agent discovery, task lifecycles, identity, audit trails, and reliable handoffs.
 
 ## Fine-Tuning and Evaluation
 

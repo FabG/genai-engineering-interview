@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [Workflow Patterns](6-anthropic-workflow-patterns.md) · [AutoGen Actor Model](8-autogen-actor-model.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/15-crewai-role-based-crews/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Designing role-based teams, specifying task handoffs, comparing sequential and hierarchical processes, and placing bounded crew work inside explicit application workflows |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The offline demonstration uses standard Python and scripted workers. It is a teaching implementation, not a replacement for or benchmark of CrewAI.
-
 ## A Team Needs More Than Job Titles
 
 Think of a small newsroom. A researcher gathers evidence, a writer produces a draft, and an editor checks it. Naming those roles helps assign responsibilities, but the team still needs deadlines, source requirements, an agreed output format, and a decision about who approves publication.
@@ -370,6 +361,17 @@ Compare one agent, a sequential crew, and a hierarchical crew on the same inputs
 | Memory | Reusable scoped information | Check freshness, provenance, and access |
 
 An interview answer: “CrewAI organizes agents around roles and tasks, with a process coordinating the crew. I would use sequential execution for known dependencies and hierarchy only when manager decisions improve results. I would place validation and release rules in explicit workflow steps, enforce structured handoffs, scope memory, and compare cost per accepted output against a simpler baseline.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The offline demonstration uses standard Python and scripted workers. It is a teaching implementation, not a replacement for or benchmark of CrewAI.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/15-crewai-role-based-crews/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Designing role-based teams, specifying task handoffs, comparing sequential and hierarchical processes, and placing bounded crew work inside explicit application workflows |
 
 ## References and Attribution
 

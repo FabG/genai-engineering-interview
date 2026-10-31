@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#multi-agent-and-swarms) · [Agent Engineering](../README.md#agent-engineering) · [Workflow Patterns](../2-agent-engineering/6-anthropic-workflow-patterns.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/16-multi-agent-and-swarms/01-why-multi-agent/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Deciding whether multiple agents are justified, selecting a coordination pattern, specifying handoffs, and comparing quality, latency, and cost against a single-agent baseline |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The runnable Python example uses deterministic fixtures to expose context boundaries; it does not demonstrate actual model-quality gains.
-
 ## More Agents Are a Design Choice, Not an Upgrade
 
 A **multi-agent system** coordinates multiple agent executions with separate responsibilities or working contexts. They may use the same model; different model weights are not required.
@@ -403,6 +394,17 @@ A larger model is another possible baseline, not automatically the wrong answer.
 | Consensus | Agreement protocol | Agreement alone is not correctness |
 
 An interview answer: “I would use multiple agents when independent working contexts, specialized capabilities, or parallel reasoning improve a measured bottleneck. I would first test retrieval, staged prompts, and parallel tools in a simpler baseline. Then I would define dependencies, message contracts, ownership, and budgets, and compare verified success, cost, and latency under matched resource limits.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The runnable Python example uses deterministic fixtures to expose context boundaries; it does not demonstrate actual model-quality gains.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/16-multi-agent-and-swarms/01-why-multi-agent/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Deciding whether multiple agents are justified, selecting a coordination pattern, specifying handoffs, and comparing quality, latency, and cost against a single-agent baseline |
 
 ## References and Attribution
 

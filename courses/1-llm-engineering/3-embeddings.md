@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md) · [Prompt Engineering](1-prompt-engineering.md) · [Structured Outputs](2-structured-outputs.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/04-embeddings/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Understanding vector search, choosing embedding and chunking strategies, and preparing for retrieval interviews |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The main Python walkthrough uses NumPy and TF-IDF; optional examples use learned embedding models.
-
 ## The Problem
 
 You have 10,000 support tickets. A customer writes "my payment didn't go through." You need to find similar past tickets. Keyword search finds tickets containing "payment" and "didn't go through." It misses "transaction failed," "charge was declined," and "billing error." These tickets can describe related problems with different words; relevance depends on the support task.
@@ -587,6 +578,17 @@ The source includes an [embedding-advisor prompt](https://github.com/rohitg00/ai
 - [MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard) -- live benchmark comparing all embedding models across tasks and languages
 - [Muennighoff et al., "MTEB: Massive Text Embedding Benchmark" (EACL 2023)](https://arxiv.org/abs/2210.07316) -- the benchmark defining 8 task categories (classification, clustering, pair classification, reranking, retrieval, STS, summarization, bitext mining) that the leaderboard reports; read before trusting any single MTEB score.
 - [Sentence Transformers documentation](https://www.sbert.net/) -- canonical reference for bi-encoder vs cross-encoder, pooling strategies, and the ingest-split-embed-store RAG pipeline this lesson implements.
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The main Python walkthrough uses NumPy and TF-IDF; optional examples use learned embedding models.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/04-embeddings/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Understanding vector search, choosing embedding and chunking strategies, and preparing for retrieval interviews |
 
 ## Attribution and Import Notes
 

@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [The Agent Loop](1-agent-loop.md) · [Agent Framework Tradeoffs](../1-llm-engineering/13-agent-framework-tradeoffs.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/02-rewoo-plan-and-execute/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Separating planning from execution, validating dependency graphs, comparing ReAct with ReWOO, and designing bounded replanning |
-
-Adapted from the MIT-licensed lesson and companion implementation; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python example runs offline with a scripted planner, fixture tools, and a deterministic solver.
-
 
 > ReAct interleaves thought and action in one stream. ReWOO separates them: one big plan up front, then execute. 5x fewer tokens, +4% accuracy on HotpotQA, and you can distill the planner into a 7B model. Plan-and-Execute generalized it; Plan-and-Act scaled it to web navigation.
 
@@ -366,6 +357,17 @@ Compare both patterns on the same tasks, tools, model settings, output rubric, a
 - [The Agent Loop](1-agent-loop.md) — interleaved execution and stopping conditions.
 - [Evaluation](../1-llm-engineering/7-evaluation.md) — controlled comparisons and uncertainty.
 - [Agent Framework Tradeoffs](../1-llm-engineering/13-agent-framework-tradeoffs.md) — orchestration, state, and recovery abstractions.
+
+## Resource
+
+Adapted from the MIT-licensed lesson and companion implementation; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python example runs offline with a scripted planner, fixture tools, and a deterministic solver.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/02-rewoo-plan-and-execute/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Separating planning from execution, validating dependency graphs, comparing ReAct with ReWOO, and designing bounded replanning |
 
 ## Attribution and Import Notes
 

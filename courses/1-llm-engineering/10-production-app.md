@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md) · [Evaluation](7-evaluation.md) · [Caching and Cost](8-caching-cost.md) · [Guardrails](9-guardrails.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/13-production-app/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate to advanced — repository assessment |
-| Best for | Connecting LLM components into a service, reasoning about failure modes, streaming, observability, deployment, and production system-design interviews |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). This capstone includes a runnable offline service simulation and a separate HTTP integration example. It is a teaching foundation, not a deployed or load-certified production application.
-
 ## The Problem
 
 A prototype sends a prompt and displays an answer. A service must also handle oversized requests, repeated questions, provider outages, malformed responses, unsafe tool calls, and an unexpected bill.
@@ -587,6 +578,17 @@ For reproducible releases, pin the base image by a reviewed digest and use a dep
 - [Evaluation course](7-evaluation.md) — quality assessment and release comparisons.
 - [Caching and Cost course](8-caching-cost.md) — cache strategies, budgets, and cost metrics.
 - [Guardrails course](9-guardrails.md) — content policy and action-boundary validation.
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). This capstone includes a runnable offline service simulation and a separate HTTP integration example. It is a teaching foundation, not a deployed or load-certified production application.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/13-production-app/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate to advanced — repository assessment |
+| Best for | Connecting LLM components into a service, reasoning about failure modes, streaming, observability, deployment, and production system-design interviews |
 
 ## Attribution and Import Notes
 

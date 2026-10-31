@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [The Agent Loop](1-agent-loop.md) · [Reflexion](3-reflexion-verbal-rl.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/04-tree-of-thoughts-lats/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate to advanced — repository assessment |
-| Best for | Comparing branching search strategies, understanding MCTS and UCT, and deciding when additional inference cost improves agent outcomes |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The standalone Python example below is a teaching implementation of search mechanics, not a reproduction of the research benchmarks.
-
 ## Why Search Instead of Following One Path?
 
 Imagine looking for a route through a maze. Following one corridor is cheap, but a wrong turn can lead to a dead end. Search keeps track of alternative routes, explores promising ones, and returns to earlier junctions when needed.
@@ -326,6 +317,17 @@ This is a design guide, not a claim about which architecture dominates current p
 | Final verification | Check the destination independently | A high heuristic score is not proof |
 
 An interview answer: “Tree of Thoughts explores alternative intermediate solutions instead of committing to one path. LATS combines language-agent actions, environmental feedback, reflection, and Monte Carlo Tree Search. The tradeoff is more inference work and dependence on reliable evaluation, so I would compare verified success, cost, and latency against simpler baselines under the same budget.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The standalone Python example below is a teaching implementation of search mechanics, not a reproduction of the research benchmarks.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/04-tree-of-thoughts-lats/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate to advanced — repository assessment |
+| Best for | Comparing branching search strategies, understanding MCTS and UCT, and deciding when additional inference cost improves agent outcomes |
 
 ## References and Attribution
 

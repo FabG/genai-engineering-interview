@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md) · [Evaluation](7-evaluation.md) · [Production App](10-production-app.md) · [LLM Routing Layer](11-llm-routing-layer.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — pinned source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/fe27da89a34ac7a6fcd81659df9347f5eb31fc25/phases/17-infrastructure-and-production/20-shadow-canary-progressive/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate to advanced — repository assessment |
-| Best for | Planning model and prompt releases, defining rollout gates, interpreting noisy metrics, and rehearsing rollback for production interviews |
-
-Adapted from the MIT-licensed lesson and companion simulator; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python example uses synthetic metrics and makes no infrastructure changes.
-
 ## The Problem
 
 Suppose a candidate model improves offline accuracy by three percentage points. After release, its cost rises 40%, negative feedback increases, and users report unexpected behavior. Offline quality alone did not establish that this was a good production change.
@@ -319,6 +310,17 @@ For a candidate with a three-percentage-point offline gain and 18% higher cost, 
 - [Evaluation](7-evaluation.md) — quality datasets, comparisons, and uncertainty.
 - [Production App](10-production-app.md) — service observability and versioned release design.
 - [LLM Routing Layer](11-llm-routing-layer.md) — aliases, policies, and fallback attribution.
+
+## Resource
+
+Adapted from the MIT-licensed lesson and companion simulator; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python example uses synthetic metrics and makes no infrastructure changes.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — pinned source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/fe27da89a34ac7a6fcd81659df9347f5eb31fc25/phases/17-infrastructure-and-production/20-shadow-canary-progressive/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate to advanced — repository assessment |
+| Best for | Planning model and prompt releases, defining rollout gates, interpreting noisy metrics, and rehearsing rollback for production interviews |
 
 ## Attribution and Import Notes
 

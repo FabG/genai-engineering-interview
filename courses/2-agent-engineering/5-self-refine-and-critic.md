@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [Reflexion](3-reflexion-verbal-rl.md) · [Tree of Thoughts and LATS](4-tree-of-thoughts-lats.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/05-self-refine-and-critic/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Building bounded revision loops, grounding critiques in tool evidence, defining stopping conditions, and measuring whether revisions improve outputs |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The standalone Python demonstration uses scripted components and a local reference fixture; it does not call a model or reproduce research results.
-
 ## Why Revise an Answer?
 
 An answer can be nearly useful but still contain an incorrect number, omit a requirement, or exceed a length limit. A revision loop separates producing a draft from checking and improving it.
@@ -343,6 +334,17 @@ Compare single-pass generation, blind retries, model-only critique, and tool-gro
 | Budget exhausted | No permitted improvement attempts remain | It is a failure status, not acceptance |
 
 An interview answer: “Self-Refine iterates through generation, feedback, and revision without changing model weights. CRITIC grounds the critique in external tool results. I would define required checks, preserve relevant history, revalidate every revision, and stop on acceptance, stalled progress, or a resource cap. I would measure both fixes and regressions against an independent evaluation set.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The standalone Python demonstration uses scripted components and a local reference fixture; it does not call a model or reproduce research results.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/05-self-refine-and-critic/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Building bounded revision loops, grounding critiques in tool evidence, defining stopping conditions, and measuring whether revisions improve outputs |
 
 ## References and Attribution
 

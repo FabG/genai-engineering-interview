@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [The Agent Loop](1-agent-loop.md) · [OpenAI Agents SDK](10-openai-agents-sdk.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/17-claude-agent-sdk/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Understanding an agent harness, isolating specialist context, designing hooks and session storage, and evaluating self-hosted versus managed execution |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python example is an original offline simulation using standard-library components, not the Claude Agent SDK itself.
-
 ## What Is an Agent Harness?
 
 A **harness** is the runtime around a model: it repeatedly requests decisions, executes tools, records observations, maintains context, and enforces stopping and permission rules.
@@ -297,6 +288,17 @@ For independent work, ideal parallel latency approaches the slowest batch plus c
 | Managed harness | Delegate runtime operations | Application authorization remains your responsibility |
 
 An interview answer: “The Claude Agent SDK exposes the Claude Code harness through a library: an agent loop with tools, permissions, context management, sessions, and extensibility. I would use subagents for independent tasks or context isolation, return bounded evidence-backed results, and enforce tool permissions outside prompts. I would test session restoration and side-effect recovery separately, because restoring a transcript does not guarantee exactly-once execution.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python example is an original offline simulation using standard-library components, not the Claude Agent SDK itself.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/17-claude-agent-sdk/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Understanding an agent harness, isolating specialist context, designing hooks and session storage, and evaluating self-hosted versus managed execution |
 
 ## References and Attribution
 

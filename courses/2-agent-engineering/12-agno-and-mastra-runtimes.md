@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md#agent-engineering) · [LangGraph Stateful Graphs](7-langgraph-stateful-graphs.md) · [CrewAI Role-Based Crews](9-crewai-role-based-crews.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/18-agno-and-mastra-runtimes/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Comparing Python and TypeScript agent stacks, interpreting performance claims, and designing streaming, session persistence, and typed workflow boundaries |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The offline examples teach runtime contracts; they are not Agno or Mastra implementations or comparative benchmarks.
-
 ## Choose the Runtime Around the Application
 
 An **agent runtime** coordinates model calls, tools, state, and execution. A **serving layer** exposes that runtime to clients and handles requests, streaming, authentication, and operational concerns.
@@ -315,6 +306,17 @@ The source distinguishes open-source core packages from separately licensed ente
 | Microbenchmark | Timing one small operation | Not end-to-end performance evidence |
 
 An interview answer: “I would compare Agno and Mastra primarily through language fit, tool integration, state and serving requirements, and verified task outcomes. Fast agent construction may matter at high request volume, but model and tool latency often dominate. I would benchmark full requests, validate runtime data, and test persistence failure and cancellation before choosing a production runtime.”
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The offline examples teach runtime contracts; they are not Agno or Mastra implementations or comparative benchmarks.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/14-agent-engineering/18-agno-and-mastra-runtimes/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Comparing Python and TypeScript agent stacks, interpreting performance claims, and designing streaming, session persistence, and typed workflow boundaries |
 
 ## References and Attribution
 

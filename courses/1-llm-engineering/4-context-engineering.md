@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md) · [Prompt Engineering](1-prompt-engineering.md) · [Embeddings](3-embeddings.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/05-context-engineering/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Designing context budgets, retrieval and memory pipelines, and preparing for LLM application interviews |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python walkthrough is offline and uses approximate token counts and simulated responses.
-
 ## The Problem
 
 A large context window can fill quickly once you include instructions, tools, documents, conversation history, and room for the answer. See the [model-limit comparison](1-prompt-engineering.md#context-windows-what-fits-where) for concrete examples; the exact limit depends on the deployed model and endpoint.
@@ -623,6 +614,17 @@ Upstream resources: [context-optimizer prompt](https://github.com/rohitg00/ai-en
 - [Pope et al., "Efficiently Scaling Transformer Inference" (2022)](https://arxiv.org/abs/2211.05102) -- why context length drives memory and latency, and how KV cache, MQA, and GQA change the budget calculation.
 - [Agrawal et al., "SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills" (2023)](https://arxiv.org/abs/2308.16369) -- research on prefill/decode scheduling and inference tradeoffs.
 - [Ainslie et al., "GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints" (EMNLP 2023)](https://arxiv.org/abs/2305.13245) -- research on grouped-query attention, quality, and key/value cache tradeoffs.
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). The Python walkthrough is offline and uses approximate token counts and simulated responses.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/05-context-engineering/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Designing context budgets, retrieval and memory pipelines, and preparing for LLM application interviews |
 
 ## Attribution and Import Notes
 

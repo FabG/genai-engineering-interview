@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch lesson](https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F01-prompt-engineering&learningPath=applied-ai-engineer) · [Source Markdown](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/01-prompt-engineering/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Learning practical prompt design, refreshing core patterns, and preparing for engineering interviews |
-
-Adapted from the MIT-licensed source; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). Explanations, prompt patterns, and the Python walkthrough are retained with accuracy and portability edits; the harness uses simulated responses.
-
 ## The Problem
 
 You open ChatGPT. You type: "Write me a marketing email." You get something generic, bloated, and unusable. You try again with more detail. Better, but still off. You spend 20 minutes rephrasing the same request. Unclear instructions may be part of the problem. Model capability, missing context, and task ambiguity can also matter.
@@ -972,6 +963,17 @@ The [upstream Python code](https://github.com/rohitg00/ai-engineering-from-scrat
 - [Arena (formerly LMSYS Chatbot Arena)](https://arena.ai/) -- live blind comparison of LLMs where you can test the same prompt across models and vote on which response is better
 - [DAIR.AI Prompt Engineering Guide](https://www.promptingguide.ai/) -- exhaustive catalogue of prompt techniques with examples (zero-shot, few-shot, CoT, ReAct, self-consistency); the reference practitioners use for the broader "Prompt engineering" surface.
 - [Claude prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices) -- Anthropic's guidance on prompt structure, with worked examples. It replaced the earlier prompt library.
+
+## Resource
+
+Adapted from the MIT-licensed source; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). Explanations, prompt patterns, and the Python walkthrough are retained with accuracy and portability edits; the harness uses simulated responses.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch lesson](https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F01-prompt-engineering&learningPath=applied-ai-engineer) · [Source Markdown](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/01-prompt-engineering/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Learning practical prompt design, refreshing core patterns, and preparing for engineering interviews |
 
 ## Attribution and Import Notes
 

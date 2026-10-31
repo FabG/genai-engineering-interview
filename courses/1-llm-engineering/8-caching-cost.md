@@ -2,15 +2,6 @@
 
 [Back to courses](../README.md) · [Evaluation](7-evaluation.md) · [Context Engineering](4-context-engineering.md)
 
-| Field | Details |
-| --- | --- |
-| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/11-caching-cost/docs/en.md) |
-| Author | Rohit Ghumare and contributors |
-| Level | Intermediate — repository assessment |
-| Best for | Reducing LLM serving costs, choosing cache strategies, protecting budgets, and explaining cost/quality tradeoffs in interviews |
-
-Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). Prices below are hypothetical teaching fixtures, not provider quotes. The Python walkthrough runs offline with simulated responses.
-
 ## The Problem
 
 You build a RAG chatbot. It works beautifully. Users love it.
@@ -516,6 +507,17 @@ For a shared cache, use TTLs on both answer and vector records, consistent delet
 - [Gemini context caching](https://ai.google.dev/gemini-api/docs/caching) — implicit/explicit caching and storage considerations.
 - [OpenAI Batch API](https://developers.openai.com/api/docs/guides/batch) — asynchronous submissions and result handling.
 - [Evaluation course](7-evaluation.md) — measuring whether an optimization preserves required answer quality.
+
+## Resource
+
+Adapted from the MIT-licensed lesson; copyright © 2026 Rohit Ghumare. [Original license](../licenses/ai-engineering-from-scratch-LICENSE). Prices below are hypothetical teaching fixtures, not provider quotes. The Python walkthrough runs offline with simulated responses.
+
+| Field | Details |
+| --- | --- |
+| Origin | [AI Engineering from Scratch — source lesson](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/11-llm-engineering/11-caching-cost/docs/en.md) |
+| Author | Rohit Ghumare and contributors |
+| Level | Intermediate — repository assessment |
+| Best for | Reducing LLM serving costs, choosing cache strategies, protecting budgets, and explaining cost/quality tradeoffs in interviews |
 
 ## Attribution and Import Notes
 
