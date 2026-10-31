@@ -37,3 +37,10 @@ These two small frames come from **Simplilearn**, [Most Asked 30 Generative AI I
 - **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/16-multi-agent-and-swarms/05-supervisor-orchestrator-pattern/assets/supervisor.svg).
 - **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
 - **Adaptation:** Model-neutral labels, scoped-context wording, and removal of generalized benchmark claims, 2026-10-31. Layout retained for the [supervisor course](../../courses/3-multi-agent-and-swarms/4-supervisor-orchestrator-pattern.md).
+
+## Role specialization
+
+- **File:** [roles.svg](role-specialization/roles.svg).
+- **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/16-multi-agent-and-swarms/08-role-specialization/assets/roles.svg).
+- **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
+- **Adaptation:** Qualified verification and determinism claims and removed unsupported statistics, 2026-10-31. Layout retained for the [Role Specialization course](../../courses/3-multi-agent-and-swarms/5-role-specialization.md).
