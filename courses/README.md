@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course goes straight into explanations and practical examples, with its origin, author, level, and best use listed in a Resource section near the bottom.
 
-**30 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**31 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -77,6 +77,7 @@ Courses on tool use, planning, state, memory, durable execution, permissions, an
 3. [The Multi-Agent Primitive Model](3-multi-agent-and-swarms/3-primitive-model.md) — Agents, handoffs, shared state, orchestrators, and framework tradeoffs with a runnable Python example.
 4. [Supervisor / Orchestrator-Worker Pattern](3-multi-agent-and-swarms/4-supervisor-orchestrator-pattern.md) — Scoped delegation, parallel workers, synthesis, deadlines, partial failures, and production tradeoffs.
 5. [Role Specialization](3-multi-agent-and-swarms/5-role-specialization.md) — Planner, executor, critic, and verifier contracts; independent checks, bounded revisions, and quality metrics.
+6. [Parallel / Swarm / Networked Architectures](3-multi-agent-and-swarms/6-parallel-swarm-networks.md) — Shared queues, dynamic scheduling, delivery semantics, back-pressure, and safe retries.
 
 ## Fine-Tuning and Evaluation
 

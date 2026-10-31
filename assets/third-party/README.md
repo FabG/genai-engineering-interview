@@ -44,3 +44,10 @@ These two small frames come from **Simplilearn**, [Most Asked 30 Generative AI I
 - **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/16-multi-agent-and-swarms/08-role-specialization/assets/roles.svg).
 - **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
 - **Adaptation:** Qualified verification and determinism claims and removed unsupported statistics, 2026-10-31. Layout retained for the [Role Specialization course](../../courses/3-multi-agent-and-swarms/5-role-specialization.md).
+
+## Parallel swarm networks
+
+- **File:** [swarm-topology.svg](parallel-swarm-networks/swarm-topology.svg).
+- **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/16-multi-agent-and-swarms/09-parallel-swarm-networks/assets/swarm-topology.svg).
+- **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
+- **Adaptation:** Qualified scaling, ordering, fault-tolerance, and tracing claims, 2026-10-31. Layout retained for the [Parallel Swarm Networks course](../../courses/3-multi-agent-and-swarms/6-parallel-swarm-networks.md).
