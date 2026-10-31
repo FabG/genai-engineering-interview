@@ -30,3 +30,10 @@ These two small frames come from **Simplilearn**, [Most Asked 30 Generative AI I
 - **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/16-multi-agent-and-swarms/04-primitive-model/assets/primitives.svg).
 - **Author and rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
 - **Adaptation:** Updated statelessness claims and framework labels for the [Primitive Model course](../../courses/3-multi-agent-and-swarms/3-primitive-model.md), 2026-10-31. Layout and visual structure retained.
+
+## Supervisor / Orchestrator-Worker pattern
+
+- **File:** [supervisor.svg](supervisor-pattern/supervisor.svg).
+- **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/16-multi-agent-and-swarms/05-supervisor-orchestrator-pattern/assets/supervisor.svg).
+- **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
+- **Adaptation:** Model-neutral labels, scoped-context wording, and removal of generalized benchmark claims, 2026-10-31. Layout retained for the [supervisor course](../../courses/3-multi-agent-and-swarms/4-supervisor-orchestrator-pattern.md).
