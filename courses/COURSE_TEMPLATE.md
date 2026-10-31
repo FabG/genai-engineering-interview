@@ -22,3 +22,5 @@ Explain the idea in plain language, with an analogy or practical example where u
 ```
 
 Explain how to run the example, its expected output, and any limitations. Include practical reference tables with concrete parameter values, use cases, and tradeoffs where relevant. Preserve this level of detail when adapting source lessons, and explain which recommendations are illustrative or model-dependent. Continue with further concepts, examples, or exercises as needed.
+
+<!-- Preserve source diagrams and useful source prose when importing lessons; do not rewrite or summarize everything by default. Blend diagrams into the teaching sequence with a natural introduction and explanation. Avoid duplicate visuals and repeated "Imported from" captions: use the course-level source attribution and license notice, except where an asset requires separate credit. Inventory text, Mermaid, image, and interactive diagrams; store third-party images under assets/third-party, resolve links, and link interactive originals that cannot render in Markdown. Clearly document material adaptations where needed. -->
