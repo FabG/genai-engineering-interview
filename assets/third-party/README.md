@@ -23,3 +23,10 @@ These two small frames come from **Simplilearn**, [Most Asked 30 Generative AI I
 - **Visible creator credit:** “Created by MLTUT.” The original publication URL and upstream license were not provided or independently verified.
 - **Use:** [RAG Q18: What are the different types of RAG?](../../questions/rag.md#question-18-what-are-the-different-types-of-rag). The accompanying answer explains the overlapping categories and limitations of the image's simplified comparisons.
 - **Rights:** Third-party material, **excluded from the repository's MIT License**. Rights remain with the respective holder; inclusion does not grant an upstream redistribution license. The original creator credit is preserved.
+
+## Multi-agent primitive model
+
+- **File:** [primitives.svg](primitive-model/primitives.svg).
+- **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/16-multi-agent-and-swarms/04-primitive-model/assets/primitives.svg).
+- **Author and rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
+- **Adaptation:** Updated statelessness claims and framework labels for the [Primitive Model course](../../courses/3-multi-agent-and-swarms/3-primitive-model.md), 2026-10-31. Layout and visual structure retained.

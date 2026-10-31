@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course goes straight into explanations and practical examples, with its origin, author, level, and best use listed in a Resource section near the bottom.
 
-**27 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**28 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -74,6 +74,7 @@ Courses on tool use, planning, state, memory, durable execution, permissions, an
 
 1. [Why Multi-Agent?](3-multi-agent-and-swarms/1-why-multi-agent.md) — Decomposition, context boundaries, coordination patterns, message contracts, and when a single agent is enough.
 2. [Communication Protocols](3-multi-agent-and-swarms/2-communication-protocols.md) — MCP, A2A, agent discovery, task lifecycles, identity, audit trails, and reliable handoffs.
+3. [The Multi-Agent Primitive Model](3-multi-agent-and-swarms/3-primitive-model.md) — Agents, handoffs, shared state, orchestrators, and framework tradeoffs with a runnable Python example.
 
 ## Fine-Tuning and Evaluation
 
