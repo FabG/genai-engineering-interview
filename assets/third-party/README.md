@@ -58,3 +58,10 @@ These two small frames come from **Simplilearn**, [Most Asked 30 Generative AI I
 - **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/16-multi-agent-and-swarms/12-a2a-protocol/assets/a2a-flow.svg).
 - **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
 - **Adaptation:** Removed unsupported adoption claims and clarified immediate task return, 2026-10-31. Layout retained for the [A2A course](../../courses/3-multi-agent-and-swarms/7-a2a-protocol.md).
+
+## Managed LLM platforms
+
+- **File:** [platforms.svg](managed-llm-platforms/platforms.svg).
+- **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/01-managed-llm-platforms/assets/platforms.svg).
+- **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
+- **Adaptation:** Preserved the three-column layout; replaced unsupported price, latency, adoption, and compliance claims with deployment checks, 2026-11-02. Used in the [Managed LLM Platforms course](../../courses/4-infrastructure-and-production/1-managed-llm-platforms.md).

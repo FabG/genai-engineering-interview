@@ -101,6 +101,10 @@ Use the [Courses section](courses/README.md) to collect useful courses for **int
 6. [Parallel / Swarm / Networked Architectures](courses/3-multi-agent-and-swarms/6-parallel-swarm-networks.md) — Shared queues, dynamic scheduling, delivery semantics, back-pressure, and safe retries.
 7. [A2A — The Agent-to-Agent Protocol](courses/3-multi-agent-and-swarms/7-a2a-protocol.md) — Agent Cards, task lifecycles, artifacts, HTTP discovery, authentication, streaming, and retry contracts.
 
+### Infrastructure and Production
+
+1. [Managed LLM Platforms](courses/4-infrastructure-and-production/1-managed-llm-platforms.md) — Bedrock, Azure OpenAI, Vertex AI, provisioned-capacity economics, latency measurement, FinOps, and recovery design.
+
 To add a course, copy the [course template](courses/COURSE_TEMPLATE.md), record its origin, author, level, and what it is best for, then go straight into explanations and code examples. Add the course to the index.
 
 ## Topics to Cover
@@ -229,3 +233,5 @@ The imported [Prompt Engineering](courses/1-llm-engineering/1-prompt-engineering
 The imported [Agent Loop](courses/2-agent-engineering/1-agent-loop.md), [ReWOO and Plan-and-Execute](courses/2-agent-engineering/2-rewoo-plan-execute.md), [Reflexion](courses/2-agent-engineering/3-reflexion-verbal-rl.md), [Tree of Thoughts and LATS](courses/2-agent-engineering/4-tree-of-thoughts-lats.md), [Self-Refine and CRITIC](courses/2-agent-engineering/5-self-refine-and-critic.md), [Anthropic Workflow Patterns](courses/2-agent-engineering/6-anthropic-workflow-patterns.md), [LangGraph Stateful Graphs](courses/2-agent-engineering/7-langgraph-stateful-graphs.md), [AutoGen and the Actor Model](courses/2-agent-engineering/8-autogen-actor-model.md), [CrewAI Role-Based Crews](courses/2-agent-engineering/9-crewai-role-based-crews.md), [OpenAI Agents SDK](courses/2-agent-engineering/10-openai-agents-sdk.md), [Claude Agent SDK](courses/2-agent-engineering/11-claude-agent-sdk.md), and [Agno and Mastra Runtimes](courses/2-agent-engineering/12-agno-and-mastra-runtimes.md) lessons also retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
 
 The imported [Why Multi-Agent?](courses/3-multi-agent-and-swarms/1-why-multi-agent.md), [Communication Protocols](courses/3-multi-agent-and-swarms/2-communication-protocols.md), [The Multi-Agent Primitive Model](courses/3-multi-agent-and-swarms/3-primitive-model.md), [Supervisor / Orchestrator-Worker Pattern](courses/3-multi-agent-and-swarms/4-supervisor-orchestrator-pattern.md), [Role Specialization](courses/3-multi-agent-and-swarms/5-role-specialization.md), [Parallel / Swarm / Networked Architectures](courses/3-multi-agent-and-swarms/6-parallel-swarm-networks.md), and [A2A](courses/3-multi-agent-and-swarms/7-a2a-protocol.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
+
+The imported [Managed LLM Platforms](courses/4-infrastructure-and-production/1-managed-llm-platforms.md) lesson retains its upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
