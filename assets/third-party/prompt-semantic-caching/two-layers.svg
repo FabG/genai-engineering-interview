@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <style>
+      .box { fill: #faf6ef; stroke: #1a1a1a; stroke-width: 1.5; }
+      .l1 { fill: #e6f4ea; stroke: #2e7d32; stroke-width: 1.5; }
+      .l2 { fill: #dfe9ff; stroke: #2c5ea9; stroke-width: 1.5; }
+      .bad { fill: #ffe1e1; stroke: #b71c1c; stroke-width: 1.5; }
+      .title { font-size: 16px; font-weight: 700; fill: #1a1a1a; }
+      .head { font-size: 12px; font-weight: 700; fill: #1a1a1a; }
+      .step { font-size: 12px; font-family: 'Menlo', monospace; fill: #222; }
+      .small { font-size: 10px; font-family: 'Menlo', monospace; fill: #555; }
+      .caption { font-size: 11px; fill: #555; font-style: italic; }
+    </style>
+  </defs>
+  <text x="480" y="24" text-anchor="middle" class="title">two-layer caching — L1 skips LLM, L2 reuses KV</text>
+
+  <rect x="40" y="50" width="420" height="220" class="l1"/>
+  <text x="250" y="72" text-anchor="middle" class="head">L1 — response caching (app-level)</text>
+  <text x="250" y="94" text-anchor="middle" class="step">exact lookup → eligible semantic search</text>
+  <text x="60" y="118" class="small">scope: authorization + prompt/data version</text>
+  <text x="60" y="136" class="small">threshold: calibrate on labeled examples</text>
+  <text x="60" y="154" class="small">validate every candidate:</text>
+  <text x="60" y="172" class="small">  same entity, task, and permitted context</text>
+  <text x="60" y="190" class="small">  fresh data and compatible response format</text>
+  <text x="60" y="208" class="small">  no unsafe reuse of side effects</text>
+  <text x="60" y="226" class="small">  accepted match passes quality criteria</text>
+  <text x="250" y="254" text-anchor="middle" class="caption">match precision and cache hit rate are different metrics</text>
+
+  <rect x="500" y="50" width="420" height="220" class="l2"/>
+  <text x="710" y="72" text-anchor="middle" class="head">L2 — serving prefix cache</text>
+  <text x="710" y="94" text-anchor="middle" class="step">reuse attention KV for repeated prefix</text>
+  <text x="520" y="118" class="small">managed API or self-hosted serving engine</text>
+  <text x="520" y="136" class="small">  stable instructions and shared context first</text>
+  <text x="520" y="154" class="small">  dynamic context and question afterward</text>
+  <text x="520" y="172" class="small">eligibility, retention, and billing vary</text>
+  <text x="520" y="190" class="small">  include writes, reads, and output generation</text>
+  <text x="520" y="208" class="small">measure cached input tokens and actual cost</text>
+  <text x="520" y="226" class="small">self-hosted: balance compute against memory</text>
+  <text x="710" y="254" text-anchor="middle" class="caption">prefix reuse saves processing; it does not reuse the answer</text>
+
+  <rect x="40" y="290" width="880" height="110" class="bad"/>
+  <text x="480" y="312" text-anchor="middle" class="head">failure modes to measure</text>
+  <text x="60" y="338" class="step">· parallelization penalty</text>
+  <text x="60" y="356" class="small">  concurrent cold misses can duplicate fills; warmup/coalescing trades latency for reuse</text>
+  <text x="60" y="374" class="step">· dynamic content in prefix</text>
+  <text x="60" y="392" class="small">  changing early tokens limits the shared prefix; earlier compatible blocks may still match</text>
+
+  <rect x="40" y="420" width="880" height="80" class="box"/>
+  <text x="480" y="442" text-anchor="middle" class="head">batch and caching economics</text>
+  <text x="480" y="464" text-anchor="middle" class="step">verify discount compatibility; price input, output, writes, and storage separately</text>
+  <text x="480" y="484" text-anchor="middle" class="caption">compare net savings against quality, freshness, and completion deadlines</text>
+</svg>

@@ -86,3 +86,10 @@ These two small frames come from **Simplilearn**, [Most Asked 30 Generative AI I
 - **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/13-llm-observability/assets/stack.svg).
 - **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
 - **Adaptation:** Retained the comparison layout; removed fixed prices, broad license labels, and unsupported savings claims; clarified capability overlap, telemetry flow, and sampling limits, 2026-11-07. Used in the [LLM Observability course](../../courses/4-infrastructure-and-production/4-llm-observability.md).
+
+## Prompt and semantic caching
+
+- **File:** [two-layers.svg](prompt-semantic-caching/two-layers.svg).
+- **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/14-prompt-semantic-caching/assets/two-layers.svg).
+- **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
+- **Adaptation:** Retained the two-layer layout; replaced fixed prices and unsupported hit-rate/savings claims with validity checks, conditional concurrency effects, and cost-accounting guidance, 2026-11-07. Used in the [Prompt and Semantic Caching course](../../courses/4-infrastructure-and-production/5-prompt-semantic-caching.md).
