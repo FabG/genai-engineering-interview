@@ -72,3 +72,10 @@ These two small frames come from **Simplilearn**, [Most Asked 30 Generative AI I
 - **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/08-inference-metrics-goodput/assets/metrics.svg).
 - **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
 - **Adaptation:** Preserved the four-panel layout; corrected latency formulas, request-level SLO gates, and percentile arithmetic; replaced unsupported hardware figures with a synthetic example, 2026-11-07. Used in the [Inference Metrics and Goodput course](../../courses/4-infrastructure-and-production/2-inference-metrics-goodput.md).
+
+## Multi-region serving and KV cache locality
+
+- **File:** [router.svg](multi-region-kv-locality/router.svg).
+- **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/11-multi-region-kv-locality/assets/router.svg).
+- **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
+- **Adaptation:** Retained the routing layout; added eligibility and queueing, labeled timings as illustrative, corrected a misplaced text label, and removed unsupported implementation and disaster-recovery claims, 2026-11-07. Used in the [Multi-Region Serving course](../../courses/4-infrastructure-and-production/3-multi-region-kv-locality.md).
