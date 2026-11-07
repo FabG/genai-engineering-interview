@@ -38,13 +38,52 @@ With TP=80, FP=20, FN=40, TN=860: accuracy=94%, precision=80%, recall≈66.7%, F
 | **Q / K / V** | Queries seek matches, keys provide matching signals, values supply the combined information. |
 | **Pretrain / tune / infer** | Learn broad patterns / update for a target objective / use the model. |
 | **Context ≠ memory** | Current request capacity differs from externally persisted and retrieved state. |
-| **Prefill / decode** | Process the prompt / generate incrementally. Diagnose their latency separately. |
+| **[Prefill / decode](#prefill-vs-decode)** | Process the prompt / generate incrementally. Diagnose their latency separately. |
 | **Perplexity** | exp(mean negative log likelihood in nats); compare only compatible tokenization and evaluation data. |
 | **Sampling ≠ verification** | Temperature and top-p alter sampling, not factual support. |
 
 Approximate KV-cache bytes: **2 × layers × batch × sequence length × KV heads × head dimension × bytes per element**, before overhead. Use the number of KV heads, which may differ from query heads.
 
 [Study LLM foundations](questions/genai-foundations.md).
+
+## Prefill vs Decode
+
+**Prefill = read the prompt. Decode = write the answer.** Think of reading a question before answering it aloud, one word at a time. Models operate on **tokens**, not necessarily whole words.
+
+### 1. Prefill (Prompt Processing)
+
+- **What it does:** Processes the input prompt—system instructions, context, and user query—with parallel computation across input tokens. Conceptually this is one forward pass through the model; serving systems may split it into chunks or reuse a cached prefix.
+- **Key output:** Builds the **Key-Value (KV) cache**, which stores attention keys and values, and produces the scores used to select the **first output token**.
+- **Typical bottleneck:** Often **compute-bound**: limited by the GPU’s ability to perform large matrix multiplications, especially with long prompts or large batches.
+- **User-perceived metric:** Contributes to **Time to First Token (TTFT)**—the delay before generated text starts appearing. Queueing and network overhead also contribute.
+- **Performance trait:** Parallel prompt processing usually gives high input-token throughput. This does not mean that all layers execute simultaneously or that a long prompt has negligible latency.
+
+### 2. Decode (Token-by-Token Generation)
+
+- **What it does:** Generates the rest of the response **autoregressively**: each new token depends on earlier tokens. Standard decoding advances one token per sequence per step, reusing and extending the KV cache.
+- **Key output:** The sequential stream of tokens that forms the answer. Tokens may be words, word fragments, punctuation, or other encoded content.
+- **Typical bottleneck:** Often **memory-bandwidth-bound**, especially at small batch sizes. Moving model weights and cached attention data from GPU **high-bandwidth memory (HBM)** to compute units can dominate the time spent doing arithmetic.
+- **User-perceived metric:** Drives **Inter-Token Latency (ITL)**—the gap between successive tokens—and **Time Per Output Token (TPOT)**, commonly averaged over generation after the first token. These describe how quickly text appears once generation starts; exact metric conventions can vary.
+- **Performance trait:** Tokens within one sequence depend on previous results, limiting parallelism. Batching different requests can improve GPU utilization; speculative decoding can accept multiple proposed tokens in a verification step.
+
+| Aspect | Prefill | Decode |
+| --- | --- | --- |
+| **What happens** | Processes the available input tokens, with parallel computation across prompt positions | Generates subsequent tokens autoregressively: each depends on the preceding tokens |
+| **KV cache** | Builds cached attention keys and values for the prompt | Reuses and extends that cache instead of recomputing the full prefix |
+| **Typical bottleneck** | Often compute-bound for sufficiently large prompts/batches | Often memory-bandwidth-bound at small batch sizes: reading weights and cached context |
+| **User-visible metric** | Contributes to **TTFT**: time to first token | Drives **inter-token latency** and output tokens/second |
+| **Workload pressure** | Long uncached input | Long output, large cached context, and concurrent sequences |
+| **Useful optimizations** | Trim irrelevant context; reuse compatible cached prefixes; schedule chunked prefill | Limit unnecessary output; batch requests; optimize model/KV memory; evaluate speculative decoding |
+
+These bottlenecks are tendencies, not laws: model architecture, hardware, context length, and batching can change them. Batching can improve aggregate throughput while increasing an individual request’s latency.
+
+**Two examples:** a long document with a one-sentence answer emphasizes prefill; a short prompt requesting a long story emphasizes decode. Both phases still occur.
+
+**Latency math:** for `N ≥ 1` visible output tokens, approximately **total latency = TTFT + (N − 1) × average inter-token latency**. With TTFT = 0.5 s, 101 output tokens, and 20 ms between tokens, total latency is approximately **2.5 s**. A steady 20 ms/token corresponds to **50 output tokens/s per sequence**, not total server throughput.
+
+**Interview traps:** TTFT also includes queueing, networking, and other overhead; it is not pure prefill time. In ordinary autoregressive inference, the prefill forward pass supplies the logits for the first output token. A KV cache stores attention tensors, not a reusable final answer; prefix caching requires a compatible matching prefix. Speculative decoding can accept several proposed tokens per verification step, qualifying the usual “one token per decode step” explanation.
+
+[Study LLM foundations](questions/genai-foundations.md) · [Study production engineering](questions/production-engineering.md).
 
 ## RAG
 
