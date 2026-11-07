@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course goes straight into explanations and practical examples, with its origin, author, level, and best use listed in a Resource section near the bottom.
 
-**35 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**36 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -85,6 +85,7 @@ Courses on tool use, planning, state, memory, durable execution, permissions, an
 1. [Managed LLM Platforms](4-infrastructure-and-production/1-managed-llm-platforms.md) — Bedrock, Azure OpenAI, Vertex AI, provisioned-capacity economics, latency measurement, FinOps, and recovery design.
 2. [Inference Metrics and Goodput](4-infrastructure-and-production/2-inference-metrics-goodput.md) — TTFT, TPOT, token gaps, throughput, joint SLO attainment, tail latency, and a Python goodput calculator.
 3. [Multi-Region Serving and KV Cache Locality](4-infrastructure-and-production/3-multi-region-kv-locality.md) — Cache-aware routing, network and queue tradeoffs, region policy, KV transfer costs, and disaster recovery.
+4. [LLM Observability](4-infrastructure-and-production/4-llm-observability.md) — Traces, telemetry contracts, tool selection, sampling bias, cost modeling, and production debugging.
 
 ## Fine-Tuning and Evaluation
 
