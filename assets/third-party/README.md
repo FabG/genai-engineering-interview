@@ -65,3 +65,10 @@ These two small frames come from **Simplilearn**, [Most Asked 30 Generative AI I
 - **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/01-managed-llm-platforms/assets/platforms.svg).
 - **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
 - **Adaptation:** Preserved the three-column layout; replaced unsupported price, latency, adoption, and compliance claims with deployment checks, 2026-11-02. Used in the [Managed LLM Platforms course](../../courses/4-infrastructure-and-production/1-managed-llm-platforms.md).
+
+## Inference metrics and goodput
+
+- **File:** [metrics.svg](inference-metrics-goodput/metrics.svg).
+- **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/08-inference-metrics-goodput/assets/metrics.svg).
+- **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
+- **Adaptation:** Preserved the four-panel layout; corrected latency formulas, request-level SLO gates, and percentile arithmetic; replaced unsupported hardware figures with a synthetic example, 2026-11-07. Used in the [Inference Metrics and Goodput course](../../courses/4-infrastructure-and-production/2-inference-metrics-goodput.md).

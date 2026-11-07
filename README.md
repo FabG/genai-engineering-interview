@@ -104,6 +104,7 @@ Use the [Courses section](courses/README.md) to collect useful courses for **int
 ### Infrastructure and Production
 
 1. [Managed LLM Platforms](courses/4-infrastructure-and-production/1-managed-llm-platforms.md) — Bedrock, Azure OpenAI, Vertex AI, provisioned-capacity economics, latency measurement, FinOps, and recovery design.
+2. [Inference Metrics and Goodput](courses/4-infrastructure-and-production/2-inference-metrics-goodput.md) — TTFT, TPOT, token gaps, throughput, joint SLO attainment, tail latency, and a Python goodput calculator.
 
 To add a course, copy the [course template](courses/COURSE_TEMPLATE.md), record its origin, author, level, and what it is best for, then go straight into explanations and code examples. Add the course to the index.
 
@@ -234,4 +235,4 @@ The imported [Agent Loop](courses/2-agent-engineering/1-agent-loop.md), [ReWOO a
 
 The imported [Why Multi-Agent?](courses/3-multi-agent-and-swarms/1-why-multi-agent.md), [Communication Protocols](courses/3-multi-agent-and-swarms/2-communication-protocols.md), [The Multi-Agent Primitive Model](courses/3-multi-agent-and-swarms/3-primitive-model.md), [Supervisor / Orchestrator-Worker Pattern](courses/3-multi-agent-and-swarms/4-supervisor-orchestrator-pattern.md), [Role Specialization](courses/3-multi-agent-and-swarms/5-role-specialization.md), [Parallel / Swarm / Networked Architectures](courses/3-multi-agent-and-swarms/6-parallel-swarm-networks.md), and [A2A](courses/3-multi-agent-and-swarms/7-a2a-protocol.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
 
-The imported [Managed LLM Platforms](courses/4-infrastructure-and-production/1-managed-llm-platforms.md) lesson retains its upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
+The imported [Managed LLM Platforms](courses/4-infrastructure-and-production/1-managed-llm-platforms.md) and [Inference Metrics and Goodput](courses/4-infrastructure-and-production/2-inference-metrics-goodput.md) lessons retain their upstream copyright and [MIT license notice](courses/licenses/ai-engineering-from-scratch-LICENSE).
