@@ -100,3 +100,10 @@ These two small frames come from **Simplilearn**, [Most Asked 30 Generative AI I
 - **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/15-batch-apis/assets/triage.svg).
 - **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
 - **Adaptation:** Retained the three-lane layout; replaced universal turnaround and savings claims with deadline, recovery, and component-cost guidance, 2026-11-13. Used in the [Batch APIs course](../../courses/4-infrastructure-and-production/6-batch-apis.md).
+
+## Model routing
+
+- **File:** [cascade.svg](model-routing/cascade.svg).
+- **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/16-model-routing/assets/cascade.svg).
+- **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
+- **Adaptation:** Retained the layout; replaced fixed pricing/latency claims with verification and ensemble guidance and clarified quality monitoring, 2026-11-13. Used in the [Model Routing course](../../courses/4-infrastructure-and-production/7-model-routing.md).

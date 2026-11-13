@@ -4,7 +4,7 @@
 
 A growing collection of courses for preparing for AI and GenAI engineering interviews or refreshing key concepts. Each course goes straight into explanations and practical examples, with its origin, author, level, and best use listed in a Resource section near the bottom.
 
-**38 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
+**39 courses available.** Start with [Prompt Engineering](1-llm-engineering/1-prompt-engineering.md), or use the [course template](COURSE_TEMPLATE.md) to add another course.
 
 ## Add a course
 
@@ -88,6 +88,7 @@ Courses on tool use, planning, state, memory, durable execution, permissions, an
 4. [LLM Observability](4-infrastructure-and-production/4-llm-observability.md) — Traces, telemetry contracts, tool selection, sampling bias, cost modeling, and production debugging.
 5. [Prompt and Semantic Caching](4-infrastructure-and-production/5-prompt-semantic-caching.md) — Prefix reuse, response-cache correctness, TTLs, concurrent misses, and two-layer cost modeling.
 6. [Batch APIs](4-infrastructure-and-production/6-batch-apis.md) — Workload triage, provider formats, deadline planning, result reconciliation, selective retries, and batch/cache economics.
+7. [Model Routing](4-infrastructure-and-production/7-model-routing.md) — Pre-routing, cascades, ensembles, cost-quality tradeoffs, verification, and drift monitoring.
 
 ## Fine-Tuning and Evaluation
 
