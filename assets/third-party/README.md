@@ -93,3 +93,10 @@ These two small frames come from **Simplilearn**, [Most Asked 30 Generative AI I
 - **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/14-prompt-semantic-caching/assets/two-layers.svg).
 - **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
 - **Adaptation:** Retained the two-layer layout; replaced fixed prices and unsupported hit-rate/savings claims with validity checks, conditional concurrency effects, and cost-accounting guidance, 2026-11-07. Used in the [Prompt and Semantic Caching course](../../courses/4-infrastructure-and-production/5-prompt-semantic-caching.md).
+
+## Batch APIs
+
+- **File:** [triage.svg](batch-apis/triage.svg).
+- **Source:** [AI Engineering from Scratch companion diagram](https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/phases/17-infrastructure-and-production/15-batch-apis/assets/triage.svg).
+- **Rights:** Copyright © 2026 Rohit Ghumare; [MIT license](../../courses/licenses/ai-engineering-from-scratch-LICENSE).
+- **Adaptation:** Retained the three-lane layout; replaced universal turnaround and savings claims with deadline, recovery, and component-cost guidance, 2026-11-13. Used in the [Batch APIs course](../../courses/4-infrastructure-and-production/6-batch-apis.md).
